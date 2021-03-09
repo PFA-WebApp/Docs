@@ -84,7 +84,14 @@
 <li class="chapter" data-level="3.3.2" data-path="requirements.html"><a href="requirements.html#deployment"><i class="fa fa-check"></i><b>3.3.2</b> Deployment</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="tech-stack.html"><a href="tech-stack.html"><i class="fa fa-check"></i><b>4</b> Tech Stack</a></li>
+<li class="chapter" data-level="4" data-path="tech-stack.html"><a href="tech-stack.html"><i class="fa fa-check"></i><b>4</b> Tech Stack</a><ul>
+<li class="chapter" data-level="4.1" data-path="tech-stack.html"><a href="tech-stack.html#framework"><i class="fa fa-check"></i><b>4.1</b> Framework</a></li>
+<li class="chapter" data-level="4.2" data-path="tech-stack.html"><a href="tech-stack.html#programmiersprache"><i class="fa fa-check"></i><b>4.2</b> Programmiersprache</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="tech-stack.html"><a href="tech-stack.html#packages-für-shiny"><i class="fa fa-check"></i><b>4.2.1</b> Packages für {shiny}</a></li>
+<li class="chapter" data-level="4.2.2" data-path="tech-stack.html"><a href="tech-stack.html#packages-für-die-programmierung"><i class="fa fa-check"></i><b>4.2.2</b> Packages für die Programmierung</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="tech-stack.html"><a href="tech-stack.html#datenbank-1"><i class="fa fa-check"></i><b>4.3</b> Datenbank</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="implementation.html"><a href="implementation.html"><i class="fa fa-check"></i><b>5</b> Umsetzung</a></li>
 <li class="chapter" data-level="6" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>6</b> Diskussion</a></li>
 <li class="chapter" data-level="7" data-path="outlook.html"><a href="outlook.html"><i class="fa fa-check"></i><b>7</b> Ausblick</a></li>
@@ -111,7 +118,131 @@
             <section class="normal" id="section-">
 <div id="tech-stack" class="section level1">
 <h1><span class="header-section-number">4</span> Tech Stack</h1>
+<p>Als Tech Stack wird die Summe der verwendeten Technologien bezeichnet. Dazu gehören zum Beispiel die Programmiersprache, das Framework für die Web-Applikation, die Datenbanksoftware, aber auch die Entwicklungsumgebung und weitere Software, die im Entwicklungsprozess verwendet wird.</p>
+<div id="framework" class="section level2">
+<h2><span class="header-section-number">4.1</span> Framework</h2>
+<p>Zuallererst muss das Framework zur Erstellung der Web-Applikation gewählt werden. Dieses legt normalerweise die zu verwendende Programmiersprache fest und setzt möglicherweise Restriktionen in Bezug auf weitere Software. Eine Web-Applikation zeichnet sich dadurch aus, dass sie im Webbrowser ausführbar ist. Der Webbrowser ist in der Lage, Dateien im HTML-Format (HTML: Hyper Text Markup Language) darzustellen. Das HTML-Format spezifiziert dabei ausschließlich die Struktur der Webseite. Um die visuelle Erscheinung der Webseite zu beeinflussen, können Regeln in CSS-Dateien (CSS: Cascading Style Sheet) hinterlegt werden. Für interaktives Verhalten existiert die Sprache JavaScript, die es ermöglicht, das HTML-Dokument dynamisch anzupassen.</p>
+<p>Ein Framework zur Erstellung von Web-Applikationen bietet ein Grundgerüst für Layout sowie Funktionalität und stellt einen Server bereit. Für das Layout werden beispielsweise makroskopische Komponenten, wie Dashboards und Landing Pages, oder mikroskopische Komponenten, wie Inputs, Tabellen und Plots, bereitgestellt. Die Funktionalität wird abstrahiert und der Zustand der Web-Applikation modelliert. Der Server bearbeitet Anfragen von Clients, also Nutzern der Web-Applikation. Frameworks können in beliebigen Programmiersprachen implementiert werden, solange eine Schnittstelle zwischen der vom Framework verwendeten Sprache und einer dem Browser verständlichen Sprache existiert. Frameworks können hinsichtlich verschiedener Kriterien unterschieden werden. Backend-Frameworks integrieren neben einem Server meist auch noch Datenbanken, wohingegen Frontend-Frameworks ihren Fokus mehr auf dem visuellen Part legen. Multipage-Frameworks enthalten mehrere Seiten, wohingegen Singlepage-Frameworks nur eine einzige Seite darstellen.</p>
+<p>Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in der Programmiersprache R implementiert ist. Hierbei handelt es sich um ein Singlepage-Framework, das als Backend den sogenannten Shiny Server enthält. Maßgeblich für die Entscheidung war, dass die beiden Autoren über Erfahrung im Umgang mit R und im Speziellen mit Shiny verfügen. Darüber hinaus zeichnet sich Shiny durch folgende Eigenschaften und Vorzüge aus:</p>
+<ul>
+<li>Moderne Templates</li>
+<li>Fokus auf konkrete Funktionalität</li>
+<li>Reaktives Zustandsmodell</li>
+<li>Modularisierbarkeit</li>
+<li>Für Anwendungsfall ausreichende Performance</li>
+<li>Einfache Integration von Datenbanken</li>
+</ul>
+</div>
+<div id="programmiersprache" class="section level2">
+<h2><span class="header-section-number">4.2</span> Programmiersprache</h2>
+<p>R ist eine Multiparadigmen-Programmiersprache. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden. R verfügt einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden. Das Comprehensive R Archive Network (CRAN) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung beispielsweise {shiny}, das die Funktionalitäten des Frameworks beinhaltet. Die folgenden Tabellen geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.</p>
+<div id="packages-für-shiny" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Packages für {shiny}</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Package</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>{<a href="https://cran.r-project.org/web/packages/bs4Dash/index.html">bs4Dash</a>}</td>
+<td>AdminLTE-Template</td>
+</tr>
+<tr class="even">
+<td>{<a href="https://cran.r-project.org/web/packages/DT/index.html">DT</a>}</td>
+<td>DataTables für {shiny}</td>
+</tr>
+<tr class="odd">
+<td>{<a href="https://cran.r-project.org/web/packages/htmltools/index.html">htmltools</a>}</td>
+<td>HTML-Repräsentation in R</td>
+</tr>
+<tr class="even">
+<td>{<a href="https://cran.r-project.org/web/packages/rclipboard/index.html">rclipboard</a>}</td>
+<td>Zwischenablage</td>
+</tr>
+<tr class="odd">
+<td>{<a href="https://cran.r-project.org/web/packages/shinydisconnect/index.html">shinydisconnect</a>}</td>
+<td>Verbindungsverlustbildschirm</td>
+</tr>
+<tr class="even">
+<td>{<a href="https://cran.r-project.org/web/packages/shinyjs/index.html">shinyjs</a>}</td>
+<td>Integration von Custom-JavaScript</td>
+</tr>
+<tr class="odd">
+<td>{<a href="https://cran.r-project.org/web/packages/waiter/index.html">waiter</a>}</td>
+<td>Ladebildschirm</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="packages-für-die-programmierung" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Packages für die Programmierung</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Package</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>{<a href="https://cran.r-project.org/web/packages/Cairo/index.html">Cairo</a>}</td>
+<td>PDF-/PNG-/SVG-Erstellung</td>
+</tr>
+<tr class="even">
+<td>{<a href="https://cran.r-project.org/web/packages/DBI/index.html">DBI</a>}</td>
+<td>Datenbankinterface</td>
+</tr>
+<tr class="odd">
+<td>{<a href="https://cran.r-project.org/web/packages/dplyr/index.html">dplyr</a>}</td>
+<td>Datentransformationen</td>
+</tr>
+<tr class="even">
+<td>{<a href="https://cran.r-project.org/web/packages/glue/index.html">glue</a>}</td>
+<td>String-Erzeugung</td>
+</tr>
+<tr class="odd">
+<td>{<a href="https://cran.r-project.org/web/packages/lubridate/index.html">lubridate</a>}</td>
+<td>Datumsformat</td>
+</tr>
+<tr class="even">
+<td>{<a href="https://cran.r-project.org/web/packages/RSQLite/index.html">RSQLite</a>}</td>
+<td>SQLite-Datenbank</td>
+</tr>
+<tr class="odd">
+<td>{<a href="https://cran.r-project.org/web/packages/stringr/index.html">stringr</a>}</td>
+<td>String-Manipulation</td>
+</tr>
+<tr class="even">
+<td>{<a href="https://cran.r-project.org/web/packages/tibble/index.html">tibble</a>}</td>
+<td>Tabellenformat</td>
+</tr>
+<tr class="odd">
+<td>{<a href="https://cran.r-project.org/web/packages/purrr/index.html">purrr</a>}</td>
+<td>Funktionale Programmierung</td>
+</tr>
+<tr class="even">
+<td>{<a href="https://cran.r-project.org/web/packages/qrcode/index.html">qrcode</a>}</td>
+<td>Erstellung von QR-Codes</td>
+</tr>
+<tr class="odd">
+<td>{<a href="https://cran.r-project.org/web/packages/renv/index.html">renv</a>}</td>
+<td>Packagemanagement</td>
+</tr>
+<tr class="even">
+<td>{<a href="https://cran.r-project.org/web/packages/yaml/index.html">yaml</a>}</td>
+<td>YAML-Dateiformat</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="datenbank-1" class="section level2">
+<h2><span class="header-section-number">4.3</span> Datenbank</h2>
 
+</div>
 </div>
             </section>
 
