@@ -135,7 +135,7 @@
 </div>
 <div id="programmiersprache" class="section level2">
 <h2><span class="header-section-number">4.2</span> Programmiersprache</h2>
-<p>R ist eine Multiparadigmen-Programmiersprache. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden. R verfügt einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden. Das Comprehensive R Archive Network (CRAN) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung beispielsweise {shiny}, das die Funktionalitäten des Frameworks beinhaltet. Die folgenden Tabellen geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.</p>
+<p><a href="https://www.r-project.org/">R</a> ist eine Multiparadigmen-Programmiersprache. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden. R verfügt einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden. Das Comprehensive R Archive Network (<a href="https://cran.r-project.org/">CRAN</a>) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung beispielsweise {<a href="https://shiny.rstudio.com/">shiny</a>}, das die Funktionalitäten des Frameworks beinhaltet. Die folgenden Tabellen geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.</p>
 <div id="packages-für-shiny" class="section level3">
 <h3><span class="header-section-number">4.2.1</span> Packages für {shiny}</h3>
 <table>
@@ -241,8 +241,17 @@
 </div>
 <div id="datenbank-1" class="section level2">
 <h2><span class="header-section-number">4.3</span> Datenbank</h2>
+<p>Zur konsistenten Datenverwaltung wird eine Datenbank benötigt. Datenbanken sind in der Lage, Anfragen von verschiedenen Clients zu bearbeiten und dabei zu gewährleisten, dass bestimmte Regeln hinsichtlich der Datenstruktur und Ausprägung der Daten eingehalten werden. Es existieren verschiedene Datenbankmodelle, unter anderem das Netzwerk-, das objektorientierte, das hierachische oder das relationale Datenbankmodell.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Diese unterscheiden sich hinsichtlich der Verknüpfung der beteiligten Daten. Aufgrund der hohen Flexibilität und der weiten Verbreitung wurde das relationale Datenbankmodell ausgewählt. Dieses speichert die Daten in miteinander verknüpften Tabellen. Die Tabellenzeilen enthalten Beobachtungen, die Tabellenspalten stellen die beobachtbaren Merkmale dar. Zur eindeutigen Identifikation erhält jede Zeile eine Identifikationsnummer. Die Spalte der Identifikationsnummern wird als Primärschlüssel (<em>Primary Key</em>) bezeichnet. Um verschiedene Tabellen miteinander zu verknüpfen, werden Identifikationsnummern referenziert. Eine Spalte, die auf einen Primärschlüssel einer anderen Tabelle verweist, wird als Fremdschlüssel (<em>Foreign Key</em>) bezeichnet.</p>
+<p>Es gibt eine Vielzahl verschiedener relationaler Datenbankmanagementsysteme, die sich hinsichtlich ihrer Anwendungsbereiche und Skalierbarkeit unterscheiden. Für Projekte kleinen und mittleren Umfanges (unter 100.000 Aufrufe / Tag<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>) eignet sich <a href="https://www.sqlite.org/index.html">SQLite</a>. Hierbei werden alle Tabellen in einer einzigen Datei mit dem Suffix <em>.sqlite</em> gespeichert. Der Zugriff auf die Datenbank erfolgt grundsätzlich über die <em>Structured Query Language</em> (SQL). Für die Programmiersprache R gibt es die Packages {DBI} und {RSQLite}, die eine direkte Schnittstelle zur Datenbank bereitstellen.</p>
 
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Laudon, K.C.; Laudon, J.P.; Schroeder, D.: <em>Wirtschaftsinformatik - Eine Einführung</em>, Pearson, 2015, S. 295-300<a href="tech-stack.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>SQLite Consortium: <em>Appropriate Uses for SQLite</em>, URL: <a href="https://www.sqlite.org/whentouse.html" class="uri">https://www.sqlite.org/whentouse.html</a>, Letzter Aufruf: 14.03.2021<a href="tech-stack.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 

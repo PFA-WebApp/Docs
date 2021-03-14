@@ -1,3 +1,7 @@
 `r if (knitr::is_html_output()) '
 # Referenzen {#references}
 '`
+
+[^laudon2015]: Laudon, K.C.; Laudon, J.P.; Schroeder, D.: _Wirtschaftsinformatik - Eine Einführung_, Pearson, 2015, S. 295-300
+
+[^whysqlite]: SQLite Consortium: _Appropriate Uses for SQLite_, URL: https://www.sqlite.org/whentouse.html, Letzter Aufruf: 14.03.2021
