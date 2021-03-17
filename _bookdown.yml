@@ -2,5 +2,22 @@ output_dir: "docs"
 book_filename: "Docs"
 delete_merged_file: true
 language:
+  label:
+    fig: 'Abbildung '
+    tab: 'Tabelle '
+    eq: 'Gleichung '
+    thm: 'Theorem '
+    lem: 'Lemma '
+    cor: 'Corollar '
+    prp: 'Proposition '
+    cnj: 'Conjecture '
+    def: 'Definition '
+    exm: 'Example '
+    exr: 'Exercise '
+    proof: 'Proof. '
+    remark: 'Remark. '
+    solution: 'Solution. '
   ui:
-    chapter_name: ""
+    edit: Bearbeiten
+    chapter_name: ''
+    appendix_name: ''

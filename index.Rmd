@@ -4,4 +4,19 @@ biblio-style: "abbrv"
 link-citations: true
 ---
 
+\renewcommand{\figurename}{Abbildung}
+
+```{r, echo=FALSE}
+badge <- function(status = c("admin", "mod")) {
+  status <- match.arg(status)
+  
+  if (knitr::is_html_output()) {
+    htmltools::span(
+      class = paste("badge", status),
+      if (status == "admin") "Administrator" else "Moderator"
+    )
+  }
+}
+```
+
 # Übersicht

@@ -97,7 +97,22 @@
 <li class="chapter" data-level="5.2" data-path="workflow.html"><a href="workflow.html#entwicklungsumgebung"><i class="fa fa-check"></i><b>5.2</b> Entwicklungsumgebung</a></li>
 <li class="chapter" data-level="5.3" data-path="workflow.html"><a href="workflow.html#versionskontrolle"><i class="fa fa-check"></i><b>5.3</b> Versionskontrolle</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="implementation.html"><a href="implementation.html"><i class="fa fa-check"></i><b>6</b> Umsetzung</a></li>
+<li class="chapter" data-level="6" data-path="implementation.html"><a href="implementation.html"><i class="fa fa-check"></i><b>6</b> Umsetzung</a><ul>
+<li class="chapter" data-level="6.1" data-path="implementation.html"><a href="implementation.html#anwendungsorientierte-sichtweise"><i class="fa fa-check"></i><b>6.1</b> Anwendungsorientierte Sichtweise</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="implementation.html"><a href="implementation.html#sidebar"><i class="fa fa-check"></i><b>6.1.1</b> Sidebar</a></li>
+<li class="chapter" data-level="6.1.2" data-path="implementation.html"><a href="implementation.html#navbar"><i class="fa fa-check"></i><b>6.1.2</b> Navbar</a></li>
+<li class="chapter" data-level="6.1.3" data-path="implementation.html"><a href="implementation.html#anmeldung"><i class="fa fa-check"></i><b>6.1.3</b> Anmeldung</a></li>
+<li class="chapter" data-level="6.1.4" data-path="implementation.html"><a href="implementation.html#ausleihen-zurückgeben"><i class="fa fa-check"></i><b>6.1.4</b> Ausleihen &amp; Zurückgeben</a></li>
+<li class="chapter" data-level="6.1.5" data-path="implementation.html"><a href="implementation.html#bestandsinformation-1"><i class="fa fa-check"></i><b>6.1.5</b> Bestandsinformation</a></li>
+<li class="chapter" data-level="6.1.6" data-path="implementation.html"><a href="implementation.html#nutzerverwaltung-1"><i class="fa fa-check"></i><b>6.1.6</b> Nutzerverwaltung</a></li>
+<li class="chapter" data-level="6.1.7" data-path="implementation.html"><a href="implementation.html#gruppen"><i class="fa fa-check"></i><b>6.1.7</b> Gruppen</a></li>
+<li class="chapter" data-level="6.1.8" data-path="implementation.html"><a href="implementation.html#sensortypen"><i class="fa fa-check"></i><b>6.1.8</b> Sensortypen</a></li>
+<li class="chapter" data-level="6.1.9" data-path="implementation.html"><a href="implementation.html#dateiverwaltung-1"><i class="fa fa-check"></i><b>6.1.9</b> Dateiverwaltung</a></li>
+<li class="chapter" data-level="6.1.10" data-path="implementation.html"><a href="implementation.html#qr-code"><i class="fa fa-check"></i><b>6.1.10</b> QR-Code</a></li>
+<li class="chapter" data-level="6.1.11" data-path="implementation.html"><a href="implementation.html#einstellungen"><i class="fa fa-check"></i><b>6.1.11</b> Einstellungen</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="implementation.html"><a href="implementation.html#technikorientierte-sichtweise"><i class="fa fa-check"></i><b>6.2</b> Technikorientierte Sichtweise</a></li>
+</ul></li>
 <li class="chapter" data-level="7" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>7</b> Diskussion</a></li>
 <li class="chapter" data-level="8" data-path="outlook.html"><a href="outlook.html"><i class="fa fa-check"></i><b>8</b> Ausblick</a></li>
 <li class="chapter" data-level="9" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>9</b> Referenzen</a></li>
@@ -123,8 +138,103 @@
             <section class="normal" id="section-">
 <div id="implementation" class="section level1">
 <h1><span class="header-section-number">6</span> Umsetzung</h1>
-<p>Neben der technischen Umsetzung ist insbesondere der Arbeitsprozess von herausragender Bedeutung.</p>
+<p>Die folgenden Abschnitte stellen die Umsetzung der Web-Applikation sowohl aus der anwendungsorientierten als auch der technikorienten Sichtweise dar.</p>
+<div id="anwendungsorientierte-sichtweise" class="section level2">
+<h2><span class="header-section-number">6.1</span> Anwendungsorientierte Sichtweise</h2>
+<p>Die Web-Applikation ist ein Dashboard. Dieses besitzt eine Sidebar, eine Navbar und einen Body.</p>
+<div class="figure"><span id="fig:unnamed-chunk-2"></span>
+<img src="img/app_overview.png" alt="Übersicht über das Dashboard"  />
+<p class="caption">
+Abbildung 6.1: Übersicht über das Dashboard
+</p>
+</div>
+<div id="sidebar" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Sidebar</h3>
+<p>In der Sidebar kann über einen Reiter die Funktionalität ausgewählt werden, die im Body dargestellt wird. Die Anzahl an Auswahlmöglichkeiten hängt vom Anmeldestatus und Benutzerrolle ab.</p>
+</div>
+<div id="navbar" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Navbar</h3>
+<p>Die Navbar enthält:</p>
+<ul>
+<li>einen Link zum GitHub-Repository, das den Quellcode der Web-Applikation enthält,</li>
+<li>einen Reload-Button, mit dem eine Aktualisierung der Daten erzwungen werden kann,</li>
+<li>einen Toggle, mit dem zwischen Tag- und Nachtmodus gewechselt werden kann.</li>
+</ul>
+</div>
+<div id="anmeldung" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> Anmeldung</h3>
+<p>Dieser Reiter verändert sich in Abhängigkeit des Anmeldestatus.</p>
+<div id="status-nicht-angemeldet" class="section level4">
+<h4><span class="header-section-number">6.1.3.1</span> Status: Nicht angemeldet</h4>
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="img/login_mask.png" alt="Anmeldung - nicht angemeldet"  />
+<p class="caption">
+Abbildung 6.2: Anmeldung - nicht angemeldet
+</p>
+</div>
+<p>Registrierte Benutzer können sich durch Angabe ihres Benutzernamens und ihres Passwortes anmelden. Nicht-registrierte Benutzer müssen sich von einem Moderator oder Administrator (Wissenschaftliche Mitarbeiter) registrieren lassen.</p>
+</div>
+<div id="status-angemeldet" class="section level4">
+<h4><span class="header-section-number">6.1.3.2</span> Status: Angemeldet</h4>
+<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<img src="img/login_mask_logged.png" alt="Anmeldung - angemeldet"  />
+<p class="caption">
+Abbildung 6.3: Anmeldung - angemeldet
+</p>
+</div>
+<p>Nach erfolgreicher Anmeldung wird der Benutzer mit Informationen über sein Nutzungsverhalten versorgt. Dargestellt werden:</p>
+<ul>
+<li>der Benutzername und der Benutzerstatus,</li>
+<li>die Dauer seit der momentanen Anmeldung,</li>
+<li>die Dauer seit der letzten Anmeldung,</li>
+<li>die Anzahl der Anmeldungen.</li>
+</ul>
+<p>Benutzer können sich abmelden.</p>
+</div>
+</div>
+<div id="ausleihen-zurückgeben" class="section level3">
+<h3><span class="header-section-number">6.1.4</span> Ausleihen &amp; Zurückgeben</h3>
+</div>
+<div id="bestandsinformation-1" class="section level3">
+<h3><span class="header-section-number">6.1.5</span> Bestandsinformation</h3>
+</div>
+<div id="nutzerverwaltung-1" class="section level3">
+<h3><span class="header-section-number">6.1.6</span> Nutzerverwaltung</h3>
+<p><span class="badge admin">Administrator</span>
+<span class="badge mod">Moderator</span></p>
+</div>
+<div id="gruppen" class="section level3">
+<h3><span class="header-section-number">6.1.7</span> Gruppen</h3>
+<p><span class="badge admin">Administrator</span></p>
+</div>
+<div id="sensortypen" class="section level3">
+<h3><span class="header-section-number">6.1.8</span> Sensortypen</h3>
+<p><span class="badge admin">Administrator</span></p>
+</div>
+<div id="dateiverwaltung-1" class="section level3">
+<h3><span class="header-section-number">6.1.9</span> Dateiverwaltung</h3>
+<p><span class="badge admin">Administrator</span></p>
+</div>
+<div id="qr-code" class="section level3">
+<h3><span class="header-section-number">6.1.10</span> QR-Code</h3>
+<p><span class="badge admin">Administrator</span></p>
+</div>
+<div id="einstellungen" class="section level3">
+<h3><span class="header-section-number">6.1.11</span> Einstellungen</h3>
+<div id="benutzernamen-ändern" class="section level4">
+<h4><span class="header-section-number">6.1.11.1</span> Benutzernamen ändern</h4>
+<p>Um den eigenen Benutzernamen zu ändern, muss ein neuer Benutzername eingeben werden. Nach Eingabe des Passworts und Bestätigen wird der Benutzername geändert.</p>
+</div>
+<div id="passwort-ändern" class="section level4">
+<h4><span class="header-section-number">6.1.11.2</span> Passwort ändern</h4>
+<p>Um das eigene Passwort zu ändern, muss ein neues Passwort zweimal eingegeben und bestätigt werden.</p>
+</div>
+</div>
+</div>
+<div id="technikorientierte-sichtweise" class="section level2">
+<h2><span class="header-section-number">6.2</span> Technikorientierte Sichtweise</h2>
 
+</div>
 </div>
             </section>
 
