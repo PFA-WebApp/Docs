@@ -7,15 +7,58 @@ link-citations: true
 \renewcommand{\figurename}{Abbildung}
 
 ```{r, echo=FALSE}
-badge <- function(status = c("admin", "mod")) {
+library(shiny)
+library(dplyr)
+
+badge <- function(status = c("admin", "mod", "user"), short = FALSE) {
   status <- match.arg(status)
+  
+  text <- if (short) {
+    switch (
+      status,
+      "admin" = "A",
+      "mod" = "M",
+      "user" = "B"
+    )
+  } else {
+    switch (
+      status,
+      "admin" = "Administrator",
+      "mod" = "Moderator",
+      "user" = "Benutzer"
+    )
+  }
   
   if (knitr::is_html_output()) {
     htmltools::span(
       class = paste("badge", status),
-      if (status == "admin") "Administrator" else "Moderator"
+      text
     )
   }
+}
+
+operate_button <- function(operation = c("borrow", "return", "write-off")) {
+  operation <- match.arg(operation)
+  
+  shiny::actionButton(
+    inputId = "",
+    label = switch(
+      operation,
+      "borrow" = "Ausleihen",
+      "return" = "Zurückgeben",
+      "write-off" = "Abschreiben"
+    ),
+    icon = shiny::icon(
+      name = switch(
+        operation,
+        "borrow" = "sign-out-alt",
+        "return" = "sign-in-alt",
+        "write-off" = "balance-scale-right"
+      )
+    ),
+    class = paste0(operation, "-btn"),
+    style = "width: 100px; margin-right: 10px;"
+  ) %>% htmltools::span()
 }
 ```
 

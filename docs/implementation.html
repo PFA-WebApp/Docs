@@ -49,6 +49,8 @@
 
 
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/font-awesome-5.13.0/css/all.min.css" rel="stylesheet" />
+<link href="libs/font-awesome-5.13.0/css/v4-shims.min.css" rel="stylesheet" />
 
 
 
@@ -104,11 +106,11 @@
 <li class="chapter" data-level="6.1.3" data-path="implementation.html"><a href="implementation.html#anmeldung"><i class="fa fa-check"></i><b>6.1.3</b> Anmeldung</a></li>
 <li class="chapter" data-level="6.1.4" data-path="implementation.html"><a href="implementation.html#ausleihen-zurückgeben"><i class="fa fa-check"></i><b>6.1.4</b> Ausleihen &amp; Zurückgeben</a></li>
 <li class="chapter" data-level="6.1.5" data-path="implementation.html"><a href="implementation.html#bestandsinformation-1"><i class="fa fa-check"></i><b>6.1.5</b> Bestandsinformation</a></li>
-<li class="chapter" data-level="6.1.6" data-path="implementation.html"><a href="implementation.html#nutzerverwaltung-1"><i class="fa fa-check"></i><b>6.1.6</b> Nutzerverwaltung</a></li>
-<li class="chapter" data-level="6.1.7" data-path="implementation.html"><a href="implementation.html#gruppen"><i class="fa fa-check"></i><b>6.1.7</b> Gruppen</a></li>
-<li class="chapter" data-level="6.1.8" data-path="implementation.html"><a href="implementation.html#sensortypen"><i class="fa fa-check"></i><b>6.1.8</b> Sensortypen</a></li>
-<li class="chapter" data-level="6.1.9" data-path="implementation.html"><a href="implementation.html#dateiverwaltung-1"><i class="fa fa-check"></i><b>6.1.9</b> Dateiverwaltung</a></li>
-<li class="chapter" data-level="6.1.10" data-path="implementation.html"><a href="implementation.html#qr-code"><i class="fa fa-check"></i><b>6.1.10</b> QR-Code</a></li>
+<li class="chapter" data-level="6.1.6" data-path="implementation.html"><a href="implementation.html#nutzerverwaltung-1"><i class="fa fa-check"></i><b>6.1.6</b> Nutzerverwaltung <span class="badge admin">A</span> <span class="badge mod">M</span></a></li>
+<li class="chapter" data-level="6.1.7" data-path="implementation.html"><a href="implementation.html#gruppen"><i class="fa fa-check"></i><b>6.1.7</b> Gruppen <span class="badge admin">A</span></a></li>
+<li class="chapter" data-level="6.1.8" data-path="implementation.html"><a href="implementation.html#sensortypen"><i class="fa fa-check"></i><b>6.1.8</b> Sensortypen <span class="badge admin">A</span></a></li>
+<li class="chapter" data-level="6.1.9" data-path="implementation.html"><a href="implementation.html#dateiverwaltung-1"><i class="fa fa-check"></i><b>6.1.9</b> Dateiverwaltung <span class="badge admin">A</span></a></li>
+<li class="chapter" data-level="6.1.10" data-path="implementation.html"><a href="implementation.html#qr-code"><i class="fa fa-check"></i><b>6.1.10</b> QR-Code <span class="badge admin">A</span></a></li>
 <li class="chapter" data-level="6.1.11" data-path="implementation.html"><a href="implementation.html#einstellungen"><i class="fa fa-check"></i><b>6.1.11</b> Einstellungen</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="implementation.html"><a href="implementation.html#technikorientierte-sichtweise"><i class="fa fa-check"></i><b>6.2</b> Technikorientierte Sichtweise</a></li>
@@ -150,7 +152,7 @@ Abbildung 6.1: Übersicht über das Dashboard
 </div>
 <div id="sidebar" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Sidebar</h3>
-<p>In der Sidebar kann über einen Reiter die Funktionalität ausgewählt werden, die im Body dargestellt wird. Die Anzahl an Auswahlmöglichkeiten hängt vom Anmeldestatus und Benutzerrolle ab.</p>
+<p>In der Sidebar kann über einen Reiter die Funktionalität ausgewählt werden, die im Body dargestellt wird. Die Anzahl an Auswahlmöglichkeiten hängt vom Anmeldestatus und der Benutzerrolle ab.</p>
 </div>
 <div id="navbar" class="section level3">
 <h3><span class="header-section-number">6.1.2</span> Navbar</h3>
@@ -189,35 +191,170 @@ Abbildung 6.3: Anmeldung - angemeldet
 <li>die Dauer seit der letzten Anmeldung,</li>
 <li>die Anzahl der Anmeldungen.</li>
 </ul>
-<p>Benutzer können sich abmelden.</p>
+<p>Benutzer können sich zudem abmelden.</p>
 </div>
 </div>
 <div id="ausleihen-zurückgeben" class="section level3">
 <h3><span class="header-section-number">6.1.4</span> Ausleihen &amp; Zurückgeben</h3>
+<p>Die Ausleihe und Rückgabe setzt sich aus drei Abschnitten zusammen. Im ersten Abschnitt <em>Ausleihen &amp; Zurückgeben</em> kann die konkrete Operation vorgenommen werden. Zusätzliche Informationen stellen die Abschnitte <em>Gruppen des ausgewählten Typs</em> und <em>Dateien</em> bereit.</p>
+<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<img src="img/operate_overview.png" alt="Übersicht: Ausleihen &amp; Zurückgeben"  />
+<p class="caption">
+Abbildung 6.4: Übersicht: Ausleihen &amp; Zurückgeben
+</p>
+</div>
+<div id="ausleihen-zurückgeben-1" class="section level4">
+<h4><span class="header-section-number">6.1.4.1</span> Ausleihen &amp; Zurückgeben</h4>
+<p>Zunächst muss ein Typ ausgewählt werden. Wenn die Web-Applikation über einen QR-Code aufgerufen wurde, ist der zum QR-Code gehörende Typ bereits ausgewählt. Im nächsten Schritt muss ein zugehöriger Untertyp ausgewählt werden. Die konkrete Operation kann durch Klicken auf einen der verfügbaren Buttons angestoßen werden. Im sich darauf öffnenden Dialog muss die Menge angegeben und die Ausführung der Operation bestätigt werden.</p>
+<p><span class="badge admin">A</span> Administratoren können zusätzlich den ausführenden Nutzer auswählen, um Operationen für diesen durchzuführen. Das ist zum Beispiel notwendig, wenn ein Student das Fachgebiet verlassen hat und es versäumt hat, alle ausgeliehenen Sensoren zurückzugeben.</p>
+<div class="flex">
+<span>
+<button class="btn btn-default action-button borrow-btn" id="" style="width: 100px; margin-right: 10px;" type="button">
+<i class="fa fa-sign-out-alt" role="presentation" aria-label="sign-out-alt icon"></i>
+Ausleihen
+</button>
+</span>
+<p>Es können bis zur maximal verfügbaren Menge Elemente ausgeliehen werden.</p>
+</div>
+<div class="flex">
+<span>
+<button class="btn btn-default action-button return-btn" id="" style="width: 100px; margin-right: 10px;" type="button">
+<i class="fa fa-sign-in-alt" role="presentation" aria-label="sign-in-alt icon"></i>
+Zurückgeben
+</button>
+</span>
+<p>Es können bis zur maximal ausgeliehenen Menge Elemente zurückgegeben werden.</p>
+</div>
+<div class="flex">
+<span>
+<button class="btn btn-default action-button write-off-btn" id="" style="width: 100px; margin-right: 10px;" type="button">
+<i class="fa fa-balance-scale-right" role="presentation" aria-label="balance-scale-right icon"></i>
+Abschreiben
+</button>
+</span>
+<p><span class="badge admin">A</span> Es können bis zur maximal im Lager verfügbaren Menge Elemente abgeschrieben werden. Dies ist zum Beispiel notwendig, wenn ein Element ausfällt oder verloren geht.</p>
+</div>
+</div>
+<div id="gruppen-des-ausgewählten-typs" class="section level4">
+<h4><span class="header-section-number">6.1.4.2</span> Gruppen des ausgewählten Typs</h4>
+<p>Alle Gruppen des ausgewählten Typs werden aufgelistet. Durch Klicken auf eine Gruppe öffnet sich ein Dialog, in dem alle Typen dieser Gruppe angezeigt werden. Durch Klicken auf einen Typen wird dieser Typ für eine weitere Operation ausgewählt. Somit können alle Elemente einer Gruppe (zum Beispiel ein Versuchsaufbau) komfortabel hintereinander ausgeliehen / zurückgegeben werden.</p>
+</div>
+<div id="dateien" class="section level4">
+<h4><span class="header-section-number">6.1.4.3</span> Dateien</h4>
+<p>Hier werden alle dem ausgewählten Typ zugeordneten Dateien angezeigt. Dabei ist die Anzeige in drei Reiter gegliedert:</p>
+<ul>
+<li><em>Gruppen</em>: Alle Dateien, die Informationen zu Gruppen des ausgewählten Typs enthalten</li>
+<li><em>Typ</em>: Alle Dateien, die Informationen zum ausgewählten Typ enthalten</li>
+<li><em>Untertypen</em>: Alle Dateien, die Informationen zu Untertypen des ausgewählten Typs enthalten. Es ist zu beachten, dass die Wahl des Untertypen keinen Einfluss auf die angezeigten Dateien hat, da Dateien für alle Untertypen dargestellt werden.</li>
+</ul>
+<p>Die Ziffer neben dem Reitertitel gibt Auskunft darüber, wie viele Dateien in der jeweiligen Kategorie vorhanden sind. Indem auf einen Dateinamen geklickt wird, öffnet sich das zugehörige PDF in einem separaten Browserfenster oder wird über den PDF-Viewer angezeigt. Alle Dateien einer Kategorie können in einem Archiv (<em>.zip</em>) heruntergeladen werden.</p>
+</div>
 </div>
 <div id="bestandsinformation-1" class="section level3">
 <h3><span class="header-section-number">6.1.5</span> Bestandsinformation</h3>
+<p>Die Bestandsinformation gliedert sich in zwei Abschnitte. In der Bestandsübersicht werden Informationen zum Lagerbestand von Sensoren dargestellt, wohingegen die Ausleihübersicht Informationen über ausgeliehene Sensoren enthält.</p>
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="img/reporting_overview.png" alt="Übersicht: Bestandsinformation"  />
+<p class="caption">
+Abbildung 6.5: Übersicht: Bestandsinformation
+</p>
+</div>
+<div id="bestandsübersicht" class="section level4">
+<h4><span class="header-section-number">6.1.5.1</span> Bestandsübersicht</h4>
+<p>Zunächst muss ein Typ ausgewählt werden. Für diesen Typen werden tabellarisch alle Untertypen dieses Typs aufgelistet. Die Spalte <em>Verfügbar</em> enthält die gelagerte Menge, wohingegen die Spalte <em>Maximal verfügbar</em> die maximal gelagerte Menge (kein Sensor dieses Untertypen ausgeliehen) enthält. Über die Checkbox <em>Nur kritische Bestände anzeigen</em> kann ausgewählt werden, ob nur Untertypen angezeigt werden sollen, für die die verfügbare Menge kleiner als ihr kritischer Bestand ist. Der kritische Bestand eines Untertypen kann von einem <span class="badge admin">Administrator</span> im Reiter <em>Sensortypen</em> festgelegt werden.</p>
+</div>
+<div id="ausleihübersicht" class="section level4">
+<h4><span class="header-section-number">6.1.5.2</span> Ausleihübersicht</h4>
+<p>Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellen in Bezug auf ausgeliehene Sensoren beantworten.</p>
+<ul>
+<li><em>Gesamt</em>: Übersicht über alle Untertypen mit einer gegenwärtig ausgeliehenen Menge größer Null.</li>
+<li><em>Nach Untertyp</em>: Übersicht über alle Nutzer, die den gewählten Untertypen zurzeit ausgeliehen haben. Hiermit kann herausgefunden werden, an wen man sich wenden kann, falls alle Elemente eines Untertyps ausgeliehen sind.</li>
+<li><em>Nach Nutzer</em>: Übersicht über alle Untertypen, die der gewählte Nutzer zurzeit ausgeliehen hat.</li>
+<li><em>Transaktionen</em>: Übersicht über alle Transaktionen, die jemals im Rahmen der Sensorverwaltung stattgefunden haben. Ein Nutzer sieht ausschließlich seine eigenen Transaktionen. Ein <span class="badge admin">Administrator</span> sieht alle Transaktionen. Dazu gehören neben Ausleih- und Rückgabeoperationen auch Abschreibungen und sonstige Mengenänderungen.</li>
+</ul>
+</div>
 </div>
 <div id="nutzerverwaltung-1" class="section level3">
-<h3><span class="header-section-number">6.1.6</span> Nutzerverwaltung</h3>
-<p><span class="badge admin">Administrator</span>
-<span class="badge mod">Moderator</span></p>
+<h3><span class="header-section-number">6.1.6</span> Nutzerverwaltung <span class="badge admin">A</span> <span class="badge mod">M</span></h3>
+<p>In der <em>Nutzerverwaltung</em> können neue Nutzer hinzugefügt und in der <em>Nutzertabelle</em> verwaltet werden.</p>
+<div class="figure"><span id="fig:unnamed-chunk-7"></span>
+<img src="img/user_management_overview.png" alt="Übersicht: Nutzerverwaltung"  />
+<p class="caption">
+Abbildung 6.6: Übersicht: Nutzerverwaltung
+</p>
+</div>
+<div id="nutzer-hinzufügen" class="section level4">
+<h4><span class="header-section-number">6.1.6.1</span> Nutzer hinzufügen</h4>
+<p>Neue Nutzer können unter Angabe eines Benutzernamens und eines zur Sicherheit zweimal anzugebenden Passwortes hinzugefügt werden. Ein <span class="badge mod">Moderator</span> kann ausschließlich <span class="badge user">Benutzer</span> hinzufügen, wohingegen ein <span class="badge admin">Administrator</span> Benutzer mit jeder Rolle hinzufügen kann.</p>
+</div>
+<div id="nutzertabelle" class="section level4">
+<h4><span class="header-section-number">6.1.6.2</span> Nutzertabelle</h4>
+<p>Die Nutzertabelle erlaubt es einem <span class="badge admin">Administrator</span>, Nutzer zu verwalten. Neben dem Benutzernamen und dem gegenwärtigen Status gibt es drei Spalten, die Buttons enthalten, mit denen Eigenschaften eines Nutzer angepasst werden können.</p>
+<ul>
+<li><em>Status ändern</em>: Dieser Button öffnet einen Dialog, in dem ein neuer Status für den Nutzer ausgewählt werden kann.</li>
+<li><em>Entfernen</em>: Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Nutzer gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Transaktionen, die der ausgewählte Nutzer vorgenommen hat, bleiben jedoch weiterhin erhalten. Es können nur Nutzer gelöscht werden, die zurzeit keine Sensoren ausgeliehen haben. Falls der Nutzer nicht in der Lage ist, die Sensoren eigenständig zurückzugeben, kann der <span class="badge admin">Administrator</span> die ausgeliehenen Sensoren im Reiter <em>Ausleihen &amp; Zurückgeben</em> für diesen Nutzer zurückgeben.</li>
+<li><em>Passwort zurücksetzen</em>: Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass das Passwort des Nutzers zurückgesetzt werden soll. Das Passwort wird auf das Standardpasswort <em>1234</em> zurückgesetzt und sollte vom Nutzer sofort danach im Reiter <em>Einstellungen</em> geändert werden.</li>
+</ul>
+</div>
 </div>
 <div id="gruppen" class="section level3">
-<h3><span class="header-section-number">6.1.7</span> Gruppen</h3>
-<p><span class="badge admin">Administrator</span></p>
+<h3><span class="header-section-number">6.1.7</span> Gruppen <span class="badge admin">A</span></h3>
+<p>Der Reiter <em>Gruppen</em> erlaubt es, neue Gruppen hinzuzufügen und bestehende Gruppen zu verwalten.</p>
+<div id="gruppe-hinzufügen" class="section level4">
+<h4><span class="header-section-number">6.1.7.1</span> Gruppe hinzufügen</h4>
+<p>Eine neue Gruppe kann durch Angabe eines Gruppennames hinzugefügt werden.</p>
+</div>
+<div id="gruppentabelle" class="section level4">
+<h4><span class="header-section-number">6.1.7.2</span> Gruppentabelle</h4>
+<p>In der <em>Gruppentabelle</em> können Gruppen bearbeitet werden.</p>
+<ul>
+<li><em>Gruppenname</em>: Ein Klick auf einen Gruppennamen öffnet einen Dialog, in dem der Gruppenname angepasst werden kann.</li>
+<li><em>Typen bearbeiten</em>: Dieser Button öffnet einen Dialog, in dem die zur ausgewählten Gruppe zugehörigen Typen bearbeitet werden können.</li>
+<li><em>Entfernen</em>: Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte Gruppe gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann.</li>
+</ul>
+</div>
+<div id="typen-anzeigen" class="section level4">
+<h4><span class="header-section-number">6.1.7.3</span> Typen anzeigen</h4>
+<p>Zunächst muss eine Gruppe ausgewählt werden. In der Tabelle werden alle zur ausgewählten Gruppe zugehörigen Typen dargestellt.</p>
+</div>
 </div>
 <div id="sensortypen" class="section level3">
-<h3><span class="header-section-number">6.1.8</span> Sensortypen</h3>
-<p><span class="badge admin">Administrator</span></p>
+<h3><span class="header-section-number">6.1.8</span> Sensortypen <span class="badge admin">A</span></h3>
+<p>Der Reiter <em>Sensortypen</em> erlaubt es, neue Typen und Untertypen hinzuzufügen und bestehende Typen und Untertypen zu verwalten.</p>
+<div id="typ-hinzufügen" class="section level4">
+<h4><span class="header-section-number">6.1.8.1</span> Typ hinzufügen</h4>
+<p>Ein neuer Typ kann durch Angabe eines Typnamens hinzugefügt werden.</p>
+</div>
+<div id="typtabelle" class="section level4">
+<h4><span class="header-section-number">6.1.8.2</span> Typtabelle</h4>
+<p>In der <em>Typtabelle</em> können Typen bearbeitet werden.</p>
+<ul>
+<li><em>Typname</em>: Ein Klick auf einen Typnamen öffnet einen Dialog, in dem der Typname angepasst werden kann.</li>
+<li><em>Gruppen bearbeiten</em>: Dieser Button öffnet einen Dialog, in dem die zum ausgewählten Typ zugehörigen Gruppen bearbeitet werden können.</li>
+<li><em>Entfernen</em>: Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Typ gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein Typ kann nur gelöscht werden, wenn keiner seiner Untertypen ausgeliehene Elemente hat. Transaktionen, die den ausgewählten Typen betreffen, bleiben weiterhin erhalten. Das Entfernen eines Typen schließt das Entfernen aller Untertypen dieses Typen ein.</li>
+</ul>
+</div>
+<div id="gruppen-anzeigen" class="section level4">
+<h4><span class="header-section-number">6.1.8.3</span> Gruppen anzeigen</h4>
+<p>Zunächst muss ein Typ ausgewählt werden. In der Tabelle werden alle zum ausgewählten Typen zugehörigen Gruppen dargestellt.</p>
+</div>
+<div id="untertypen-bearbeiten" class="section level4">
+<h4><span class="header-section-number">6.1.8.4</span> Untertypen bearbeiten</h4>
+<p>Zunächst muss ein Typ ausgewählt werden. In der Tabelle können Untertypen des ausgewählten Typen bearbeitet werden.</p>
+<ul>
+<li><em>Untertypname</em>: Ein Klick auf einen Untertypnamen öffnet einen Dialog, in dem der Untertypname angepasst werden kann.</li>
+<li><em>Menge</em>: Ein Klick auf die maximal verfügbare Menge öffnet einen Dialog, in dem die maximal verfügbare Menge des Untertypen angepasst werden kann. Es ist zu beachten, dass die maximal verfügbare Menge nicht auf einen Wert gesetzt werden kann der kleiner der Anzahl gegenwärtig ausgeliehener Elemente ist.</li>
+<li><em>Kritischer Bestand</em>: Ein Klick auf den kritischen Bestand öffnet einen Dialog, in dem der kritische Bestand des Untertypen angepasst werden kann. Der kritische Bestand kann als Filterkriterium in der <em>Ausleihübersicht</em> des Reiters <em>Bestandsinformation</em> verwendet werden.</li>
+<li><em>Entfernen</em>: Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Untertyp gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein Untertyp kann nur gelöscht werden, wenn keine Elemente von diesem ausgeliehen sind. Transaktionen, die den ausgewählten Untertypen betreffen, bleiben weiterhin erhalten.</li>
+</ul>
+</div>
 </div>
 <div id="dateiverwaltung-1" class="section level3">
-<h3><span class="header-section-number">6.1.9</span> Dateiverwaltung</h3>
-<p><span class="badge admin">Administrator</span></p>
+<h3><span class="header-section-number">6.1.9</span> Dateiverwaltung <span class="badge admin">A</span></h3>
+<p>In der <em>Dateiverwaltung</em> können PDF-Dateien als Informationsmaterial in den Reitern <em>Gruppen</em>, <em>Typen</em> und <em>Untertypen</em> hochgeladen werden. Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf <em>Datei hochladen</em></p>
 </div>
 <div id="qr-code" class="section level3">
-<h3><span class="header-section-number">6.1.10</span> QR-Code</h3>
-<p><span class="badge admin">Administrator</span></p>
+<h3><span class="header-section-number">6.1.10</span> QR-Code <span class="badge admin">A</span></h3>
 </div>
 <div id="einstellungen" class="section level3">
 <h3><span class="header-section-number">6.1.11</span> Einstellungen</h3>
