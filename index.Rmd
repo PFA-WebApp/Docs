@@ -40,7 +40,8 @@ badge <- function(status = c("admin", "mod", "user"), short = FALSE) {
 operate_button <- function(operation = c("borrow", "return", "write-off")) {
   operation <- match.arg(operation)
   
-  shiny::actionButton(
+  if (knitr::is_html_output()) {
+    shiny::actionButton(
     inputId = "",
     label = switch(
       operation,
@@ -59,6 +60,7 @@ operate_button <- function(operation = c("borrow", "return", "write-off")) {
     class = paste0(operation, "-btn"),
     style = "width: 100px; margin-right: 10px;"
   ) %>% htmltools::span()
+  }
 }
 ```
 

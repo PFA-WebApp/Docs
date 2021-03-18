@@ -89,7 +89,7 @@ button.write-off-btn:focus, .dark-mode button.write-off-btn:focus {
 	font-weight: 400;
 	color: #212529;
 	text-align: center;
-	vertical-align: baseline;
+	vertical-align: middle;
 	user-select: none;
 	background-color: transparent;
 	border: 1px solid transparent;

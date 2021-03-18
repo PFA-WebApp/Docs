@@ -28,17 +28,13 @@ Dieser Reiter verändert sich in Abhängigkeit des Anmeldestatus.
 
 #### Status: Nicht angemeldet
 
+Registrierte Benutzer können sich durch Angabe ihres Benutzernamens und ihres Passwortes anmelden. Nicht-registrierte Benutzer müssen sich von einem Moderator oder Administrator (Wissenschaftliche Mitarbeiter) registrieren lassen.
+
 ```{r, echo=FALSE, fig.cap="Anmeldung - nicht angemeldet"}
 knitr::include_graphics("./img/login_mask.png")
 ```
 
-Registrierte Benutzer können sich durch Angabe ihres Benutzernamens und ihres Passwortes anmelden. Nicht-registrierte Benutzer müssen sich von einem Moderator oder Administrator (Wissenschaftliche Mitarbeiter) registrieren lassen.
-
 #### Status: Angemeldet
-
-```{r, echo=FALSE, fig.cap="Anmeldung - angemeldet"}
-knitr::include_graphics("./img/login_mask_logged.png")
-```
 
 Nach erfolgreicher Anmeldung wird der Benutzer mit Informationen über sein Nutzungsverhalten versorgt. Dargestellt werden:
 
@@ -48,6 +44,10 @@ Nach erfolgreicher Anmeldung wird der Benutzer mit Informationen über sein Nutz
 * die Anzahl der Anmeldungen.
 
 Benutzer können sich zudem abmelden.
+
+```{r, echo=FALSE, fig.cap="Anmeldung - angemeldet"}
+knitr::include_graphics("./img/login_mask_logged.png")
+```
 
 ### Ausleihen & Zurückgeben
 
@@ -75,9 +75,17 @@ Zunächst muss ein Typ ausgewählt werden. Wenn die Web-Applikation über einen 
 `r operate_button("write-off")` `r badge("admin", short = TRUE)` Es können bis zur maximal im Lager verfügbaren Menge Elemente abgeschrieben werden. Dies ist zum Beispiel notwendig, wenn ein Element ausfällt oder verloren geht.
 </div>
 
+```{r, echo=FALSE, fig.cap="Abschnitt: Ausleihen & Zurückgeben"}
+knitr::include_graphics("./img/operate_detail_circulate.png")
+```
+
 #### Gruppen des ausgewählten Typs
 
 Alle Gruppen des ausgewählten Typs werden aufgelistet. Durch Klicken auf eine Gruppe öffnet sich ein Dialog, in dem alle Typen dieser Gruppe angezeigt werden. Durch Klicken auf einen Typen wird dieser Typ für eine weitere Operation ausgewählt. Somit können alle Elemente einer Gruppe (zum Beispiel ein Versuchsaufbau) komfortabel hintereinander ausgeliehen / zurückgegeben werden.
+
+```{r, echo=FALSE, fig.cap="Abschnitt: Gruppen des ausgewählten Typs"}
+knitr::include_graphics("./img/operate_detail_groups.png")
+```
 
 #### Dateien
 
@@ -88,6 +96,10 @@ Hier werden alle dem ausgewählten Typ zugeordneten Dateien angezeigt. Dabei ist
 * *Untertypen*: Alle Dateien, die Informationen zu Untertypen des ausgewählten Typs enthalten. Es ist zu beachten, dass die Wahl des Untertypen keinen Einfluss auf die angezeigten Dateien hat, da Dateien für alle Untertypen dargestellt werden.
 
 Die Ziffer neben dem Reitertitel gibt Auskunft darüber, wie viele Dateien in der jeweiligen Kategorie vorhanden sind. Indem auf einen Dateinamen geklickt wird, öffnet sich das zugehörige PDF in einem separaten Browserfenster oder wird über den PDF-Viewer angezeigt. Alle Dateien einer Kategorie können in einem Archiv (*.zip*) heruntergeladen werden.
+
+```{r, echo=FALSE, fig.cap="Abschnitt: Dateien"}
+knitr::include_graphics("./img/operate_detail_files.png")
+```
 
 ### Bestandsinformation
 
@@ -105,10 +117,12 @@ Zunächst muss ein Typ ausgewählt werden. Für diesen Typen werden tabellarisch
 
 Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellen in Bezug auf ausgeliehene Sensoren beantworten.
 
-* *Gesamt*: Übersicht über alle Untertypen mit einer gegenwärtig ausgeliehenen Menge größer Null.
-* *Nach Untertyp*: Übersicht über alle Nutzer, die den gewählten Untertypen zurzeit ausgeliehen haben. Hiermit kann herausgefunden werden, an wen man sich wenden kann, falls alle Elemente eines Untertyps ausgeliehen sind.
-* *Nach Nutzer*: Übersicht über alle Untertypen, die der gewählte Nutzer zurzeit ausgeliehen hat.
-* *Transaktionen*: Übersicht über alle Transaktionen, die jemals im Rahmen der Sensorverwaltung stattgefunden haben. Ein Nutzer sieht ausschließlich seine eigenen Transaktionen. Ein `r badge("admin")` sieht alle Transaktionen. Dazu gehören neben Ausleih- und Rückgabeoperationen auch Abschreibungen und sonstige Mengenänderungen.
+| Reiter | Beschreibung |
+| --- | --- |
+| Gesamt | Übersicht über alle Untertypen mit einer gegenwärtig ausgeliehenen Menge größer Null. |
+| Nach Untertyp | Übersicht über alle Nutzer, die den gewählten Untertypen zurzeit ausgeliehen haben. Hiermit kann herausgefunden werden, wer Ansprechpartner ist, falls alle Elemente eines Untertyps ausgeliehen sind. |
+| Nach Nutzer | Übersicht über alle Untertypen, die der gewählte Nutzer zurzeit ausgeliehen hat. |
+| Transaktionen | Übersicht über alle Transaktionen, die jemals im Rahmen der Sensorverwaltung stattgefunden haben. Ein Nutzer sieht ausschließlich seine eigenen Transaktionen. Ein `r badge("admin")` sieht alle Transaktionen. Dazu gehören neben Ausleih- und Rückgabeoperationen auch Abschreibungen und sonstige Mengenänderungen. |
 
 ### Nutzerverwaltung `r badge("admin", short = TRUE)` `r badge("mod", short = TRUE)`
 
@@ -124,27 +138,35 @@ Neue Nutzer können unter Angabe eines Benutzernamens und eines zur Sicherheit z
 
 #### Nutzertabelle
 
-Die Nutzertabelle erlaubt es einem `r badge("admin")`, Nutzer zu verwalten. Neben dem Benutzernamen und dem gegenwärtigen Status gibt es drei Spalten, die Buttons enthalten, mit denen Eigenschaften eines Nutzer angepasst werden können.
+In der Nutzertabelle können Nutzer verwaltet werden. Neben dem Benutzernamen und dem gegenwärtigen Status gibt es drei Spalten, die Buttons enthalten, mit denen Eigenschaften eines Nutzer angepasst werden können.
 
-* *Status ändern*: Dieser Button öffnet einen Dialog, in dem ein neuer Status für den Nutzer ausgewählt werden kann. 
-* *Entfernen*: Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Nutzer gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Transaktionen, die der ausgewählte Nutzer vorgenommen hat, bleiben jedoch weiterhin erhalten. Es können nur Nutzer gelöscht werden, die zurzeit keine Sensoren ausgeliehen haben. Falls der Nutzer nicht in der Lage ist, die Sensoren eigenständig zurückzugeben, kann der `r badge("admin")` die ausgeliehenen Sensoren im Reiter *Ausleihen & Zurückgeben* für diesen Nutzer zurückgeben.
-* *Passwort zurücksetzen*: Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass das Passwort des Nutzers zurückgesetzt werden soll. Das Passwort wird auf das Standardpasswort *1234* zurückgesetzt und sollte vom Nutzer sofort danach im Reiter *Einstellungen* geändert werden.
+| Spalte | Beschreibung |
+| --- | --- |
+| Status ändern `r badge("admin", short = TRUE)` | Dieser Button öffnet einen Dialog, in dem ein neuer Status für den Nutzer ausgewählt werden kann. |
+| Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Nutzer gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Transaktionen, die der ausgewählte Nutzer vorgenommen hat, bleiben jedoch weiterhin erhalten. Es können nur Nutzer gelöscht werden, die zurzeit keine Sensoren ausgeliehen haben. Falls der Nutzer nicht in der Lage ist, die Sensoren eigenständig zurückzugeben, kann der `r badge("admin")` die ausgeliehenen Sensoren im Reiter *Ausleihen & Zurückgeben* für diesen Nutzer zurückgeben. Ein `r badge("mod")` kann nur `r badge("user")` entfernen, die er selbst hinzugefügt hat. |
+| Passwort zurücksetzen `r badge("admin", short = TRUE)` | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass das Passwort des Nutzers zurückgesetzt werden soll. Das Passwort wird auf das Standardpasswort *1234* zurückgesetzt und sollte vom Nutzer sofort danach im Reiter *Einstellungen* geändert werden. |
 
 ### Gruppen `r badge("admin", short = TRUE)`
 
 Der Reiter *Gruppen* erlaubt es, neue Gruppen hinzuzufügen und bestehende Gruppen zu verwalten.
 
+```{r, echo=FALSE, fig.cap="Übersicht: Nutzerverwaltung"}
+knitr::include_graphics("./img/group_overview.png")
+```
+
 #### Gruppe hinzufügen
 
-Eine neue Gruppe kann durch Angabe eines Gruppennames hinzugefügt werden.
+Eine neue Gruppe kann durch Angabe eines Gruppennamens hinzugefügt werden.
 
 #### Gruppentabelle
 
 In der *Gruppentabelle* können Gruppen bearbeitet werden.
 
-* *Gruppenname*: Ein Klick auf einen Gruppennamen öffnet einen Dialog, in dem der Gruppenname angepasst werden kann.
-* *Typen bearbeiten*: Dieser Button öffnet einen Dialog, in dem die zur ausgewählten Gruppe zugehörigen Typen bearbeitet werden können.
-* *Entfernen*: Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte Gruppe gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann.
+| Spalte | Beschreibung |
+| --- | --- |
+| Gruppenname | Ein Klick auf einen Gruppennamen öffnet einen Dialog, in dem der Gruppenname angepasst werden kann. |
+| Typen bearbeiten | Dieser Button öffnet einen Dialog, in dem die zur ausgewählten Gruppe zugehörigen Typen bearbeitet werden können. |
+| Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte Gruppe gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. |
 
 #### Typen anzeigen
 
@@ -162,9 +184,11 @@ Ein neuer Typ kann durch Angabe eines Typnamens hinzugefügt werden.
 
 In der *Typtabelle* können Typen bearbeitet werden.
 
-* *Typname*: Ein Klick auf einen Typnamen öffnet einen Dialog, in dem der Typname angepasst werden kann.
-* *Gruppen bearbeiten*: Dieser Button öffnet einen Dialog, in dem die zum ausgewählten Typ zugehörigen Gruppen bearbeitet werden können.
-* *Entfernen*: Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Typ gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein Typ kann nur gelöscht werden, wenn keiner seiner Untertypen ausgeliehene Elemente hat. Transaktionen, die den ausgewählten Typen betreffen, bleiben weiterhin erhalten. Das Entfernen eines Typen schließt das Entfernen aller Untertypen dieses Typen ein.
+| Spalte | Beschreibung |
+| --- | --- |
+| Typname | Ein Klick auf einen Typnamen öffnet einen Dialog, in dem der Typname angepasst werden kann. |
+| Gruppen bearbeiten | Dieser Button öffnet einen Dialog, in dem die zum ausgewählten Typ zugehörigen Gruppen bearbeitet werden können. |
+| Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Typ gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein Typ kann nur gelöscht werden, wenn kein Element seiner Untertypen ausgeliehen ist. Transaktionen, die den ausgewählten Typen betreffen, bleiben weiterhin erhalten. Das Entfernen eines Typen schließt das Entfernen aller Untertypen dieses Typen ein. |
 
 #### Gruppen anzeigen
 
@@ -174,14 +198,22 @@ Zunächst muss ein Typ ausgewählt werden. In der Tabelle werden alle zum ausgew
 
 Zunächst muss ein Typ ausgewählt werden. In der Tabelle können Untertypen des ausgewählten Typen bearbeitet werden.
 
-* *Untertypname*: Ein Klick auf einen Untertypnamen öffnet einen Dialog, in dem der Untertypname angepasst werden kann.
-* *Menge*: Ein Klick auf die maximal verfügbare Menge öffnet einen Dialog, in dem die maximal verfügbare Menge des Untertypen angepasst werden kann. Es ist zu beachten, dass die maximal verfügbare Menge nicht auf einen Wert gesetzt werden kann der kleiner der Anzahl gegenwärtig ausgeliehener Elemente ist.
-* *Kritischer Bestand*: Ein Klick auf den kritischen Bestand öffnet einen Dialog, in dem der kritische Bestand des Untertypen angepasst werden kann. Der kritische Bestand kann als Filterkriterium in der *Ausleihübersicht* des Reiters *Bestandsinformation* verwendet werden.
-* *Entfernen*: Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Untertyp gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein Untertyp kann nur gelöscht werden, wenn keine Elemente von diesem ausgeliehen sind. Transaktionen, die den ausgewählten Untertypen betreffen, bleiben weiterhin erhalten.
+| Spalte | Beschreibung |
+| --- | --- |
+| Untertypname | Ein Klick auf einen Untertypnamen öffnet einen Dialog, in dem der Untertypname angepasst werden kann. |
+| Menge | Ein Klick auf die maximal verfügbare Menge öffnet einen Dialog, in dem die maximal verfügbare Menge des Untertypen angepasst werden kann. Es ist zu beachten, dass die maximal verfügbare Menge nicht auf einen Wert gesetzt werden kann, der kleiner der Anzahl gegenwärtig ausgeliehener Elemente ist. |
+| Kritischer Bestand | Ein Klick auf den kritischen Bestand öffnet einen Dialog, in dem der kritische Bestand des Untertypen angepasst werden kann. Der kritische Bestand kann als Filterkriterium in der *Ausleihübersicht* des Reiters *Bestandsinformation* verwendet werden. |
+| Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Untertyp gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein Untertyp kann nur gelöscht werden, wenn keine Elemente von diesem ausgeliehen sind. Transaktionen, die den ausgewählten Untertypen betreffen, bleiben weiterhin erhalten. |
 
 ### Dateiverwaltung `r badge("admin", short = TRUE)`
 
-In der *Dateiverwaltung* können PDF-Dateien als Informationsmaterial in den Reitern *Gruppen*, *Typen* und *Untertypen* hochgeladen werden. Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf *Datei hochladen*
+In der *Dateiverwaltung* können PDF-Dateien als Informationsmaterial in den Reitern *Gruppen*, *Typen* und *Untertypen* hochgeladen werden. Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf *Datei hochladen* kann eine PDF-Datei auf dem lokalen Dateisystem ausgewählt werden. Hochgeladene Dateien werden in einer Tabelle angezeigt.
+
+| Spalte | Beschreibung |
+| --- | --- |
+| Datei | Ein Klick auf einen Dateinamen öffnet einen Dialog, in dem der Dateiname angepasst werden kann. |
+| Herunterladen | Dieser Button lädt die Datei herunter. |
+| Löschen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte Datei gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. | 
 
 ### QR-Code `r badge("admin", short = TRUE)`
 
