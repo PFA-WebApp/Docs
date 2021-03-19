@@ -104,16 +104,18 @@
 <li class="chapter" data-level="6.1.1" data-path="implementation.html"><a href="implementation.html#sidebar"><i class="fa fa-check"></i><b>6.1.1</b> Sidebar</a></li>
 <li class="chapter" data-level="6.1.2" data-path="implementation.html"><a href="implementation.html#navbar"><i class="fa fa-check"></i><b>6.1.2</b> Navbar</a></li>
 <li class="chapter" data-level="6.1.3" data-path="implementation.html"><a href="implementation.html#anmeldung"><i class="fa fa-check"></i><b>6.1.3</b> Anmeldung</a></li>
-<li class="chapter" data-level="6.1.4" data-path="implementation.html"><a href="implementation.html#ausleihen-zurückgeben"><i class="fa fa-check"></i><b>6.1.4</b> Ausleihen &amp; Zurückgeben</a></li>
-<li class="chapter" data-level="6.1.5" data-path="implementation.html"><a href="implementation.html#bestandsinformation-1"><i class="fa fa-check"></i><b>6.1.5</b> Bestandsinformation</a></li>
+<li class="chapter" data-level="6.1.4" data-path="implementation.html"><a href="implementation.html#operate"><i class="fa fa-check"></i><b>6.1.4</b> Ausleihen &amp; Zurückgeben</a></li>
+<li class="chapter" data-level="6.1.5" data-path="implementation.html"><a href="implementation.html#reporting"><i class="fa fa-check"></i><b>6.1.5</b> Bestandsinformation</a></li>
 <li class="chapter" data-level="6.1.6" data-path="implementation.html"><a href="implementation.html#nutzerverwaltung-1"><i class="fa fa-check"></i><b>6.1.6</b> Nutzerverwaltung <span class="badge admin">A</span> <span class="badge mod">M</span></a></li>
 <li class="chapter" data-level="6.1.7" data-path="implementation.html"><a href="implementation.html#gruppen"><i class="fa fa-check"></i><b>6.1.7</b> Gruppen <span class="badge admin">A</span></a></li>
-<li class="chapter" data-level="6.1.8" data-path="implementation.html"><a href="implementation.html#sensortypen"><i class="fa fa-check"></i><b>6.1.8</b> Sensortypen <span class="badge admin">A</span></a></li>
+<li class="chapter" data-level="6.1.8" data-path="implementation.html"><a href="implementation.html#type"><i class="fa fa-check"></i><b>6.1.8</b> Sensortypen <span class="badge admin">A</span></a></li>
 <li class="chapter" data-level="6.1.9" data-path="implementation.html"><a href="implementation.html#dateiverwaltung-1"><i class="fa fa-check"></i><b>6.1.9</b> Dateiverwaltung <span class="badge admin">A</span></a></li>
-<li class="chapter" data-level="6.1.10" data-path="implementation.html"><a href="implementation.html#qr-code"><i class="fa fa-check"></i><b>6.1.10</b> QR-Code <span class="badge admin">A</span></a></li>
+<li class="chapter" data-level="6.1.10" data-path="implementation.html"><a href="implementation.html#qrcode"><i class="fa fa-check"></i><b>6.1.10</b> QR-Code <span class="badge admin">A</span></a></li>
 <li class="chapter" data-level="6.1.11" data-path="implementation.html"><a href="implementation.html#einstellungen"><i class="fa fa-check"></i><b>6.1.11</b> Einstellungen</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="implementation.html"><a href="implementation.html#technikorientierte-sichtweise"><i class="fa fa-check"></i><b>6.2</b> Technikorientierte Sichtweise</a></li>
+<li class="chapter" data-level="6.2" data-path="implementation.html"><a href="implementation.html#technikorientierte-sichtweise"><i class="fa fa-check"></i><b>6.2</b> Technikorientierte Sichtweise</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="implementation.html"><a href="implementation.html#cookies"><i class="fa fa-check"></i><b>6.2.1</b> Cookies</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>7</b> Diskussion</a></li>
 <li class="chapter" data-level="8" data-path="outlook.html"><a href="outlook.html"><i class="fa fa-check"></i><b>8</b> Ausblick</a></li>
@@ -140,11 +142,18 @@
             <section class="normal" id="section-">
 <div id="implementation" class="section level1">
 <h1><span class="header-section-number">6</span> Umsetzung</h1>
+<script type="text/javascript">
+$(function() {
+  $(".figure").click(function(e) {
+    $(this).toggleClass("fullscreen");
+  })
+})
+</script>
 <p>Die folgenden Abschnitte stellen die Umsetzung der Web-Applikation sowohl aus der anwendungsorientierten als auch der technikorienten Sichtweise dar.</p>
 <div id="anwendungsorientierte-sichtweise" class="section level2">
 <h2><span class="header-section-number">6.1</span> Anwendungsorientierte Sichtweise</h2>
-<p>Die Web-Applikation ist ein Dashboard. Dieses besitzt eine Sidebar, eine Navbar und einen Body.</p>
-<div class="figure"><span id="fig:unnamed-chunk-2"></span>
+<p>Die Web-Applikation ist ein Dashboard. Dieses besitzt eine Sidebar, eine Navbar und einen Body, vergleiche Abbildung <a href="implementation.html#fig:app-overview">6.1</a>.</p>
+<div class="figure"><span id="fig:app-overview"></span>
 <img src="img/app_overview.png" alt="Übersicht über das Dashboard"  />
 <p class="caption">
 Abbildung 6.1: Übersicht über das Dashboard
@@ -168,8 +177,8 @@ Abbildung 6.1: Übersicht über das Dashboard
 <p>Dieser Reiter verändert sich in Abhängigkeit des Anmeldestatus.</p>
 <div id="status-nicht-angemeldet" class="section level4">
 <h4><span class="header-section-number">6.1.3.1</span> Status: Nicht angemeldet</h4>
-<p>Registrierte Benutzer können sich durch Angabe ihres Benutzernamens und ihres Passwortes anmelden. Nicht-registrierte Benutzer müssen sich von einem Moderator oder Administrator (Wissenschaftliche Mitarbeiter) registrieren lassen.</p>
-<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<p>Registrierte Benutzer können sich durch Angabe ihres Benutzernamens und ihres Passwortes anmelden, vergleiche Abbildung <a href="implementation.html#fig:login-mask">6.2</a>. Nicht-registrierte Benutzer müssen sich von einem Moderator oder Administrator (Wissenschaftliche Mitarbeiter) registrieren lassen.</p>
+<div class="figure"><span id="fig:login-mask"></span>
 <img src="img/login_mask.png" alt="Anmeldung - nicht angemeldet"  />
 <p class="caption">
 Abbildung 6.2: Anmeldung - nicht angemeldet
@@ -178,7 +187,7 @@ Abbildung 6.2: Anmeldung - nicht angemeldet
 </div>
 <div id="status-angemeldet" class="section level4">
 <h4><span class="header-section-number">6.1.3.2</span> Status: Angemeldet</h4>
-<p>Nach erfolgreicher Anmeldung wird der Benutzer mit Informationen über sein Nutzungsverhalten versorgt. Dargestellt werden:</p>
+<p>Nach erfolgreicher Anmeldung wird der Benutzer mit Informationen über sein Nutzungsverhalten versorgt, vergleiche Abbildung <a href="implementation.html#fig:login-mask-logged">6.3</a>. Dargestellt werden:</p>
 <ul>
 <li>der Benutzername und der Benutzerstatus,</li>
 <li>die Dauer seit der momentanen Anmeldung,</li>
@@ -186,7 +195,7 @@ Abbildung 6.2: Anmeldung - nicht angemeldet
 <li>die Anzahl der Anmeldungen.</li>
 </ul>
 <p>Benutzer können sich zudem abmelden.</p>
-<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<div class="figure"><span id="fig:login-mask-logged"></span>
 <img src="img/login_mask_logged.png" alt="Anmeldung - angemeldet"  />
 <p class="caption">
 Abbildung 6.3: Anmeldung - angemeldet
@@ -194,18 +203,18 @@ Abbildung 6.3: Anmeldung - angemeldet
 </div>
 </div>
 </div>
-<div id="ausleihen-zurückgeben" class="section level3">
+<div id="operate" class="section level3">
 <h3><span class="header-section-number">6.1.4</span> Ausleihen &amp; Zurückgeben</h3>
-<p>Die Ausleihe und Rückgabe setzt sich aus drei Abschnitten zusammen. Im ersten Abschnitt <em>Ausleihen &amp; Zurückgeben</em> kann die konkrete Operation vorgenommen werden. Zusätzliche Informationen stellen die Abschnitte <em>Gruppen des ausgewählten Typs</em> und <em>Dateien</em> bereit.</p>
-<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<p>Die Ausleihe und Rückgabe setzt sich aus drei Abschnitten zusammen, vergleiche Abbildung <a href="implementation.html#fig:operate-overview">6.4</a>. Im ersten Abschnitt <em>Ausleihen &amp; Zurückgeben</em> kann die konkrete Operation vorgenommen werden. Zusätzliche Informationen stellen die Abschnitte <em>Gruppen des ausgewählten Typs</em> und <em>Dateien</em> bereit.</p>
+<div class="figure"><span id="fig:operate-overview"></span>
 <img src="img/operate_overview.png" alt="Übersicht: Ausleihen &amp; Zurückgeben"  />
 <p class="caption">
 Abbildung 6.4: Übersicht: Ausleihen &amp; Zurückgeben
 </p>
 </div>
-<div id="ausleihen-zurückgeben-1" class="section level4">
+<div id="ausleihen-zurückgeben" class="section level4">
 <h4><span class="header-section-number">6.1.4.1</span> Ausleihen &amp; Zurückgeben</h4>
-<p>Zunächst muss ein Typ ausgewählt werden. Wenn die Web-Applikation über einen QR-Code aufgerufen wurde, ist der zum QR-Code gehörende Typ bereits ausgewählt. Im nächsten Schritt muss ein zugehöriger Untertyp ausgewählt werden. Die konkrete Operation kann durch Klicken auf einen der verfügbaren Buttons angestoßen werden. Im sich darauf öffnenden Dialog muss die Menge angegeben und die Ausführung der Operation bestätigt werden.</p>
+<p>Zunächst muss ein Typ ausgewählt werden. Wenn die Web-Applikation über einen QR-Code aufgerufen wurde (siehe <a href="implementation.html#qrcode">QR-Code</a>), ist der zum QR-Code gehörende Typ bereits ausgewählt. Im nächsten Schritt muss ein zugehöriger Untertyp ausgewählt werden. Die konkrete Operation kann durch Klicken auf einen der verfügbaren Buttons angestoßen werden. Im sich darauf öffnenden Dialog muss die Menge angegeben und die Ausführung der Operation bestätigt werden. Abbildung <a href="implementation.html#fig:operate-detail-circulate">6.5</a> gibt einen Überblick über den Abschnitt.</p>
 <p><span class="badge admin">A</span> Administratoren können zusätzlich den ausführenden Nutzer auswählen, um Operationen für diesen durchzuführen. Das ist zum Beispiel notwendig, wenn ein Student das Fachgebiet verlassen hat und es versäumt hat, alle ausgeliehenen Sensoren zurückzugeben.</p>
 <div class="flex">
 <span>
@@ -234,7 +243,7 @@ Abschreiben
 </span>
 <p><span class="badge admin">A</span> Es können bis zur maximal im Lager verfügbaren Menge Elemente abgeschrieben werden. Dies ist zum Beispiel notwendig, wenn ein Element ausfällt oder verloren geht.</p>
 </div>
-<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<div class="figure"><span id="fig:operate-detail-circulate"></span>
 <img src="img/operate_detail_circulate.png" alt="Abschnitt: Ausleihen &amp; Zurückgeben"  />
 <p class="caption">
 Abbildung 6.5: Abschnitt: Ausleihen &amp; Zurückgeben
@@ -243,8 +252,8 @@ Abbildung 6.5: Abschnitt: Ausleihen &amp; Zurückgeben
 </div>
 <div id="gruppen-des-ausgewählten-typs" class="section level4">
 <h4><span class="header-section-number">6.1.4.2</span> Gruppen des ausgewählten Typs</h4>
-<p>Alle Gruppen des ausgewählten Typs werden aufgelistet. Durch Klicken auf eine Gruppe öffnet sich ein Dialog, in dem alle Typen dieser Gruppe angezeigt werden. Durch Klicken auf einen Typen wird dieser Typ für eine weitere Operation ausgewählt. Somit können alle Elemente einer Gruppe (zum Beispiel ein Versuchsaufbau) komfortabel hintereinander ausgeliehen / zurückgegeben werden.</p>
-<div class="figure"><span id="fig:unnamed-chunk-7"></span>
+<p>Alle Gruppen des ausgewählten Typs werden aufgelistet. Durch Klicken auf eine Gruppe öffnet sich ein Dialog, in dem alle Typen dieser Gruppe angezeigt werden, vergleiche Abbildung <a href="implementation.html#fig:operate-detail-groups">6.6</a>. Durch Klicken auf einen Typen wird dieser Typ für eine weitere Operation ausgewählt. Somit können alle Elemente einer Gruppe (zum Beispiel ein Versuchsaufbau) komfortabel hintereinander ausgeliehen / zurückgegeben werden.</p>
+<div class="figure"><span id="fig:operate-detail-groups"></span>
 <img src="img/operate_detail_groups.png" alt="Abschnitt: Gruppen des ausgewählten Typs"  />
 <p class="caption">
 Abbildung 6.6: Abschnitt: Gruppen des ausgewählten Typs
@@ -253,14 +262,14 @@ Abbildung 6.6: Abschnitt: Gruppen des ausgewählten Typs
 </div>
 <div id="dateien" class="section level4">
 <h4><span class="header-section-number">6.1.4.3</span> Dateien</h4>
-<p>Hier werden alle dem ausgewählten Typ zugeordneten Dateien angezeigt. Dabei ist die Anzeige in drei Reiter gegliedert:</p>
+<p>Hier werden alle dem ausgewählten Typ zugeordneten Dateien angezeigt. Dabei ist die Anzeige - wie Abbildung <a href="implementation.html#fig:operate-detail-files">6.7</a> entnommen werden kann - in drei Reiter gegliedert:</p>
 <ul>
 <li><em>Gruppen</em>: Alle Dateien, die Informationen zu Gruppen des ausgewählten Typs enthalten</li>
 <li><em>Typ</em>: Alle Dateien, die Informationen zum ausgewählten Typ enthalten</li>
 <li><em>Untertypen</em>: Alle Dateien, die Informationen zu Untertypen des ausgewählten Typs enthalten. Es ist zu beachten, dass die Wahl des Untertypen keinen Einfluss auf die angezeigten Dateien hat, da Dateien für alle Untertypen dargestellt werden.</li>
 </ul>
 <p>Die Ziffer neben dem Reitertitel gibt Auskunft darüber, wie viele Dateien in der jeweiligen Kategorie vorhanden sind. Indem auf einen Dateinamen geklickt wird, öffnet sich das zugehörige PDF in einem separaten Browserfenster oder wird über den PDF-Viewer angezeigt. Alle Dateien einer Kategorie können in einem Archiv (<em>.zip</em>) heruntergeladen werden.</p>
-<div class="figure"><span id="fig:unnamed-chunk-8"></span>
+<div class="figure"><span id="fig:operate-detail-files"></span>
 <img src="img/operate_detail_files.png" alt="Abschnitt: Dateien"  />
 <p class="caption">
 Abbildung 6.7: Abschnitt: Dateien
@@ -268,10 +277,10 @@ Abbildung 6.7: Abschnitt: Dateien
 </div>
 </div>
 </div>
-<div id="bestandsinformation-1" class="section level3">
+<div id="reporting" class="section level3">
 <h3><span class="header-section-number">6.1.5</span> Bestandsinformation</h3>
-<p>Die Bestandsinformation gliedert sich in zwei Abschnitte. In der Bestandsübersicht werden Informationen zum Lagerbestand von Sensoren dargestellt, wohingegen die Ausleihübersicht Informationen über ausgeliehene Sensoren enthält.</p>
-<div class="figure"><span id="fig:unnamed-chunk-9"></span>
+<p>Die Bestandsinformation gliedert sich in zwei Abschnitte, vergleiche Abbildung <a href="implementation.html#fig:reporting-overview">6.8</a>. In der Bestandsübersicht werden Informationen zum Lagerbestand von Sensoren dargestellt, wohingegen die Ausleihübersicht Informationen über ausgeliehene Sensoren enthält.</p>
+<div class="figure"><span id="fig:reporting-overview"></span>
 <img src="img/reporting_overview.png" alt="Übersicht: Bestandsinformation"  />
 <p class="caption">
 Abbildung 6.8: Übersicht: Bestandsinformation
@@ -279,11 +288,11 @@ Abbildung 6.8: Übersicht: Bestandsinformation
 </div>
 <div id="bestandsübersicht" class="section level4">
 <h4><span class="header-section-number">6.1.5.1</span> Bestandsübersicht</h4>
-<p>Zunächst muss ein Typ ausgewählt werden. Für diesen Typen werden tabellarisch alle Untertypen dieses Typs aufgelistet. Die Spalte <em>Verfügbar</em> enthält die gelagerte Menge, wohingegen die Spalte <em>Maximal verfügbar</em> die maximal gelagerte Menge (kein Sensor dieses Untertypen ausgeliehen) enthält. Über die Checkbox <em>Nur kritische Bestände anzeigen</em> kann ausgewählt werden, ob nur Untertypen angezeigt werden sollen, für die die verfügbare Menge kleiner als ihr kritischer Bestand ist. Der kritische Bestand eines Untertypen kann von einem <span class="badge admin">Administrator</span> im Reiter <em>Sensortypen</em> festgelegt werden.</p>
+<p>Zunächst muss ein Typ ausgewählt werden. Für diesen Typen werden tabellarisch alle Untertypen dieses Typs aufgelistet. Die Spalte <em>Verfügbar</em> enthält die gelagerte Menge, wohingegen die Spalte <em>Maximal verfügbar</em> die maximal gelagerte Menge (kein Sensor dieses Untertypen ausgeliehen) enthält. Über die Checkbox <em>Nur kritische Bestände anzeigen</em> kann ausgewählt werden, ob nur Untertypen angezeigt werden sollen, für die die verfügbare Menge kleiner als ihr kritischer Bestand ist. Der kritische Bestand eines Untertypen kann von einem <span class="badge admin">Administrator</span> im Reiter <a href="implementation.html#type">Sensortypen</a> festgelegt werden.</p>
 </div>
 <div id="ausleihübersicht" class="section level4">
 <h4><span class="header-section-number">6.1.5.2</span> Ausleihübersicht</h4>
-<p>Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellen in Bezug auf ausgeliehene Sensoren beantworten.</p>
+<p>Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellen in Bezug auf ausgeliehene Sensoren beantworten, vergleiche Abbildung <a href="implementation.html#fig:reporting-details">6.9</a>.</p>
 <table>
 <colgroup>
 <col width="50%" />
@@ -314,15 +323,21 @@ Abbildung 6.8: Übersicht: Bestandsinformation
 </tr>
 </tbody>
 </table>
+<div class="figure"><span id="fig:reporting-details"></span>
+<img src="img/reporting_details.png" alt="Übersicht: Ausleihübersicht"  />
+<p class="caption">
+Abbildung 6.9: Übersicht: Ausleihübersicht
+</p>
+</div>
 </div>
 </div>
 <div id="nutzerverwaltung-1" class="section level3">
 <h3><span class="header-section-number">6.1.6</span> Nutzerverwaltung <span class="badge admin">A</span> <span class="badge mod">M</span></h3>
-<p>In der <em>Nutzerverwaltung</em> können neue Nutzer hinzugefügt und in der <em>Nutzertabelle</em> verwaltet werden.</p>
-<div class="figure"><span id="fig:unnamed-chunk-10"></span>
+<p>In der <em>Nutzerverwaltung</em> können neue Nutzer hinzugefügt und in der <em>Nutzertabelle</em> verwaltet werden, vergleiche Abbildung <a href="implementation.html#fig:user-management-overview">6.10</a>.</p>
+<div class="figure"><span id="fig:user-management-overview"></span>
 <img src="img/user_management_overview.png" alt="Übersicht: Nutzerverwaltung"  />
 <p class="caption">
-Abbildung 6.9: Übersicht: Nutzerverwaltung
+Abbildung 6.10: Übersicht: Nutzerverwaltung
 </p>
 </div>
 <div id="nutzer-hinzufügen" class="section level4">
@@ -350,11 +365,11 @@ Abbildung 6.9: Übersicht: Nutzerverwaltung
 </tr>
 <tr class="even">
 <td>Entfernen</td>
-<td>Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Nutzer gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Transaktionen, die der ausgewählte Nutzer vorgenommen hat, bleiben jedoch weiterhin erhalten. Es können nur Nutzer gelöscht werden, die zurzeit keine Sensoren ausgeliehen haben. Falls der Nutzer nicht in der Lage ist, die Sensoren eigenständig zurückzugeben, kann der <span class="badge admin">Administrator</span> die ausgeliehenen Sensoren im Reiter <em>Ausleihen &amp; Zurückgeben</em> für diesen Nutzer zurückgeben. Ein <span class="badge mod">Moderator</span> kann nur <span class="badge user">Benutzer</span> entfernen, die er selbst hinzugefügt hat.</td>
+<td>Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Nutzer gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Transaktionen, die der ausgewählte Nutzer vorgenommen hat, bleiben jedoch weiterhin erhalten. Es können nur Nutzer gelöscht werden, die zurzeit keine Sensoren ausgeliehen haben. Falls der Nutzer nicht in der Lage ist, die Sensoren eigenständig zurückzugeben, kann der <span class="badge admin">Administrator</span> die ausgeliehenen Sensoren im Reiter <a href="implementation.html#operate">Ausleihen &amp; Zurückgeben</a> für diesen Nutzer zurückgeben. Ein <span class="badge mod">Moderator</span> kann nur <span class="badge user">Benutzer</span> entfernen, die er selbst hinzugefügt hat.</td>
 </tr>
 <tr class="odd">
 <td>Passwort zurücksetzen <span class="badge admin">A</span></td>
-<td>Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass das Passwort des Nutzers zurückgesetzt werden soll. Das Passwort wird auf das Standardpasswort <em>1234</em> zurückgesetzt und sollte vom Nutzer sofort danach im Reiter <em>Einstellungen</em> geändert werden.</td>
+<td>Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass das Passwort des Nutzers zurückgesetzt werden soll. Das Passwort wird auf das Standardpasswort <em>1234</em> zurückgesetzt und sollte vom Nutzer sofort danach im Reiter <a href="#settings">Einstellungen</a> geändert werden.</td>
 </tr>
 </tbody>
 </table>
@@ -362,11 +377,11 @@ Abbildung 6.9: Übersicht: Nutzerverwaltung
 </div>
 <div id="gruppen" class="section level3">
 <h3><span class="header-section-number">6.1.7</span> Gruppen <span class="badge admin">A</span></h3>
-<p>Der Reiter <em>Gruppen</em> erlaubt es, neue Gruppen hinzuzufügen und bestehende Gruppen zu verwalten.</p>
-<div class="figure"><span id="fig:unnamed-chunk-11"></span>
+<p>Der Reiter <em>Gruppen</em> erlaubt es, neue Gruppen hinzuzufügen und bestehende Gruppen zu verwalten, vergleiche Abbildung <a href="implementation.html#fig:group-overview">6.11</a>.</p>
+<div class="figure"><span id="fig:group-overview"></span>
 <img src="img/group_overview.png" alt="Übersicht: Nutzerverwaltung"  />
 <p class="caption">
-Abbildung 6.10: Übersicht: Nutzerverwaltung
+Abbildung 6.11: Übersicht: Nutzerverwaltung
 </p>
 </div>
 <div id="gruppe-hinzufügen" class="section level4">
@@ -408,9 +423,15 @@ Abbildung 6.10: Übersicht: Nutzerverwaltung
 <p>Zunächst muss eine Gruppe ausgewählt werden. In der Tabelle werden alle zur ausgewählten Gruppe zugehörigen Typen dargestellt.</p>
 </div>
 </div>
-<div id="sensortypen" class="section level3">
+<div id="type" class="section level3">
 <h3><span class="header-section-number">6.1.8</span> Sensortypen <span class="badge admin">A</span></h3>
-<p>Der Reiter <em>Sensortypen</em> erlaubt es, neue Typen und Untertypen hinzuzufügen und bestehende Typen und Untertypen zu verwalten.</p>
+<p>Der Reiter <em>Sensortypen</em> erlaubt es, neue Typen und Untertypen hinzuzufügen und bestehende Typen und Untertypen zu verwalten, vergleiche Abbildung <a href="implementation.html#fig:type-overview">6.12</a>.</p>
+<div class="figure"><span id="fig:type-overview"></span>
+<img src="img/type_overview.png" alt="Übersicht: Sensortypen"  />
+<p class="caption">
+Abbildung 6.12: Übersicht: Sensortypen
+</p>
+</div>
 <div id="typ-hinzufügen" class="section level4">
 <h4><span class="header-section-number">6.1.8.1</span> Typ hinzufügen</h4>
 <p>Ein neuer Typ kann durch Angabe eines Typnamens hinzugefügt werden.</p>
@@ -470,11 +491,11 @@ Abbildung 6.10: Übersicht: Nutzerverwaltung
 </tr>
 <tr class="even">
 <td>Menge</td>
-<td>Ein Klick auf die maximal verfügbare Menge öffnet einen Dialog, in dem die maximal verfügbare Menge des Untertypen angepasst werden kann. Es ist zu beachten, dass die maximal verfügbare Menge nicht auf einen Wert gesetzt werden kann der kleiner der Anzahl gegenwärtig ausgeliehener Elemente ist.</td>
+<td>Ein Klick auf die maximal verfügbare Menge öffnet einen Dialog, in dem die maximal verfügbare Menge des Untertypen angepasst werden kann. Es ist zu beachten, dass die maximal verfügbare Menge nicht auf einen Wert gesetzt werden kann, der kleiner der Anzahl gegenwärtig ausgeliehener Elemente ist.</td>
 </tr>
 <tr class="odd">
 <td>Kritischer Bestand</td>
-<td>Ein Klick auf den kritischen Bestand öffnet einen Dialog, in dem der kritische Bestand des Untertypen angepasst werden kann. Der kritische Bestand kann als Filterkriterium in der <em>Ausleihübersicht</em> des Reiters <em>Bestandsinformation</em> verwendet werden.</td>
+<td>Ein Klick auf den kritischen Bestand öffnet einen Dialog, in dem der kritische Bestand des Untertypen angepasst werden kann. Der kritische Bestand kann als Filterkriterium in der <em>Ausleihübersicht</em> des Reiters <a href="implementation.html#reporting">Bestandsinformation</a> verwendet werden.</td>
 </tr>
 <tr class="even">
 <td>Entfernen</td>
@@ -509,16 +530,31 @@ Abbildung 6.10: Übersicht: Nutzerverwaltung
 </tr>
 <tr class="odd">
 <td>Löschen</td>
-<td>Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte Datei gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann</td>
+<td>Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte Datei gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann.</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="qr-code" class="section level3">
+<div id="qrcode" class="section level3">
 <h3><span class="header-section-number">6.1.10</span> QR-Code <span class="badge admin">A</span></h3>
+<p>Zur beschleunigten Ausleihe und Rückgabe kann ein QR-Code für Typen erstellt werden, vergleiche Abbildung <a href="implementation.html#fig:qr-code-overview">6.13</a>. Dazu muss zunächst der Typ und die Serverdomäne ausgewählt werden. Der erstellte QR-Code und der Link, auf den der QR-Code verweist, werden eingeblendet. Der QR-Code kann im Anschluss als PDF-, PNG- oder SVG-Datei heruntergeladen werden. Dazu kann zusätzlich die Breite und Höhe der zu erstellenden Datei in Millimeter angegeben werden.</p>
+<p>Der ausgedruckte QR-Code kann im Lager platziert werden. Dort muss er zum Beispiel mit einem auf einem mobilen Endgerät installierten, handelsüblichen QR-Code-Reader eingescannt werden, wodurch die Web-Applikation geöffnet wird. <span class="badge user">Benutzer</span> und <span class="badge mod">Moderator</span> werden - falls bereits angemeldet, siehe <a href="implementation.html#cookies">Cookies</a> - sofort, ansonsten nachdem sie sich angemeldet haben, auf den Reiter <a href="implementation.html#operate">Ausleihen &amp; Zurückgeben</a> weitergeleitet, wo der eingescannte Typ bereits vorausgewählt ist. Sie müssen dann nur noch den Untertyp auswählen.</p>
+<div class="figure"><span id="fig:qr-code-overview"></span>
+<img src="img/qr_code_overview.png" alt="Übersicht: QR-Code"  />
+<p class="caption">
+Abbildung 6.13: Übersicht: QR-Code
+</p>
+</div>
 </div>
 <div id="einstellungen" class="section level3">
 <h3><span class="header-section-number">6.1.11</span> Einstellungen</h3>
+<p>In den Einstellungen können der Benutzername und das Passwort geändert werden, vergleiche Abbildung <a href="implementation.html#fig:settings-overview">6.14</a>.</p>
+<div class="figure"><span id="fig:settings-overview"></span>
+<img src="img/settings_overview.png" alt="Übersicht: Einstellungen"  />
+<p class="caption">
+Abbildung 6.14: Übersicht: Einstellungen
+</p>
+</div>
 <div id="benutzernamen-ändern" class="section level4">
 <h4><span class="header-section-number">6.1.11.1</span> Benutzernamen ändern</h4>
 <p>Um den eigenen Benutzernamen zu ändern, muss ein neuer Benutzername eingeben werden. Nach Eingabe des Passworts und Bestätigen wird der Benutzername geändert.</p>
@@ -531,7 +567,10 @@ Abbildung 6.10: Übersicht: Nutzerverwaltung
 </div>
 <div id="technikorientierte-sichtweise" class="section level2">
 <h2><span class="header-section-number">6.2</span> Technikorientierte Sichtweise</h2>
+<div id="cookies" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Cookies</h3>
 
+</div>
 </div>
 </div>
             </section>
