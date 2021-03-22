@@ -1,0 +1,104 @@
+# Technische Umsetzung {#technical-guide}
+
+Die nachfolgenden Abschnitte erweitern die Nutzerhilfe um die Beschreibung der technischen Umsetzung ausgewählter Elemente der Web-Applikation. Die ausgewählten Elemente sollen dabei insbesondere eine Vielzahl des verwendeteten Methodenspektrums darlegen, sodass eine nachhaltige Nutzung über die Laufzeit des Projektes hinaus erleichtert wird. Darüber hinaus sollen interessante Ansätze vorgestellt werden.
+
+## Struktur der Web-Applikation
+
+Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei `app.R`. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei *app.R* ausführt. In `app.R` werden Initialisierungen durchgeführt und die Funktionen `ui` und `server` definiert. Die Datei endet mit dem Aufruf `shinyApp(ui, server)`, wobei die `ui`-Funktion das visuelle Layout der Web-Applikation beschreibt und die `server`-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer `ui`- und einer `server`-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab.
+
+### Struktur von `app.R`
+
+Wie bereits beschrieben, ist die Datei `app.R` der Einstiegspunkt der Web-Applikation. Da sie Einfluss auf das Verhalten vieler weiterer Module hat, ist ihr Aufbau näher zu betrachten. Zur Übersicht werden die Inhalte verkürzt dargestellt.
+
+* Laden benötigter Packages mit `library()`. Die Mehrzahl aller Packages wird über den `::`-Operator referenziert. Nur die Packages, die zwangsläufig mit `library()` geladen werden müssen, also Packages, die funktionsrelevanten Code mit dem Aufruf von `library()` verbinden, werden hier geladen.
+
+```{r, eval=FALSE}
+library(shiny)
+library(shinyjs)
+library(dplyr)
+library(qrcode)
+```
+
+* Die Funktion `source_directory()` wird manuell gesourcet und danach dazu verwendet, alle `.R`-Dateien in den Ordnern `modules` und `db/func` zu sourcen.
+
+```{r, eval=FALSE}
+source("init/source_directory.R")
+
+source_directory(
+    path = "modules",
+    encoding = "UTF-8",
+    modifiedOnly = FALSE,
+    chdir = TRUE,
+    recursive = TRUE,
+    envir = if (source_to_globalenv) globalenv() else environment()
+)
+```
+
+* Die `ui`-Funktion bindet alle CSS- und JavaScript-Dateien ein und aktiviert spezielle Packages. Die Funktion `container_ui()`, die das Layout des Dashboardes festlegt, wird aufgerufen.
+
+```{r, eval=FALSE}
+    # UI -----------------------------------------------------------------------
+    ui <- htmltools::tagList(
+        htmltools::includeScript("www/js/dark-mode.js"),
+        htmltools::includeCSS("www/css/styles.css")
+        container_ui(
+            id = "container"
+        ),
+        rclipboard::rclipboardSetup(),
+        shinyjs::useShinyjs(),
+        waiter::use_waiter()
+    )
+```
+
+* In der `server`-Funktion wird die `.values`-Environment angelegt. Diese enthält die folgenden Elemente:
+
+| Name | Beschreibung |
+| --- | ------ |
+| `query$type` | Aus Query-String ausgelesene Typ-ID |
+| `settings` | Liste, die Namenslängen festlegt und Dictionaries enthält |
+| `update` | Liste, die `reactiveVal()`s enthält, die bei Datenaktualisierung getriggert werden |
+| `user` | Liste, die Informationen zum angemeldeten Nutzer enthält |
+| `yaml` | Inhalt von `app.yml` |
+
+* In der `server`-Funktion wird die `server`-Funktion `container_server()` aufgerufen.
+
+### Ordnerstruktur
+
+* `.gitignore` Index aller Dateien, die nicht der Versionskontrolle unterliegen
+* `app.R` Einstiegspunkt in die Web-Applikation
+* `app.yml` Konfigurationsdatei
+* `db`
+  * `db.sqlite` Datenbank
+  * `func` Funktionssammlung zur Interaktion mit der Datenbank
+* `files` Dateiensammlung für [Dateiverwaltung](#file-management). Enthält drei Unterordner für Gruppen, Typen und Untertypen. Jeder dieser Unterordner enthält für jedes Element der jeweiligen Kategorie einen Ordner mit der Identifikationsnummer des jeweiligen Elementes als Namen
+* `init/source_directory.R` Hilfsfunktion, die beim Start der Web-Applikation alle `.R`-Dateien einliest
+* `modules` Shiny-Module und sonstige Funktionalität
+  * `container.R` Definition des Dashboards
+  * `dt_options.R` Optionen für `DT::datatable`
+  * `object` Generalisierte Module für Gruppen, Typen und Untertypen (z.B. Element hinzufügen, umbenennen etc.)
+  * `sidebar_menu.R` Definition der Sidebar
+  * `tab_file_management` [Dateiverwaltung](#file-management)
+  * `tab_group` [Gruppen](#groups)
+  * `tab_login` [Anmeldung](#login)
+  * `tab_operate` [Ausleihen & Zurückgeben](#operate)
+  * `tab_qrcode` [QR-Code](#qrcode)
+  * `tab_reporting` [Bestandsinformation](#reporting)
+  * `tab_settings` [Einstellungen](#settings)
+  * `tab_type` [Typen](#type)
+  * `tab_user_management` [Nutzerverwaltung](#user-management)
+  * `utils.R` Hilfsfunktionen
+* `renv`, `renv.lock` Package-Management
+* `www`
+  * `css` CSS-Dateien
+  * `favicon.ico` Sensotheka-Icon
+  * `js` JavaScript-Dateien
+
+## Datenbank {#database}
+
+### Struktur
+
+### Zugriff
+
+## Cookies {#cookies}
+
+## Deployment

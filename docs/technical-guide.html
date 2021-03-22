@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Einführung | Docs.utf8</title>
+  <title>7 Technische Umsetzung | Docs.utf8</title>
   <meta name="description" content="" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Einführung | Docs.utf8" />
+  <meta property="og:title" content="7 Technische Umsetzung | Docs.utf8" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Einführung | Docs.utf8" />
+  <meta name="twitter:title" content="7 Technische Umsetzung | Docs.utf8" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="requirements.html"/>
+<link rel="prev" href="user-guide.html"/>
+<link rel="next" href="discussion.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -236,20 +236,154 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1">
-<h1><span class="header-section-number">2</span> Einführung</h1>
-<p>Die Verwaltung von Messmitteln am Fachgebiet Fahrzeugantriebe der Technischen Universität Berlin gestaltet sich schwierig. Zurzeit werden Messmittel dezentral verwaltet. Die handelnden Personen besitzen wenig Information über den Ausleihzustand einzelner Messmittel über verschiedene Projekte hinweg. Daher hat sich das Fachgebiet entschlossen, im Rahmen des Moduls “Projekt Fahrzeugantriebe” eine Web-Applikation zur Verwaltung von Messmitteln zu erstellen. Diese Web-Applikation soll die Ausleihe und Rückgabe einzelner Messmittel über einen QR-Code realisieren. Darüber hinaus sollen Messmittel gruppiert, zusätzliche Informationen, wie zum Beispiel Datenblätter für Messmittel, bereitgestellt und der Bestand von Messmitteln erfasst werden. Um die unterschiedlichen Verantwortlichkeiten der Akteure zu berücksichtigen, ist zudem eine rechtebasierte Nutzerverwaltung vorzusehen.</p>
-<p>Der Inhalt dieses Berichtes umfasst die Dokumentation des Arbeitsprozesses, die Beschreibung des finalen Produktes hinsichtlich technischer Umsetzung und Funktionalität und zeigt zusätzlich Anknüpfungspunkte für Folgeprojekte auf.</p>
-<p>Messmittel = Sensor</p>
+<div id="technical-guide" class="section level1">
+<h1><span class="header-section-number">7</span> Technische Umsetzung</h1>
+<p>Die nachfolgenden Abschnitte erweitern die Nutzerhilfe um die Beschreibung der technischen Umsetzung ausgewählter Elemente der Web-Applikation. Die ausgewählten Elemente sollen dabei insbesondere eine Vielzahl des verwendeteten Methodenspektrums darlegen, sodass eine nachhaltige Nutzung über die Laufzeit des Projektes hinaus erleichtert wird. Darüber hinaus sollen interessante Ansätze vorgestellt werden.</p>
+<div id="struktur-der-web-applikation" class="section level2">
+<h2><span class="header-section-number">7.1</span> Struktur der Web-Applikation</h2>
+<p>Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei <code>app.R</code>. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei <em>app.R</em> ausführt. In <code>app.R</code> werden Initialisierungen durchgeführt und die Funktionen <code>ui</code> und <code>server</code> definiert. Die Datei endet mit dem Aufruf <code>shinyApp(ui, server)</code>, wobei die <code>ui</code>-Funktion das visuelle Layout der Web-Applikation beschreibt und die <code>server</code>-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer <code>ui</code>- und einer <code>server</code>-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab.</p>
+<div id="struktur-von-app.r" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Struktur von <code>app.R</code></h3>
+<p>Wie bereits beschrieben, ist die Datei <code>app.R</code> der Einstiegspunkt der Web-Applikation. Da sie Einfluss auf das Verhalten vieler weiterer Module hat, ist ihr Aufbau näher zu betrachten. Zur Übersicht werden die Inhalte verkürzt dargestellt.</p>
+<ul>
+<li>Laden benötigter Packages mit <code>library()</code>. Die Mehrzahl aller Packages wird über den <code>::</code>-Operator referenziert. Nur die Packages, die zwangsläufig mit <code>library()</code> geladen werden müssen, also Packages, die funktionsrelevanten Code mit dem Aufruf von <code>library()</code> verbinden, werden hier geladen.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="technical-guide.html#cb1-1"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb1-2"><a href="technical-guide.html#cb1-2"></a><span class="kw">library</span>(shinyjs)</span>
+<span id="cb1-3"><a href="technical-guide.html#cb1-3"></a><span class="kw">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="technical-guide.html#cb1-4"></a><span class="kw">library</span>(qrcode)</span></code></pre></div>
+<ul>
+<li>Die Funktion <code>source_directory()</code> wird manuell gesourcet und danach dazu verwendet, alle <code>.R</code>-Dateien in den Ordnern <code>modules</code> und <code>db/func</code> zu sourcen.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="technical-guide.html#cb2-1"></a><span class="kw">source</span>(<span class="st">&quot;init/source_directory.R&quot;</span>)</span>
+<span id="cb2-2"><a href="technical-guide.html#cb2-2"></a></span>
+<span id="cb2-3"><a href="technical-guide.html#cb2-3"></a><span class="kw">source_directory</span>(</span>
+<span id="cb2-4"><a href="technical-guide.html#cb2-4"></a>    <span class="dt">path =</span> <span class="st">&quot;modules&quot;</span>,</span>
+<span id="cb2-5"><a href="technical-guide.html#cb2-5"></a>    <span class="dt">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>,</span>
+<span id="cb2-6"><a href="technical-guide.html#cb2-6"></a>    <span class="dt">modifiedOnly =</span> <span class="ot">FALSE</span>,</span>
+<span id="cb2-7"><a href="technical-guide.html#cb2-7"></a>    <span class="dt">chdir =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb2-8"><a href="technical-guide.html#cb2-8"></a>    <span class="dt">recursive =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb2-9"><a href="technical-guide.html#cb2-9"></a>    <span class="dt">envir =</span> <span class="cf">if</span> (source_to_globalenv) <span class="kw">globalenv</span>() <span class="cf">else</span> <span class="kw">environment</span>()</span>
+<span id="cb2-10"><a href="technical-guide.html#cb2-10"></a>)</span></code></pre></div>
+<ul>
+<li>Die <code>ui</code>-Funktion bindet alle CSS- und JavaScript-Dateien ein und aktiviert spezielle Packages. Die Funktion <code>container_ui()</code>, die das Layout des Dashboardes festlegt, wird aufgerufen.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="technical-guide.html#cb3-1"></a>    <span class="co"># UI -----------------------------------------------------------------------</span></span>
+<span id="cb3-2"><a href="technical-guide.html#cb3-2"></a>    ui &lt;-<span class="st"> </span>htmltools<span class="op">::</span><span class="kw">tagList</span>(</span>
+<span id="cb3-3"><a href="technical-guide.html#cb3-3"></a>        htmltools<span class="op">::</span><span class="kw">includeScript</span>(<span class="st">&quot;www/js/dark-mode.js&quot;</span>),</span>
+<span id="cb3-4"><a href="technical-guide.html#cb3-4"></a>        htmltools<span class="op">::</span><span class="kw">includeCSS</span>(<span class="st">&quot;www/css/styles.css&quot;</span>)</span>
+<span id="cb3-5"><a href="technical-guide.html#cb3-5"></a>        <span class="kw">container_ui</span>(</span>
+<span id="cb3-6"><a href="technical-guide.html#cb3-6"></a>            <span class="dt">id =</span> <span class="st">&quot;container&quot;</span></span>
+<span id="cb3-7"><a href="technical-guide.html#cb3-7"></a>        ),</span>
+<span id="cb3-8"><a href="technical-guide.html#cb3-8"></a>        rclipboard<span class="op">::</span><span class="kw">rclipboardSetup</span>(),</span>
+<span id="cb3-9"><a href="technical-guide.html#cb3-9"></a>        shinyjs<span class="op">::</span><span class="kw">useShinyjs</span>(),</span>
+<span id="cb3-10"><a href="technical-guide.html#cb3-10"></a>        waiter<span class="op">::</span><span class="kw">use_waiter</span>()</span>
+<span id="cb3-11"><a href="technical-guide.html#cb3-11"></a>    )</span></code></pre></div>
+<ul>
+<li>In der <code>server</code>-Funktion wird die <code>.values</code>-Environment angelegt. Diese enthält die folgenden Elemente:</li>
+</ul>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="66%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>query$type</code></td>
+<td>Aus Query-String ausgelesene Typ-ID</td>
+</tr>
+<tr class="even">
+<td><code>settings</code></td>
+<td>Liste, die Namenslängen festlegt und Dictionaries enthält</td>
+</tr>
+<tr class="odd">
+<td><code>update</code></td>
+<td>Liste, die <code>reactiveVal()</code>s enthält, die bei Datenaktualisierung getriggert werden</td>
+</tr>
+<tr class="even">
+<td><code>user</code></td>
+<td>Liste, die Informationen zum angemeldeten Nutzer enthält</td>
+</tr>
+<tr class="odd">
+<td><code>yaml</code></td>
+<td>Inhalt von <code>app.yml</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>In der <code>server</code>-Funktion wird die <code>server</code>-Funktion <code>container_server()</code> aufgerufen.</li>
+</ul>
+</div>
+<div id="ordnerstruktur" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Ordnerstruktur</h3>
+<ul>
+<li><code>.gitignore</code> Index aller Dateien, die nicht der Versionskontrolle unterliegen</li>
+<li><code>app.R</code> Einstiegspunkt in die Web-Applikation</li>
+<li><code>app.yml</code> Konfigurationsdatei</li>
+<li><code>db</code>
+<ul>
+<li><code>db.sqlite</code> Datenbank</li>
+<li><code>func</code> Funktionssammlung zur Interaktion mit der Datenbank</li>
+</ul></li>
+<li><code>files</code> Dateiensammlung für <a href="user-guide.html#file-management">Dateiverwaltung</a>. Enthält drei Unterordner für Gruppen, Typen und Untertypen. Jeder dieser Unterordner enthält für jedes Element der jeweiligen Kategorie einen Ordner mit der Identifikationsnummer des jeweiligen Elementes als Namen</li>
+<li><code>init/source_directory.R</code> Hilfsfunktion, die beim Start der Web-Applikation alle <code>.R</code>-Dateien einliest</li>
+<li><code>modules</code> Shiny-Module und sonstige Funktionalität
+<ul>
+<li><code>container.R</code> Definition des Dashboards</li>
+<li><code>dt_options.R</code> Optionen für <code>DT::datatable</code></li>
+<li><code>object</code> Generalisierte Module für Gruppen, Typen und Untertypen (z.B. Element hinzufügen, umbenennen etc.)</li>
+<li><code>sidebar_menu.R</code> Definition der Sidebar</li>
+<li><code>tab_file_management</code> <a href="user-guide.html#file-management">Dateiverwaltung</a></li>
+<li><code>tab_group</code> <a href="#groups">Gruppen</a></li>
+<li><code>tab_login</code> <a href="user-guide.html#login">Anmeldung</a></li>
+<li><code>tab_operate</code> <a href="user-guide.html#operate">Ausleihen &amp; Zurückgeben</a></li>
+<li><code>tab_qrcode</code> <a href="user-guide.html#qrcode">QR-Code</a></li>
+<li><code>tab_reporting</code> <a href="user-guide.html#reporting">Bestandsinformation</a></li>
+<li><code>tab_settings</code> <a href="user-guide.html#settings">Einstellungen</a></li>
+<li><code>tab_type</code> <a href="user-guide.html#type">Typen</a></li>
+<li><code>tab_user_management</code> <a href="user-guide.html#user-management">Nutzerverwaltung</a></li>
+<li><code>utils.R</code> Hilfsfunktionen</li>
+</ul></li>
+<li><code>renv</code>, <code>renv.lock</code> Package-Management</li>
+<li><code>www</code>
+<ul>
+<li><code>css</code> CSS-Dateien</li>
+<li><code>favicon.ico</code> Sensotheka-Icon</li>
+<li><code>js</code> JavaScript-Dateien</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="database" class="section level2">
+<h2><span class="header-section-number">7.2</span> Datenbank</h2>
+<div id="struktur" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Struktur</h3>
+</div>
+<div id="zugriff" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Zugriff</h3>
+</div>
+</div>
+<div id="cookies" class="section level2">
+<h2><span class="header-section-number">7.3</span> Cookies</h2>
+</div>
+<div id="deployment-1" class="section level2">
+<h2><span class="header-section-number">7.4</span> Deployment</h2>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="requirements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="user-guide.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="discussion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
