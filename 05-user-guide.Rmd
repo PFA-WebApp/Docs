@@ -119,7 +119,7 @@ Zunächst muss ein Typ ausgewählt werden. Für diesen Typen werden tabellarisch
 
 ### Ausleihübersicht
 
-Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellen in Bezug auf ausgeliehene Sensoren beantworten, vergleiche Abbildung \@ref(fig:reporting-details).
+Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellen in Bezug auf ausgeliehene Sensoren beantworten, vergleiche Tabelle \@ref(tab:reporting-details) und Abbildung \@ref(fig:reporting-details).
 
 | Reiter | Beschreibung |
 | --- | ------ |
@@ -127,6 +127,8 @@ Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestelle
 | Nach Untertyp | Übersicht über alle Nutzer, die den gewählten Untertypen zurzeit ausgeliehen haben. Hiermit kann herausgefunden werden, wer Ansprechpartner ist, falls alle Elemente eines Untertyps ausgeliehen sind. |
 | Nach Nutzer | Übersicht über alle Untertypen, die der gewählte Nutzer zurzeit ausgeliehen hat. |
 | Transaktionen | Übersicht über alle Transaktionen, die jemals im Rahmen der Sensorverwaltung stattgefunden haben. Ein Nutzer sieht ausschließlich seine eigenen Transaktionen. Ein `r badge("admin")` sieht alle Transaktionen. Dazu gehören neben Ausleih- und Rückgabeoperationen auch Abschreibungen und sonstige Mengenänderungen. |
+
+Table: (\#tab:reporting-details) Übersicht über die Ausleihübersicht
 
 ```{r reporting-details, echo=FALSE, fig.cap="Übersicht: Ausleihübersicht"}
 knitr::include_graphics("./img/reporting_details.png")
@@ -146,13 +148,15 @@ Neue Nutzer können unter Angabe eines Benutzernamens und eines zur Sicherheit z
 
 ### Nutzertabelle
 
-In der Nutzertabelle können Nutzer verwaltet werden. Neben dem Benutzernamen und dem gegenwärtigen Status gibt es drei Spalten, die Buttons enthalten, mit denen Eigenschaften eines Nutzer angepasst werden können.
+In der Nutzertabelle (vergleiche Tabelle \@ref(tab:user-table)) können Nutzer verwaltet werden. Neben dem Benutzernamen und dem gegenwärtigen Status gibt es drei Spalten, die Buttons enthalten, mit denen Eigenschaften eines Nutzer angepasst werden können.
 
 | Spalte | Beschreibung |
 | --- | ------ |
 | Status ändern `r badge("admin", short = TRUE)` | Dieser Button öffnet einen Dialog, in dem ein neuer Status für den Nutzer ausgewählt werden kann. |
 | Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Nutzer gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Transaktionen, die der ausgewählte Nutzer vorgenommen hat, bleiben jedoch weiterhin erhalten. Es können nur Nutzer gelöscht werden, die zurzeit keine Sensoren ausgeliehen haben. Falls der Nutzer nicht in der Lage ist, die Sensoren eigenständig zurückzugeben, kann der `r badge("admin")` die ausgeliehenen Sensoren im Reiter [Ausleihen & Zurückgeben](#operate) für diesen Nutzer zurückgeben. Ein `r badge("mod")` kann nur `r badge("user")` entfernen, die er selbst hinzugefügt hat. |
 | Passwort zurücksetzen `r badge("admin", short = TRUE)` | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass das Passwort des Nutzers zurückgesetzt werden soll. Das Passwort wird auf das Standardpasswort *1234* zurückgesetzt und sollte vom Nutzer sofort danach im Reiter [Einstellungen](#settings) geändert werden. |
+
+Table: (\#tab:user-table) Nutzertabelle
 
 ## Gruppen `r badge("admin", short = TRUE)` {#group}
 
@@ -168,13 +172,15 @@ Eine neue Gruppe kann durch Angabe eines Gruppennamens hinzugefügt werden.
 
 ### Gruppentabelle
 
-In der *Gruppentabelle* können Gruppen bearbeitet werden.
+In der *Gruppentabelle* (vergleiche Tabelle \@ref(tab:group-table)) können Gruppen bearbeitet werden.
 
 | Spalte | Beschreibung |
 | --- | ------ |
 | Gruppenname | Ein Klick auf einen Gruppennamen öffnet einen Dialog, in dem der Gruppenname angepasst werden kann. |
 | Typen bearbeiten | Dieser Button öffnet einen Dialog, in dem die zur ausgewählten Gruppe zugehörigen Typen bearbeitet werden können. |
 | Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte Gruppe gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. |
+
+Table: (\#tab:group-table) Gruppentabelle
 
 ### Typen anzeigen
 
@@ -194,7 +200,7 @@ Ein neuer Typ kann durch Angabe eines Typnamens hinzugefügt werden.
 
 ### Typtabelle
 
-In der *Typtabelle* können Typen bearbeitet werden.
+In der *Typtabelle* (vergleiche Tabelle \@ref(tab:type-table)) können Typen bearbeitet werden.
 
 | Spalte | Beschreibung |
 | --- | ------ |
@@ -202,13 +208,15 @@ In der *Typtabelle* können Typen bearbeitet werden.
 | Gruppen bearbeiten | Dieser Button öffnet einen Dialog, in dem die zum ausgewählten Typ zugehörigen Gruppen bearbeitet werden können. |
 | Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Typ gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein Typ kann nur gelöscht werden, wenn kein Element seiner Untertypen ausgeliehen ist. Transaktionen, die den ausgewählten Typen betreffen, bleiben weiterhin erhalten. Das Entfernen eines Typen schließt das Entfernen aller Untertypen dieses Typen ein. |
 
+Table: (\#tab:type-table) Typtabelle
+
 ### Gruppen anzeigen
 
 Zunächst muss ein Typ ausgewählt werden. In der Tabelle werden alle zum ausgewählten Typen zugehörigen Gruppen dargestellt.
 
 ### Untertypen bearbeiten
 
-Zunächst muss ein Typ ausgewählt werden. In der Tabelle können Untertypen des ausgewählten Typen bearbeitet werden.
+Zunächst muss ein Typ ausgewählt werden. In der *Untertypentabelle* (vergleiche Tabelle \@ref(tab:subtype-table)) können Untertypen des ausgewählten Typen bearbeitet werden.
 
 | Spalte | Beschreibung |
 | --- | ------ |
@@ -217,15 +225,19 @@ Zunächst muss ein Typ ausgewählt werden. In der Tabelle können Untertypen des
 | Kritischer Bestand | Ein Klick auf den kritischen Bestand öffnet einen Dialog, in dem der kritische Bestand des Untertypen angepasst werden kann. Der kritische Bestand kann als Filterkriterium in der *Ausleihübersicht* des Reiters [Bestandsinformation](#reporting) verwendet werden. |
 | Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Untertyp gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein Untertyp kann nur gelöscht werden, wenn keine Elemente von diesem ausgeliehen sind. Transaktionen, die den ausgewählten Untertypen betreffen, bleiben weiterhin erhalten. |
 
+Table: (\#tab:subtype-table) Untertypentabelle
+
 ## Dateiverwaltung `r badge("admin", short = TRUE)` {#file-management}
 
-In der *Dateiverwaltung* können PDF-Dateien als Informationsmaterial in den Reitern *Gruppen*, *Typen* und *Untertypen* hochgeladen werden. Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf *Datei hochladen* kann eine PDF-Datei auf dem lokalen Dateisystem ausgewählt werden. Hochgeladene Dateien werden in einer Tabelle angezeigt.
+In der *Dateiverwaltung* können PDF-Dateien als Informationsmaterial in den Reitern *Gruppen*, *Typen* und *Untertypen* hochgeladen werden. Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf *Datei hochladen* kann eine PDF-Datei auf dem lokalen Dateisystem ausgewählt werden. Hochgeladene Dateien werden in einer Tabelle (vergleiche Tabelle \@ref(tab:file-table)) angezeigt.
 
 | Spalte | Beschreibung |
 | --- | ------ |
 | Datei | Ein Klick auf einen Dateinamen öffnet einen Dialog, in dem der Dateiname angepasst werden kann. |
 | Herunterladen | Dieser Button lädt die Datei herunter. |
 | Löschen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte Datei gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. | 
+
+Table: (\#tab:file-table) Dateitabelle
 
 ## QR-Code `r badge("admin", short = TRUE)` {#qrcode}
 

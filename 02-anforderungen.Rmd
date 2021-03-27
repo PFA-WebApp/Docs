@@ -35,9 +35,19 @@ Ausgehend von diesen Definitionen sind die folgenden Anforderungen zu erfüllen:
 
 ### Nutzerverwaltung
 
-Wie eingangs beschrieben, ist eine rechtebasierte Verwaltung notwendig. Dazu werden drei Rollen angelegt. Der *Benutzer* kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der *Moderator* kann zusätzlich *Benutzer* anlegen. Der *Administrator* kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Abbildung ... entnommen werden.
+Wie eingangs beschrieben, ist eine rechtebasierte Verwaltung notwendig. Dazu werden drei Rollen angelegt. Der *Benutzer* kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der *Moderator* kann zusätzlich *Benutzer* anlegen. Der *Administrator* kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Tabelle \@ref(tab:user-rights) entnommen werden.
 
-TODO: Rechte-Matrix
+| Operation | `r badge("admin")` | `r badge("mod")` | `r badge("user")` |
+|:------------ | :--: | :--: | :--: |
+| Ausleihen & Zurückgeben | x | x | x |
+| Erweiterte Bestandsinformation | x | x | |
+| Nutzer hinzufügen / löschen | x | x | |
+| Moderator hinzufügen / löschen | x | | |
+| QR-Code generieren | x | | |
+| Sensoren verwalten | x | | |
+| Dateien verwalten | x | | |
+
+Table: (\#tab:user-rights) Übersicht über die Nutzerrollen
 
 ### Ausleihverwaltung
 

@@ -50,7 +50,7 @@ source_directory(
     )
 ```
 
-* In der `server`-Funktion wird die `.values`-[Environment](https://adv-r.hadley.nz/environments.html) angelegt. Diese enthält die folgenden Elemente:
+* In der `server`-Funktion wird die `.values`-[Environment](https://adv-r.hadley.nz/environments.html) angelegt. Diese enthält die in Tabelle \@ref(tab:values-environment) aufgelisteten Elemente.
 
 | Name | Beschreibung |
 | --- | ------ |
@@ -59,6 +59,8 @@ source_directory(
 | `update` | Liste, die `reactiveVal()`s enthält, die bei Datenaktualisierung getriggert werden |
 | `user` | Liste, die Informationen zum angemeldeten Nutzer enthält |
 | `yaml` | Inhalt von `app.yml` |
+
+Table: (\#tab:values-environment) Die `.values`-Environment
 
 Diese Environment wird jeder `server`-Funktion übergeben, sodass die Werte in jeder `server`-Funktion verfügbar sind.
 
@@ -113,6 +115,8 @@ Alle Tabellen enthalten die Spalte `rowid`, die den Primärschlüssel der jeweil
 | time | | Zeitpunkt der Transaktion |
 | op_type | `1` oder `2` | Transaktionsart: `1` - Ausleihen und Zurückgeben, `2` - Bestandsänderungen |
 
+Table: (\#tab:circulation) Datenbank: Tabelle `circulation`
+
 #### groups
 
 | Spalte | Einschränkungen | Beschreibung |
@@ -120,12 +124,16 @@ Alle Tabellen enthalten die Spalte `rowid`, die den Primärschlüssel der jeweil
 | group_name | `r badge("unique")` | Gruppenname |
 | removed | `0` oder `1` | `0` - existent, `1` - gelöscht |
 
+Table: (\#tab:groups) Datenbank: Tabelle `groups`
+
 #### group_type
 
 | Spalte | Einschränkungen | Beschreibung |
 |:------ |:------ |:------------ |
 | group_id | `r badge("fk")` | Identifikationsnummer der Gruppe |
 | type_id | `r badge("fk")` | Identifikationsnummer des Typs |
+
+Table: (\#tab:group-type) Datenbank: Tabelle `group_type`
 
 #### subtype
 
@@ -136,12 +144,16 @@ Alle Tabellen enthalten die Spalte `rowid`, die den Primärschlüssel der jeweil
 | quantity | `r badge("nn")` | Bestandsmenge |
 | removed | `0` oder `1` | `0` - existent, `1` - gelöscht |
 
+Table: (\#tab:subtype) Datenbank: Tabelle `subtype`
+
 #### type
 
 | Spalte | Einschränkungen | Beschreibung |
 |:------ |:------ |:------------ |
 | type_name | `r badge("unique")` | Typname |
 | removed | `0` oder `1` | `0` - existent, `1` - gelöscht |
+
+Table: (\#tab:type) Datenbank: Tabelle `type`
 
 #### user
 
@@ -157,6 +169,8 @@ Alle Tabellen enthalten die Spalte `rowid`, die den Primärschlüssel der jeweil
 | time_previous_logged | | Zeitpunkt der vorletzten Anmeldung |
 | times_logged | | Anzahl der Anmeldungen |
 | removed | `0` oder `1` | `0` - existent, `1` - gelöscht |
+
+Table: (\#tab:user) Datenbank: Tabelle `user`
 
 ### Zugriff
 
@@ -184,7 +198,9 @@ dbReadTable(db, "circulation")
 
 ```{r, echo=FALSE}
 tbl <- dbReadTable(db, "circulation")
-DT::datatable(tbl)
+kableExtra::kbl(tbl[1:10,], booktabs = TRUE, caption = "Beispielhafter Inhalt der Tabelle `circulation`") %>%
+  kableExtra::kable_styling(full_width = TRUE) %>%
+  kableExtra::column_spec(4, "5cm")
 ```
 
 Der Ordner `db/func` enthält eine Sammlung von über 80 Hilfsfunktionen, die zum Erstellen, Abfragen und Modifizieren der Datenbank verwendet werden. Die Interaktion mit der Datenbank erfolgt ausschließlich über diese Hilfsfunktionen. Dadurch werden Redundanzen ausgeschlossen und es ist darüber hinaus einfacher, die korrekte Funktionalität zu gewährleisten.
@@ -242,12 +258,14 @@ Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevan
 
 * `/srv/shiny-server/Sensotheka`
   
-  Dieser Ordner enthält das Git-Repository, das die tatsächliche Web-Applikation darstellt. Es verweist auf das GitHub-Repository `https://github.com/PFA-WebApp/App.git` als Remote mit Namen `origin`. In der Datei `app.yml` müssen die folgenden Einstellungen vorgenommen werden:
+  Dieser Ordner enthält das Git-Repository, das die tatsächliche Web-Applikation darstellt. Es verweist auf das GitHub-Repository `https://github.com/PFA-WebApp/App.git` als Remote mit Namen `origin`. In der Datei `app.yml` müssen die in Tabelle \@ref(tab:app-yml) aufgelisteten Einstellungen vorgenommen werden:
   
   | Einstellung | Beschreibung |
 | :--- | :--------- |
 | showcase | `yes` für Showcasemodus (Passwörter für Standardnutzer werden eingeblendet, Standardnutzer können nicht gelöscht werden), `no` (voreingestellt) für Betriebsmodus |
 | url | Base-URL auf die QR-Codes verweisen. Hier sind Anpassungen zwingend notwendig. |
+
+  Table: (\#tab:app-yml) Einstellungen in `app.yml`
 
 <br>
 

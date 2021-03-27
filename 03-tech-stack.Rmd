@@ -24,9 +24,7 @@ Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in
 
 ## Programmiersprache
 
-[R](https://www.r-project.org/) ist eine Multiparadigmen-Programmiersprache. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden. R verfügt einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden. Das Comprehensive R Archive Network ([CRAN](https://cran.r-project.org/)) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung beispielsweise {[shiny](https://shiny.rstudio.com/)}, das die Funktionalitäten des Frameworks beinhaltet. Die folgenden Tabellen geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.
-
-### Packages für {shiny}
+[R](https://www.r-project.org/) ist eine Multiparadigmen-Programmiersprache. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden. R verfügt einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden. Das Comprehensive R Archive Network ([CRAN](https://cran.r-project.org/)) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung beispielsweise {[shiny](https://shiny.rstudio.com/)}, das die Funktionalitäten des Frameworks beinhaltet. Die folgenden Tabellen \@ref(tab:pkg-shiny) und \@ref(tab:pkg-programming) geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.
 
 | Package | Beschreibung |
 | ------- | ----- |
@@ -37,8 +35,7 @@ Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in
 | {[shinydisconnect](https://cran.r-project.org/web/packages/shinydisconnect/index.html)} | Verbindungsverlustbildschirm |
 | {[shinyjs](https://cran.r-project.org/web/packages/shinyjs/index.html)} | Integration von Custom-JavaScript |
 | {[waiter](https://cran.r-project.org/web/packages/waiter/index.html)} | Ladebildschirm |
-
-### Packages für die Programmierung
+Table: (\#tab:pkg-shiny) Packages für {shiny}
 
 | Package | Beschreibung |
 | ------- | ----- |
@@ -55,8 +52,10 @@ Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in
 | {[renv](https://cran.r-project.org/web/packages/renv/index.html)} | Packagemanagement |
 | {[yaml](https://cran.r-project.org/web/packages/yaml/index.html)} | YAML-Dateiformat |
 
+Table: (\#tab:pkg-programming) Packages für die Programmierung
+
 ## Datenbank
 
 Zur konsistenten Datenverwaltung wird eine Datenbank benötigt. Datenbanken sind in der Lage, Anfragen von verschiedenen Clients zu bearbeiten und dabei zu gewährleisten, dass bestimmte Regeln hinsichtlich der Datenstruktur und Ausprägung der Daten eingehalten werden. Es existieren verschiedene Datenbankmodelle, unter anderem das Netzwerk-, das objektorientierte, das hierachische oder das relationale Datenbankmodell [^laudon2015]. Diese unterscheiden sich hinsichtlich der Verknüpfung der beteiligten Daten. Aufgrund der hohen Flexibilität und der weiten Verbreitung wurde das relationale Datenbankmodell ausgewählt. Dieses speichert die Daten in miteinander verknüpften Tabellen. Die Tabellenzeilen enthalten Beobachtungen, die Tabellenspalten stellen die beobachtbaren Merkmale dar. Zur eindeutigen Identifikation erhält jede Zeile eine Identifikationsnummer. Die Spalte der Identifikationsnummern wird als Primärschlüssel (*Primary Key*) bezeichnet. Um verschiedene Tabellen miteinander zu verknüpfen, werden Identifikationsnummern referenziert. Eine Spalte, die auf einen Primärschlüssel einer anderen Tabelle verweist, wird als Fremdschlüssel (*Foreign Key*) bezeichnet.
 
-Es gibt eine Vielzahl verschiedener relationaler Datenbankmanagementsysteme, die sich hinsichtlich ihrer Anwendungsbereiche und Skalierbarkeit unterscheiden. Für Projekte kleinen und mittleren Umfanges (unter 100.000 Aufrufe / Tag[^whysqlite]) eignet sich [SQLite](https://www.sqlite.org/index.html). Hierbei werden alle Tabellen in einer einzigen Datei mit dem Suffix *.sqlite* gespeichert. Der Zugriff auf die Datenbank erfolgt grundsätzlich über die *Structured Query Language* (SQL). Für die Programmiersprache R gibt es die Packages {DBI} und {RSQLite}, die eine direkte Schnittstelle zur Datenbank bereitstellen.
+Es gibt eine Vielzahl verschiedener relationaler Datenbankmanagementsysteme, die sich hinsichtlich ihrer Anwendungsbereiche und Skalierbarkeit unterscheiden. Für Projekte kleinen und mittleren Umfanges (unter 100.000 Aufrufe / Tag[^whysqlite]) eignet sich [SQLite](https://www.sqlite.org/index.html) [@laudon2015]. Hierbei werden alle Tabellen in einer einzigen Datei mit dem Suffix *.sqlite* gespeichert. Der Zugriff auf die Datenbank erfolgt grundsätzlich über die *Structured Query Language* (SQL). Für die Programmiersprache R gibt es die Packages {DBI} und {RSQLite}, die eine direkte Schnittstelle zur Datenbank bereitstellen.
