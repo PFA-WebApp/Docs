@@ -2,6 +2,7 @@
 bibliography: ["book.bib"]
 biblio-style: "abbrv"
 link-citations: true
+always_allow_html: true
 ---
 
 \renewcommand{\figurename}{Abbildung}
@@ -10,28 +11,34 @@ link-citations: true
 library(shiny)
 library(dplyr)
 
-badge <- function(status = c("admin", "mod", "user"), short = FALSE) {
-  status <- match.arg(status)
+badge <- function(type = c("admin", "mod", "user", "unique", "nn", "fk"), short = FALSE) {
+  type <- match.arg(type)
   
   text <- if (short) {
     switch (
-      status,
+      type,
       "admin" = "A",
       "mod" = "M",
-      "user" = "B"
+      "user" = "B",
+      "unique" = "U",
+      "nn" = ">= 0",
+      "fk" = "FK"
     )
   } else {
     switch (
-      status,
+      type,
       "admin" = "Administrator",
       "mod" = "Moderator",
-      "user" = "Benutzer"
+      "user" = "Benutzer",
+      "unique" = "Einzigartig",
+      "nn" = "Nicht-negativ",
+      "fk" = "Fremdschlüssel"
     )
   }
   
   if (knitr::is_html_output()) {
     htmltools::span(
-      class = paste("badge", status),
+      class = paste("badge", type),
       text
     )
   }

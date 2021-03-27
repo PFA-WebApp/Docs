@@ -71,8 +71,17 @@ struktur-von-app.r
 ordnerstruktur
 database
 struktur
+circulation
+groups
+group_type
+subtype
+type-1
+user
 zugriff
 cookies
+dark-mode
+user-1
+implementierung
 deployment-1
 discussion
 outlook

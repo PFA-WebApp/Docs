@@ -34,7 +34,7 @@ source_directory(
 )
 ```
 
-* Die `ui`-Funktion bindet alle CSS- und JavaScript-Dateien ein und aktiviert spezielle Packages. Die Funktion `container_ui()`, die das Layout des Dashboardes festlegt, wird aufgerufen.
+* Die `ui`-Funktion bindet alle CSS- und JavaScript-Dateien ein und aktiviert spezielle Packages. Die Funktion `container_ui()`, die das Layout des Dashboardes festlegt, wird aufgerufen. In `container_ui()` wird für jeden Reiter eine eigene `ui`-Funktion aufgerufen.
 
 ```{r, eval=FALSE}
     # UI -----------------------------------------------------------------------
@@ -50,7 +50,7 @@ source_directory(
     )
 ```
 
-* In der `server`-Funktion wird die `.values`-Environment angelegt. Diese enthält die folgenden Elemente:
+* In der `server`-Funktion wird die `.values`-[Environment](https://adv-r.hadley.nz/environments.html) angelegt. Diese enthält die folgenden Elemente:
 
 | Name | Beschreibung |
 | --- | ------ |
@@ -60,7 +60,9 @@ source_directory(
 | `user` | Liste, die Informationen zum angemeldeten Nutzer enthält |
 | `yaml` | Inhalt von `app.yml` |
 
-* In der `server`-Funktion wird die `server`-Funktion `container_server()` aufgerufen.
+Diese Environment wird jeder `server`-Funktion übergeben, sodass die Werte in jeder `server`-Funktion verfügbar sind.
+
+* In der `server`-Funktion von `app.R` wird die `server`-Funktion `container_server()` aufgerufen.
 
 ### Ordnerstruktur
 
@@ -95,10 +97,160 @@ source_directory(
 
 ## Datenbank {#database}
 
+Die Datenbank ist eine SQLite-Datenbank. Sie liegt in `db/db.sqlite`. Der Zugriff erfolgt über das Package {DBI}.
+
 ### Struktur
+
+Alle Tabellen enthalten die Spalte `rowid`, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden. Die Beschränkung `r badge("unique")` bezieht sich immer nur auf die nicht gelöschten Elemente (`removed = 0`).
+
+#### circulation
+
+| Spalte | Einschränkungen | Beschreibung |
+|:--- |:--- |:------ |
+| user_id | `r badge("fk")` | Identifikationsnummer des ausführenden Nutzers |
+| subtype_id | `r badge("fk")` | Identifikationsnummer des bearbeiteten Untertyps |
+| quantity | `r badge("nn")` | Bearbeitete Menge |
+| time | | Zeitpunkt der Transaktion |
+| op_type | `1` oder `2` | Transaktionsart: `1` - Ausleihen und Zurückgeben, `2` - Bestandsänderungen |
+
+#### groups
+
+| Spalte | Einschränkungen | Beschreibung |
+|:--- |:--- |:------ |
+| group_name | `r badge("unique")` | Gruppenname |
+| removed | `0` oder `1` | `0` - existent, `1` - gelöscht |
+
+#### group_type
+
+| Spalte | Einschränkungen | Beschreibung |
+|:--- |:--- |:------ |
+| group_id | `r badge("fk")` | Identifikationsnummer der Gruppe |
+| type_id | `r badge("fk")` | Identifikationsnummer des Typs |
+
+#### subtype
+
+| Spalte | Einschränkungen | Beschreibung |
+|:--- |:--- |:------ |
+| type_id | `r badge("fk")` | Identifikationsnummer des Typs |
+| subtype_name | `r badge("unique")` innerhalb eines Typs | Untertypenname |
+| quantity | `r badge("nn")` | Bestandsmenge |
+| removed | `0` oder `1` | `0` - existent, `1` - gelöscht |
+
+#### type
+
+| Spalte | Einschränkungen | Beschreibung |
+|:--- |:--- |:------ |
+| type_name | `r badge("unique")` | Typname |
+| removed | `0` oder `1` | `0` - existent, `1` - gelöscht |
+
+#### user
+
+| Spalte | Einschränkungen | Beschreibung |
+|:--- |:--- |:------ |
+| hash | | Verhashter Nutzername (notwendig für Cookies) |
+| name | `r badge("unique")` | Nutzername |
+| status | `admin`, `mod` oder `user` | Nutzerrolle |
+| password | | Verhashtes Passwort |
+| added_from | | Nutzeridentifikationsnummer des Hinzufügenden |
+| time_added | | Zeitpunkt der Kontoeröffnung |
+| time_current_logged | | Zeitpunkt der letzten Anmeldung |
+| time_previous_logged | | Zeitpunkt der vorletzten Anmeldung |
+| times_logged | | Anzahl der Anmeldungen |
+| removed | `0` oder `1` | `0` - existent, `1` - gelöscht |
 
 ### Zugriff
 
+```{r, echo=FALSE}
+wd <- getwd()
+knitr::opts_knit$set(root.dir = "./../App")
+```
+
+```{r}
+library(DBI)
+library(RSQLite)
+
+# Verbinde die Datenbank mit R
+db <- dbConnect(SQLite(), "db/db.sqlite")
+
+# Tabellennamen
+dbListTables(db)
+```
+
+Beispielhaft wird die Tabelle "circulation" betrachtet. Diese Tabelle speichert alle Transaktionen, die von Nutzern durchgeführt worden sind, also zum Beispiel Ausleihen, Rückgaben und Mengenänderungen.
+
+```{r, eval=FALSE}
+dbReadTable(db, "circulation")
+```
+
+```{r, echo=FALSE}
+tbl <- dbReadTable(db, "circulation")
+DT::datatable(tbl)
+```
+
+Der Ordner `db/func` enthält eine Sammlung von über 80 Hilfsfunktionen, die zum Erstellen, Abfragen und Modifizieren der Datenbank verwendet werden. Die Interaktion mit der Datenbank erfolgt ausschließlich über diese Hilfsfunktionen. Dadurch werden Redundanzen ausgeschlossen und es ist darüber hinaus einfacher, die korrekte Funktionalität zu gewährleisten.
+
+Beispielhaft wird die Funktion `db_get_borrowed_quantity(db, subtype_id)` betrachtet. Unter Angabe der Datenbank `db` und einer oder mehrerer Untertypenidentifikationsnummern `subtype_id` wird die ausgeliehene Menge dieser Untertypen zurückgegeben. In {DBI} werden Abfragen an die Datenbank mithilfe von `dbGetQuery()` gestellt. Das Resultat der Abfrage wird anschließend weiterverarbeitet. Der Nutzen der Hilfsfunktion wird zusätzlich dadurch verdeutlicht, dass sowohl die abzufragende Tabelle sowie die beteiligten Zeilen und Spalten nicht gesondert angegeben werden müssen. 
+
+```{r}
+# Funktionsdefinition
+db_get_borrowed_quantity <- function(db, subtype_id) {
+  borrowed <- DBI::dbGetQuery(
+    db,
+    "SELECT SUM(quantity) AS borrowed FROM circulation
+    WHERE subtype_id = ? AND op_type = 1",
+    params = list(subtype_id)
+  )$borrowed
+
+  ifelse(is.na(borrowed), 0, borrowed)
+}
+
+# Abfrage der ausgeliehenen Menge für mehrere Untertypen
+db_get_borrowed_quantity(db, 1:5)
+```
+
+```{r, echo=FALSE}
+knitr::opts_knit$set(root.dir = wd)
+```
+
 ## Cookies {#cookies}
 
+Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet. Die Web-Applikation setzt zwei Cookies. Die Cookies sind jeweils für einen Zeitraum von sieben Tagen gültig.
+
+### dark-mode
+
+Dieses Cookie kann die Werte `"true"` oder `"false"` enthalten. Das Cookie wird gesetzt, wenn der Nutzer die Toggle für den Nachtmodus verwendet. Beim Start der Web-Applikation wird das Cookie verwendet, um den initialen Status für den Nachtmodus zu bestimmen. Falls das Cookie nicht vorhanden ist, wird die Einstellung des Browsers (`window.matchMedia('(prefers-color-scheme: dark)')`) ausgelesen und im Cookie gesetzt.
+
+### user
+
+Dieses Cookie enthält einen verhashten Nutzernamen und dient zur Identifikation eines angemeldeten Nutzers. Das Cookie wird gesetzt, wenn sich ein Nutzer anmeldet. Beim Start der Web-Applikation wird das Cookie verwendet, um den Nutzer automatisch anzumelden. Falls das Cookie nicht vorhanden ist, muss der Nutzer sich manuell anmelden.
+
+### Implementierung
+
+Zur Verwaltung der Cookies wird die Bibliothek [js-cookie](https://github.com/js-cookie/js-cookie) verwendet. Die Datei `www/js/cookies.js` enthält Hilfsfunktionen zum Lesen und Schreiben von Cookies und verbindet diese mit Inputwerten in Shiny. Die Hilfsfunktionen werden in R mithilfe von `shinyjs::extendShinyjs()` eingebunden.
+
 ## Deployment
+
+Der Shiny Server liegt auf einer virtuellen Maschine (VirtualBox). Auf der virtuellen Maschine ist das Betriebssystem *Ubuntu 20.04.2 LTS* ohne grafische Benutzeroberfläche installiert. Änderungen am Shiny Server werden erst wirksam, nachdem der Shiny Server neugestartet wurde. Dazu kann folgender Befehl verwendet werden: `sudo systemctl restart shiny-server`.
+
+Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevante Dateien liegen.
+
+* `/etc/shiny-server`
+
+  Dieser Ordner enthält die Datei `shiny-server.conf`, mit der der Shiny Server konfiguriert werden kann. Hier kann der Port eingestellt werden, unter dem die Web-Applikation verfügbar gemacht wird. Der Port `3838` ist voreingestellt.
+
+* `/srv/shiny-server/Sensotheka`
+  
+  Dieser Ordner enthält das Git-Repository, das die tatsächliche Web-Applikation darstellt. Es verweist auf das GitHub-Repository `https://github.com/PFA-WebApp/App.git` als Remote mit Namen `origin`. In der Datei `app.yml` müssen die folgenden Einstellungen vorgenommen werden:
+  
+  | Einstellung | Beschreibung |
+| :--- | :--------- |
+| showcase | `yes` für Showcasemodus (Passwörter für Standardnutzer werden eingeblendet, Standardnutzer können nicht gelöscht werden), `no` (voreingestellt) für Betriebsmodus |
+| url | Base-URL auf die QR-Codes verweisen. Hier sind Anpassungen zwingend notwendig. |
+
+* `/etc/rstudio`
+
+  Dieser Ordner enthält die Datei `rserver.conf`, mit der der RStudio Server konfiguriert werden kann. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port `8787` ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers `pfa` und seines Passworts eingeloggt werden. Für weitere Informationen siehe [https://docs.rstudio.com/ide/server-pro/](https://docs.rstudio.com/ide/server-pro/). Es ist zu beachten, dass es sich bei der installierten Version um die Open-Source-Version und *nicht* um die Pro-Version handelt.
+
+* `/var/log/shiny-server/Sensotheka`
+
+  Dieser Ordner enthält Log-Dateien, die vom Shiny Server erzeugt werden, wenn Komplikationen im Betrieb auftreten. Sollte das der Fall sein, ist es ratsam, diese zunächst zu konsultieren, bevor mit der Fehlerbehandlung begonnen wird.
