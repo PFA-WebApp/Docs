@@ -1,1 +1,16 @@
-# Diskussion {#discussion}
+# Diskussion und Ausblick {#discussion}
+
+Übergeordnetes Ziel des Projektes war es, eine Web-Applikation zu entwickeln, die die Sensorverwaltung des Fachgebietes Fahrzeugantriebe der Technischen Universität Berlin übernimmt. Dazu musste eine Vielzahl von Konzepten erstellt und umgesetzt werden, unter anderem die Abstraktion der Datenstruktur und deren Abbildung auf eine Datenbank. Die an die Web-Applikation erstellten Anforderungen wurden allesamt erfüllt und konnten in Rücksprache mit den Ansprechpartnern am Fachgebiet sogar erweitert werden. 
+
+Das Projekt schließt mit einer Diskussion der Ergebnisse und der Weise, auf die diese Ergebnisse erzielt wurden, ab. Rückblickend ist festzuhalten, dass der Umfang des Projektes - insbesondere durch zusätzliche Anforderungen - den verfügbaren zeitlichen Rahmen überstiegen hat. Während der Projektphase sind zusätzliche Anforderungen aufgetreten, die mit einem realistischen Qualitätsanspruch nicht umgesetzt werden konnten. Das Hauptaugenmerk bei der Entwicklung der Web-Applikation lag insbesondere auf der Gewährleistung der Funktionalität über den Rahmen des Projektes hinaus. Diesem Aspekt wurde die Implementierung zusätzlicher Funktionalität geringerer Qualität untergeordnet. Vor allen Dingen wurde das Layout, die Datenbankstruktur und Operationen auf der Datenbank optimiert. Das Layout ist zeitgemäß, konsistent und übersichtlich, sodass der Nutzer sich einfach zurechtfindet. Es überzeugt durch einen hohen Detailgrad. Die Datenbankstruktur ist redundanzfrei und konnte trotz gestiegener Anforderungen über das Projekt zielführend erweitert werden. Eine Vielzahl an Hilfsfunktionen sowie der kohärente Aufbau der Tabellen begünstigt darüber hinaus eine effiziente, zukünftige Erweiterung. Die logische Konsistenz der Daten wird des Weiteren durch den vielfältigen Einsatz von Datenbankbeschränkungen garantiert.
+
+Die Struktur der Web-Applikation begünstigt daher nicht nur ihren zuverlässigen dauerhaften Einsatz sondern auch eine stetige Weiterentwicklung. Darüber hinaus wurde durch die sachgemäße Einrichtung der virtuellen Maschine der Grundstein für Folgeprojekte gelegt. Der Einstieg in das Projekt für mit R und der Entwicklung von Web-Applikationen unerfahrenen Personen ist sicherlich mit Hürden verbunden. Durch den vorliegenden Bericht und die durchdachte Struktur der Web-Applikation soll er jedoch so einfach wie möglich gemacht werden. Folgeprojekte können sich zum Beispiel mit den nachfolgenden Inhalten beschäftigen:
+
+* Erweiterung der Datenstruktur um Stücklisten, um komplexere Beziehungen zwischen Elementen abbilden zu können
+* E-Mail-Integration für Registrierung, Passwort vergessen und Benachrichtigungen
+* Hinterlegen zusätzlicher Informationen für die Ausleihe (vorraussichtliches Rückgabedatum, Verwendungszweck etc.)
+* Export von Daten
+* Einstellen kritischer Bestände auf Nutzerebene
+* Integration zusätzlicher fachgebietspezifischer Anwendungen (Kalender, Dateiverwaltung etc.)
+
+Abschließend freuen wir uns, die fertige Web-Applikation dem Fachgebiet zu übergeben und sind gespannt, in welchem Umfang sie in Zukunft eingesetzt und sogar weiterentwickelt wird.
