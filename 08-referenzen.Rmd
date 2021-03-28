@@ -1,15 +1,9 @@
-\newpage{}
+\clearpage
 
 \pagenumbering{roman}
 
-`r if (knitr::is_html_output()) '# References {-}'`
+\null
 
-<div id="refs" style="display:none"></div>
+\addcontentsline{toc}{section}{Literaturverzeichnis}
 
-\printbibliography[heading=bibintoc, title=Literaturverzeichnis]
-
-<!---
-[^laudon2015]: Laudon, K.C.; Laudon, J.P.; Schroeder, D.: _Wirtschaftsinformatik - Eine Einführung_, Pearson, 2015, S. 295-300
-
-[^whysqlite]: SQLite Consortium: _Appropriate Uses for SQLite_, URL: https://www.sqlite.org/whentouse.html, Letzter Aufruf: 14.03.2021
--->
+`r if (knitr::is_html_output()) '# Literaturverzeichnis {#references}'`

@@ -31,6 +31,7 @@
   
 <link rel="prev" href="requirements.html"/>
 <link rel="next" href="workflow.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -48,7 +49,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/font-awesome-5.13.0/css/all.min.css" rel="stylesheet" />
 <link href="libs/font-awesome-5.13.0/css/v4-shims.min.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -56,18 +56,18 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +87,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -137,8 +137,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Einführung</a></li>
-<li class="chapter" data-level="2" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>2</b> Anforderungen</a><ul>
-<li class="chapter" data-level="2.1" data-path="requirements.html"><a href="requirements.html#funktionale-anforderungen-an-die-web-applikation"><i class="fa fa-check"></i><b>2.1</b> Funktionale Anforderungen an die Web-Applikation</a><ul>
+<li class="chapter" data-level="2" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>2</b> Anforderungen</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="requirements.html"><a href="requirements.html#funktionale-anforderungen-an-die-web-applikation"><i class="fa fa-check"></i><b>2.1</b> Funktionale Anforderungen an die Web-Applikation</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="requirements.html"><a href="requirements.html#sensorverwaltung"><i class="fa fa-check"></i><b>2.1.1</b> Sensorverwaltung</a></li>
 <li class="chapter" data-level="2.1.2" data-path="requirements.html"><a href="requirements.html#dateiverwaltung"><i class="fa fa-check"></i><b>2.1.2</b> Dateiverwaltung</a></li>
 <li class="chapter" data-level="2.1.3" data-path="requirements.html"><a href="requirements.html#nutzerverwaltung"><i class="fa fa-check"></i><b>2.1.3</b> Nutzerverwaltung</a></li>
@@ -146,47 +148,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.5" data-path="requirements.html"><a href="requirements.html#bestandsinformation"><i class="fa fa-check"></i><b>2.1.5</b> Bestandsinformation</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="requirements.html"><a href="requirements.html#nicht-funktionale-anforderungen-an-die-web-applikation"><i class="fa fa-check"></i><b>2.2</b> Nicht-funktionale Anforderungen an die Web-Applikation</a></li>
-<li class="chapter" data-level="2.3" data-path="requirements.html"><a href="requirements.html#zusätzliche-anforderungen"><i class="fa fa-check"></i><b>2.3</b> Zusätzliche Anforderungen</a><ul>
+<li class="chapter" data-level="2.3" data-path="requirements.html"><a href="requirements.html#zusätzliche-anforderungen"><i class="fa fa-check"></i><b>2.3</b> Zusätzliche Anforderungen</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="requirements.html"><a href="requirements.html#datenbank"><i class="fa fa-check"></i><b>2.3.1</b> Datenbank</a></li>
 <li class="chapter" data-level="2.3.2" data-path="requirements.html"><a href="requirements.html#deployment"><i class="fa fa-check"></i><b>2.3.2</b> Deployment</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="tech-stack.html"><a href="tech-stack.html"><i class="fa fa-check"></i><b>3</b> Tech Stack</a><ul>
+<li class="chapter" data-level="3" data-path="tech-stack.html"><a href="tech-stack.html"><i class="fa fa-check"></i><b>3</b> Tech Stack</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="tech-stack.html"><a href="tech-stack.html#framework"><i class="fa fa-check"></i><b>3.1</b> Framework</a></li>
 <li class="chapter" data-level="3.2" data-path="tech-stack.html"><a href="tech-stack.html#programmiersprache"><i class="fa fa-check"></i><b>3.2</b> Programmiersprache</a></li>
 <li class="chapter" data-level="3.3" data-path="tech-stack.html"><a href="tech-stack.html#datenbank-1"><i class="fa fa-check"></i><b>3.3</b> Datenbank</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>4</b> Arbeitsprozess</a><ul>
+<li class="chapter" data-level="4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>4</b> Arbeitsprozess</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="workflow.html"><a href="workflow.html#entwicklungsmodell"><i class="fa fa-check"></i><b>4.1</b> Entwicklungsmodell</a></li>
 <li class="chapter" data-level="4.2" data-path="workflow.html"><a href="workflow.html#entwicklungsumgebung"><i class="fa fa-check"></i><b>4.2</b> Entwicklungsumgebung</a></li>
 <li class="chapter" data-level="4.3" data-path="workflow.html"><a href="workflow.html#versionskontrolle"><i class="fa fa-check"></i><b>4.3</b> Versionskontrolle</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="user-guide.html"><a href="user-guide.html"><i class="fa fa-check"></i><b>5</b> Nutzerhilfe</a><ul>
+<li class="chapter" data-level="5" data-path="user-guide.html"><a href="user-guide.html"><i class="fa fa-check"></i><b>5</b> Nutzerhilfe</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="user-guide.html"><a href="user-guide.html#sidebar"><i class="fa fa-check"></i><b>5.1</b> Sidebar</a></li>
 <li class="chapter" data-level="5.2" data-path="user-guide.html"><a href="user-guide.html#navbar"><i class="fa fa-check"></i><b>5.2</b> Navbar</a></li>
-<li class="chapter" data-level="5.3" data-path="user-guide.html"><a href="user-guide.html#login"><i class="fa fa-check"></i><b>5.3</b> Anmeldung</a><ul>
+<li class="chapter" data-level="5.3" data-path="user-guide.html"><a href="user-guide.html#login"><i class="fa fa-check"></i><b>5.3</b> Anmeldung</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="user-guide.html"><a href="user-guide.html#status-nicht-angemeldet"><i class="fa fa-check"></i><b>5.3.1</b> Status: Nicht angemeldet</a></li>
 <li class="chapter" data-level="5.3.2" data-path="user-guide.html"><a href="user-guide.html#status-angemeldet"><i class="fa fa-check"></i><b>5.3.2</b> Status: Angemeldet</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="user-guide.html"><a href="user-guide.html#operate"><i class="fa fa-check"></i><b>5.4</b> Ausleihen &amp; Zurückgeben</a><ul>
+<li class="chapter" data-level="5.4" data-path="user-guide.html"><a href="user-guide.html#operate"><i class="fa fa-check"></i><b>5.4</b> Ausleihen &amp; Zurückgeben</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="user-guide.html"><a href="user-guide.html#ausleihen-zurückgeben"><i class="fa fa-check"></i><b>5.4.1</b> Ausleihen &amp; Zurückgeben</a></li>
 <li class="chapter" data-level="5.4.2" data-path="user-guide.html"><a href="user-guide.html#gruppen-des-ausgewählten-typs"><i class="fa fa-check"></i><b>5.4.2</b> Gruppen des ausgewählten Typs</a></li>
 <li class="chapter" data-level="5.4.3" data-path="user-guide.html"><a href="user-guide.html#dateien"><i class="fa fa-check"></i><b>5.4.3</b> Dateien</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="user-guide.html"><a href="user-guide.html#reporting"><i class="fa fa-check"></i><b>5.5</b> Bestandsinformation</a><ul>
+<li class="chapter" data-level="5.5" data-path="user-guide.html"><a href="user-guide.html#reporting"><i class="fa fa-check"></i><b>5.5</b> Bestandsinformation</a>
+<ul>
 <li class="chapter" data-level="5.5.1" data-path="user-guide.html"><a href="user-guide.html#bestandsübersicht"><i class="fa fa-check"></i><b>5.5.1</b> Bestandsübersicht</a></li>
 <li class="chapter" data-level="5.5.2" data-path="user-guide.html"><a href="user-guide.html#ausleihübersicht"><i class="fa fa-check"></i><b>5.5.2</b> Ausleihübersicht</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="user-guide.html"><a href="user-guide.html#user-management"><i class="fa fa-check"></i><b>5.6</b> Nutzerverwaltung <span class="badge admin">A</span> <span class="badge mod">M</span></a><ul>
+<li class="chapter" data-level="5.6" data-path="user-guide.html"><a href="user-guide.html#user-management"><i class="fa fa-check"></i><b>5.6</b> Nutzerverwaltung <span class="badge admin">A</span> <span class="badge mod">M</span></a>
+<ul>
 <li class="chapter" data-level="5.6.1" data-path="user-guide.html"><a href="user-guide.html#nutzer-hinzufügen"><i class="fa fa-check"></i><b>5.6.1</b> Nutzer hinzufügen</a></li>
 <li class="chapter" data-level="5.6.2" data-path="user-guide.html"><a href="user-guide.html#nutzertabelle"><i class="fa fa-check"></i><b>5.6.2</b> Nutzertabelle</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="user-guide.html"><a href="user-guide.html#group"><i class="fa fa-check"></i><b>5.7</b> Gruppen <span class="badge admin">A</span></a><ul>
+<li class="chapter" data-level="5.7" data-path="user-guide.html"><a href="user-guide.html#group"><i class="fa fa-check"></i><b>5.7</b> Gruppen <span class="badge admin">A</span></a>
+<ul>
 <li class="chapter" data-level="5.7.1" data-path="user-guide.html"><a href="user-guide.html#gruppe-hinzufügen"><i class="fa fa-check"></i><b>5.7.1</b> Gruppe hinzufügen</a></li>
 <li class="chapter" data-level="5.7.2" data-path="user-guide.html"><a href="user-guide.html#gruppentabelle"><i class="fa fa-check"></i><b>5.7.2</b> Gruppentabelle</a></li>
 <li class="chapter" data-level="5.7.3" data-path="user-guide.html"><a href="user-guide.html#typen-anzeigen"><i class="fa fa-check"></i><b>5.7.3</b> Typen anzeigen</a></li>
 </ul></li>
-<li class="chapter" data-level="5.8" data-path="user-guide.html"><a href="user-guide.html#type"><i class="fa fa-check"></i><b>5.8</b> Sensortypen <span class="badge admin">A</span></a><ul>
+<li class="chapter" data-level="5.8" data-path="user-guide.html"><a href="user-guide.html#type"><i class="fa fa-check"></i><b>5.8</b> Sensortypen <span class="badge admin">A</span></a>
+<ul>
 <li class="chapter" data-level="5.8.1" data-path="user-guide.html"><a href="user-guide.html#typ-hinzufügen"><i class="fa fa-check"></i><b>5.8.1</b> Typ hinzufügen</a></li>
 <li class="chapter" data-level="5.8.2" data-path="user-guide.html"><a href="user-guide.html#typtabelle"><i class="fa fa-check"></i><b>5.8.2</b> Typtabelle</a></li>
 <li class="chapter" data-level="5.8.3" data-path="user-guide.html"><a href="user-guide.html#gruppen-anzeigen"><i class="fa fa-check"></i><b>5.8.3</b> Gruppen anzeigen</a></li>
@@ -194,21 +206,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.9" data-path="user-guide.html"><a href="user-guide.html#file-management"><i class="fa fa-check"></i><b>5.9</b> Dateiverwaltung <span class="badge admin">A</span></a></li>
 <li class="chapter" data-level="5.10" data-path="user-guide.html"><a href="user-guide.html#qrcode"><i class="fa fa-check"></i><b>5.10</b> QR-Code <span class="badge admin">A</span></a></li>
-<li class="chapter" data-level="5.11" data-path="user-guide.html"><a href="user-guide.html#settings"><i class="fa fa-check"></i><b>5.11</b> Einstellungen</a><ul>
+<li class="chapter" data-level="5.11" data-path="user-guide.html"><a href="user-guide.html#settings"><i class="fa fa-check"></i><b>5.11</b> Einstellungen</a>
+<ul>
 <li class="chapter" data-level="5.11.1" data-path="user-guide.html"><a href="user-guide.html#benutzernamen-ändern"><i class="fa fa-check"></i><b>5.11.1</b> Benutzernamen ändern</a></li>
 <li class="chapter" data-level="5.11.2" data-path="user-guide.html"><a href="user-guide.html#passwort-ändern"><i class="fa fa-check"></i><b>5.11.2</b> Passwort ändern</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="technical-guide.html"><a href="technical-guide.html"><i class="fa fa-check"></i><b>6</b> Technische Umsetzung</a><ul>
-<li class="chapter" data-level="6.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur-der-web-applikation"><i class="fa fa-check"></i><b>6.1</b> Struktur der Web-Applikation</a><ul>
+<li class="chapter" data-level="6" data-path="technical-guide.html"><a href="technical-guide.html"><i class="fa fa-check"></i><b>6</b> Technische Umsetzung</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur-der-web-applikation"><i class="fa fa-check"></i><b>6.1</b> Struktur der Web-Applikation</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur-von-app.r"><i class="fa fa-check"></i><b>6.1.1</b> Struktur von <code>app.R</code></a></li>
 <li class="chapter" data-level="6.1.2" data-path="technical-guide.html"><a href="technical-guide.html#ordnerstruktur"><i class="fa fa-check"></i><b>6.1.2</b> Ordnerstruktur</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="technical-guide.html"><a href="technical-guide.html#database"><i class="fa fa-check"></i><b>6.2</b> Datenbank</a><ul>
+<li class="chapter" data-level="6.2" data-path="technical-guide.html"><a href="technical-guide.html#database"><i class="fa fa-check"></i><b>6.2</b> Datenbank</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur"><i class="fa fa-check"></i><b>6.2.1</b> Struktur</a></li>
 <li class="chapter" data-level="6.2.2" data-path="technical-guide.html"><a href="technical-guide.html#zugriff"><i class="fa fa-check"></i><b>6.2.2</b> Zugriff</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="technical-guide.html"><a href="technical-guide.html#cookies"><i class="fa fa-check"></i><b>6.3</b> Cookies</a><ul>
+<li class="chapter" data-level="6.3" data-path="technical-guide.html"><a href="technical-guide.html#cookies"><i class="fa fa-check"></i><b>6.3</b> Cookies</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="technical-guide.html"><a href="technical-guide.html#dark-mode"><i class="fa fa-check"></i><b>6.3.1</b> dark-mode</a></li>
 <li class="chapter" data-level="6.3.2" data-path="technical-guide.html"><a href="technical-guide.html#user-1"><i class="fa fa-check"></i><b>6.3.2</b> user</a></li>
 <li class="chapter" data-level="6.3.3" data-path="technical-guide.html"><a href="technical-guide.html#implementierung"><i class="fa fa-check"></i><b>6.3.3</b> Implementierung</a></li>
@@ -216,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="technical-guide.html"><a href="technical-guide.html#deployment-1"><i class="fa fa-check"></i><b>6.4</b> Deployment</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>7</b> Diskussion und Ausblick</a></li>
-<li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> Referenzen</a></li>
+<li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> Literaturverzeichnis</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -237,14 +254,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tech-stack" class="section level1">
+<div id="tech-stack" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Tech Stack</h1>
-<p>Als Tech Stack wird die Summe der verwendeten Technologien bezeichnet. Dazu gehören zum Beispiel die Programmiersprache, das Framework für die Web-Applikation, die Datenbanksoftware, aber auch die Entwicklungsumgebung und weitere Software, die im Entwicklungsprozess verwendet wird.</p>
-<div id="framework" class="section level2">
+<p>Als Tech Stack wird die Summe der verwendeten Technologien bezeichnet. Dazu gehören zum Beispiel die Programmiersprache, das Framework für die Web-Applikation, die Datenbanksoftware, aber auch die Entwicklungsumgebung und weitere Software, die im Entwicklungsprozess verwendet wird.<span class="citation">[<a href="#ref-techstack" role="doc-biblioref"><strong>techstack?</strong></a>]</span></p>
+<div id="framework" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Framework</h2>
-<p>Zuallererst muss das Framework zur Erstellung der Web-Applikation gewählt werden. Dieses legt normalerweise die zu verwendende Programmiersprache fest und setzt möglicherweise Restriktionen in Bezug auf weitere Software. Eine Web-Applikation zeichnet sich dadurch aus, dass sie im Webbrowser ausführbar ist. Der Webbrowser ist in der Lage, Dateien im HTML-Format (HTML: Hyper Text Markup Language) darzustellen. Das HTML-Format spezifiziert dabei ausschließlich die Struktur der Webseite. Um die visuelle Erscheinung der Webseite zu beeinflussen, können Regeln in CSS-Dateien (CSS: Cascading Style Sheet) hinterlegt werden. Für interaktives Verhalten existiert die Sprache JavaScript, die es ermöglicht, das HTML-Dokument dynamisch anzupassen.</p>
-<p>Ein Framework zur Erstellung von Web-Applikationen bietet ein Grundgerüst für Layout sowie Funktionalität und stellt einen Server bereit. Für das Layout werden beispielsweise makroskopische Komponenten, wie Dashboards und Landing Pages, oder mikroskopische Komponenten, wie Inputs, Tabellen und Plots, bereitgestellt. Die Funktionalität wird abstrahiert und der Zustand der Web-Applikation modelliert. Der Server bearbeitet Anfragen von Clients, also Nutzern der Web-Applikation. Frameworks können in beliebigen Programmiersprachen implementiert werden, solange eine Schnittstelle zwischen der vom Framework verwendeten Sprache und einer dem Browser verständlichen Sprache existiert. Frameworks können hinsichtlich verschiedener Kriterien unterschieden werden. Backend-Frameworks integrieren neben einem Server meist auch noch Datenbanken, wohingegen Frontend-Frameworks ihren Fokus mehr auf dem visuellen Part legen. Multipage-Frameworks enthalten mehrere Seiten, wohingegen Singlepage-Frameworks nur eine einzige Seite darstellen.</p>
-<p>Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in der Programmiersprache R implementiert ist. Hierbei handelt es sich um ein Singlepage-Framework, das als Backend den sogenannten Shiny Server enthält. Maßgeblich für die Entscheidung war, dass die beiden Autoren über Erfahrung im Umgang mit R und im Speziellen mit Shiny verfügen. Darüber hinaus zeichnet sich Shiny durch folgende Eigenschaften und Vorzüge aus:</p>
+<p>Zuallererst muss das Framework zur Erstellung der Web-Applikation gewählt werden. Dieses legt die zu verwendende Programmiersprache fest und setzt möglicherweise Restriktionen in Bezug auf weitere Software. Eine Web-Applikation zeichnet sich dadurch aus, dass sie im Webbrowser ausführbar ist <span class="citation">[<a href="#ref-webappdef" role="doc-biblioref"><strong>webappdef?</strong></a>]</span>. Der Webbrowser ist in der Lage, Dateien im HTML-Format (HTML: Hyper Text Markup Language <span class="citation">[<a href="#ref-html" role="doc-biblioref"><strong>html?</strong></a>]</span>) darzustellen. Das HTML-Format spezifiziert dabei ausschließlich die Struktur der Webseite. Um die visuelle Erscheinung der Webseite zu beeinflussen, können Regeln in CSS-Dateien (CSS: Cascading Style Sheet <span class="citation">[<a href="#ref-css" role="doc-biblioref"><strong>css?</strong></a>]</span>) hinterlegt werden. Für interaktives Verhalten existiert die Sprache JavaScript, die es ermöglicht, das HTML-Dokument dynamisch anzupassen <span class="citation">[<a href="#ref-javascript" role="doc-biblioref"><strong>javascript?</strong></a>]</span>.</p>
+<p>Ein Framework zur Erstellung von Web-Applikationen bietet ein Grundgerüst für Layout sowie Funktionalität und stellt einen Server bereit. Für das Layout werden beispielsweise makroskopische Komponenten, wie Dashboards und Landing Pages, oder mikroskopische Komponenten, wie Inputs, Tabellen und Plots, bereitgestellt. Die Funktionalität wird abstrahiert und der Zustand der Web-Applikation modelliert. Der Server bearbeitet Anfragen von Clients, also Nutzern der Web-Applikation. Frameworks können in beliebigen Programmiersprachen implementiert werden, solange eine Schnittstelle zwischen der vom Framework verwendeten Sprache und einer dem Browser verständlichen Sprache existiert. Frameworks können hinsichtlich verschiedener Kriterien unterschieden werden. Backend-Frameworks integrieren neben einem Server meist auch noch Datenbanken, wohingegen Frontend-Frameworks ihren Fokus mehr auf dem visuellen Part legen. Multipage-Frameworks enthalten mehrere Seiten, wohingegen Singlepage-Frameworks nur eine einzige Seite darstellen.<span class="citation">[<a href="#ref-framework" role="doc-biblioref"><strong>framework?</strong></a>]</span></p>
+<p>Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in der Programmiersprache R implementiert ist. Hierbei handelt es sich um ein Singlepage-Framework, das als Backend den sogenannten Shiny Server enthält <span class="citation">[<a href="#ref-shiny" role="doc-biblioref"><strong>shiny?</strong></a>]</span>. Maßgeblich für die Entscheidung war, dass die beiden Autoren über Erfahrung im Umgang mit R und im Speziellen mit Shiny verfügen. Darüber hinaus zeichnet sich Shiny durch folgende Eigenschaften und Vorzüge aus <span class="citation">[<a href="#ref-shiny" role="doc-biblioref"><strong>shiny?</strong></a>]</span>:</p>
 <ul>
 <li>Moderne Templates</li>
 <li>Fokus auf konkrete Funktionalität</li>
@@ -254,9 +271,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Einfache Integration von Datenbanken</li>
 </ul>
 </div>
-<div id="programmiersprache" class="section level2">
+<div id="programmiersprache" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Programmiersprache</h2>
-<p><a href="https://www.r-project.org/">R</a> ist eine Multiparadigmen-Programmiersprache. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden. R verfügt einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden. Das Comprehensive R Archive Network (<a href="https://cran.r-project.org/">CRAN</a>) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung beispielsweise {<a href="https://shiny.rstudio.com/">shiny</a>}, das die Funktionalitäten des Frameworks beinhaltet. Die folgenden Tabellen <a href="tech-stack.html#tab:pkg-shiny">3.1</a> und <a href="tech-stack.html#tab:pkg-programming">3.2</a> geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.</p>
+<p><a href="https://www.r-project.org/">R</a> ist eine Multiparadigmen-Programmiersprache <span class="citation">[<a href="#ref-r-multiparadima" role="doc-biblioref"><strong>r-multiparadima?</strong></a>]</span>. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden. R verfügt einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden. Das Comprehensive R Archive Network (<a href="https://cran.r-project.org/">CRAN</a>) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung wie zum Beispiel {<a href="https://shiny.rstudio.com/">shiny</a>}, das die Funktionalitäten des Frameworks beinhaltet <span class="citation">[<a href="#ref-cran" role="doc-biblioref"><strong>cran?</strong></a>]</span>. Die folgenden Tabellen <a href="tech-stack.html#tab:pkg-shiny">3.1</a> und <a href="tech-stack.html#tab:pkg-programming">3.2</a> geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.</p>
 <table>
 <caption><span id="tab:pkg-shiny">Tabelle 3.1: </span> Packages für {shiny}</caption>
 <thead>
@@ -267,31 +284,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </thead>
 <tbody>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/bs4Dash/index.html">bs4Dash</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/bs4Dash/index.html">bs4Dash</a>} <span class="citation">[<a href="references.html#ref-R-bs4Dash" role="doc-biblioref">1</a>]</span></td>
 <td>AdminLTE-Template</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/DT/index.html">DT</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/DT/index.html">DT</a>} <span class="citation">[<a href="references.html#ref-R-DT" role="doc-biblioref">2</a>]</span></td>
 <td>DataTables für {shiny}</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/htmltools/index.html">htmltools</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/htmltools/index.html">htmltools</a>} <span class="citation">[<a href="references.html#ref-R-htmltools" role="doc-biblioref">3</a>]</span></td>
 <td>HTML-Repräsentation in R</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/rclipboard/index.html">rclipboard</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/rclipboard/index.html">rclipboard</a>} <span class="citation">[<a href="references.html#ref-R-rclipboard" role="doc-biblioref">4</a>]</span></td>
 <td>Zwischenablage</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/shinydisconnect/index.html">shinydisconnect</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/shinydisconnect/index.html">shinydisconnect</a>} <span class="citation">[<a href="references.html#ref-R-shinydisconnect" role="doc-biblioref">5</a>]</span></td>
 <td>Verbindungsverlustbildschirm</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/shinyjs/index.html">shinyjs</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/shinyjs/index.html">shinyjs</a>} <span class="citation">[<a href="references.html#ref-R-shinyjs" role="doc-biblioref">6</a>]</span></td>
 <td>Integration von Custom-JavaScript</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/waiter/index.html">waiter</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/waiter/index.html">waiter</a>} <span class="citation">[<a href="references.html#ref-R-waiter" role="doc-biblioref">7</a>]</span></td>
 <td>Ladebildschirm</td>
 </tr>
 </tbody>
@@ -306,69 +323,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </thead>
 <tbody>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/Cairo/index.html">Cairo</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/Cairo/index.html">Cairo</a>} <span class="citation">[<a href="references.html#ref-R-Cairo" role="doc-biblioref">8</a>]</span></td>
 <td>PDF-/PNG-/SVG-Erstellung</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/DBI/index.html">DBI</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/DBI/index.html">DBI</a>} <span class="citation">[<a href="references.html#ref-R-DBI" role="doc-biblioref">9</a>]</span></td>
 <td>Datenbankinterface</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/dplyr/index.html">dplyr</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/dplyr/index.html">dplyr</a>} <span class="citation">[<a href="references.html#ref-R-dplyr" role="doc-biblioref">10</a>]</span></td>
 <td>Datentransformationen</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/glue/index.html">glue</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/glue/index.html">glue</a>} <span class="citation">[<a href="references.html#ref-R-glue" role="doc-biblioref">11</a>]</span></td>
 <td>String-Erzeugung</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/lubridate/index.html">lubridate</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/lubridate/index.html">lubridate</a>} <span class="citation">[<a href="references.html#ref-R-lubridate" role="doc-biblioref">12</a>]</span></td>
 <td>Datumsformat</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/RSQLite/index.html">RSQLite</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/RSQLite/index.html">RSQLite</a>} <span class="citation">[<a href="references.html#ref-R-RSQLite" role="doc-biblioref">13</a>]</span></td>
 <td>SQLite-Datenbank</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/stringr/index.html">stringr</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/stringr/index.html">stringr</a>} <span class="citation">[<a href="references.html#ref-R-stringr" role="doc-biblioref">14</a>]</span></td>
 <td>String-Manipulation</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/tibble/index.html">tibble</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/tibble/index.html">tibble</a>} <span class="citation">[<a href="references.html#ref-R-tibble" role="doc-biblioref">15</a>]</span></td>
 <td>Tabellenformat</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/purrr/index.html">purrr</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/purrr/index.html">purrr</a>} <span class="citation">[<a href="references.html#ref-R-purrr" role="doc-biblioref">16</a>]</span></td>
 <td>Funktionale Programmierung</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/qrcode/index.html">qrcode</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/qrcode/index.html">qrcode</a>} <span class="citation">[<a href="references.html#ref-R-qrcode" role="doc-biblioref">17</a>]</span></td>
 <td>Erstellung von QR-Codes</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/renv/index.html">renv</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/renv/index.html">renv</a>} <span class="citation">[<a href="references.html#ref-R-renv" role="doc-biblioref">18</a>]</span></td>
 <td>Packagemanagement</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/yaml/index.html">yaml</a>}</td>
+<td>{<a href="https://cran.r-project.org/web/packages/yaml/index.html">yaml</a>} <span class="citation">[<a href="references.html#ref-R-yaml" role="doc-biblioref">19</a>]</span></td>
 <td>YAML-Dateiformat</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="datenbank-1" class="section level2">
+<div id="datenbank-1" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Datenbank</h2>
-<p>Zur konsistenten Datenverwaltung wird eine Datenbank benötigt. Datenbanken sind in der Lage, Anfragen von verschiedenen Clients zu bearbeiten und dabei zu gewährleisten, dass bestimmte Regeln hinsichtlich der Datenstruktur und Ausprägung der Daten eingehalten werden. Es existieren verschiedene Datenbankmodelle, unter anderem das Netzwerk-, das objektorientierte, das hierachische oder das relationale Datenbankmodell.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Diese unterscheiden sich hinsichtlich der Verknüpfung der beteiligten Daten. Aufgrund der hohen Flexibilität und der weiten Verbreitung wurde das relationale Datenbankmodell ausgewählt. Dieses speichert die Daten in miteinander verknüpften Tabellen. Die Tabellenzeilen enthalten Beobachtungen, die Tabellenspalten stellen die beobachtbaren Merkmale dar. Zur eindeutigen Identifikation erhält jede Zeile eine Identifikationsnummer. Die Spalte der Identifikationsnummern wird als Primärschlüssel (<em>Primary Key</em>) bezeichnet. Um verschiedene Tabellen miteinander zu verknüpfen, werden Identifikationsnummern referenziert. Eine Spalte, die auf einen Primärschlüssel einer anderen Tabelle verweist, wird als Fremdschlüssel (<em>Foreign Key</em>) bezeichnet.</p>
-<p>Es gibt eine Vielzahl verschiedener relationaler Datenbankmanagementsysteme, die sich hinsichtlich ihrer Anwendungsbereiche und Skalierbarkeit unterscheiden. Für Projekte kleinen und mittleren Umfanges (unter 100.000 Aufrufe / Tag<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>) eignet sich <a href="https://www.sqlite.org/index.html">SQLite</a>. Hierbei werden alle Tabellen in einer einzigen Datei mit dem Suffix <em>.sqlite</em> gespeichert. Der Zugriff auf die Datenbank erfolgt grundsätzlich über die <em>Structured Query Language</em> (SQL). Für die Programmiersprache R gibt es die Packages {DBI} und {RSQLite}, die eine direkte Schnittstelle zur Datenbank bereitstellen.</p>
+<p>Zur konsistenten Datenverwaltung wird eine Datenbank benötigt. Datenbanken sind in der Lage, Anfragen von verschiedenen Clients zu bearbeiten und dabei zu gewährleisten, dass bestimmte Regeln hinsichtlich der Datenstruktur und Ausprägung der Daten eingehalten werden. Es existieren verschiedene Datenbankmodelle, unter anderem das Netzwerk-, das objektorientierte, das hierachische oder das relationale Datenbankmodell <span class="citation">[<a href="references.html#ref-laudon2015" role="doc-biblioref">20</a>]</span>. Diese unterscheiden sich hinsichtlich der Verknüpfung der beteiligten Daten. Aufgrund der hohen Flexibilität und der weiten Verbreitung wurde das relationale Datenbankmodell ausgewählt. Dieses speichert die Daten in miteinander verknüpften Tabellen. Die Tabellenzeilen enthalten Beobachtungen, die Tabellenspalten stellen die beobachtbaren Merkmale dar. Zur eindeutigen Identifikation erhält jede Zeile eine Identifikationsnummer. Die Spalte der Identifikationsnummern wird als Primärschlüssel (<em>Primary Key</em>) bezeichnet. Um verschiedene Tabellen miteinander zu verknüpfen, werden Identifikationsnummern referenziert. Eine Spalte, die auf einen Primärschlüssel einer anderen Tabelle verweist, wird als Fremdschlüssel (<em>Foreign Key</em>) bezeichnet.</p>
+<p>Es gibt eine Vielzahl verschiedener relationaler Datenbankmanagementsysteme, die sich hinsichtlich ihrer Anwendungsbereiche und Skalierbarkeit unterscheiden. Für Projekte kleinen und mittleren Umfanges (unter 100.000 Aufrufe / Tag <span class="citation">[<a href="references.html#ref-whysqlite" role="doc-biblioref">21</a>]</span>) eignet sich <a href="https://www.sqlite.org/index.html">SQLite</a>. Hierbei werden alle Tabellen in einer einzigen Datei mit dem Suffix <em>.sqlite</em> gespeichert. Der Zugriff auf die Datenbank erfolgt grundsätzlich über die <em>Structured Query Language</em> (SQL). Für die Programmiersprache R gibt es die Packages {DBI} und {RSQLite}, die eine direkte Schnittstelle zur Datenbank bereitstellen.</p>
 
 </div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>Laudon, K.C.; Laudon, J.P.; Schroeder, D.: <em>Wirtschaftsinformatik - Eine Einführung</em>, Pearson, 2015, S. 295-300<a href="tech-stack.html#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>SQLite Consortium: <em>Appropriate Uses for SQLite</em>, URL: <a href="https://www.sqlite.org/whentouse.html" class="uri">https://www.sqlite.org/whentouse.html</a>, Letzter Aufruf: 14.03.2021<a href="tech-stack.html#fnref2" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
             </section>
 

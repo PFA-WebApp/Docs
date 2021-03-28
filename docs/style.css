@@ -155,3 +155,12 @@ img:hover {
   color: white;
   text-align: center !important;
 }
+
+.csl-entry {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.csl-left-margin {
+  margin-right: 15px;
+}

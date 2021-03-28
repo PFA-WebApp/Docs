@@ -1,32 +1,29 @@
 ---
 output:
   bookdown::gitbook:
-  css: style.css
-  config:
-    toc:
-      before: |
-        <li><a href="./">Sensotheka</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    download: ["pdf", "epub"]
-    sharing:
-        facebook: false
-        twitter: false
+    css: style.css
+    config:
+      toc:
+        before: |
+          <li><a href="./">Sensotheka</a></li>
+        after: |
+          <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+      download: ["pdf", "epub"]
+      sharing:
+          facebook: false
+          twitter: false
+    pandoc_args: [ "--csl", "thieme-german.csl"]
   bookdown::pdf_book:
     includes:
       in_header: preamble.tex
     keep_tex: yes
     citation_package: biblatex
   bookdown::epub_book: default
-bibliography: [book.bib, test.bib]
+bibliography: [book.bib, r-bib.bib]
 biblio-style: numeric
 link-citations: true
 always_allow_html: true
 geometry: "left=3cm,right=3.5cm,top=2cm,bottom=2cm"
-header-includes:
-  - \usepackage{setspace}
-  - \onehalfspacing
-  - \usepackage{tabu}
 toc-title: Inhaltsverzeichnis
 ---
 

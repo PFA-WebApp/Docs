@@ -162,7 +162,7 @@ Table: (\#tab:user-table) Nutzertabelle
 
 Der Reiter *Gruppen* erlaubt es, neue Gruppen hinzuzufügen und bestehende Gruppen zu verwalten, vergleiche Abbildung \@ref(fig:group-overview).
 
-```{r group-overview, echo=FALSE, fig.cap="Übersicht: Nutzerverwaltung"}
+```{r group-overview, echo=FALSE, fig.cap="Übersicht: Gruppen"}
 knitr::include_graphics("./img/group_overview.png")
 ```
 

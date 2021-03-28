@@ -111,32 +111,15 @@
 \usepackage{setspace}
 \onehalfspacing
 \usepackage{tabu}
+\usepackage[greek, german, ngerman]{babel}
+\usepackage[style=numeric, sorting=none]{biblatex}
+\usepackage{csquotes}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[style=numeric,]{biblatex}
 \addbibresource{book.bib}
-\addbibresource{test.bib}
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
-  % set entry spacing
-  \ifnum #2 > 0
-  \setlength{\parskip}{#2\baselineskip}
-  \fi
- }%
- {}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\addbibresource{r-bib.bib}
 
 \author{}
 \date{\vspace{-2.5em}}
@@ -331,16 +314,16 @@ Als Deployment wird die Integration der Web-Applikation und der Datenbank in die
 \hypertarget{tech-stack}{%
 \section{Tech Stack}\label{tech-stack}}
 
-Als Tech Stack wird die Summe der verwendeten Technologien bezeichnet. Dazu gehören zum Beispiel die Programmiersprache, das Framework für die Web-Applikation, die Datenbanksoftware, aber auch die Entwicklungsumgebung und weitere Software, die im Entwicklungsprozess verwendet wird.
+Als Tech Stack wird die Summe der verwendeten Technologien bezeichnet. Dazu gehören zum Beispiel die Programmiersprache, das Framework für die Web-Applikation, die Datenbanksoftware, aber auch die Entwicklungsumgebung und weitere Software, die im Entwicklungsprozess verwendet wird.\autocite{techstack}
 
 \hypertarget{framework}{%
 \subsection{Framework}\label{framework}}
 
-Zuallererst muss das Framework zur Erstellung der Web-Applikation gewählt werden. Dieses legt normalerweise die zu verwendende Programmiersprache fest und setzt möglicherweise Restriktionen in Bezug auf weitere Software. Eine Web-Applikation zeichnet sich dadurch aus, dass sie im Webbrowser ausführbar ist. Der Webbrowser ist in der Lage, Dateien im HTML-Format (HTML: Hyper Text Markup Language) darzustellen. Das HTML-Format spezifiziert dabei ausschließlich die Struktur der Webseite. Um die visuelle Erscheinung der Webseite zu beeinflussen, können Regeln in CSS-Dateien (CSS: Cascading Style Sheet) hinterlegt werden. Für interaktives Verhalten existiert die Sprache JavaScript, die es ermöglicht, das HTML-Dokument dynamisch anzupassen.
+Zuallererst muss das Framework zur Erstellung der Web-Applikation gewählt werden. Dieses legt die zu verwendende Programmiersprache fest und setzt möglicherweise Restriktionen in Bezug auf weitere Software. Eine Web-Applikation zeichnet sich dadurch aus, dass sie im Webbrowser ausführbar ist \autocite{webappdef}. Der Webbrowser ist in der Lage, Dateien im HTML-Format (HTML: Hyper Text Markup Language \autocite{html}) darzustellen. Das HTML-Format spezifiziert dabei ausschließlich die Struktur der Webseite. Um die visuelle Erscheinung der Webseite zu beeinflussen, können Regeln in CSS-Dateien (CSS: Cascading Style Sheet \autocite{css}) hinterlegt werden. Für interaktives Verhalten existiert die Sprache JavaScript, die es ermöglicht, das HTML-Dokument dynamisch anzupassen \autocite{javascript}.
 
-Ein Framework zur Erstellung von Web-Applikationen bietet ein Grundgerüst für Layout sowie Funktionalität und stellt einen Server bereit. Für das Layout werden beispielsweise makroskopische Komponenten, wie Dashboards und Landing Pages, oder mikroskopische Komponenten, wie Inputs, Tabellen und Plots, bereitgestellt. Die Funktionalität wird abstrahiert und der Zustand der Web-Applikation modelliert. Der Server bearbeitet Anfragen von Clients, also Nutzern der Web-Applikation. Frameworks können in beliebigen Programmiersprachen implementiert werden, solange eine Schnittstelle zwischen der vom Framework verwendeten Sprache und einer dem Browser verständlichen Sprache existiert. Frameworks können hinsichtlich verschiedener Kriterien unterschieden werden. Backend-Frameworks integrieren neben einem Server meist auch noch Datenbanken, wohingegen Frontend-Frameworks ihren Fokus mehr auf dem visuellen Part legen. Multipage-Frameworks enthalten mehrere Seiten, wohingegen Singlepage-Frameworks nur eine einzige Seite darstellen.
+Ein Framework zur Erstellung von Web-Applikationen bietet ein Grundgerüst für Layout sowie Funktionalität und stellt einen Server bereit. Für das Layout werden beispielsweise makroskopische Komponenten, wie Dashboards und Landing Pages, oder mikroskopische Komponenten, wie Inputs, Tabellen und Plots, bereitgestellt. Die Funktionalität wird abstrahiert und der Zustand der Web-Applikation modelliert. Der Server bearbeitet Anfragen von Clients, also Nutzern der Web-Applikation. Frameworks können in beliebigen Programmiersprachen implementiert werden, solange eine Schnittstelle zwischen der vom Framework verwendeten Sprache und einer dem Browser verständlichen Sprache existiert. Frameworks können hinsichtlich verschiedener Kriterien unterschieden werden. Backend-Frameworks integrieren neben einem Server meist auch noch Datenbanken, wohingegen Frontend-Frameworks ihren Fokus mehr auf dem visuellen Part legen. Multipage-Frameworks enthalten mehrere Seiten, wohingegen Singlepage-Frameworks nur eine einzige Seite darstellen.\autocite{framework}
 
-Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in der Programmiersprache R implementiert ist. Hierbei handelt es sich um ein Singlepage-Framework, das als Backend den sogenannten Shiny Server enthält. Maßgeblich für die Entscheidung war, dass die beiden Autoren über Erfahrung im Umgang mit R und im Speziellen mit Shiny verfügen. Darüber hinaus zeichnet sich Shiny durch folgende Eigenschaften und Vorzüge aus:
+Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in der Programmiersprache R implementiert ist. Hierbei handelt es sich um ein Singlepage-Framework, das als Backend den sogenannten Shiny Server enthält \autocite{shiny}. Maßgeblich für die Entscheidung war, dass die beiden Autoren über Erfahrung im Umgang mit R und im Speziellen mit Shiny verfügen. Darüber hinaus zeichnet sich Shiny durch folgende Eigenschaften und Vorzüge aus \autocite{shiny}:
 
 \begin{itemize}
 \tightlist
@@ -361,7 +344,7 @@ Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in
 \hypertarget{programmiersprache}{%
 \subsection{Programmiersprache}\label{programmiersprache}}
 
-\href{https://www.r-project.org/}{R} ist eine Multiparadigmen-Programmiersprache. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden. R verfügt einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden. Das Comprehensive R Archive Network (\href{https://cran.r-project.org/}{CRAN}) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung beispielsweise \{\href{https://shiny.rstudio.com/}{shiny}\}, das die Funktionalitäten des Frameworks beinhaltet. Die folgenden Tabellen \ref{tab:pkg-shiny} und \ref{tab:pkg-programming} geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.
+\href{https://www.r-project.org/}{R} ist eine Multiparadigmen-Programmiersprache \autocite{r-multiparadima}. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden. R verfügt einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden. Das Comprehensive R Archive Network (\href{https://cran.r-project.org/}{CRAN}) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung wie zum Beispiel \{\href{https://shiny.rstudio.com/}{shiny}\}, das die Funktionalitäten des Frameworks beinhaltet \autocite{cran}. Die folgenden Tabellen \ref{tab:pkg-shiny} und \ref{tab:pkg-programming} geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.
 
 \begin{longtable}[]{@{}ll@{}}
 \caption{\label{tab:pkg-shiny} Packages für \{shiny\}}\tabularnewline
@@ -373,13 +356,13 @@ Package & Beschreibung \\
 Package & Beschreibung \\
 \midrule
 \endhead
-\{\href{https://cran.r-project.org/web/packages/bs4Dash/index.html}{bs4Dash}\} & AdminLTE-Template \\
-\{\href{https://cran.r-project.org/web/packages/DT/index.html}{DT}\} & DataTables für \{shiny\} \\
-\{\href{https://cran.r-project.org/web/packages/htmltools/index.html}{htmltools}\} & HTML-Repräsentation in R \\
-\{\href{https://cran.r-project.org/web/packages/rclipboard/index.html}{rclipboard}\} & Zwischenablage \\
-\{\href{https://cran.r-project.org/web/packages/shinydisconnect/index.html}{shinydisconnect}\} & Verbindungsverlustbildschirm \\
-\{\href{https://cran.r-project.org/web/packages/shinyjs/index.html}{shinyjs}\} & Integration von Custom-JavaScript \\
-\{\href{https://cran.r-project.org/web/packages/waiter/index.html}{waiter}\} & Ladebildschirm \\
+\{\href{https://cran.r-project.org/web/packages/bs4Dash/index.html}{bs4Dash}\} \autocite{R-bs4Dash} & AdminLTE-Template \\
+\{\href{https://cran.r-project.org/web/packages/DT/index.html}{DT}\} \autocite{R-DT} & DataTables für \{shiny\} \\
+\{\href{https://cran.r-project.org/web/packages/htmltools/index.html}{htmltools}\} \autocite{R-htmltools} & HTML-Repräsentation in R \\
+\{\href{https://cran.r-project.org/web/packages/rclipboard/index.html}{rclipboard}\} \autocite{R-rclipboard} & Zwischenablage \\
+\{\href{https://cran.r-project.org/web/packages/shinydisconnect/index.html}{shinydisconnect}\} \autocite{R-shinydisconnect} & Verbindungsverlustbildschirm \\
+\{\href{https://cran.r-project.org/web/packages/shinyjs/index.html}{shinyjs}\} \autocite{R-shinyjs} & Integration von Custom-JavaScript \\
+\{\href{https://cran.r-project.org/web/packages/waiter/index.html}{waiter}\} \autocite{R-waiter} & Ladebildschirm \\
 \bottomrule
 \end{longtable}
 
@@ -393,27 +376,27 @@ Package & Beschreibung \\
 Package & Beschreibung \\
 \midrule
 \endhead
-\{\href{https://cran.r-project.org/web/packages/Cairo/index.html}{Cairo}\} & PDF-/PNG-/SVG-Erstellung \\
-\{\href{https://cran.r-project.org/web/packages/DBI/index.html}{DBI}\} & Datenbankinterface \\
-\{\href{https://cran.r-project.org/web/packages/dplyr/index.html}{dplyr}\} & Datentransformationen \\
-\{\href{https://cran.r-project.org/web/packages/glue/index.html}{glue}\} & String-Erzeugung \\
-\{\href{https://cran.r-project.org/web/packages/lubridate/index.html}{lubridate}\} & Datumsformat \\
-\{\href{https://cran.r-project.org/web/packages/RSQLite/index.html}{RSQLite}\} & SQLite-Datenbank \\
-\{\href{https://cran.r-project.org/web/packages/stringr/index.html}{stringr}\} & String-Manipulation \\
-\{\href{https://cran.r-project.org/web/packages/tibble/index.html}{tibble}\} & Tabellenformat \\
-\{\href{https://cran.r-project.org/web/packages/purrr/index.html}{purrr}\} & Funktionale Programmierung \\
-\{\href{https://cran.r-project.org/web/packages/qrcode/index.html}{qrcode}\} & Erstellung von QR-Codes \\
-\{\href{https://cran.r-project.org/web/packages/renv/index.html}{renv}\} & Packagemanagement \\
-\{\href{https://cran.r-project.org/web/packages/yaml/index.html}{yaml}\} & YAML-Dateiformat \\
+\{\href{https://cran.r-project.org/web/packages/Cairo/index.html}{Cairo}\} \autocite{R-Cairo} & PDF-/PNG-/SVG-Erstellung \\
+\{\href{https://cran.r-project.org/web/packages/DBI/index.html}{DBI}\} \autocite{R-DBI} & Datenbankinterface \\
+\{\href{https://cran.r-project.org/web/packages/dplyr/index.html}{dplyr}\} \autocite{R-dplyr} & Datentransformationen \\
+\{\href{https://cran.r-project.org/web/packages/glue/index.html}{glue}\} \autocite{R-glue} & String-Erzeugung \\
+\{\href{https://cran.r-project.org/web/packages/lubridate/index.html}{lubridate}\} \autocite{R-lubridate} & Datumsformat \\
+\{\href{https://cran.r-project.org/web/packages/RSQLite/index.html}{RSQLite}\} \autocite{R-RSQLite} & SQLite-Datenbank \\
+\{\href{https://cran.r-project.org/web/packages/stringr/index.html}{stringr}\} \autocite{R-stringr} & String-Manipulation \\
+\{\href{https://cran.r-project.org/web/packages/tibble/index.html}{tibble}\} \autocite{R-tibble} & Tabellenformat \\
+\{\href{https://cran.r-project.org/web/packages/purrr/index.html}{purrr}\} \autocite{R-purrr} & Funktionale Programmierung \\
+\{\href{https://cran.r-project.org/web/packages/qrcode/index.html}{qrcode}\} \autocite{R-qrcode} & Erstellung von QR-Codes \\
+\{\href{https://cran.r-project.org/web/packages/renv/index.html}{renv}\} \autocite{R-renv} & Packagemanagement \\
+\{\href{https://cran.r-project.org/web/packages/yaml/index.html}{yaml}\} \autocite{R-yaml} & YAML-Dateiformat \\
 \bottomrule
 \end{longtable}
 
 \hypertarget{datenbank-1}{%
 \subsection{Datenbank}\label{datenbank-1}}
 
-Zur konsistenten Datenverwaltung wird eine Datenbank benötigt. Datenbanken sind in der Lage, Anfragen von verschiedenen Clients zu bearbeiten und dabei zu gewährleisten, dass bestimmte Regeln hinsichtlich der Datenstruktur und Ausprägung der Daten eingehalten werden. Es existieren verschiedene Datenbankmodelle, unter anderem das Netzwerk-, das objektorientierte, das hierachische oder das relationale Datenbankmodell {[}\^{}laudon2015{]}. Diese unterscheiden sich hinsichtlich der Verknüpfung der beteiligten Daten. Aufgrund der hohen Flexibilität und der weiten Verbreitung wurde das relationale Datenbankmodell ausgewählt. Dieses speichert die Daten in miteinander verknüpften Tabellen. Die Tabellenzeilen enthalten Beobachtungen, die Tabellenspalten stellen die beobachtbaren Merkmale dar. Zur eindeutigen Identifikation erhält jede Zeile eine Identifikationsnummer. Die Spalte der Identifikationsnummern wird als Primärschlüssel (\emph{Primary Key}) bezeichnet. Um verschiedene Tabellen miteinander zu verknüpfen, werden Identifikationsnummern referenziert. Eine Spalte, die auf einen Primärschlüssel einer anderen Tabelle verweist, wird als Fremdschlüssel (\emph{Foreign Key}) bezeichnet.
+Zur konsistenten Datenverwaltung wird eine Datenbank benötigt. Datenbanken sind in der Lage, Anfragen von verschiedenen Clients zu bearbeiten und dabei zu gewährleisten, dass bestimmte Regeln hinsichtlich der Datenstruktur und Ausprägung der Daten eingehalten werden. Es existieren verschiedene Datenbankmodelle, unter anderem das Netzwerk-, das objektorientierte, das hierachische oder das relationale Datenbankmodell \autocite{laudon2015}. Diese unterscheiden sich hinsichtlich der Verknüpfung der beteiligten Daten. Aufgrund der hohen Flexibilität und der weiten Verbreitung wurde das relationale Datenbankmodell ausgewählt. Dieses speichert die Daten in miteinander verknüpften Tabellen. Die Tabellenzeilen enthalten Beobachtungen, die Tabellenspalten stellen die beobachtbaren Merkmale dar. Zur eindeutigen Identifikation erhält jede Zeile eine Identifikationsnummer. Die Spalte der Identifikationsnummern wird als Primärschlüssel (\emph{Primary Key}) bezeichnet. Um verschiedene Tabellen miteinander zu verknüpfen, werden Identifikationsnummern referenziert. Eine Spalte, die auf einen Primärschlüssel einer anderen Tabelle verweist, wird als Fremdschlüssel (\emph{Foreign Key}) bezeichnet.
 
-Es gibt eine Vielzahl verschiedener relationaler Datenbankmanagementsysteme, die sich hinsichtlich ihrer Anwendungsbereiche und Skalierbarkeit unterscheiden. Für Projekte kleinen und mittleren Umfanges (unter 100.000 Aufrufe / Tag{[}\^{}whysqlite{]}) eignet sich \href{https://www.sqlite.org/index.html}{SQLite} \autocite{laudon2015}. Hierbei werden alle Tabellen in einer einzigen Datei mit dem Suffix \emph{.sqlite} gespeichert. Der Zugriff auf die Datenbank erfolgt grundsätzlich über die \emph{Structured Query Language} (SQL). Für die Programmiersprache R gibt es die Packages \{DBI\} und \{RSQLite\}, die eine direkte Schnittstelle zur Datenbank bereitstellen.
+Es gibt eine Vielzahl verschiedener relationaler Datenbankmanagementsysteme, die sich hinsichtlich ihrer Anwendungsbereiche und Skalierbarkeit unterscheiden. Für Projekte kleinen und mittleren Umfanges (unter 100.000 Aufrufe / Tag \autocite{whysqlite}) eignet sich \href{https://www.sqlite.org/index.html}{SQLite}. Hierbei werden alle Tabellen in einer einzigen Datei mit dem Suffix \emph{.sqlite} gespeichert. Der Zugriff auf die Datenbank erfolgt grundsätzlich über die \emph{Structured Query Language} (SQL). Für die Programmiersprache R gibt es die Packages \{DBI\} und \{RSQLite\}, die eine direkte Schnittstelle zur Datenbank bereitstellen.
 
 \hypertarget{workflow}{%
 \section{Arbeitsprozess}\label{workflow}}
@@ -680,7 +663,7 @@ Der Reiter \emph{Gruppen} erlaubt es, neue Gruppen hinzuzufügen und bestehende 
 \begin{figure}
 \centering
 \includegraphics{./img/group_overview.png}
-\caption{\label{fig:group-overview}Übersicht: Nutzerverwaltung}
+\caption{\label{fig:group-overview}Übersicht: Gruppen}
 \end{figure}
 
 \hypertarget{gruppe-hinzufuxfcgen}{%
@@ -1336,15 +1319,13 @@ Die Struktur der Web-Applikation begünstigt daher nicht nur ihren zuverlässige
 
 Abschließend freuen wir uns, die fertige Web-Applikation dem Fachgebiet zu übergeben und sind gespannt, in welchem Umfang sie in Zukunft eingesetzt und sogar weiterentwickelt wird.
 
-\newpage{}
+\clearpage
 
 \pagenumbering{roman}
 
-\hypertarget{refs}{}
-\begin{CSLReferences}{0}{0}
-\end{CSLReferences}
+\null
 
-\printbibliography[heading=bibintoc, title=Literaturverzeichnis]
+\addcontentsline{toc}{section}{Literaturverzeichnis}
 
 \printbibliography
 

@@ -31,6 +31,7 @@
   
 <link rel="prev" href="user-guide.html"/>
 <link rel="next" href="discussion.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -48,7 +49,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/font-awesome-5.13.0/css/all.min.css" rel="stylesheet" />
 <link href="libs/font-awesome-5.13.0/css/v4-shims.min.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -56,18 +56,18 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +87,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -137,8 +137,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Einführung</a></li>
-<li class="chapter" data-level="2" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>2</b> Anforderungen</a><ul>
-<li class="chapter" data-level="2.1" data-path="requirements.html"><a href="requirements.html#funktionale-anforderungen-an-die-web-applikation"><i class="fa fa-check"></i><b>2.1</b> Funktionale Anforderungen an die Web-Applikation</a><ul>
+<li class="chapter" data-level="2" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>2</b> Anforderungen</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="requirements.html"><a href="requirements.html#funktionale-anforderungen-an-die-web-applikation"><i class="fa fa-check"></i><b>2.1</b> Funktionale Anforderungen an die Web-Applikation</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="requirements.html"><a href="requirements.html#sensorverwaltung"><i class="fa fa-check"></i><b>2.1.1</b> Sensorverwaltung</a></li>
 <li class="chapter" data-level="2.1.2" data-path="requirements.html"><a href="requirements.html#dateiverwaltung"><i class="fa fa-check"></i><b>2.1.2</b> Dateiverwaltung</a></li>
 <li class="chapter" data-level="2.1.3" data-path="requirements.html"><a href="requirements.html#nutzerverwaltung"><i class="fa fa-check"></i><b>2.1.3</b> Nutzerverwaltung</a></li>
@@ -146,47 +148,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.5" data-path="requirements.html"><a href="requirements.html#bestandsinformation"><i class="fa fa-check"></i><b>2.1.5</b> Bestandsinformation</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="requirements.html"><a href="requirements.html#nicht-funktionale-anforderungen-an-die-web-applikation"><i class="fa fa-check"></i><b>2.2</b> Nicht-funktionale Anforderungen an die Web-Applikation</a></li>
-<li class="chapter" data-level="2.3" data-path="requirements.html"><a href="requirements.html#zusätzliche-anforderungen"><i class="fa fa-check"></i><b>2.3</b> Zusätzliche Anforderungen</a><ul>
+<li class="chapter" data-level="2.3" data-path="requirements.html"><a href="requirements.html#zusätzliche-anforderungen"><i class="fa fa-check"></i><b>2.3</b> Zusätzliche Anforderungen</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="requirements.html"><a href="requirements.html#datenbank"><i class="fa fa-check"></i><b>2.3.1</b> Datenbank</a></li>
 <li class="chapter" data-level="2.3.2" data-path="requirements.html"><a href="requirements.html#deployment"><i class="fa fa-check"></i><b>2.3.2</b> Deployment</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="tech-stack.html"><a href="tech-stack.html"><i class="fa fa-check"></i><b>3</b> Tech Stack</a><ul>
+<li class="chapter" data-level="3" data-path="tech-stack.html"><a href="tech-stack.html"><i class="fa fa-check"></i><b>3</b> Tech Stack</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="tech-stack.html"><a href="tech-stack.html#framework"><i class="fa fa-check"></i><b>3.1</b> Framework</a></li>
 <li class="chapter" data-level="3.2" data-path="tech-stack.html"><a href="tech-stack.html#programmiersprache"><i class="fa fa-check"></i><b>3.2</b> Programmiersprache</a></li>
 <li class="chapter" data-level="3.3" data-path="tech-stack.html"><a href="tech-stack.html#datenbank-1"><i class="fa fa-check"></i><b>3.3</b> Datenbank</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>4</b> Arbeitsprozess</a><ul>
+<li class="chapter" data-level="4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>4</b> Arbeitsprozess</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="workflow.html"><a href="workflow.html#entwicklungsmodell"><i class="fa fa-check"></i><b>4.1</b> Entwicklungsmodell</a></li>
 <li class="chapter" data-level="4.2" data-path="workflow.html"><a href="workflow.html#entwicklungsumgebung"><i class="fa fa-check"></i><b>4.2</b> Entwicklungsumgebung</a></li>
 <li class="chapter" data-level="4.3" data-path="workflow.html"><a href="workflow.html#versionskontrolle"><i class="fa fa-check"></i><b>4.3</b> Versionskontrolle</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="user-guide.html"><a href="user-guide.html"><i class="fa fa-check"></i><b>5</b> Nutzerhilfe</a><ul>
+<li class="chapter" data-level="5" data-path="user-guide.html"><a href="user-guide.html"><i class="fa fa-check"></i><b>5</b> Nutzerhilfe</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="user-guide.html"><a href="user-guide.html#sidebar"><i class="fa fa-check"></i><b>5.1</b> Sidebar</a></li>
 <li class="chapter" data-level="5.2" data-path="user-guide.html"><a href="user-guide.html#navbar"><i class="fa fa-check"></i><b>5.2</b> Navbar</a></li>
-<li class="chapter" data-level="5.3" data-path="user-guide.html"><a href="user-guide.html#login"><i class="fa fa-check"></i><b>5.3</b> Anmeldung</a><ul>
+<li class="chapter" data-level="5.3" data-path="user-guide.html"><a href="user-guide.html#login"><i class="fa fa-check"></i><b>5.3</b> Anmeldung</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="user-guide.html"><a href="user-guide.html#status-nicht-angemeldet"><i class="fa fa-check"></i><b>5.3.1</b> Status: Nicht angemeldet</a></li>
 <li class="chapter" data-level="5.3.2" data-path="user-guide.html"><a href="user-guide.html#status-angemeldet"><i class="fa fa-check"></i><b>5.3.2</b> Status: Angemeldet</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="user-guide.html"><a href="user-guide.html#operate"><i class="fa fa-check"></i><b>5.4</b> Ausleihen &amp; Zurückgeben</a><ul>
+<li class="chapter" data-level="5.4" data-path="user-guide.html"><a href="user-guide.html#operate"><i class="fa fa-check"></i><b>5.4</b> Ausleihen &amp; Zurückgeben</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="user-guide.html"><a href="user-guide.html#ausleihen-zurückgeben"><i class="fa fa-check"></i><b>5.4.1</b> Ausleihen &amp; Zurückgeben</a></li>
 <li class="chapter" data-level="5.4.2" data-path="user-guide.html"><a href="user-guide.html#gruppen-des-ausgewählten-typs"><i class="fa fa-check"></i><b>5.4.2</b> Gruppen des ausgewählten Typs</a></li>
 <li class="chapter" data-level="5.4.3" data-path="user-guide.html"><a href="user-guide.html#dateien"><i class="fa fa-check"></i><b>5.4.3</b> Dateien</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="user-guide.html"><a href="user-guide.html#reporting"><i class="fa fa-check"></i><b>5.5</b> Bestandsinformation</a><ul>
+<li class="chapter" data-level="5.5" data-path="user-guide.html"><a href="user-guide.html#reporting"><i class="fa fa-check"></i><b>5.5</b> Bestandsinformation</a>
+<ul>
 <li class="chapter" data-level="5.5.1" data-path="user-guide.html"><a href="user-guide.html#bestandsübersicht"><i class="fa fa-check"></i><b>5.5.1</b> Bestandsübersicht</a></li>
 <li class="chapter" data-level="5.5.2" data-path="user-guide.html"><a href="user-guide.html#ausleihübersicht"><i class="fa fa-check"></i><b>5.5.2</b> Ausleihübersicht</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="user-guide.html"><a href="user-guide.html#user-management"><i class="fa fa-check"></i><b>5.6</b> Nutzerverwaltung <span class="badge admin">A</span> <span class="badge mod">M</span></a><ul>
+<li class="chapter" data-level="5.6" data-path="user-guide.html"><a href="user-guide.html#user-management"><i class="fa fa-check"></i><b>5.6</b> Nutzerverwaltung <span class="badge admin">A</span> <span class="badge mod">M</span></a>
+<ul>
 <li class="chapter" data-level="5.6.1" data-path="user-guide.html"><a href="user-guide.html#nutzer-hinzufügen"><i class="fa fa-check"></i><b>5.6.1</b> Nutzer hinzufügen</a></li>
 <li class="chapter" data-level="5.6.2" data-path="user-guide.html"><a href="user-guide.html#nutzertabelle"><i class="fa fa-check"></i><b>5.6.2</b> Nutzertabelle</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="user-guide.html"><a href="user-guide.html#group"><i class="fa fa-check"></i><b>5.7</b> Gruppen <span class="badge admin">A</span></a><ul>
+<li class="chapter" data-level="5.7" data-path="user-guide.html"><a href="user-guide.html#group"><i class="fa fa-check"></i><b>5.7</b> Gruppen <span class="badge admin">A</span></a>
+<ul>
 <li class="chapter" data-level="5.7.1" data-path="user-guide.html"><a href="user-guide.html#gruppe-hinzufügen"><i class="fa fa-check"></i><b>5.7.1</b> Gruppe hinzufügen</a></li>
 <li class="chapter" data-level="5.7.2" data-path="user-guide.html"><a href="user-guide.html#gruppentabelle"><i class="fa fa-check"></i><b>5.7.2</b> Gruppentabelle</a></li>
 <li class="chapter" data-level="5.7.3" data-path="user-guide.html"><a href="user-guide.html#typen-anzeigen"><i class="fa fa-check"></i><b>5.7.3</b> Typen anzeigen</a></li>
 </ul></li>
-<li class="chapter" data-level="5.8" data-path="user-guide.html"><a href="user-guide.html#type"><i class="fa fa-check"></i><b>5.8</b> Sensortypen <span class="badge admin">A</span></a><ul>
+<li class="chapter" data-level="5.8" data-path="user-guide.html"><a href="user-guide.html#type"><i class="fa fa-check"></i><b>5.8</b> Sensortypen <span class="badge admin">A</span></a>
+<ul>
 <li class="chapter" data-level="5.8.1" data-path="user-guide.html"><a href="user-guide.html#typ-hinzufügen"><i class="fa fa-check"></i><b>5.8.1</b> Typ hinzufügen</a></li>
 <li class="chapter" data-level="5.8.2" data-path="user-guide.html"><a href="user-guide.html#typtabelle"><i class="fa fa-check"></i><b>5.8.2</b> Typtabelle</a></li>
 <li class="chapter" data-level="5.8.3" data-path="user-guide.html"><a href="user-guide.html#gruppen-anzeigen"><i class="fa fa-check"></i><b>5.8.3</b> Gruppen anzeigen</a></li>
@@ -194,21 +206,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.9" data-path="user-guide.html"><a href="user-guide.html#file-management"><i class="fa fa-check"></i><b>5.9</b> Dateiverwaltung <span class="badge admin">A</span></a></li>
 <li class="chapter" data-level="5.10" data-path="user-guide.html"><a href="user-guide.html#qrcode"><i class="fa fa-check"></i><b>5.10</b> QR-Code <span class="badge admin">A</span></a></li>
-<li class="chapter" data-level="5.11" data-path="user-guide.html"><a href="user-guide.html#settings"><i class="fa fa-check"></i><b>5.11</b> Einstellungen</a><ul>
+<li class="chapter" data-level="5.11" data-path="user-guide.html"><a href="user-guide.html#settings"><i class="fa fa-check"></i><b>5.11</b> Einstellungen</a>
+<ul>
 <li class="chapter" data-level="5.11.1" data-path="user-guide.html"><a href="user-guide.html#benutzernamen-ändern"><i class="fa fa-check"></i><b>5.11.1</b> Benutzernamen ändern</a></li>
 <li class="chapter" data-level="5.11.2" data-path="user-guide.html"><a href="user-guide.html#passwort-ändern"><i class="fa fa-check"></i><b>5.11.2</b> Passwort ändern</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="technical-guide.html"><a href="technical-guide.html"><i class="fa fa-check"></i><b>6</b> Technische Umsetzung</a><ul>
-<li class="chapter" data-level="6.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur-der-web-applikation"><i class="fa fa-check"></i><b>6.1</b> Struktur der Web-Applikation</a><ul>
+<li class="chapter" data-level="6" data-path="technical-guide.html"><a href="technical-guide.html"><i class="fa fa-check"></i><b>6</b> Technische Umsetzung</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur-der-web-applikation"><i class="fa fa-check"></i><b>6.1</b> Struktur der Web-Applikation</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur-von-app.r"><i class="fa fa-check"></i><b>6.1.1</b> Struktur von <code>app.R</code></a></li>
 <li class="chapter" data-level="6.1.2" data-path="technical-guide.html"><a href="technical-guide.html#ordnerstruktur"><i class="fa fa-check"></i><b>6.1.2</b> Ordnerstruktur</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="technical-guide.html"><a href="technical-guide.html#database"><i class="fa fa-check"></i><b>6.2</b> Datenbank</a><ul>
+<li class="chapter" data-level="6.2" data-path="technical-guide.html"><a href="technical-guide.html#database"><i class="fa fa-check"></i><b>6.2</b> Datenbank</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur"><i class="fa fa-check"></i><b>6.2.1</b> Struktur</a></li>
 <li class="chapter" data-level="6.2.2" data-path="technical-guide.html"><a href="technical-guide.html#zugriff"><i class="fa fa-check"></i><b>6.2.2</b> Zugriff</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="technical-guide.html"><a href="technical-guide.html#cookies"><i class="fa fa-check"></i><b>6.3</b> Cookies</a><ul>
+<li class="chapter" data-level="6.3" data-path="technical-guide.html"><a href="technical-guide.html#cookies"><i class="fa fa-check"></i><b>6.3</b> Cookies</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="technical-guide.html"><a href="technical-guide.html#dark-mode"><i class="fa fa-check"></i><b>6.3.1</b> dark-mode</a></li>
 <li class="chapter" data-level="6.3.2" data-path="technical-guide.html"><a href="technical-guide.html#user-1"><i class="fa fa-check"></i><b>6.3.2</b> user</a></li>
 <li class="chapter" data-level="6.3.3" data-path="technical-guide.html"><a href="technical-guide.html#implementierung"><i class="fa fa-check"></i><b>6.3.3</b> Implementierung</a></li>
@@ -216,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="technical-guide.html"><a href="technical-guide.html#deployment-1"><i class="fa fa-check"></i><b>6.4</b> Deployment</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>7</b> Diskussion und Ausblick</a></li>
-<li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> Referenzen</a></li>
+<li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> Literaturverzeichnis</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -237,49 +254,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="technical-guide" class="section level1">
+<div id="technical-guide" class="section level1" number="6">
 <h1><span class="header-section-number">6</span> Technische Umsetzung</h1>
 <p>Die nachfolgenden Abschnitte erweitern die Nutzerhilfe um die Beschreibung der technischen Umsetzung ausgewählter Elemente der Web-Applikation. Die ausgewählten Elemente sollen dabei insbesondere eine Vielzahl des verwendeteten Methodenspektrums darlegen, sodass eine nachhaltige Nutzung über die Laufzeit des Projektes hinaus erleichtert wird. Darüber hinaus sollen interessante Ansätze vorgestellt werden.</p>
-<div id="struktur-der-web-applikation" class="section level2">
+<div id="struktur-der-web-applikation" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Struktur der Web-Applikation</h2>
 <p>Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei <code>app.R</code>. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei <em>app.R</em> ausführt. In <code>app.R</code> werden Initialisierungen durchgeführt und die Funktionen <code>ui</code> und <code>server</code> definiert. Die Datei endet mit dem Aufruf <code>shinyApp(ui, server)</code>, wobei die <code>ui</code>-Funktion das visuelle Layout der Web-Applikation beschreibt und die <code>server</code>-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer <code>ui</code>- und einer <code>server</code>-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab.</p>
-<div id="struktur-von-app.r" class="section level3">
+<div id="struktur-von-app.r" class="section level3" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Struktur von <code>app.R</code></h3>
 <p>Wie bereits beschrieben, ist die Datei <code>app.R</code> der Einstiegspunkt der Web-Applikation. Da sie Einfluss auf das Verhalten vieler weiterer Module hat, ist ihr Aufbau näher zu betrachten. Zur Übersicht werden die Inhalte verkürzt dargestellt.</p>
 <ul>
 <li>Laden benötigter Packages mit <code>library()</code>. Die Mehrzahl aller Packages wird über den <code>::</code>-Operator referenziert. Nur die Packages, die zwangsläufig mit <code>library()</code> geladen werden müssen, also Packages, die funktionsrelevanten Code mit dem Aufruf von <code>library()</code> verbinden, werden hier geladen.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="technical-guide.html#cb1-1"></a><span class="kw">library</span>(shiny)</span>
-<span id="cb1-2"><a href="technical-guide.html#cb1-2"></a><span class="kw">library</span>(shinyjs)</span>
-<span id="cb1-3"><a href="technical-guide.html#cb1-3"></a><span class="kw">library</span>(dplyr)</span>
-<span id="cb1-4"><a href="technical-guide.html#cb1-4"></a><span class="kw">library</span>(qrcode)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="technical-guide.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb1-2"><a href="technical-guide.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shinyjs)</span>
+<span id="cb1-3"><a href="technical-guide.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-4"><a href="technical-guide.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(qrcode)</span></code></pre></div>
 <ul>
 <li>Die Funktion <code>source_directory()</code> wird manuell gesourcet und danach dazu verwendet, alle <code>.R</code>-Dateien in den Ordnern <code>modules</code> und <code>db/func</code> zu sourcen.</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="technical-guide.html#cb2-1"></a><span class="kw">source</span>(<span class="st">&quot;init/source_directory.R&quot;</span>)</span>
-<span id="cb2-2"><a href="technical-guide.html#cb2-2"></a></span>
-<span id="cb2-3"><a href="technical-guide.html#cb2-3"></a><span class="kw">source_directory</span>(</span>
-<span id="cb2-4"><a href="technical-guide.html#cb2-4"></a>    <span class="dt">path =</span> <span class="st">&quot;modules&quot;</span>,</span>
-<span id="cb2-5"><a href="technical-guide.html#cb2-5"></a>    <span class="dt">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>,</span>
-<span id="cb2-6"><a href="technical-guide.html#cb2-6"></a>    <span class="dt">modifiedOnly =</span> <span class="ot">FALSE</span>,</span>
-<span id="cb2-7"><a href="technical-guide.html#cb2-7"></a>    <span class="dt">chdir =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb2-8"><a href="technical-guide.html#cb2-8"></a>    <span class="dt">recursive =</span> <span class="ot">TRUE</span>,</span>
-<span id="cb2-9"><a href="technical-guide.html#cb2-9"></a>    <span class="dt">envir =</span> <span class="cf">if</span> (source_to_globalenv) <span class="kw">globalenv</span>() <span class="cf">else</span> <span class="kw">environment</span>()</span>
-<span id="cb2-10"><a href="technical-guide.html#cb2-10"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="technical-guide.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;init/source_directory.R&quot;</span>)</span>
+<span id="cb2-2"><a href="technical-guide.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="technical-guide.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">source_directory</span>(</span>
+<span id="cb2-4"><a href="technical-guide.html#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">path =</span> <span class="st">&quot;modules&quot;</span>,</span>
+<span id="cb2-5"><a href="technical-guide.html#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">encoding =</span> <span class="st">&quot;UTF-8&quot;</span>,</span>
+<span id="cb2-6"><a href="technical-guide.html#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">modifiedOnly =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb2-7"><a href="technical-guide.html#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">chdir =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-8"><a href="technical-guide.html#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-9"><a href="technical-guide.html#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">envir =</span> <span class="cf">if</span> (source_to_globalenv) <span class="fu">globalenv</span>() <span class="cf">else</span> <span class="fu">environment</span>()</span>
+<span id="cb2-10"><a href="technical-guide.html#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 <ul>
 <li>Die <code>ui</code>-Funktion bindet alle CSS- und JavaScript-Dateien ein und aktiviert spezielle Packages. Die Funktion <code>container_ui()</code>, die das Layout des Dashboardes festlegt, wird aufgerufen. In <code>container_ui()</code> wird für jeden Reiter eine eigene <code>ui</code>-Funktion aufgerufen.</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="technical-guide.html#cb3-1"></a>    <span class="co"># UI -----------------------------------------------------------------------</span></span>
-<span id="cb3-2"><a href="technical-guide.html#cb3-2"></a>    ui &lt;-<span class="st"> </span>htmltools<span class="op">::</span><span class="kw">tagList</span>(</span>
-<span id="cb3-3"><a href="technical-guide.html#cb3-3"></a>        htmltools<span class="op">::</span><span class="kw">includeScript</span>(<span class="st">&quot;www/js/dark-mode.js&quot;</span>),</span>
-<span id="cb3-4"><a href="technical-guide.html#cb3-4"></a>        htmltools<span class="op">::</span><span class="kw">includeCSS</span>(<span class="st">&quot;www/css/styles.css&quot;</span>)</span>
-<span id="cb3-5"><a href="technical-guide.html#cb3-5"></a>        <span class="kw">container_ui</span>(</span>
-<span id="cb3-6"><a href="technical-guide.html#cb3-6"></a>            <span class="dt">id =</span> <span class="st">&quot;container&quot;</span></span>
-<span id="cb3-7"><a href="technical-guide.html#cb3-7"></a>        ),</span>
-<span id="cb3-8"><a href="technical-guide.html#cb3-8"></a>        rclipboard<span class="op">::</span><span class="kw">rclipboardSetup</span>(),</span>
-<span id="cb3-9"><a href="technical-guide.html#cb3-9"></a>        shinyjs<span class="op">::</span><span class="kw">useShinyjs</span>(),</span>
-<span id="cb3-10"><a href="technical-guide.html#cb3-10"></a>        waiter<span class="op">::</span><span class="kw">use_waiter</span>()</span>
-<span id="cb3-11"><a href="technical-guide.html#cb3-11"></a>    )</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="technical-guide.html#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="co"># UI -----------------------------------------------------------------------</span></span>
+<span id="cb3-2"><a href="technical-guide.html#cb3-2" aria-hidden="true" tabindex="-1"></a>    ui <span class="ot">&lt;-</span> htmltools<span class="sc">::</span><span class="fu">tagList</span>(</span>
+<span id="cb3-3"><a href="technical-guide.html#cb3-3" aria-hidden="true" tabindex="-1"></a>        htmltools<span class="sc">::</span><span class="fu">includeScript</span>(<span class="st">&quot;www/js/dark-mode.js&quot;</span>),</span>
+<span id="cb3-4"><a href="technical-guide.html#cb3-4" aria-hidden="true" tabindex="-1"></a>        htmltools<span class="sc">::</span><span class="fu">includeCSS</span>(<span class="st">&quot;www/css/styles.css&quot;</span>)</span>
+<span id="cb3-5"><a href="technical-guide.html#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">container_ui</span>(</span>
+<span id="cb3-6"><a href="technical-guide.html#cb3-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">id =</span> <span class="st">&quot;container&quot;</span></span>
+<span id="cb3-7"><a href="technical-guide.html#cb3-7" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb3-8"><a href="technical-guide.html#cb3-8" aria-hidden="true" tabindex="-1"></a>        rclipboard<span class="sc">::</span><span class="fu">rclipboardSetup</span>(),</span>
+<span id="cb3-9"><a href="technical-guide.html#cb3-9" aria-hidden="true" tabindex="-1"></a>        shinyjs<span class="sc">::</span><span class="fu">useShinyjs</span>(),</span>
+<span id="cb3-10"><a href="technical-guide.html#cb3-10" aria-hidden="true" tabindex="-1"></a>        waiter<span class="sc">::</span><span class="fu">use_waiter</span>()</span>
+<span id="cb3-11"><a href="technical-guide.html#cb3-11" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
 <ul>
 <li>In der <code>server</code>-Funktion wird die <code>.values</code>-<a href="https://adv-r.hadley.nz/environments.html">Environment</a> angelegt. Diese enthält die in Tabelle <a href="technical-guide.html#tab:values-environment">6.1</a> aufgelisteten Elemente.</li>
 </ul>
@@ -323,7 +340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>In der <code>server</code>-Funktion von <code>app.R</code> wird die <code>server</code>-Funktion <code>container_server()</code> aufgerufen.</li>
 </ul>
 </div>
-<div id="ordnerstruktur" class="section level3">
+<div id="ordnerstruktur" class="section level3" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> Ordnerstruktur</h3>
 <ul>
 <li><code>.gitignore</code> Index aller Dateien, die nicht der Versionskontrolle unterliegen</li>
@@ -363,13 +380,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="database" class="section level2">
+<div id="database" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Datenbank</h2>
 <p>Die Datenbank ist eine SQLite-Datenbank. Sie liegt in <code>db/db.sqlite</code>. Der Zugriff erfolgt über das Package {DBI}.</p>
-<div id="struktur" class="section level3">
+<div id="struktur" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Struktur</h3>
 <p>Alle Tabellen enthalten die Spalte <code>rowid</code>, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden. Die Beschränkung <span class="badge unique">Einzigartig</span> bezieht sich immer nur auf die nicht gelöschten Elemente (<code>removed = 0</code>).</p>
-<div id="circulation" class="section level4">
+<div id="circulation" class="section level4" number="6.2.1.1">
 <h4><span class="header-section-number">6.2.1.1</span> circulation</h4>
 <table>
 <caption><span id="tab:circulation">Tabelle 6.2: </span> Datenbank: Tabelle <code>circulation</code></caption>
@@ -414,7 +431,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="groups" class="section level4">
+<div id="groups" class="section level4" number="6.2.1.2">
 <h4><span class="header-section-number">6.2.1.2</span> groups</h4>
 <table>
 <caption><span id="tab:groups">Tabelle 6.3: </span> Datenbank: Tabelle <code>groups</code></caption>
@@ -439,7 +456,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="group_type" class="section level4">
+<div id="group_type" class="section level4" number="6.2.1.3">
 <h4><span class="header-section-number">6.2.1.3</span> group_type</h4>
 <table>
 <caption><span id="tab:group-type">Tabelle 6.4: </span> Datenbank: Tabelle <code>group_type</code></caption>
@@ -464,7 +481,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="subtype" class="section level4">
+<div id="subtype" class="section level4" number="6.2.1.4">
 <h4><span class="header-section-number">6.2.1.4</span> subtype</h4>
 <table>
 <caption><span id="tab:subtype">Tabelle 6.5: </span> Datenbank: Tabelle <code>subtype</code></caption>
@@ -499,7 +516,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="type-1" class="section level4">
+<div id="type-1" class="section level4" number="6.2.1.5">
 <h4><span class="header-section-number">6.2.1.5</span> type</h4>
 <table>
 <caption><span id="tab:type">Tabelle 6.6: </span> Datenbank: Tabelle <code>type</code></caption>
@@ -524,7 +541,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="user" class="section level4">
+<div id="user" class="section level4" number="6.2.1.6">
 <h4><span class="header-section-number">6.2.1.6</span> user</h4>
 <table>
 <caption><span id="tab:user">Tabelle 6.7: </span> Datenbank: Tabelle <code>user</code></caption>
@@ -590,19 +607,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 </div>
-<div id="zugriff" class="section level3">
+<div id="zugriff" class="section level3" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> Zugriff</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="technical-guide.html#cb4-1"></a><span class="kw">library</span>(DBI)</span>
-<span id="cb4-2"><a href="technical-guide.html#cb4-2"></a><span class="kw">library</span>(RSQLite)</span>
-<span id="cb4-3"><a href="technical-guide.html#cb4-3"></a></span>
-<span id="cb4-4"><a href="technical-guide.html#cb4-4"></a><span class="co"># Verbinde die Datenbank mit R</span></span>
-<span id="cb4-5"><a href="technical-guide.html#cb4-5"></a>db &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">SQLite</span>(), <span class="st">&quot;db/db.sqlite&quot;</span>)</span>
-<span id="cb4-6"><a href="technical-guide.html#cb4-6"></a></span>
-<span id="cb4-7"><a href="technical-guide.html#cb4-7"></a><span class="co"># Tabellennamen</span></span>
-<span id="cb4-8"><a href="technical-guide.html#cb4-8"></a><span class="kw">dbListTables</span>(db)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="technical-guide.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb4-2"><a href="technical-guide.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb4-3"><a href="technical-guide.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="technical-guide.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Verbinde die Datenbank mit R</span></span>
+<span id="cb4-5"><a href="technical-guide.html#cb4-5" aria-hidden="true" tabindex="-1"></a>db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">SQLite</span>(), <span class="st">&quot;db/db.sqlite&quot;</span>)</span>
+<span id="cb4-6"><a href="technical-guide.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="technical-guide.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabellennamen</span></span>
+<span id="cb4-8"><a href="technical-guide.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(db)</span></code></pre></div>
 <pre><code>## [1] &quot;circulation&quot; &quot;group_type&quot;  &quot;groups&quot;      &quot;subtype&quot;     &quot;type&quot;        &quot;user&quot;</code></pre>
 <p>Beispielhaft wird die Tabelle “circulation” betrachtet. Diese Tabelle speichert alle Transaktionen, die von Nutzern durchgeführt worden sind, also zum Beispiel Ausleihen, Rückgaben und Mengenänderungen.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="technical-guide.html#cb6-1"></a><span class="kw">dbReadTable</span>(db, <span class="st">&quot;circulation&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="technical-guide.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(db, <span class="st">&quot;circulation&quot;</span>)</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
 <span id="tab:unnamed-chunk-9">Tabelle 6.8: </span>Beispielhafter Inhalt der Tabelle <code>circulation</code>
@@ -801,40 +818,40 @@ op_type
 </table>
 <p>Der Ordner <code>db/func</code> enthält eine Sammlung von über 80 Hilfsfunktionen, die zum Erstellen, Abfragen und Modifizieren der Datenbank verwendet werden. Die Interaktion mit der Datenbank erfolgt ausschließlich über diese Hilfsfunktionen. Dadurch werden Redundanzen ausgeschlossen und es ist darüber hinaus einfacher, die korrekte Funktionalität zu gewährleisten.</p>
 <p>Beispielhaft wird die Funktion <code>db_get_borrowed_quantity(db, subtype_id)</code> betrachtet. Unter Angabe der Datenbank <code>db</code> und einer oder mehrerer Untertypenidentifikationsnummern <code>subtype_id</code> wird die ausgeliehene Menge dieser Untertypen zurückgegeben. In {DBI} werden Abfragen an die Datenbank mithilfe von <code>dbGetQuery()</code> gestellt. Das Resultat der Abfrage wird anschließend weiterverarbeitet. Der Nutzen der Hilfsfunktion wird zusätzlich dadurch verdeutlicht, dass sowohl die abzufragende Tabelle sowie die beteiligten Zeilen und Spalten nicht gesondert angegeben werden müssen.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="technical-guide.html#cb7-1"></a><span class="co"># Funktionsdefinition</span></span>
-<span id="cb7-2"><a href="technical-guide.html#cb7-2"></a>db_get_borrowed_quantity &lt;-<span class="st"> </span><span class="cf">function</span>(db, subtype_id) {</span>
-<span id="cb7-3"><a href="technical-guide.html#cb7-3"></a>  borrowed &lt;-<span class="st"> </span>DBI<span class="op">::</span><span class="kw">dbGetQuery</span>(</span>
-<span id="cb7-4"><a href="technical-guide.html#cb7-4"></a>    db,</span>
-<span id="cb7-5"><a href="technical-guide.html#cb7-5"></a>    <span class="st">&quot;SELECT SUM(quantity) AS borrowed FROM circulation</span></span>
-<span id="cb7-6"><a href="technical-guide.html#cb7-6"></a><span class="st">    WHERE subtype_id = ? AND op_type = 1&quot;</span>,</span>
-<span id="cb7-7"><a href="technical-guide.html#cb7-7"></a>    <span class="dt">params =</span> <span class="kw">list</span>(subtype_id)</span>
-<span id="cb7-8"><a href="technical-guide.html#cb7-8"></a>  )<span class="op">$</span>borrowed</span>
-<span id="cb7-9"><a href="technical-guide.html#cb7-9"></a></span>
-<span id="cb7-10"><a href="technical-guide.html#cb7-10"></a>  <span class="kw">ifelse</span>(<span class="kw">is.na</span>(borrowed), <span class="dv">0</span>, borrowed)</span>
-<span id="cb7-11"><a href="technical-guide.html#cb7-11"></a>}</span>
-<span id="cb7-12"><a href="technical-guide.html#cb7-12"></a></span>
-<span id="cb7-13"><a href="technical-guide.html#cb7-13"></a><span class="co"># Abfrage der ausgeliehenen Menge für mehrere Untertypen</span></span>
-<span id="cb7-14"><a href="technical-guide.html#cb7-14"></a><span class="kw">db_get_borrowed_quantity</span>(db, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="technical-guide.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Funktionsdefinition</span></span>
+<span id="cb7-2"><a href="technical-guide.html#cb7-2" aria-hidden="true" tabindex="-1"></a>db_get_borrowed_quantity <span class="ot">&lt;-</span> <span class="cf">function</span>(db, subtype_id) {</span>
+<span id="cb7-3"><a href="technical-guide.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  borrowed <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(</span>
+<span id="cb7-4"><a href="technical-guide.html#cb7-4" aria-hidden="true" tabindex="-1"></a>    db,</span>
+<span id="cb7-5"><a href="technical-guide.html#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;SELECT SUM(quantity) AS borrowed FROM circulation</span></span>
+<span id="cb7-6"><a href="technical-guide.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">    WHERE subtype_id = ? AND op_type = 1&quot;</span>,</span>
+<span id="cb7-7"><a href="technical-guide.html#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">params =</span> <span class="fu">list</span>(subtype_id)</span>
+<span id="cb7-8"><a href="technical-guide.html#cb7-8" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">$</span>borrowed</span>
+<span id="cb7-9"><a href="technical-guide.html#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="technical-guide.html#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(<span class="fu">is.na</span>(borrowed), <span class="dv">0</span>, borrowed)</span>
+<span id="cb7-11"><a href="technical-guide.html#cb7-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-12"><a href="technical-guide.html#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="technical-guide.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Abfrage der ausgeliehenen Menge für mehrere Untertypen</span></span>
+<span id="cb7-14"><a href="technical-guide.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">db_get_borrowed_quantity</span>(db, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1]  0 13  0  0  2</code></pre>
 </div>
 </div>
-<div id="cookies" class="section level2">
+<div id="cookies" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Cookies</h2>
 <p>Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet. Die Web-Applikation setzt zwei Cookies. Die Cookies sind jeweils für einen Zeitraum von sieben Tagen gültig.</p>
-<div id="dark-mode" class="section level3">
+<div id="dark-mode" class="section level3" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> dark-mode</h3>
 <p>Dieses Cookie kann die Werte <code>"true"</code> oder <code>"false"</code> enthalten. Das Cookie wird gesetzt, wenn der Nutzer die Toggle für den Nachtmodus verwendet. Beim Start der Web-Applikation wird das Cookie verwendet, um den initialen Status für den Nachtmodus zu bestimmen. Falls das Cookie nicht vorhanden ist, wird die Einstellung des Browsers (<code>window.matchMedia('(prefers-color-scheme: dark)')</code>) ausgelesen und im Cookie gesetzt.</p>
 </div>
-<div id="user-1" class="section level3">
+<div id="user-1" class="section level3" number="6.3.2">
 <h3><span class="header-section-number">6.3.2</span> user</h3>
 <p>Dieses Cookie enthält einen verhashten Nutzernamen und dient zur Identifikation eines angemeldeten Nutzers. Das Cookie wird gesetzt, wenn sich ein Nutzer anmeldet. Beim Start der Web-Applikation wird das Cookie verwendet, um den Nutzer automatisch anzumelden. Falls das Cookie nicht vorhanden ist, muss der Nutzer sich manuell anmelden.</p>
 </div>
-<div id="implementierung" class="section level3">
+<div id="implementierung" class="section level3" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> Implementierung</h3>
 <p>Zur Verwaltung der Cookies wird die Bibliothek <a href="https://github.com/js-cookie/js-cookie">js-cookie</a> verwendet. Die Datei <code>www/js/cookies.js</code> enthält Hilfsfunktionen zum Lesen und Schreiben von Cookies und verbindet diese mit Inputwerten in Shiny. Die Hilfsfunktionen werden in R mithilfe von <code>shinyjs::extendShinyjs()</code> eingebunden.</p>
 </div>
 </div>
-<div id="deployment-1" class="section level2">
+<div id="deployment-1" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Deployment</h2>
 <p>Der Shiny Server liegt auf einer virtuellen Maschine (VirtualBox). Auf der virtuellen Maschine ist das Betriebssystem <em>Ubuntu 20.04.2 LTS</em> ohne grafische Benutzeroberfläche installiert. Änderungen am Shiny Server werden erst wirksam, nachdem der Shiny Server neugestartet wurde. Dazu kann folgender Befehl verwendet werden: <code>sudo systemctl restart shiny-server</code>.</p>
 <p>Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevante Dateien liegen.</p>

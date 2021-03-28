@@ -31,6 +31,7 @@
   
 <link rel="prev" href="workflow.html"/>
 <link rel="next" href="technical-guide.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -48,7 +49,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/font-awesome-5.13.0/css/all.min.css" rel="stylesheet" />
 <link href="libs/font-awesome-5.13.0/css/v4-shims.min.css" rel="stylesheet" />
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
@@ -56,18 +56,18 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -87,7 +87,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -137,8 +137,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Einführung</a></li>
-<li class="chapter" data-level="2" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>2</b> Anforderungen</a><ul>
-<li class="chapter" data-level="2.1" data-path="requirements.html"><a href="requirements.html#funktionale-anforderungen-an-die-web-applikation"><i class="fa fa-check"></i><b>2.1</b> Funktionale Anforderungen an die Web-Applikation</a><ul>
+<li class="chapter" data-level="2" data-path="requirements.html"><a href="requirements.html"><i class="fa fa-check"></i><b>2</b> Anforderungen</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="requirements.html"><a href="requirements.html#funktionale-anforderungen-an-die-web-applikation"><i class="fa fa-check"></i><b>2.1</b> Funktionale Anforderungen an die Web-Applikation</a>
+<ul>
 <li class="chapter" data-level="2.1.1" data-path="requirements.html"><a href="requirements.html#sensorverwaltung"><i class="fa fa-check"></i><b>2.1.1</b> Sensorverwaltung</a></li>
 <li class="chapter" data-level="2.1.2" data-path="requirements.html"><a href="requirements.html#dateiverwaltung"><i class="fa fa-check"></i><b>2.1.2</b> Dateiverwaltung</a></li>
 <li class="chapter" data-level="2.1.3" data-path="requirements.html"><a href="requirements.html#nutzerverwaltung"><i class="fa fa-check"></i><b>2.1.3</b> Nutzerverwaltung</a></li>
@@ -146,47 +148,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.5" data-path="requirements.html"><a href="requirements.html#bestandsinformation"><i class="fa fa-check"></i><b>2.1.5</b> Bestandsinformation</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="requirements.html"><a href="requirements.html#nicht-funktionale-anforderungen-an-die-web-applikation"><i class="fa fa-check"></i><b>2.2</b> Nicht-funktionale Anforderungen an die Web-Applikation</a></li>
-<li class="chapter" data-level="2.3" data-path="requirements.html"><a href="requirements.html#zusätzliche-anforderungen"><i class="fa fa-check"></i><b>2.3</b> Zusätzliche Anforderungen</a><ul>
+<li class="chapter" data-level="2.3" data-path="requirements.html"><a href="requirements.html#zusätzliche-anforderungen"><i class="fa fa-check"></i><b>2.3</b> Zusätzliche Anforderungen</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="requirements.html"><a href="requirements.html#datenbank"><i class="fa fa-check"></i><b>2.3.1</b> Datenbank</a></li>
 <li class="chapter" data-level="2.3.2" data-path="requirements.html"><a href="requirements.html#deployment"><i class="fa fa-check"></i><b>2.3.2</b> Deployment</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="tech-stack.html"><a href="tech-stack.html"><i class="fa fa-check"></i><b>3</b> Tech Stack</a><ul>
+<li class="chapter" data-level="3" data-path="tech-stack.html"><a href="tech-stack.html"><i class="fa fa-check"></i><b>3</b> Tech Stack</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="tech-stack.html"><a href="tech-stack.html#framework"><i class="fa fa-check"></i><b>3.1</b> Framework</a></li>
 <li class="chapter" data-level="3.2" data-path="tech-stack.html"><a href="tech-stack.html#programmiersprache"><i class="fa fa-check"></i><b>3.2</b> Programmiersprache</a></li>
 <li class="chapter" data-level="3.3" data-path="tech-stack.html"><a href="tech-stack.html#datenbank-1"><i class="fa fa-check"></i><b>3.3</b> Datenbank</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>4</b> Arbeitsprozess</a><ul>
+<li class="chapter" data-level="4" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>4</b> Arbeitsprozess</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="workflow.html"><a href="workflow.html#entwicklungsmodell"><i class="fa fa-check"></i><b>4.1</b> Entwicklungsmodell</a></li>
 <li class="chapter" data-level="4.2" data-path="workflow.html"><a href="workflow.html#entwicklungsumgebung"><i class="fa fa-check"></i><b>4.2</b> Entwicklungsumgebung</a></li>
 <li class="chapter" data-level="4.3" data-path="workflow.html"><a href="workflow.html#versionskontrolle"><i class="fa fa-check"></i><b>4.3</b> Versionskontrolle</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="user-guide.html"><a href="user-guide.html"><i class="fa fa-check"></i><b>5</b> Nutzerhilfe</a><ul>
+<li class="chapter" data-level="5" data-path="user-guide.html"><a href="user-guide.html"><i class="fa fa-check"></i><b>5</b> Nutzerhilfe</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="user-guide.html"><a href="user-guide.html#sidebar"><i class="fa fa-check"></i><b>5.1</b> Sidebar</a></li>
 <li class="chapter" data-level="5.2" data-path="user-guide.html"><a href="user-guide.html#navbar"><i class="fa fa-check"></i><b>5.2</b> Navbar</a></li>
-<li class="chapter" data-level="5.3" data-path="user-guide.html"><a href="user-guide.html#login"><i class="fa fa-check"></i><b>5.3</b> Anmeldung</a><ul>
+<li class="chapter" data-level="5.3" data-path="user-guide.html"><a href="user-guide.html#login"><i class="fa fa-check"></i><b>5.3</b> Anmeldung</a>
+<ul>
 <li class="chapter" data-level="5.3.1" data-path="user-guide.html"><a href="user-guide.html#status-nicht-angemeldet"><i class="fa fa-check"></i><b>5.3.1</b> Status: Nicht angemeldet</a></li>
 <li class="chapter" data-level="5.3.2" data-path="user-guide.html"><a href="user-guide.html#status-angemeldet"><i class="fa fa-check"></i><b>5.3.2</b> Status: Angemeldet</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="user-guide.html"><a href="user-guide.html#operate"><i class="fa fa-check"></i><b>5.4</b> Ausleihen &amp; Zurückgeben</a><ul>
+<li class="chapter" data-level="5.4" data-path="user-guide.html"><a href="user-guide.html#operate"><i class="fa fa-check"></i><b>5.4</b> Ausleihen &amp; Zurückgeben</a>
+<ul>
 <li class="chapter" data-level="5.4.1" data-path="user-guide.html"><a href="user-guide.html#ausleihen-zurückgeben"><i class="fa fa-check"></i><b>5.4.1</b> Ausleihen &amp; Zurückgeben</a></li>
 <li class="chapter" data-level="5.4.2" data-path="user-guide.html"><a href="user-guide.html#gruppen-des-ausgewählten-typs"><i class="fa fa-check"></i><b>5.4.2</b> Gruppen des ausgewählten Typs</a></li>
 <li class="chapter" data-level="5.4.3" data-path="user-guide.html"><a href="user-guide.html#dateien"><i class="fa fa-check"></i><b>5.4.3</b> Dateien</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="user-guide.html"><a href="user-guide.html#reporting"><i class="fa fa-check"></i><b>5.5</b> Bestandsinformation</a><ul>
+<li class="chapter" data-level="5.5" data-path="user-guide.html"><a href="user-guide.html#reporting"><i class="fa fa-check"></i><b>5.5</b> Bestandsinformation</a>
+<ul>
 <li class="chapter" data-level="5.5.1" data-path="user-guide.html"><a href="user-guide.html#bestandsübersicht"><i class="fa fa-check"></i><b>5.5.1</b> Bestandsübersicht</a></li>
 <li class="chapter" data-level="5.5.2" data-path="user-guide.html"><a href="user-guide.html#ausleihübersicht"><i class="fa fa-check"></i><b>5.5.2</b> Ausleihübersicht</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="user-guide.html"><a href="user-guide.html#user-management"><i class="fa fa-check"></i><b>5.6</b> Nutzerverwaltung <span class="badge admin">A</span> <span class="badge mod">M</span></a><ul>
+<li class="chapter" data-level="5.6" data-path="user-guide.html"><a href="user-guide.html#user-management"><i class="fa fa-check"></i><b>5.6</b> Nutzerverwaltung <span class="badge admin">A</span> <span class="badge mod">M</span></a>
+<ul>
 <li class="chapter" data-level="5.6.1" data-path="user-guide.html"><a href="user-guide.html#nutzer-hinzufügen"><i class="fa fa-check"></i><b>5.6.1</b> Nutzer hinzufügen</a></li>
 <li class="chapter" data-level="5.6.2" data-path="user-guide.html"><a href="user-guide.html#nutzertabelle"><i class="fa fa-check"></i><b>5.6.2</b> Nutzertabelle</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="user-guide.html"><a href="user-guide.html#group"><i class="fa fa-check"></i><b>5.7</b> Gruppen <span class="badge admin">A</span></a><ul>
+<li class="chapter" data-level="5.7" data-path="user-guide.html"><a href="user-guide.html#group"><i class="fa fa-check"></i><b>5.7</b> Gruppen <span class="badge admin">A</span></a>
+<ul>
 <li class="chapter" data-level="5.7.1" data-path="user-guide.html"><a href="user-guide.html#gruppe-hinzufügen"><i class="fa fa-check"></i><b>5.7.1</b> Gruppe hinzufügen</a></li>
 <li class="chapter" data-level="5.7.2" data-path="user-guide.html"><a href="user-guide.html#gruppentabelle"><i class="fa fa-check"></i><b>5.7.2</b> Gruppentabelle</a></li>
 <li class="chapter" data-level="5.7.3" data-path="user-guide.html"><a href="user-guide.html#typen-anzeigen"><i class="fa fa-check"></i><b>5.7.3</b> Typen anzeigen</a></li>
 </ul></li>
-<li class="chapter" data-level="5.8" data-path="user-guide.html"><a href="user-guide.html#type"><i class="fa fa-check"></i><b>5.8</b> Sensortypen <span class="badge admin">A</span></a><ul>
+<li class="chapter" data-level="5.8" data-path="user-guide.html"><a href="user-guide.html#type"><i class="fa fa-check"></i><b>5.8</b> Sensortypen <span class="badge admin">A</span></a>
+<ul>
 <li class="chapter" data-level="5.8.1" data-path="user-guide.html"><a href="user-guide.html#typ-hinzufügen"><i class="fa fa-check"></i><b>5.8.1</b> Typ hinzufügen</a></li>
 <li class="chapter" data-level="5.8.2" data-path="user-guide.html"><a href="user-guide.html#typtabelle"><i class="fa fa-check"></i><b>5.8.2</b> Typtabelle</a></li>
 <li class="chapter" data-level="5.8.3" data-path="user-guide.html"><a href="user-guide.html#gruppen-anzeigen"><i class="fa fa-check"></i><b>5.8.3</b> Gruppen anzeigen</a></li>
@@ -194,21 +206,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.9" data-path="user-guide.html"><a href="user-guide.html#file-management"><i class="fa fa-check"></i><b>5.9</b> Dateiverwaltung <span class="badge admin">A</span></a></li>
 <li class="chapter" data-level="5.10" data-path="user-guide.html"><a href="user-guide.html#qrcode"><i class="fa fa-check"></i><b>5.10</b> QR-Code <span class="badge admin">A</span></a></li>
-<li class="chapter" data-level="5.11" data-path="user-guide.html"><a href="user-guide.html#settings"><i class="fa fa-check"></i><b>5.11</b> Einstellungen</a><ul>
+<li class="chapter" data-level="5.11" data-path="user-guide.html"><a href="user-guide.html#settings"><i class="fa fa-check"></i><b>5.11</b> Einstellungen</a>
+<ul>
 <li class="chapter" data-level="5.11.1" data-path="user-guide.html"><a href="user-guide.html#benutzernamen-ändern"><i class="fa fa-check"></i><b>5.11.1</b> Benutzernamen ändern</a></li>
 <li class="chapter" data-level="5.11.2" data-path="user-guide.html"><a href="user-guide.html#passwort-ändern"><i class="fa fa-check"></i><b>5.11.2</b> Passwort ändern</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="technical-guide.html"><a href="technical-guide.html"><i class="fa fa-check"></i><b>6</b> Technische Umsetzung</a><ul>
-<li class="chapter" data-level="6.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur-der-web-applikation"><i class="fa fa-check"></i><b>6.1</b> Struktur der Web-Applikation</a><ul>
+<li class="chapter" data-level="6" data-path="technical-guide.html"><a href="technical-guide.html"><i class="fa fa-check"></i><b>6</b> Technische Umsetzung</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur-der-web-applikation"><i class="fa fa-check"></i><b>6.1</b> Struktur der Web-Applikation</a>
+<ul>
 <li class="chapter" data-level="6.1.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur-von-app.r"><i class="fa fa-check"></i><b>6.1.1</b> Struktur von <code>app.R</code></a></li>
 <li class="chapter" data-level="6.1.2" data-path="technical-guide.html"><a href="technical-guide.html#ordnerstruktur"><i class="fa fa-check"></i><b>6.1.2</b> Ordnerstruktur</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="technical-guide.html"><a href="technical-guide.html#database"><i class="fa fa-check"></i><b>6.2</b> Datenbank</a><ul>
+<li class="chapter" data-level="6.2" data-path="technical-guide.html"><a href="technical-guide.html#database"><i class="fa fa-check"></i><b>6.2</b> Datenbank</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="technical-guide.html"><a href="technical-guide.html#struktur"><i class="fa fa-check"></i><b>6.2.1</b> Struktur</a></li>
 <li class="chapter" data-level="6.2.2" data-path="technical-guide.html"><a href="technical-guide.html#zugriff"><i class="fa fa-check"></i><b>6.2.2</b> Zugriff</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="technical-guide.html"><a href="technical-guide.html#cookies"><i class="fa fa-check"></i><b>6.3</b> Cookies</a><ul>
+<li class="chapter" data-level="6.3" data-path="technical-guide.html"><a href="technical-guide.html#cookies"><i class="fa fa-check"></i><b>6.3</b> Cookies</a>
+<ul>
 <li class="chapter" data-level="6.3.1" data-path="technical-guide.html"><a href="technical-guide.html#dark-mode"><i class="fa fa-check"></i><b>6.3.1</b> dark-mode</a></li>
 <li class="chapter" data-level="6.3.2" data-path="technical-guide.html"><a href="technical-guide.html#user-1"><i class="fa fa-check"></i><b>6.3.2</b> user</a></li>
 <li class="chapter" data-level="6.3.3" data-path="technical-guide.html"><a href="technical-guide.html#implementierung"><i class="fa fa-check"></i><b>6.3.3</b> Implementierung</a></li>
@@ -216,7 +233,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.4" data-path="technical-guide.html"><a href="technical-guide.html#deployment-1"><i class="fa fa-check"></i><b>6.4</b> Deployment</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>7</b> Diskussion und Ausblick</a></li>
-<li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> Referenzen</a></li>
+<li class="chapter" data-level="8" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>8</b> Literaturverzeichnis</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -237,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="user-guide" class="section level1">
+<div id="user-guide" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Nutzerhilfe</h1>
 <script type="text/javascript">
 $(function() {
@@ -253,11 +270,11 @@ $(function() {
 Abbildung 5.1: Übersicht über das Dashboard
 </p>
 </div>
-<div id="sidebar" class="section level2">
+<div id="sidebar" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Sidebar</h2>
 <p>In der Sidebar kann über einen Reiter die Funktionalität ausgewählt werden, die im Body dargestellt wird. Die Anzahl an Auswahlmöglichkeiten hängt vom Anmeldestatus und der Benutzerrolle ab.</p>
 </div>
-<div id="navbar" class="section level2">
+<div id="navbar" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Navbar</h2>
 <p>Die Navbar enthält:</p>
 <ul>
@@ -266,10 +283,10 @@ Abbildung 5.1: Übersicht über das Dashboard
 <li>einen Toggle, mit dem zwischen Tag- und Nachtmodus gewechselt werden kann.</li>
 </ul>
 </div>
-<div id="login" class="section level2">
+<div id="login" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Anmeldung</h2>
 <p>Dieser Reiter verändert sich in Abhängigkeit des Anmeldestatus.</p>
-<div id="status-nicht-angemeldet" class="section level3">
+<div id="status-nicht-angemeldet" class="section level3" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> Status: Nicht angemeldet</h3>
 <p>Registrierte Benutzer können sich durch Angabe ihres Benutzernamens und ihres Passwortes anmelden, vergleiche Abbildung <a href="user-guide.html#fig:login-mask">5.2</a>. Nicht-registrierte Benutzer müssen sich von einem Moderator oder Administrator (Wissenschaftliche Mitarbeiter) registrieren lassen.</p>
 <div class="figure"><span id="fig:login-mask"></span>
@@ -279,7 +296,7 @@ Abbildung 5.2: Anmeldung - nicht angemeldet
 </p>
 </div>
 </div>
-<div id="status-angemeldet" class="section level3">
+<div id="status-angemeldet" class="section level3" number="5.3.2">
 <h3><span class="header-section-number">5.3.2</span> Status: Angemeldet</h3>
 <p>Nach erfolgreicher Anmeldung wird der Benutzer mit Informationen über sein Nutzungsverhalten versorgt, vergleiche Abbildung <a href="user-guide.html#fig:login-mask-logged">5.3</a>. Dargestellt werden:</p>
 <ul>
@@ -297,7 +314,7 @@ Abbildung 5.3: Anmeldung - angemeldet
 </div>
 </div>
 </div>
-<div id="operate" class="section level2">
+<div id="operate" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Ausleihen &amp; Zurückgeben</h2>
 <p>Die Ausleihe und Rückgabe setzt sich aus drei Abschnitten zusammen, vergleiche Abbildung <a href="user-guide.html#fig:operate-overview">5.4</a>. Im ersten Abschnitt <em>Ausleihen &amp; Zurückgeben</em> kann die konkrete Operation vorgenommen werden. Zusätzliche Informationen stellen die Abschnitte <em>Gruppen des ausgewählten Typs</em> und <em>Dateien</em> bereit.</p>
 <div class="figure"><span id="fig:operate-overview"></span>
@@ -306,7 +323,7 @@ Abbildung 5.3: Anmeldung - angemeldet
 Abbildung 5.4: Übersicht: Ausleihen &amp; Zurückgeben
 </p>
 </div>
-<div id="ausleihen-zurückgeben" class="section level3">
+<div id="ausleihen-zurückgeben" class="section level3" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> Ausleihen &amp; Zurückgeben</h3>
 <p>Zunächst muss ein Typ ausgewählt werden. Wenn die Web-Applikation über einen QR-Code aufgerufen wurde (siehe <a href="user-guide.html#qrcode">QR-Code</a>), ist der zum QR-Code gehörende Typ bereits ausgewählt. Im nächsten Schritt muss ein zugehöriger Untertyp ausgewählt werden. Die konkrete Operation kann durch Klicken auf einen der verfügbaren Buttons angestoßen werden. Im sich darauf öffnenden Dialog muss die Menge angegeben und die Ausführung der Operation bestätigt werden. Abbildung <a href="user-guide.html#fig:operate-detail-circulate">5.5</a> gibt einen Überblick über den Abschnitt.</p>
 <p><span class="badge admin">A</span> Administratoren können zusätzlich den ausführenden Nutzer auswählen, um Operationen für diesen durchzuführen. Das ist zum Beispiel notwendig, wenn ein Student das Fachgebiet verlassen hat und es versäumt hat, alle ausgeliehenen Sensoren zurückzugeben.</p>
@@ -344,7 +361,7 @@ Abbildung 5.5: Abschnitt: Ausleihen &amp; Zurückgeben
 </p>
 </div>
 </div>
-<div id="gruppen-des-ausgewählten-typs" class="section level3">
+<div id="gruppen-des-ausgewählten-typs" class="section level3" number="5.4.2">
 <h3><span class="header-section-number">5.4.2</span> Gruppen des ausgewählten Typs</h3>
 <p>Alle Gruppen des ausgewählten Typs werden aufgelistet. Durch Klicken auf eine Gruppe öffnet sich ein Dialog, in dem alle Typen dieser Gruppe angezeigt werden, vergleiche Abbildung <a href="user-guide.html#fig:operate-detail-groups">5.6</a>. Durch Klicken auf einen Typen wird dieser Typ für eine weitere Operation ausgewählt. Somit können alle Elemente einer Gruppe (zum Beispiel ein Versuchsaufbau) komfortabel hintereinander ausgeliehen / zurückgegeben werden.</p>
 <div class="figure"><span id="fig:operate-detail-groups"></span>
@@ -354,7 +371,7 @@ Abbildung 5.6: Abschnitt: Gruppen des ausgewählten Typs
 </p>
 </div>
 </div>
-<div id="dateien" class="section level3">
+<div id="dateien" class="section level3" number="5.4.3">
 <h3><span class="header-section-number">5.4.3</span> Dateien</h3>
 <p>Hier werden alle dem ausgewählten Typ zugeordneten Dateien angezeigt. Dabei ist die Anzeige - wie Abbildung <a href="user-guide.html#fig:operate-detail-files">5.7</a> entnommen werden kann - in drei Reiter gegliedert:</p>
 <ul>
@@ -371,7 +388,7 @@ Abbildung 5.7: Abschnitt: Dateien
 </div>
 </div>
 </div>
-<div id="reporting" class="section level2">
+<div id="reporting" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> Bestandsinformation</h2>
 <p>Die Bestandsinformation gliedert sich in zwei Abschnitte, vergleiche Abbildung <a href="user-guide.html#fig:reporting-overview">5.8</a>. In der Bestandsübersicht werden Informationen zum Lagerbestand von Sensoren dargestellt, wohingegen die Ausleihübersicht Informationen über ausgeliehene Sensoren enthält.</p>
 <div class="figure"><span id="fig:reporting-overview"></span>
@@ -380,11 +397,11 @@ Abbildung 5.7: Abschnitt: Dateien
 Abbildung 5.8: Übersicht: Bestandsinformation
 </p>
 </div>
-<div id="bestandsübersicht" class="section level3">
+<div id="bestandsübersicht" class="section level3" number="5.5.1">
 <h3><span class="header-section-number">5.5.1</span> Bestandsübersicht</h3>
 <p>Zunächst muss ein Typ ausgewählt werden. Für diesen Typen werden tabellarisch alle Untertypen dieses Typs aufgelistet. Die Spalte <em>Verfügbar</em> enthält die gelagerte Menge, wohingegen die Spalte <em>Maximal verfügbar</em> die maximal gelagerte Menge (kein Sensor dieses Untertypen ausgeliehen) enthält. Über die Checkbox <em>Nur kritische Bestände anzeigen</em> kann ausgewählt werden, ob nur Untertypen angezeigt werden sollen, für die die verfügbare Menge kleiner als ihr kritischer Bestand ist. Der kritische Bestand eines Untertypen kann von einem <span class="badge admin">Administrator</span> im Reiter <a href="user-guide.html#type">Sensortypen</a> festgelegt werden.</p>
 </div>
-<div id="ausleihübersicht" class="section level3">
+<div id="ausleihübersicht" class="section level3" number="5.5.2">
 <h3><span class="header-section-number">5.5.2</span> Ausleihübersicht</h3>
 <p>Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellen in Bezug auf ausgeliehene Sensoren beantworten, vergleiche Tabelle <a href="user-guide.html#tab:reporting-details">5.1</a> und Abbildung <a href="user-guide.html#fig:reporting-details">5.9</a>.</p>
 <table>
@@ -426,7 +443,7 @@ Abbildung 5.9: Übersicht: Ausleihübersicht
 </div>
 </div>
 </div>
-<div id="user-management" class="section level2">
+<div id="user-management" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> Nutzerverwaltung <span class="badge admin">A</span> <span class="badge mod">M</span></h2>
 <p>In der <em>Nutzerverwaltung</em> können neue Nutzer hinzugefügt und in der <em>Nutzertabelle</em> verwaltet werden, vergleiche Abbildung <a href="user-guide.html#fig:user-management-overview">5.10</a>.</p>
 <div class="figure"><span id="fig:user-management-overview"></span>
@@ -435,11 +452,11 @@ Abbildung 5.9: Übersicht: Ausleihübersicht
 Abbildung 5.10: Übersicht: Nutzerverwaltung
 </p>
 </div>
-<div id="nutzer-hinzufügen" class="section level3">
+<div id="nutzer-hinzufügen" class="section level3" number="5.6.1">
 <h3><span class="header-section-number">5.6.1</span> Nutzer hinzufügen</h3>
 <p>Neue Nutzer können unter Angabe eines Benutzernamens und eines zur Sicherheit zweimal anzugebenden Passwortes hinzugefügt werden. Ein <span class="badge mod">Moderator</span> kann ausschließlich <span class="badge user">Benutzer</span> hinzufügen, wohingegen ein <span class="badge admin">Administrator</span> Benutzer mit jeder Rolle hinzufügen kann.</p>
 </div>
-<div id="nutzertabelle" class="section level3">
+<div id="nutzertabelle" class="section level3" number="5.6.2">
 <h3><span class="header-section-number">5.6.2</span> Nutzertabelle</h3>
 <p>In der Nutzertabelle (vergleiche Tabelle <a href="user-guide.html#tab:user-table">5.2</a>) können Nutzer verwaltet werden. Neben dem Benutzernamen und dem gegenwärtigen Status gibt es drei Spalten, die Buttons enthalten, mit denen Eigenschaften eines Nutzer angepasst werden können.</p>
 <table>
@@ -471,20 +488,20 @@ Abbildung 5.10: Übersicht: Nutzerverwaltung
 </table>
 </div>
 </div>
-<div id="group" class="section level2">
+<div id="group" class="section level2" number="5.7">
 <h2><span class="header-section-number">5.7</span> Gruppen <span class="badge admin">A</span></h2>
 <p>Der Reiter <em>Gruppen</em> erlaubt es, neue Gruppen hinzuzufügen und bestehende Gruppen zu verwalten, vergleiche Abbildung <a href="user-guide.html#fig:group-overview">5.11</a>.</p>
 <div class="figure"><span id="fig:group-overview"></span>
-<img src="img/group_overview.png" alt="Übersicht: Nutzerverwaltung"  />
+<img src="img/group_overview.png" alt="Übersicht: Gruppen"  />
 <p class="caption">
-Abbildung 5.11: Übersicht: Nutzerverwaltung
+Abbildung 5.11: Übersicht: Gruppen
 </p>
 </div>
-<div id="gruppe-hinzufügen" class="section level3">
+<div id="gruppe-hinzufügen" class="section level3" number="5.7.1">
 <h3><span class="header-section-number">5.7.1</span> Gruppe hinzufügen</h3>
 <p>Eine neue Gruppe kann durch Angabe eines Gruppennamens hinzugefügt werden.</p>
 </div>
-<div id="gruppentabelle" class="section level3">
+<div id="gruppentabelle" class="section level3" number="5.7.2">
 <h3><span class="header-section-number">5.7.2</span> Gruppentabelle</h3>
 <p>In der <em>Gruppentabelle</em> (vergleiche Tabelle <a href="user-guide.html#tab:group-table">5.3</a>) können Gruppen bearbeitet werden.</p>
 <table>
@@ -515,12 +532,12 @@ Abbildung 5.11: Übersicht: Nutzerverwaltung
 </tbody>
 </table>
 </div>
-<div id="typen-anzeigen" class="section level3">
+<div id="typen-anzeigen" class="section level3" number="5.7.3">
 <h3><span class="header-section-number">5.7.3</span> Typen anzeigen</h3>
 <p>Zunächst muss eine Gruppe ausgewählt werden. In der Tabelle werden alle zur ausgewählten Gruppe zugehörigen Typen dargestellt.</p>
 </div>
 </div>
-<div id="type" class="section level2">
+<div id="type" class="section level2" number="5.8">
 <h2><span class="header-section-number">5.8</span> Sensortypen <span class="badge admin">A</span></h2>
 <p>Der Reiter <em>Sensortypen</em> erlaubt es, neue Typen und Untertypen hinzuzufügen und bestehende Typen und Untertypen zu verwalten, vergleiche Abbildung <a href="user-guide.html#fig:type-overview">5.12</a>.</p>
 <div class="figure"><span id="fig:type-overview"></span>
@@ -529,11 +546,11 @@ Abbildung 5.11: Übersicht: Nutzerverwaltung
 Abbildung 5.12: Übersicht: Sensortypen
 </p>
 </div>
-<div id="typ-hinzufügen" class="section level3">
+<div id="typ-hinzufügen" class="section level3" number="5.8.1">
 <h3><span class="header-section-number">5.8.1</span> Typ hinzufügen</h3>
 <p>Ein neuer Typ kann durch Angabe eines Typnamens hinzugefügt werden.</p>
 </div>
-<div id="typtabelle" class="section level3">
+<div id="typtabelle" class="section level3" number="5.8.2">
 <h3><span class="header-section-number">5.8.2</span> Typtabelle</h3>
 <p>In der <em>Typtabelle</em> (vergleiche Tabelle <a href="user-guide.html#tab:type-table">5.4</a>) können Typen bearbeitet werden.</p>
 <table>
@@ -564,11 +581,11 @@ Abbildung 5.12: Übersicht: Sensortypen
 </tbody>
 </table>
 </div>
-<div id="gruppen-anzeigen" class="section level3">
+<div id="gruppen-anzeigen" class="section level3" number="5.8.3">
 <h3><span class="header-section-number">5.8.3</span> Gruppen anzeigen</h3>
 <p>Zunächst muss ein Typ ausgewählt werden. In der Tabelle werden alle zum ausgewählten Typen zugehörigen Gruppen dargestellt.</p>
 </div>
-<div id="untertypen-bearbeiten" class="section level3">
+<div id="untertypen-bearbeiten" class="section level3" number="5.8.4">
 <h3><span class="header-section-number">5.8.4</span> Untertypen bearbeiten</h3>
 <p>Zunächst muss ein Typ ausgewählt werden. In der <em>Untertypentabelle</em> (vergleiche Tabelle <a href="user-guide.html#tab:subtype-table">5.5</a>) können Untertypen des ausgewählten Typen bearbeitet werden.</p>
 <table>
@@ -604,7 +621,7 @@ Abbildung 5.12: Übersicht: Sensortypen
 </table>
 </div>
 </div>
-<div id="file-management" class="section level2">
+<div id="file-management" class="section level2" number="5.9">
 <h2><span class="header-section-number">5.9</span> Dateiverwaltung <span class="badge admin">A</span></h2>
 <p>In der <em>Dateiverwaltung</em> können PDF-Dateien als Informationsmaterial in den Reitern <em>Gruppen</em>, <em>Typen</em> und <em>Untertypen</em> hochgeladen werden. Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf <em>Datei hochladen</em> kann eine PDF-Datei auf dem lokalen Dateisystem ausgewählt werden. Hochgeladene Dateien werden in einer Tabelle (vergleiche Tabelle <a href="user-guide.html#tab:file-table">5.6</a>) angezeigt.</p>
 <table>
@@ -635,7 +652,7 @@ Abbildung 5.12: Übersicht: Sensortypen
 </tbody>
 </table>
 </div>
-<div id="qrcode" class="section level2">
+<div id="qrcode" class="section level2" number="5.10">
 <h2><span class="header-section-number">5.10</span> QR-Code <span class="badge admin">A</span></h2>
 <p>Zur beschleunigten Ausleihe und Rückgabe kann ein QR-Code für Typen erstellt werden, vergleiche Abbildung <a href="user-guide.html#fig:qr-code-overview">5.13</a>. Dazu muss zunächst der Typ und die Serverdomäne ausgewählt werden. Der erstellte QR-Code und der Link, auf den der QR-Code verweist, werden eingeblendet. Der QR-Code kann im Anschluss als PDF-, PNG- oder SVG-Datei heruntergeladen werden. Dazu kann zusätzlich die Breite und Höhe der zu erstellenden Datei in Millimeter angegeben werden.</p>
 <p>Der ausgedruckte QR-Code kann im Lager platziert werden. Dort muss er zum Beispiel mit einem auf einem mobilen Endgerät installierten, handelsüblichen QR-Code-Reader eingescannt werden, wodurch die Web-Applikation geöffnet wird. <span class="badge user">Benutzer</span> und <span class="badge mod">Moderator</span> werden - falls bereits angemeldet, siehe <a href="technical-guide.html#cookies">Cookies</a> - sofort, ansonsten nachdem sie sich angemeldet haben, auf den Reiter <a href="user-guide.html#operate">Ausleihen &amp; Zurückgeben</a> weitergeleitet, wo der eingescannte Typ bereits vorausgewählt ist. Sie müssen dann nur noch den Untertyp auswählen.</p>
@@ -646,7 +663,7 @@ Abbildung 5.13: Übersicht: QR-Code
 </p>
 </div>
 </div>
-<div id="settings" class="section level2">
+<div id="settings" class="section level2" number="5.11">
 <h2><span class="header-section-number">5.11</span> Einstellungen</h2>
 <p>In den Einstellungen können der Benutzername und das Passwort geändert werden, vergleiche Abbildung <a href="user-guide.html#fig:settings-overview">5.14</a>.</p>
 <div class="figure"><span id="fig:settings-overview"></span>
@@ -655,11 +672,11 @@ Abbildung 5.13: Übersicht: QR-Code
 Abbildung 5.14: Übersicht: Einstellungen
 </p>
 </div>
-<div id="benutzernamen-ändern" class="section level3">
+<div id="benutzernamen-ändern" class="section level3" number="5.11.1">
 <h3><span class="header-section-number">5.11.1</span> Benutzernamen ändern</h3>
 <p>Um den eigenen Benutzernamen zu ändern, muss ein neuer Benutzername eingeben werden. Nach Eingabe des Passworts und Bestätigen wird der Benutzername geändert.</p>
 </div>
-<div id="passwort-ändern" class="section level3">
+<div id="passwort-ändern" class="section level3" number="5.11.2">
 <h3><span class="header-section-number">5.11.2</span> Passwort ändern</h3>
 <p>Um das eigene Passwort zu ändern, muss ein neues Passwort zweimal eingegeben und bestätigt werden.</p>
 
