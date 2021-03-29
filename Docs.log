@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.5.20)  28 MAR 2021 21:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7440 64-bit) (preloaded format=pdflatex 2020.5.20)  29 MAR 2021 12:56
 entering extended mode
 **./Docs.tex
 (Docs.tex
@@ -1616,7 +1616,19 @@ LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line
 1229.
 ("C:\Users\david\AppData\Local\Programs\MiKTeX 2.9\tex/latex/lm\ts1lmtt.fd"
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [26] [27] [28]
+)
+Underfull \hbox (badness 2961) in paragraph at lines 1239--1240
+\T1/lmr/m/n/10 (+20) Zur Ver-wal-tung der Coo-kies wird die Bi-blio-thek []js-c
+ookie[] [[]24[]] ver-wen-det. Die Da-tei
+ []
+
+
+Underfull \hbox (badness 1776) in paragraph at lines 1239--1240
+\T1/lmtt/m/n/10 www/js/cookies.js \T1/lmr/m/n/10 (+20) ent-hält Hilfs-funk-tio-
+nen zum Le-sen und Schrei-ben von Coo-kies und
+ []
+
+[26] [27] [28]
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/10'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -1634,11 +1646,11 @@ Package logreq Info: Writing requests to 'Docs.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 24335 strings out of 480799
- 400355 string characters out of 2895784
- 1126624 words of memory out of 3000000
- 39598 multiletter control sequences out of 15000+200000
- 577798 words of font info for 120 fonts, out of 3000000 for 9000
+ 24359 strings out of 480799
+ 401006 string characters out of 2895784
+ 1126884 words of memory out of 3000000
+ 39609 multiletter control sequences out of 15000+200000
+ 578231 words of font info for 124 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
  41i,15n,45p,1370b,2193s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/david/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.en
@@ -1652,9 +1664,9 @@ ublic/lm/lmr10.pfb><C:/Users/david/AppData/Local/Programs/MiKTeX 2.9/fonts/type
 type1/public/lm/lmtk10.pfb><C:/Users/david/AppData/Local/Programs/MiKTeX 2.9/fo
 nts/type1/public/lm/lmtt10.pfb><C:/Users/david/AppData/Local/Programs/MiKTeX 2.
 9/fonts/type1/public/lm/lmtti10.pfb>
-Output written on Docs.pdf (33 pages, 4500468 bytes).
+Output written on Docs.pdf (33 pages, 4505527 bytes).
 PDF statistics:
- 742 PDF objects out of 1000 (max. 8388607)
- 229 named destinations out of 1000 (max. 500000)
+ 762 PDF objects out of 1000 (max. 8388607)
+ 234 named destinations out of 1000 (max. 500000)
  10583 words of extra memory for PDF output out of 12000 (max. 10000000)
 

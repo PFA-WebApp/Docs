@@ -4,7 +4,7 @@ Die nachfolgenden Abschnitte erweitern die Nutzerhilfe um die Beschreibung der t
 
 ## Struktur der Web-Applikation
 
-Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei `app.R`. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei *app.R* ausführt. In `app.R` werden Initialisierungen durchgeführt und die Funktionen `ui` und `server` definiert. Die Datei endet mit dem Aufruf `shinyApp(ui, server)`, wobei die `ui`-Funktion das visuelle Layout der Web-Applikation beschreibt und die `server`-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer `ui`- und einer `server`-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab.
+Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei `app.R`. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei *app.R* ausführt. In `app.R` werden Initialisierungen durchgeführt und die Funktionen `ui` und `server` definiert. Die Datei endet mit dem Aufruf `shinyApp(ui, server)`, wobei die `ui`-Funktion das visuelle Layout der Web-Applikation beschreibt und die `server`-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer `ui`- und einer `server`-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab. [@shiny-modules]
 
 ### Struktur von `app.R`
 
@@ -99,7 +99,7 @@ Diese Environment wird jeder `server`-Funktion übergeben, sodass die Werte in j
 
 ## Datenbank {#database}
 
-Die Datenbank ist eine SQLite-Datenbank. Sie liegt in `db/db.sqlite`. Der Zugriff erfolgt über das Package {DBI}.
+Die Datenbank ist eine SQLite-Datenbank. Sie liegt in `db/db.sqlite`. Der Zugriff erfolgt über das Package {DBI} [@R-DBI].
 
 ### Struktur
 
@@ -230,7 +230,7 @@ knitr::opts_knit$set(root.dir = wd)
 
 ## Cookies {#cookies}
 
-Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet. Die Web-Applikation setzt zwei Cookies. Die Cookies sind jeweils für einen Zeitraum von sieben Tagen gültig.
+Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet [@cookies]. Die Web-Applikation setzt zwei Cookies. Die Cookies sind jeweils für einen Zeitraum von sieben Tagen gültig.
 
 ### dark-mode
 
@@ -242,7 +242,7 @@ Dieses Cookie enthält einen verhashten Nutzernamen und dient zur Identifikation
 
 ### Implementierung
 
-Zur Verwaltung der Cookies wird die Bibliothek [js-cookie](https://github.com/js-cookie/js-cookie) verwendet. Die Datei `www/js/cookies.js` enthält Hilfsfunktionen zum Lesen und Schreiben von Cookies und verbindet diese mit Inputwerten in Shiny. Die Hilfsfunktionen werden in R mithilfe von `shinyjs::extendShinyjs()` eingebunden.
+Zur Verwaltung der Cookies wird die Bibliothek [js-cookie](https://github.com/js-cookie/js-cookie) [@js-cookie] verwendet. Die Datei `www/js/cookies.js` enthält Hilfsfunktionen zum Lesen und Schreiben von Cookies und verbindet diese mit Inputwerten in Shiny. Die Hilfsfunktionen werden in R mithilfe von `shinyjs::extendShinyjs()` eingebunden.
 
 ## Deployment
 
@@ -252,7 +252,7 @@ Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevan
 
 * `/etc/shiny-server`
 
-  Dieser Ordner enthält die Datei `shiny-server.conf`, mit der der Shiny Server konfiguriert werden kann. Hier kann der Port eingestellt werden, unter dem die Web-Applikation verfügbar gemacht wird. Der Port `3838` ist voreingestellt.
+  Dieser Ordner enthält die Datei `shiny-server.conf`, mit der der Shiny Server konfiguriert werden kann [@shiny-server]. Hier kann der Port eingestellt werden, unter dem die Web-Applikation verfügbar gemacht wird. Der Port `3838` ist voreingestellt.
 
 <br>
 
@@ -271,7 +271,7 @@ Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevan
 
 * `/etc/rstudio`
 
-  Dieser Ordner enthält die Datei `rserver.conf`, mit der der RStudio Server konfiguriert werden kann. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port `8787` ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers `pfa` und seines Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.
+  Dieser Ordner enthält die Datei `rserver.conf`, mit der der RStudio Server konfiguriert werden kann [@rstudio-server]. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port `8787` ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers `pfa` und seines Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.
   
   Für weitere Informationen siehe [https://docs.rstudio.com/ide/server-pro/](https://docs.rstudio.com/ide/server-pro/). Es ist zu beachten, dass es sich bei der installierten Version um die Open-Source-Version und *nicht* um die Pro-Version handelt.
 

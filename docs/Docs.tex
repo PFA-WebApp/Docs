@@ -832,7 +832,7 @@ Die nachfolgenden Abschnitte erweitern die Nutzerhilfe um die Beschreibung der t
 \hypertarget{struktur-der-web-applikation}{%
 \subsection{Struktur der Web-Applikation}\label{struktur-der-web-applikation}}
 
-Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei \texttt{app.R}. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei \emph{app.R} ausführt. In \texttt{app.R} werden Initialisierungen durchgeführt und die Funktionen \texttt{ui} und \texttt{server} definiert. Die Datei endet mit dem Aufruf \texttt{shinyApp(ui,\ server)}, wobei die \texttt{ui}-Funktion das visuelle Layout der Web-Applikation beschreibt und die \texttt{server}-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer \texttt{ui}- und einer \texttt{server}-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab.
+Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei \texttt{app.R}. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei \emph{app.R} ausführt. In \texttt{app.R} werden Initialisierungen durchgeführt und die Funktionen \texttt{ui} und \texttt{server} definiert. Die Datei endet mit dem Aufruf \texttt{shinyApp(ui,\ server)}, wobei die \texttt{ui}-Funktion das visuelle Layout der Web-Applikation beschreibt und die \texttt{server}-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer \texttt{ui}- und einer \texttt{server}-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab. \autocite{shiny-modules}
 
 \hypertarget{struktur-von-app.r}{%
 \subsubsection{\texorpdfstring{Struktur von \texttt{app.R}}{Struktur von app.R}}\label{struktur-von-app.r}}
@@ -1009,7 +1009,7 @@ Diese Environment wird jeder \texttt{server}-Funktion übergeben, sodass die Wer
 \hypertarget{database}{%
 \subsection{Datenbank}\label{database}}
 
-Die Datenbank ist eine SQLite-Datenbank. Sie liegt in \texttt{db/db.sqlite}. Der Zugriff erfolgt über das Package \{DBI\}.
+Die Datenbank ist eine SQLite-Datenbank. Sie liegt in \texttt{db/db.sqlite}. Der Zugriff erfolgt über das Package \{DBI\} \autocite{R-DBI}.
 
 \hypertarget{struktur}{%
 \subsubsection{Struktur}\label{struktur}}
@@ -1221,7 +1221,7 @@ Beispielhaft wird die Funktion \texttt{db\_get\_borrowed\_quantity(db,\ subtype\
 \hypertarget{cookies}{%
 \subsection{Cookies}\label{cookies}}
 
-Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet. Die Web-Applikation setzt zwei Cookies. Die Cookies sind jeweils für einen Zeitraum von sieben Tagen gültig.
+Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet \autocite{cookies}. Die Web-Applikation setzt zwei Cookies. Die Cookies sind jeweils für einen Zeitraum von sieben Tagen gültig.
 
 \hypertarget{dark-mode}{%
 \subsubsection{dark-mode}\label{dark-mode}}
@@ -1236,7 +1236,7 @@ Dieses Cookie enthält einen verhashten Nutzernamen und dient zur Identifikation
 \hypertarget{implementierung}{%
 \subsubsection{Implementierung}\label{implementierung}}
 
-Zur Verwaltung der Cookies wird die Bibliothek \href{https://github.com/js-cookie/js-cookie}{js-cookie} verwendet. Die Datei \texttt{www/js/cookies.js} enthält Hilfsfunktionen zum Lesen und Schreiben von Cookies und verbindet diese mit Inputwerten in Shiny. Die Hilfsfunktionen werden in R mithilfe von \texttt{shinyjs::extendShinyjs()} eingebunden.
+Zur Verwaltung der Cookies wird die Bibliothek \href{https://github.com/js-cookie/js-cookie}{js-cookie} \autocite{js-cookie} verwendet. Die Datei \texttt{www/js/cookies.js} enthält Hilfsfunktionen zum Lesen und Schreiben von Cookies und verbindet diese mit Inputwerten in Shiny. Die Hilfsfunktionen werden in R mithilfe von \texttt{shinyjs::extendShinyjs()} eingebunden.
 
 \hypertarget{deployment-1}{%
 \subsection{Deployment}\label{deployment-1}}
@@ -1249,7 +1249,7 @@ Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevan
 \item
   \texttt{/etc/shiny-server}
 
-  Dieser Ordner enthält die Datei \texttt{shiny-server.conf}, mit der der Shiny Server konfiguriert werden kann. Hier kann der Port eingestellt werden, unter dem die Web-Applikation verfügbar gemacht wird. Der Port \texttt{3838} ist voreingestellt.
+  Dieser Ordner enthält die Datei \texttt{shiny-server.conf}, mit der der Shiny Server konfiguriert werden kann \autocite{shiny-server}. Hier kann der Port eingestellt werden, unter dem die Web-Applikation verfügbar gemacht wird. Der Port \texttt{3838} ist voreingestellt.
 \end{itemize}
 
 \begin{itemize}
@@ -1280,7 +1280,7 @@ Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevan
 \item
   \texttt{/etc/rstudio}
 
-  Dieser Ordner enthält die Datei \texttt{rserver.conf}, mit der der RStudio Server konfiguriert werden kann. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port \texttt{8787} ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers \texttt{pfa} und seines Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.
+  Dieser Ordner enthält die Datei \texttt{rserver.conf}, mit der der RStudio Server konfiguriert werden kann \autocite{rstudio-server}. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port \texttt{8787} ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers \texttt{pfa} und seines Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.
 
   Für weitere Informationen siehe \url{https://docs.rstudio.com/ide/server-pro/}. Es ist zu beachten, dass es sich bei der installierten Version um die Open-Source-Version und \emph{nicht} um die Pro-Version handelt.
 \end{itemize}
