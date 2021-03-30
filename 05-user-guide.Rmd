@@ -11,7 +11,7 @@ $(function() {
 Die folgenden Abschnitte fassen wesentliche Merkmale der Web-Applikation zusammen und erläutern ihre Bedienung. Die technischen Details können im anschließenden Kapitel nachgeschlagen werden. Die Web-Applikation ist ein sogenanntes Dashboard. Dieses besitzt eine Sidebar, eine Navbar und einen Body, vergleiche Abbildung \@ref(fig:app-overview).
 
 ```{r app-overview, echo=FALSE, fig.cap="Übersicht über das Dashboard"}
-knitr::include_graphics("./img/app_overview.png")
+knitr::include_graphics("./img/app_overview.png", error = FALSE)
 ```
 
 Die genannten drei Elemente halten halten dabei wesentliche Bedienelemente bereit. Die Navbar stellt die Orientierungshilfe für den Nutzer dar. Sie ist stets visuell präsent, befindet sich oberhalb des Bodys und ermöglicht beispielsweise das Öffnen weiterer Menüs wie der Sidebar. Die Navbar enthält zudem die folgenden Elemente:
@@ -31,7 +31,7 @@ Dieser Reiter verändert sich in Abhängigkeit des Anmeldestatus.
 Registrierte Benutzer können sich durch Angabe ihres Benutzernamens und ihres Passwortes anmelden, vergleiche Abbildung \@ref(fig:login-mask). Nicht-registrierte Benutzer müssen sich von einem Moderator oder Administrator (Wissenschaftliche Mitarbeiter) registrieren lassen.
 
 ```{r login-mask, echo=FALSE, fig.cap="Anmeldung - nicht angemeldet"}
-knitr::include_graphics("./img/login_mask.png")
+knitr::include_graphics("./img/login_mask.png", error = FALSE)
 ```
 
 ### Status: Angemeldet
@@ -46,7 +46,7 @@ Nach erfolgreicher Anmeldung wird der Benutzer mit Informationen über sein Nutz
 Benutzer können sich zudem abmelden.
 
 ```{r login-mask-logged, echo=FALSE, fig.cap="Anmeldung - angemeldet"}
-knitr::include_graphics("./img/login_mask_logged.png")
+knitr::include_graphics("./img/login_mask_logged.png", error = FALSE)
 ```
 
 ## Ausleihen & Zurückgeben {#operate}
@@ -54,7 +54,7 @@ knitr::include_graphics("./img/login_mask_logged.png")
 Die Ausleihe und Rückgabe setzt sich aus drei Abschnitten zusammen, vergleiche Abbildung \@ref(fig:operate-overview). Im ersten Abschnitt *Ausleihen & Zurückgeben* kann die konkrete Operation vorgenommen werden. Zusätzliche Informationen stellen die Abschnitte *Gruppen des ausgewählten Typs* und *Dateien* bereit.
 
 ```{r operate-overview, echo=FALSE, fig.cap="Übersicht: Ausleihen & Zurückgeben"}
-knitr::include_graphics("./img/operate_overview.png")
+knitr::include_graphics("./img/operate_overview.png", error = FALSE)
 ```
 
 ### Ausleihen & Zurückgeben
@@ -62,10 +62,10 @@ knitr::include_graphics("./img/operate_overview.png")
 Zunächst muss ein Typ ausgewählt werden. Wenn die Web-Applikation über einen QR-Code aufgerufen wurde (siehe [QR-Code](#qrcode)), ist der zum QR-Code gehörende Typ bereits ausgewählt. Im nächsten Schritt muss ein zugehöriger Untertyp ausgewählt werden. Die konkrete Operation kann durch Klicken auf einen der verfügbaren Buttons angestoßen werden. Im sich darauf öffnenden Dialog muss die Menge angegeben und die Ausführung der Operation bestätigt werden. Abbildung \@ref(fig:operate-detail-circulate) gibt einen Überblick über den Abschnitt.
 
 ```{r operate-detail-circulate, echo=FALSE, fig.cap="Abschnitt: Ausleihen & Zurückgeben"}
-knitr::include_graphics("./img/operate_detail_circulate.png")
+knitr::include_graphics("./img/operate_detail_circulate.png", error = FALSE)
 ```
 
-Die grundlegenden Schaltflächen Ausleihen sowie Zurückgeben, stehen dabei allen Benutzerrollen zur Verfügung. 
+Die grundlegenden Schaltflächen Ausleihen sowie Zurückgeben, stehen dabei allen Benutzerrollen zur Verfügung.
 
 <div class="flex">
 `r operate_button("borrow")` Es können bis zur maximal verfügbaren Menge Elemente ausgeliehen werden.
@@ -75,7 +75,9 @@ Die grundlegenden Schaltflächen Ausleihen sowie Zurückgeben, stehen dabei alle
 `r operate_button("return")` Es können bis zur maximal ausgeliehenen Menge Elemente zurückgegeben werden.
 </div>
 
-Adminstatoren haben in Ergänzung dazu noch die folgenden Befugnisse.
+<br>
+
+Adminstatoren haben in Ergänzung dazu noch die folgenden Befugnisse:
 
 <div class="flex">
 `r operate_button("write-off")` `r badge("admin", short = TRUE)` Es können bis zur maximal im Lager verfügbaren Menge Elemente abgeschrieben werden. Dies ist zum Beispiel notwendig, wenn ein Element ausfällt oder verloren geht.
@@ -88,7 +90,7 @@ Adminstatoren haben in Ergänzung dazu noch die folgenden Befugnisse.
 Alle Gruppen des ausgewählten Typs werden aufgelistet. Durch Klicken auf eine Gruppe öffnet sich ein Dialog, in dem alle Typen dieser Gruppe angezeigt werden, vergleiche Abbildung \@ref(fig:operate-detail-groups). Durch Klicken auf einen Typen wird dieser Typ für eine weitere Operation ausgewählt. Somit können alle Elemente einer Gruppe (zum Beispiel ein Versuchsaufbau) komfortabel hintereinander ausgeliehen / zurückgegeben werden.
 
 ```{r operate-detail-groups, echo=FALSE, fig.cap="Abschnitt: Gruppen des ausgewählten Typs"}
-knitr::include_graphics("./img/operate_detail_groups.png")
+knitr::include_graphics("./img/operate_detail_groups.png", error = FALSE)
 ```
 
 ### Dateien
@@ -102,7 +104,7 @@ Hier werden alle dem ausgewählten Typ zugeordneten Dateien angezeigt. Dabei ist
 Die Ziffer neben dem Reitertitel gibt Auskunft darüber, wie viele Dateien in der jeweiligen Kategorie vorhanden sind. Indem auf einen Dateinamen geklickt wird, öffnet sich das zugehörige PDF in einem separaten Browserfenster oder wird über den PDF-Viewer angezeigt. Alle Dateien einer Kategorie können in einem Archiv (*.zip*) heruntergeladen werden.
 
 ```{r operate-detail-files, echo=FALSE, fig.cap="Abschnitt: Dateien"}
-knitr::include_graphics("./img/operate_detail_files.png")
+knitr::include_graphics("./img/operate_detail_files.png", error = FALSE)
 ```
 
 ## Bestandsinformation {#reporting}
@@ -110,7 +112,7 @@ knitr::include_graphics("./img/operate_detail_files.png")
 Die Bestandsinformation gliedert sich in zwei Abschnitte, vergleiche Abbildung \@ref(fig:reporting-overview). In der Bestandsübersicht werden Informationen zum Lagerbestand von Sensoren dargestellt, wohingegen die Ausleihübersicht Informationen über ausgeliehene Sensoren enthält.
 
 ```{r reporting-overview, echo=FALSE, fig.cap="Übersicht: Bestandsinformation"}
-knitr::include_graphics("./img/reporting_overview.png")
+knitr::include_graphics("./img/reporting_overview.png", error = FALSE)
 ```
 
 ### Bestandsübersicht
@@ -131,7 +133,7 @@ Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellu
 Table: (\#tab:reporting-details) Übersicht über die Ausleihübersicht
 
 ```{r reporting-details, echo=FALSE, fig.cap="Übersicht: Ausleihübersicht"}
-knitr::include_graphics("./img/reporting_details.png")
+knitr::include_graphics("./img/reporting_details.png", error = FALSE)
 ```
 
 ## Nutzerverwaltung `r badge("admin", short = TRUE)` `r badge("mod", short = TRUE)` {#user-management}
@@ -139,7 +141,7 @@ knitr::include_graphics("./img/reporting_details.png")
 In der *Nutzerverwaltung* können neue Nutzer hinzugefügt und in der *Nutzertabelle* verwaltet werden, vergleiche Abbildung \@ref(fig:user-management-overview).
 
 ```{r user-management-overview, echo=FALSE, fig.cap="Übersicht: Nutzerverwaltung"}
-knitr::include_graphics("./img/user_management_overview.png")
+knitr::include_graphics("./img/user_management_overview.png", error = FALSE)
 ```
 
 ### Nutzer hinzufügen
@@ -163,7 +165,7 @@ Table: (\#tab:user-table) Nutzertabelle
 Der Reiter *Gruppen* erlaubt es, neue Gruppen hinzuzufügen und bestehende Gruppen zu verwalten, vergleiche Abbildung \@ref(fig:group-overview).
 
 ```{r group-overview, echo=FALSE, fig.cap="Übersicht: Gruppen"}
-knitr::include_graphics("./img/group_overview.png")
+knitr::include_graphics("./img/group_overview.png", error = FALSE)
 ```
 
 ### Gruppe hinzufügen
@@ -191,7 +193,7 @@ Zunächst muss eine Gruppe ausgewählt werden. In der Tabelle werden alle zur au
 Der Reiter *Sensortypen* erlaubt es, neue Typen und Untertypen hinzuzufügen und bestehende Typen und Untertypen zu verwalten, vergleiche Abbildung \@ref(fig:type-overview).
 
 ```{r type-overview, echo=FALSE, fig.cap="Übersicht: Sensortypen"}
-knitr::include_graphics("./img/type_overview.png")
+knitr::include_graphics("./img/type_overview.png", error = FALSE)
 ```
 
 ### Typ hinzufügen
@@ -229,10 +231,10 @@ Table: (\#tab:subtype-table) Untertypentabelle
 
 ## Dateiverwaltung `r badge("admin", short = TRUE)` {#file-management}
 
-In der *Dateiverwaltung* können PDF-Dateien als Informationsmaterial in den Reitern *Gruppen*, *Typen* und *Untertypen* hochgeladen werden, siehe Abbildung \ref(fig:file_management_overview).
+In der *Dateiverwaltung* können PDF-Dateien als Informationsmaterial in den Reitern *Gruppen*, *Typen* und *Untertypen* hochgeladen werden, siehe Abbildung \@ref(fig:file-management-overview).
 
-```{r file_management_overview, echo=FALSE, fig.cap="Übersicht: Ausleihübersicht"}
-knitr::include_graphics("./img/file_management_overview.png")
+```{r file-management-overview, echo=FALSE, fig.cap="Übersicht: Dateiverwaltung"}
+knitr::include_graphics("./img/file_management_overview.png", error = FALSE)
 ```
 
 Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf *Datei hochladen* kann eine PDF-Datei auf dem lokalen Dateisystem ausgewählt werden. Hochgeladene Dateien werden in einer Tabelle (vergleiche Tabelle \@ref(tab:file-table)) angezeigt.
@@ -252,7 +254,7 @@ Zur beschleunigten Ausleihe und Rückgabe kann ein QR-Code für Typen erstellt w
 Der ausgedruckte QR-Code kann im Lager platziert werden. Dort muss er zum Beispiel mit einem auf einem mobilen Endgerät installierten, handelsüblichen QR-Code-Reader eingescannt werden, wodurch die Web-Applikation geöffnet wird. `r badge("user")` und `r badge("mod")` werden - falls bereits angemeldet, siehe [Cookies](#cookies) - sofort, ansonsten nachdem sie sich angemeldet haben, auf den Reiter [Ausleihen & Zurückgeben](#operate) weitergeleitet, wo der eingescannte Typ bereits vorausgewählt ist. Es muss dann nur noch der Untertyp ausgewählt werden.
 
 ```{r qr-code-overview, echo=FALSE, fig.cap="Übersicht: QR-Code"}
-knitr::include_graphics("./img/qr_code_overview.png")
+knitr::include_graphics("./img/qr_code_overview.png", error = FALSE)
 ```
 
 ## Einstellungen {#settings}
@@ -260,7 +262,7 @@ knitr::include_graphics("./img/qr_code_overview.png")
 In den Einstellungen können der Benutzername und das Passwort geändert werden, vergleiche Abbildung \@ref(fig:settings-overview).
 
 ```{r settings-overview, echo=FALSE, fig.cap="Übersicht: Einstellungen"}
-knitr::include_graphics("./img/settings_overview.png")
+knitr::include_graphics("./img/settings_overview.png", error = FALSE)
 ```
 
 ### Benutzernamen ändern

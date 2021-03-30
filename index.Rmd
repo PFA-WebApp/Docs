@@ -84,22 +84,23 @@ badge <- function(type = c("admin", "mod", "user", "unique", "nn", "fk"), short 
       text
     )
   } else {
-    text
+    paste0("[", text, "]")
   }
 }
 
 operate_button <- function(operation = c("borrow", "return", "write-off")) {
   operation <- match.arg(operation)
   
-  if (knitr::is_html_output()) {
-    shiny::actionButton(
-    inputId = "",
-    label = switch(
+  text <- switch(
       operation,
       "borrow" = "Ausleihen",
       "return" = "Zurückgeben",
       "write-off" = "Abschreiben"
-    ),
+    )
+  if (knitr::is_html_output()) {
+    shiny::actionButton(
+    inputId = "",
+    label = text,
     icon = shiny::icon(
       name = switch(
         operation,
@@ -111,6 +112,8 @@ operate_button <- function(operation = c("borrow", "return", "write-off")) {
     class = paste0(operation, "-btn"),
     style = "width: 100px; margin-right: 10px;"
   ) %>% htmltools::span()
+  }else {
+    paste0("[", text, "]")
   }
 }
 ```

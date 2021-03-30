@@ -6,8 +6,8 @@
 ]{article}
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
-\usepackage{iftex}
-\ifPDFTeX
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
@@ -114,7 +114,7 @@
 \usepackage[greek, german, ngerman]{babel}
 \usepackage[style=numeric, sorting=none]{biblatex}
 \usepackage{csquotes}
-\ifLuaTeX
+\ifluatex
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
 \usepackage[style=numeric,]{biblatex}
@@ -156,7 +156,7 @@
 \hypertarget{introduction}{%
 \section{Einführung}\label{introduction}}
 
-Die Verwaltung von Messmitteln am Fachgebiet Fahrzeugantriebe der Technischen Universität Berlin gestaltet sich schwierig. Zurzeit werden Messmittel dezentral verwaltet. Die handelnden Personen besitzen wenig Information über den Ausleihzustand einzelner Messmittel über verschiedene Projekte hinweg. Daher hat sich das Fachgebiet entschlossen, im Rahmen des Moduls ``Projekt Fahrzeugantriebe'' eine Web-Applikation zur Verwaltung von Messmitteln zu erstellen. Diese Web-Applikation soll die Ausleihe und Rückgabe einzelner Messmittel über einen QR-Code realisieren. Darüber hinaus sollen Messmittel gruppiert, zusätzliche Informationen, wie zum Beispiel Datenblätter für Messmittel, bereitgestellt und der Bestand von Messmitteln erfasst werden. Um die unterschiedlichen Verantwortlichkeiten der Akteure zu berücksichtigen, ist zudem eine rechtebasierte Nutzerverwaltung vorzusehen.
+Die Verwaltung von Messmitteln am Fachgebiet Fahrzeugantriebe der Technischen Universität Berlin gestaltet sich schwierig. Zurzeit werden Messmittel dezentral verwaltet. Die handelnden Personen besitzen wenig Information über den Ausleihzustand einzelner Messmittel über verschiedene Projekte hinweg. Daher hat sich das Fachgebiet entschlossen, im Rahmen des Moduls ``Projekt Fahrzeugantriebe'' eine Web-Applikation zur Verwaltung von Messmitteln erstellen zu lassen. Diese Web-Applikation soll die Ausleihe und Rückgabe einzelner Messmittel über einen QR-Code realisieren. Darüber hinaus sollen Messmittel gruppiert, zusätzliche Informationen, wie zum Beispiel Datenblätter für Messmittel, bereitgestellt und der Bestand von Messmitteln erfasst werden. Um die unterschiedlichen Verantwortlichkeiten der Akteure zu berücksichtigen, ist zudem eine rechtebasierte Nutzerverwaltung vorzusehen.
 
 Der Inhalt dieses Berichtes umfasst die Dokumentation des Arbeitsprozesses, die Beschreibung des finalen Produktes hinsichtlich technischer Umsetzung und Funktionalität und zeigt zusätzlich Anknüpfungspunkte für Folgeprojekte auf.
 
@@ -227,16 +227,16 @@ Ausgehend von diesen Definitionen sind die folgenden Anforderungen zu erfüllen:
 \hypertarget{nutzerverwaltung}{%
 \subsubsection{Nutzerverwaltung}\label{nutzerverwaltung}}
 
-Wie eingangs beschrieben, ist eine rechtebasierte Verwaltung notwendig. Dazu werden drei Rollen angelegt. Der \emph{Benutzer} kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der \emph{Moderator} kann zusätzlich \emph{Benutzer} anlegen. Der \emph{Administrator} kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Tabelle \ref{tab:user-rights} entnommen werden.
+Wie eingangs beschrieben, ist eine rechtebasierte Verwaltung notwendig. Dazu werden drei Rollen angelegt. Der \emph{Benutzer} kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der \emph{Moderator} kann zusätzlich \emph{Benutzer} anlegen. Der \emph{Administrator} kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Um ein hohes Maß an Übersichtlichkeit für den Leser zu gewährleisten wurde sich ferner dazu entschieden, Operation, die ausschließlich mit erweiterten Rechten durchführbar sind, mit einem der Rolle entsprechenden Kürzel zu markieren. So sind Operationen, die insbesondere für Administatoren bzw. Moderatoren von Relevanz sind mit {[}A{]} bzw. {[}M{]} gekennzeichnet. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Tabelle \ref{tab:user-rights} entnommen werden.
 
 \begin{longtable}[]{@{}lccc@{}}
 \caption{\label{tab:user-rights} Übersicht über die Nutzerrollen}\tabularnewline
 \toprule
-Operation & Administrator & Moderator & Benutzer \\
+Operation & {[}Administrator{]} & {[}Moderator{]} & {[}Benutzer{]} \\
 \midrule
 \endfirsthead
 \toprule
-Operation & Administrator & Moderator & Benutzer \\
+Operation & {[}Administrator{]} & {[}Moderator{]} & {[}Benutzer{]} \\
 \midrule
 \endhead
 Ausleihen \& Zurückgeben & x & x & x \\
@@ -321,7 +321,7 @@ Als Tech Stack wird die Summe der verwendeten Technologien bezeichnet. Dazu geh�
 
 Zuallererst muss das Framework zur Erstellung der Web-Applikation gewählt werden. Dieses legt die zu verwendende Programmiersprache fest und setzt möglicherweise Restriktionen in Bezug auf weitere Software. Eine Web-Applikation zeichnet sich dadurch aus, dass sie im Webbrowser ausführbar ist \autocite{webappdef}. Der Webbrowser ist in der Lage, Dateien im HTML-Format (HTML: Hyper Text Markup Language \autocite{html}) darzustellen. Das HTML-Format spezifiziert dabei ausschließlich die Struktur der Webseite. Um die visuelle Erscheinung der Webseite zu beeinflussen, können Regeln in CSS-Dateien (CSS: Cascading Style Sheet \autocite{css}) hinterlegt werden. Für interaktives Verhalten existiert die Sprache JavaScript, die es ermöglicht, das HTML-Dokument dynamisch anzupassen \autocite{javascript}.
 
-Ein Framework zur Erstellung von Web-Applikationen bietet ein Grundgerüst für Layout sowie Funktionalität und stellt einen Server bereit. Für das Layout werden beispielsweise makroskopische Komponenten, wie Dashboards und Landing Pages, oder mikroskopische Komponenten, wie Inputs, Tabellen und Plots, bereitgestellt. Die Funktionalität wird abstrahiert und der Zustand der Web-Applikation modelliert. Der Server bearbeitet Anfragen von Clients, also Nutzern der Web-Applikation. Frameworks können in beliebigen Programmiersprachen implementiert werden, solange eine Schnittstelle zwischen der vom Framework verwendeten Sprache und einer dem Browser verständlichen Sprache existiert. Frameworks können hinsichtlich verschiedener Kriterien unterschieden werden. Backend-Frameworks integrieren neben einem Server meist auch noch Datenbanken, wohingegen Frontend-Frameworks ihren Fokus mehr auf dem visuellen Part legen. Multipage-Frameworks enthalten mehrere Seiten, wohingegen Singlepage-Frameworks nur eine einzige Seite darstellen.\autocite{framework}
+Ein Framework zur Erstellung von Web-Applikationen bietet ein Grundgerüst für Layout sowie Funktionalität und stellt einen Server bereit. Für das Layout werden beispielsweise makroskopische Komponenten, wie Dashboards und Landing Pages, oder mikroskopische Komponenten, wie Inputs, Tabellen und Plots, bereitgestellt. Die Funktionalität wird abstrahiert und der Zustand der Web-Applikation modelliert. Der Server bearbeitet Anfragen von Clients, also Nutzern der Web-Applikation. Frameworks können in beliebigen Programmiersprachen implementiert werden, solange eine Schnittstelle zwischen der vom Framework verwendeten Sprache und einer dem Browser verständlichen Sprache existiert. Frameworks können hinsichtlich verschiedener Kriterien unterschieden werden. Backend-Frameworks integrieren neben einem Server meist auch noch Datenbanken, wohingegen Frontend-Frameworks ihren Fokus mehr auf den visuellen Part legen. Multipage-Frameworks enthalten mehrere Seiten, wohingegen Singlepage-Frameworks nur eine einzige Seite darstellen.\autocite{framework}
 
 Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in der Programmiersprache R implementiert ist. Hierbei handelt es sich um ein Singlepage-Framework, das als Backend den sogenannten Shiny Server enthält \autocite{shiny}. Maßgeblich für die Entscheidung war, dass die beiden Autoren über Erfahrung im Umgang mit R und im Speziellen mit Shiny verfügen. Darüber hinaus zeichnet sich Shiny durch folgende Eigenschaften und Vorzüge aus \autocite{shiny}:
 
@@ -330,7 +330,7 @@ Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in
 \item
   Moderne Templates
 \item
-  Fokus auf konkrete Funktionalität
+  Fokus auf Funktionalität (Erleichterter Programmierprozess)
 \item
   Reaktives Zustandsmodell
 \item
@@ -344,7 +344,7 @@ Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in
 \hypertarget{programmiersprache}{%
 \subsection{Programmiersprache}\label{programmiersprache}}
 
-\href{https://www.r-project.org/}{R} ist eine Multiparadigmen-Programmiersprache \autocite{r-multiparadima}. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden. R verfügt einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden. Das Comprehensive R Archive Network (\href{https://cran.r-project.org/}{CRAN}) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung wie zum Beispiel \{\href{https://shiny.rstudio.com/}{shiny}\}, das die Funktionalitäten des Frameworks beinhaltet \autocite{cran}. Die folgenden Tabellen \ref{tab:pkg-shiny} und \ref{tab:pkg-programming} geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.
+\href{https://www.r-project.org/}{R} ist eine Multiparadigmen-Programmiersprache \autocite{r-multiparadima}. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden. R verfügt über einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden. Das Comprehensive R Archive Network (\href{https://cran.r-project.org/}{CRAN}) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung wie zum Beispiel \{\href{https://shiny.rstudio.com/}{shiny}\}, das die Funktionalitäten des Frameworks beinhaltet \autocite{cran}. Die folgenden Tabellen \ref{tab:pkg-shiny} und \ref{tab:pkg-programming} geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.
 
 \begin{longtable}[]{@{}ll@{}}
 \caption{\label{tab:pkg-shiny} Packages für \{shiny\}}\tabularnewline
@@ -394,7 +394,7 @@ Package & Beschreibung \\
 \hypertarget{datenbank-1}{%
 \subsection{Datenbank}\label{datenbank-1}}
 
-Zur konsistenten Datenverwaltung wird eine Datenbank benötigt. Datenbanken sind in der Lage, Anfragen von verschiedenen Clients zu bearbeiten und dabei zu gewährleisten, dass bestimmte Regeln hinsichtlich der Datenstruktur und Ausprägung der Daten eingehalten werden. Es existieren verschiedene Datenbankmodelle, unter anderem das Netzwerk-, das objektorientierte, das hierachische oder das relationale Datenbankmodell \autocite{laudon2015}. Diese unterscheiden sich hinsichtlich der Verknüpfung der beteiligten Daten. Aufgrund der hohen Flexibilität und der weiten Verbreitung wurde das relationale Datenbankmodell ausgewählt. Dieses speichert die Daten in miteinander verknüpften Tabellen. Die Tabellenzeilen enthalten Beobachtungen, die Tabellenspalten stellen die beobachtbaren Merkmale dar. Zur eindeutigen Identifikation erhält jede Zeile eine Identifikationsnummer. Die Spalte der Identifikationsnummern wird als Primärschlüssel (\emph{Primary Key}) bezeichnet. Um verschiedene Tabellen miteinander zu verknüpfen, werden Identifikationsnummern referenziert. Eine Spalte, die auf einen Primärschlüssel einer anderen Tabelle verweist, wird als Fremdschlüssel (\emph{Foreign Key}) bezeichnet.
+Zur konsistenten Datenverwaltung wird eine Datenbank benötigt. Datenbanken sind in der Lage, Anfragen von verschiedenen Clients zu bearbeiten und dabei zu gewährleisten, dass bestimmte Regeln hinsichtlich der Datenstruktur und Ausprägung der Daten eingehalten werden. Es existieren verschiedene Datenbankmodelle, unter anderem das Netzwerkdatenbankmodell, das objektorientierte, das hierachische oder das relationale Datenbankmodell \autocite{laudon2015}. Diese unterscheiden sich hinsichtlich der Verknüpfung der beteiligten Daten. Aufgrund der hohen Flexibilität und der weiten Verbreitung wurde das relationale Datenbankmodell ausgewählt. Dieses speichert die Daten in miteinander verknüpften Tabellen. Die Tabellenzeilen enthalten Beobachtungen, die Tabellenspalten stellen die beobachtbaren Merkmale dar. Zur eindeutigen Identifikation erhält jede Zeile eine Identifikationsnummer. Die Spalte der Identifikationsnummern wird als Primärschlüssel (\emph{Primary Key}) bezeichnet. Um verschiedene Tabellen miteinander zu verknüpfen, werden Identifikationsnummern referenziert. Eine Spalte, die auf einen Primärschlüssel einer anderen Tabelle verweist, wird als Fremdschlüssel (\emph{Foreign Key}) bezeichnet.
 
 Es gibt eine Vielzahl verschiedener relationaler Datenbankmanagementsysteme, die sich hinsichtlich ihrer Anwendungsbereiche und Skalierbarkeit unterscheiden. Für Projekte kleinen und mittleren Umfanges (unter 100.000 Aufrufe / Tag \autocite{whysqlite}) eignet sich \href{https://www.sqlite.org/index.html}{SQLite}. Hierbei werden alle Tabellen in einer einzigen Datei mit dem Suffix \emph{.sqlite} gespeichert. Der Zugriff auf die Datenbank erfolgt grundsätzlich über die \emph{Structured Query Language} (SQL). Für die Programmiersprache R gibt es die Packages \{DBI\} und \{RSQLite\}, die eine direkte Schnittstelle zur Datenbank bereitstellen.
 
@@ -408,7 +408,7 @@ Neben der technischen Umsetzung ist insbesondere der Arbeitsprozess von herausra
 
 In der Softwareentwicklung existiert eine Vielzahl verschiedener Modelle zur Bewältigung eines Projektes. Die klassischen Modelle (Wasserfallmodell, V-Modell) fokussieren sich darauf, Phasen sequentiell abzuarbeiten. Im Kontrast dazu stehen die agilen Modelle, in denen alle Phasen wiederholt durchlaufen werden. Agile Modelle sind in der Regel deutlich flexibler, da die Anforderungen kontinuierlich angepasst werden können. Für kleine Entwicklungsteams bietet sich die Verwendung eines agilen Entwicklungsmodells auch deswegen an, weil der Koordinationsaufwand zwischen den Teilnehmern gering ist. Das Entwicklungsmodell legt nicht nur fest, wie das Projekt auf der Makroebene strukturiert ist, sondern auch wie auf der Mikroebene konkret programmiert wird.
 
-Wir haben uns dafür entschieden, das agile Modell des Pair Programming - einer Unterform des Extreme Programming - einzusetzen. Hierbei arbeiten stets zwei Programmierer (also im vorliegenden Fall alle) gemeinsam an der Erstellung von Programmcode. Vorteile hiervon liegen im stetigen Informationsaustausch, gemeinsamer Entscheidungsfindung und geringerer Fehlerhäufigkeit. Als nachteilig wird allgemeinhin der doppelte Personalaufwand angesehen.
+Es wurde sich dafür entschieden, das agile Modell des Pair Programming - einer Unterform des Extreme Programming - einzusetzen. Hierbei arbeiten stets zwei Programmierer (also im vorliegenden Fall alle) gemeinsam an der Erstellung von Programmcode. Vorteile hiervon liegen im stetigen Informationsaustausch, gemeinsamer Entscheidungsfindung und geringerer Fehlerhäufigkeit. Als nachteilig wird allgemeinhin der doppelte Personalaufwand angesehen.
 
 \hypertarget{entwicklungsumgebung}{%
 \subsection{Entwicklungsumgebung}\label{entwicklungsumgebung}}
@@ -437,7 +437,7 @@ Die Online-Plattform GitHub erleichtert die Kollaboration über Git. Sie stellt 
 \hypertarget{user-guide}{%
 \section{Nutzerhilfe}\label{user-guide}}
 
-Die folgenden Abschnitte fassen wesentliche Merkmale der Web-Applikation zusammen und erläutern ihre Bedienung. Die technischen Details können im anschließenden Kapitel nachgeschlagen werden. Die Web-Applikation ist ein Dashboard. Dieses besitzt eine Sidebar, eine Navbar und einen Body, vergleiche Abbildung \ref{fig:app-overview}.
+Die folgenden Abschnitte fassen wesentliche Merkmale der Web-Applikation zusammen und erläutern ihre Bedienung. Die technischen Details können im anschließenden Kapitel nachgeschlagen werden. Die Web-Applikation ist ein sogenanntes Dashboard. Dieses besitzt eine Sidebar, eine Navbar und einen Body, vergleiche Abbildung \ref{fig:app-overview}.
 
 \begin{figure}
 \centering
@@ -445,15 +445,7 @@ Die folgenden Abschnitte fassen wesentliche Merkmale der Web-Applikation zusamme
 \caption{\label{fig:app-overview}Übersicht über das Dashboard}
 \end{figure}
 
-\hypertarget{sidebar}{%
-\subsection{Sidebar}\label{sidebar}}
-
-In der Sidebar kann über einen Reiter die Funktionalität ausgewählt werden, die im Body dargestellt wird. Die Anzahl an Auswahlmöglichkeiten hängt vom Anmeldestatus und der Benutzerrolle ab.
-
-\hypertarget{navbar}{%
-\subsection{Navbar}\label{navbar}}
-
-Die Navbar enthält:
+Die genannten drei Elemente halten halten dabei wesentliche Bedienelemente bereit. Die Navbar stellt die Orientierungshilfe für den Nutzer dar. Sie ist stets visuell präsent, befindet sich oberhalb des Bodys und ermöglicht beispielsweise das Öffnen weiterer Menüs wie der Sidebar. Die Navbar enthält zudem die folgenden Elemente:
 
 \begin{itemize}
 \tightlist
@@ -462,8 +454,10 @@ Die Navbar enthält:
 \item
   einen Reload-Button, mit dem eine Aktualisierung der Daten erzwungen werden kann,
 \item
-  einen Toggle, mit dem zwischen Tag- und Nachtmodus gewechselt werden kann.
+  einen Schalter, mit dem zwischen Tag- und Nachtmodus gewechselt werden kann.
 \end{itemize}
+
+Ausgehend von der Navbar kann, sofern nicht bereits geöffnet, das Sidebarmenü mithilfe der links befindlichen Schaltfläche geöffnet werden. In der Sidebar kann über einen Reiter die Funktionalität ausgewählt werden, die im Body dargestellt werden soll. Die Anzahl an Auswahlmöglichkeiten hängt vom Anmeldestatus und der Benutzerrolle ab. Im Folgenden gilt es daher die Reiter der Sidebar im einzelnen näher zu betrachten.
 
 \hypertarget{login}{%
 \subsection{Anmeldung}\label{login}}
@@ -522,19 +516,23 @@ Die Ausleihe und Rückgabe setzt sich aus drei Abschnitten zusammen, vergleiche 
 
 Zunächst muss ein Typ ausgewählt werden. Wenn die Web-Applikation über einen QR-Code aufgerufen wurde (siehe \protect\hyperlink{qrcode}{QR-Code}), ist der zum QR-Code gehörende Typ bereits ausgewählt. Im nächsten Schritt muss ein zugehöriger Untertyp ausgewählt werden. Die konkrete Operation kann durch Klicken auf einen der verfügbaren Buttons angestoßen werden. Im sich darauf öffnenden Dialog muss die Menge angegeben und die Ausführung der Operation bestätigt werden. Abbildung \ref{fig:operate-detail-circulate} gibt einen Überblick über den Abschnitt.
 
-A Administratoren können zusätzlich den ausführenden Nutzer auswählen, um Operationen für diesen durchzuführen. Das ist zum Beispiel notwendig, wenn ein Student das Fachgebiet verlassen hat und es versäumt hat, alle ausgeliehenen Sensoren zurückzugeben.
-
-Es können bis zur maximal verfügbaren Menge Elemente ausgeliehen werden.
-
-Es können bis zur maximal ausgeliehenen Menge Elemente zurückgegeben werden.
-
-A Es können bis zur maximal im Lager verfügbaren Menge Elemente abgeschrieben werden. Dies ist zum Beispiel notwendig, wenn ein Element ausfällt oder verloren geht.
-
 \begin{figure}
 \centering
 \includegraphics{./img/operate_detail_circulate.png}
 \caption{\label{fig:operate-detail-circulate}Abschnitt: Ausleihen \& Zurückgeben}
 \end{figure}
+
+Die grundlegenden Schaltflächen Ausleihen sowie Zurückgeben, stehen dabei allen Benutzerrollen zur Verfügung.
+
+{[}Ausleihen{]} Es können bis zur maximal verfügbaren Menge Elemente ausgeliehen werden.
+
+{[}Zurückgeben{]} Es können bis zur maximal ausgeliehenen Menge Elemente zurückgegeben werden.
+
+Adminstatoren haben in Ergänzung dazu noch die folgenden Befugnisse:
+
+{[}Abschreiben{]} {[}A{]} Es können bis zur maximal im Lager verfügbaren Menge Elemente abgeschrieben werden. Dies ist zum Beispiel notwendig, wenn ein Element ausfällt oder verloren geht.
+
+{[}A{]} Administratoren können zusätzlich den ausführenden Nutzer auswählen, um Operationen für diesen durchzuführen. Das könnte zum Beispiel notwendig sein, wenn ein Student das Fachgebiet verlassen hat und es versäumt hat, alle ausgeliehenen Sensoren in der Web-Applikation zurückzugeben.
 
 \hypertarget{gruppen-des-ausgewuxe4hlten-typs}{%
 \subsubsection{Gruppen des ausgewählten Typs}\label{gruppen-des-ausgewuxe4hlten-typs}}
@@ -584,12 +582,12 @@ Die Bestandsinformation gliedert sich in zwei Abschnitte, vergleiche Abbildung \
 \hypertarget{bestandsuxfcbersicht}{%
 \subsubsection{Bestandsübersicht}\label{bestandsuxfcbersicht}}
 
-Zunächst muss ein Typ ausgewählt werden. Für diesen Typen werden tabellarisch alle Untertypen dieses Typs aufgelistet. Die Spalte \emph{Verfügbar} enthält die gelagerte Menge, wohingegen die Spalte \emph{Maximal verfügbar} die maximal gelagerte Menge (kein Sensor dieses Untertypen ausgeliehen) enthält. Über die Checkbox \emph{Nur kritische Bestände anzeigen} kann ausgewählt werden, ob nur Untertypen angezeigt werden sollen, für die die verfügbare Menge kleiner als ihr kritischer Bestand ist. Der kritische Bestand eines Untertypen kann von einem Administrator im Reiter \protect\hyperlink{type}{Sensortypen} festgelegt werden.
+Zunächst muss ein Typ ausgewählt werden. Für diesen Typen werden tabellarisch alle Untertypen dieses Typs aufgelistet. Die Spalte \emph{Verfügbar} enthält die gelagerte Menge, wohingegen die Spalte \emph{Maximal verfügbar} die maximal gelagerte Menge (kein Sensor dieses Untertypen ausgeliehen) enthält. Über die Checkbox \emph{Nur kritische Bestände anzeigen} kann ausgewählt werden, ob nur Untertypen angezeigt werden sollen, für die die verfügbare Menge kleiner als der definierte kritische Bestand ist. Der kritische Bestand eines Untertypen kann von einem {[}Administrator{]} im Reiter \protect\hyperlink{type}{Sensortypen} festgelegt werden.
 
 \hypertarget{ausleihuxfcbersicht}{%
 \subsubsection{Ausleihübersicht}\label{ausleihuxfcbersicht}}
 
-Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellen in Bezug auf ausgeliehene Sensoren beantworten, vergleiche Tabelle \ref{tab:reporting-details} und Abbildung \ref{fig:reporting-details}.
+Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellungen in Bezug auf ausgeliehene Sensoren beantworten, vergleiche Tabelle \ref{tab:reporting-details} und Abbildung \ref{fig:reporting-details}.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.33}}
@@ -606,7 +604,7 @@ Reiter & Beschreibung \\
 Gesamt & Übersicht über alle Untertypen mit einer gegenwärtig ausgeliehenen Menge größer Null. \\
 Nach Untertyp & Übersicht über alle Nutzer, die den gewählten Untertypen zurzeit ausgeliehen haben. Hiermit kann herausgefunden werden, wer Ansprechpartner ist, falls alle Elemente eines Untertyps ausgeliehen sind. \\
 Nach Nutzer & Übersicht über alle Untertypen, die der gewählte Nutzer zurzeit ausgeliehen hat. \\
-Transaktionen & Übersicht über alle Transaktionen, die jemals im Rahmen der Sensorverwaltung stattgefunden haben. Ein Nutzer sieht ausschließlich seine eigenen Transaktionen. Ein Administrator sieht alle Transaktionen. Dazu gehören neben Ausleih- und Rückgabeoperationen auch Abschreibungen und sonstige Mengenänderungen. \\
+Transaktionen & Übersicht über alle Transaktionen, die jemals im Rahmen der Sensorverwaltung stattgefunden haben. Ein Nutzer sieht ausschließlich seine eigenen Transaktionen. Ein {[}Administrator{]} sieht alle Transaktionen. Dazu gehören neben Ausleih- und Rückgabeoperationen auch Abschreibungen und sonstige Mengenänderungen. \\
 \bottomrule
 \end{longtable}
 
@@ -617,7 +615,7 @@ Transaktionen & Übersicht über alle Transaktionen, die jemals im Rahmen der Se
 \end{figure}
 
 \hypertarget{user-management}{%
-\subsection{Nutzerverwaltung A M}\label{user-management}}
+\subsection{Nutzerverwaltung {[}A{]} {[}M{]}}\label{user-management}}
 
 In der \emph{Nutzerverwaltung} können neue Nutzer hinzugefügt und in der \emph{Nutzertabelle} verwaltet werden, vergleiche Abbildung \ref{fig:user-management-overview}.
 
@@ -630,7 +628,7 @@ In der \emph{Nutzerverwaltung} können neue Nutzer hinzugefügt und in der \emph
 \hypertarget{nutzer-hinzufuxfcgen}{%
 \subsubsection{Nutzer hinzufügen}\label{nutzer-hinzufuxfcgen}}
 
-Neue Nutzer können unter Angabe eines Benutzernamens und eines zur Sicherheit zweimal anzugebenden Passwortes hinzugefügt werden. Ein Moderator kann ausschließlich Benutzer hinzufügen, wohingegen ein Administrator Benutzer mit jeder Rolle hinzufügen kann.
+Neue Nutzer können unter Angabe eines Benutzernamens und eines zur Sicherheit zweimal anzugebenden Passwortes hinzugefügt werden. Ein {[}Moderator{]} kann ausschließlich {[}Benutzer{]} hinzufügen, wohingegen ein {[}Administrator{]} Benutzer mit jeder Rolle hinzufügen kann.
 
 \hypertarget{nutzertabelle}{%
 \subsubsection{Nutzertabelle}\label{nutzertabelle}}
@@ -649,14 +647,14 @@ Spalte & Beschreibung \\
 Spalte & Beschreibung \\
 \midrule
 \endhead
-Status ändern A & Dieser Button öffnet einen Dialog, in dem ein neuer Status für den Nutzer ausgewählt werden kann. \\
-Entfernen & Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Nutzer gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Transaktionen, die der ausgewählte Nutzer vorgenommen hat, bleiben jedoch weiterhin erhalten. Es können nur Nutzer gelöscht werden, die zurzeit keine Sensoren ausgeliehen haben. Falls der Nutzer nicht in der Lage ist, die Sensoren eigenständig zurückzugeben, kann der Administrator die ausgeliehenen Sensoren im Reiter \protect\hyperlink{operate}{Ausleihen \& Zurückgeben} für diesen Nutzer zurückgeben. Ein Moderator kann nur Benutzer entfernen, die er selbst hinzugefügt hat. \\
-Passwort zurücksetzen A & Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass das Passwort des Nutzers zurückgesetzt werden soll. Das Passwort wird auf das Standardpasswort \emph{1234} zurückgesetzt und sollte vom Nutzer sofort danach im Reiter \protect\hyperlink{settings}{Einstellungen} geändert werden. \\
+Status ändern {[}A{]} & Dieser Button öffnet einen Dialog, in dem ein neuer Status für den Nutzer ausgewählt werden kann. \\
+Entfernen & Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Nutzer gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Transaktionen, die der ausgewählte Nutzer vorgenommen hat, bleiben jedoch weiterhin erhalten. Es können nur Nutzer gelöscht werden, die zurzeit keine Sensoren ausgeliehen haben. Falls der Nutzer nicht in der Lage ist, die Sensoren eigenständig zurückzugeben, kann der {[}Administrator{]} die ausgeliehenen Sensoren im Reiter \protect\hyperlink{operate}{Ausleihen \& Zurückgeben} für diesen Nutzer zurückgeben. Ein {[}Moderator{]} kann nur {[}Benutzer{]} entfernen, die er selbst hinzugefügt hat. \\
+Passwort zurücksetzen {[}A{]} & Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass das Passwort des Nutzers zurückgesetzt werden soll. Das Passwort wird auf das Standardpasswort \emph{1234} zurückgesetzt und sollte vom Nutzer sofort danach im Reiter \protect\hyperlink{settings}{Einstellungen} geändert werden. \\
 \bottomrule
 \end{longtable}
 
 \hypertarget{group}{%
-\subsection{Gruppen A}\label{group}}
+\subsection{Gruppen {[}A{]}}\label{group}}
 
 Der Reiter \emph{Gruppen} erlaubt es, neue Gruppen hinzuzufügen und bestehende Gruppen zu verwalten, vergleiche Abbildung \ref{fig:group-overview}.
 
@@ -700,7 +698,7 @@ Entfernen & Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, d
 Zunächst muss eine Gruppe ausgewählt werden. In der Tabelle werden alle zur ausgewählten Gruppe zugehörigen Typen dargestellt.
 
 \hypertarget{type}{%
-\subsection{Sensortypen A}\label{type}}
+\subsection{Sensortypen {[}A{]}}\label{type}}
 
 Der Reiter \emph{Sensortypen} erlaubt es, neue Typen und Untertypen hinzuzufügen und bestehende Typen und Untertypen zu verwalten, vergleiche Abbildung \ref{fig:type-overview}.
 
@@ -768,9 +766,17 @@ Entfernen & Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, d
 \end{longtable}
 
 \hypertarget{file-management}{%
-\subsection{Dateiverwaltung A}\label{file-management}}
+\subsection{Dateiverwaltung {[}A{]}}\label{file-management}}
 
-In der \emph{Dateiverwaltung} können PDF-Dateien als Informationsmaterial in den Reitern \emph{Gruppen}, \emph{Typen} und \emph{Untertypen} hochgeladen werden. Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf \emph{Datei hochladen} kann eine PDF-Datei auf dem lokalen Dateisystem ausgewählt werden. Hochgeladene Dateien werden in einer Tabelle (vergleiche Tabelle \ref{tab:file-table}) angezeigt.
+In der \emph{Dateiverwaltung} können PDF-Dateien als Informationsmaterial in den Reitern \emph{Gruppen}, \emph{Typen} und \emph{Untertypen} hochgeladen werden, siehe Abbildung \ref{fig:file-management-overview}.
+
+\begin{figure}
+\centering
+\includegraphics{./img/file_management_overview.png}
+\caption{\label{fig:file-management-overview}Übersicht: Dateiverwaltung}
+\end{figure}
+
+Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf \emph{Datei hochladen} kann eine PDF-Datei auf dem lokalen Dateisystem ausgewählt werden. Hochgeladene Dateien werden in einer Tabelle (vergleiche Tabelle \ref{tab:file-table}) angezeigt.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.33}}
@@ -791,11 +797,11 @@ Löschen & Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, da
 \end{longtable}
 
 \hypertarget{qrcode}{%
-\subsection{QR-Code A}\label{qrcode}}
+\subsection{QR-Code {[}A{]}}\label{qrcode}}
 
-Zur beschleunigten Ausleihe und Rückgabe kann ein QR-Code für Typen erstellt werden, vergleiche Abbildung \ref{fig:qr-code-overview}. Dazu muss zunächst der Typ und die Serverdomäne ausgewählt werden. Der erstellte QR-Code und der Link, auf den der QR-Code verweist, werden eingeblendet. Der QR-Code kann im Anschluss als PDF-, PNG- oder SVG-Datei heruntergeladen werden. Dazu kann zusätzlich die Breite und Höhe der zu erstellenden Datei in Millimeter angegeben werden.
+Zur beschleunigten Ausleihe und Rückgabe kann ein QR-Code für Typen erstellt werden, vergleiche Abbildung \ref{fig:qr-code-overview}. Dazu muss zunächst der Typ und die Serverdomäne ausgewählt werden. Der erstellte QR-Code und der Link, auf den der QR-Code verweist, werden eingeblendet. Der QR-Code kann im Anschluss als PDF-, PNG- oder SVG-Datei heruntergeladen werden. Dazu kann zusätzlich die Breite und Höhe der zu erstellenden Datei in Millimetern angegeben werden.
 
-Der ausgedruckte QR-Code kann im Lager platziert werden. Dort muss er zum Beispiel mit einem auf einem mobilen Endgerät installierten, handelsüblichen QR-Code-Reader eingescannt werden, wodurch die Web-Applikation geöffnet wird. Benutzer und Moderator werden - falls bereits angemeldet, siehe \protect\hyperlink{cookies}{Cookies} - sofort, ansonsten nachdem sie sich angemeldet haben, auf den Reiter \protect\hyperlink{operate}{Ausleihen \& Zurückgeben} weitergeleitet, wo der eingescannte Typ bereits vorausgewählt ist. Sie müssen dann nur noch den Untertyp auswählen.
+Der ausgedruckte QR-Code kann im Lager platziert werden. Dort muss er zum Beispiel mit einem auf einem mobilen Endgerät installierten, handelsüblichen QR-Code-Reader eingescannt werden, wodurch die Web-Applikation geöffnet wird. {[}Benutzer{]} und {[}Moderator{]} werden - falls bereits angemeldet, siehe \protect\hyperlink{cookies}{Cookies} - sofort, ansonsten nachdem sie sich angemeldet haben, auf den Reiter \protect\hyperlink{operate}{Ausleihen \& Zurückgeben} weitergeleitet, wo der eingescannte Typ bereits vorausgewählt ist. Es muss dann nur noch der Untertyp ausgewählt werden.
 
 \begin{figure}
 \centering
@@ -832,7 +838,7 @@ Die nachfolgenden Abschnitte erweitern die Nutzerhilfe um die Beschreibung der t
 \hypertarget{struktur-der-web-applikation}{%
 \subsection{Struktur der Web-Applikation}\label{struktur-der-web-applikation}}
 
-Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei \texttt{app.R}. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei \emph{app.R} ausführt. In \texttt{app.R} werden Initialisierungen durchgeführt und die Funktionen \texttt{ui} und \texttt{server} definiert. Die Datei endet mit dem Aufruf \texttt{shinyApp(ui,\ server)}, wobei die \texttt{ui}-Funktion das visuelle Layout der Web-Applikation beschreibt und die \texttt{server}-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer \texttt{ui}- und einer \texttt{server}-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab. \autocite{shiny-modules}
+Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei \texttt{app.R}. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei \texttt{app.R} ausführt. In \texttt{app.R} werden Initialisierungen durchgeführt und die Funktionen \texttt{ui} und \texttt{server} definiert. Die Datei endet mit dem Aufruf \texttt{shinyApp(ui,\ server)}, wobei die \texttt{ui}-Funktion das visuelle Layout der Web-Applikation beschreibt und die \texttt{server}-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer \texttt{ui}- und einer \texttt{server}-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab. \autocite{shiny-modules}
 
 \hypertarget{struktur-von-app.r}{%
 \subsubsection{\texorpdfstring{Struktur von \texttt{app.R}}{Struktur von app.R}}\label{struktur-von-app.r}}
@@ -857,7 +863,7 @@ Wie bereits beschrieben, ist die Datei \texttt{app.R} der Einstiegspunkt der Web
 \begin{itemize}
 \tightlist
 \item
-  Die Funktion \texttt{source\_directory()} wird manuell gesourcet und danach dazu verwendet, alle \texttt{.R}-Dateien in den Ordnern \texttt{modules} und \texttt{db/func} zu sourcen.
+  Die Funktion \texttt{source\_directory()} wird manuell geladen und danach dazu verwendet, alle \texttt{.R}-Dateien in den Ordnern \texttt{modules} und \texttt{db/func} zu einzubinden.
 \end{itemize}
 
 \begin{Shaded}
@@ -957,7 +963,7 @@ Diese Environment wird jeder \texttt{server}-Funktion übergeben, sodass die Wer
 \item
   \texttt{init/source\_directory.R} Hilfsfunktion, die beim Start der Web-Applikation alle \texttt{.R}-Dateien einliest
 \item
-  \texttt{modules} Shiny-Module und sonstige Funktionalität
+  \texttt{modules} Shiny-Module und sonstige Funktionalitäten
 
   \begin{itemize}
   \tightlist
@@ -1014,7 +1020,7 @@ Die Datenbank ist eine SQLite-Datenbank. Sie liegt in \texttt{db/db.sqlite}. Der
 \hypertarget{struktur}{%
 \subsubsection{Struktur}\label{struktur}}
 
-Alle Tabellen enthalten die Spalte \texttt{rowid}, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden. Die Beschränkung Einzigartig bezieht sich immer nur auf die nicht gelöschten Elemente (\texttt{removed\ =\ 0}).
+Alle Tabellen enthalten die Spalte \texttt{rowid}, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden. Die Beschränkung {[}Einzigartig{]} bezieht sich immer nur auf die nicht gelöschten Elemente (\texttt{removed\ =\ 0}).
 
 \hypertarget{circulation}{%
 \paragraph{circulation}\label{circulation}}
@@ -1032,9 +1038,9 @@ Spalte & Einschränkungen & Beschreibung \\
 Spalte & Einschränkungen & Beschreibung \\
 \midrule
 \endhead
-user\_id & Fremdschlüssel & Identifikationsnummer des ausführenden Nutzers \\
-subtype\_id & Fremdschlüssel & Identifikationsnummer des bearbeiteten Untertyps \\
-quantity & Nicht-negativ & Bearbeitete Menge \\
+user\_id & {[}Fremdschlüssel{]} & Identifikationsnummer des ausführenden Nutzers \\
+subtype\_id & {[}Fremdschlüssel{]} & Identifikationsnummer des bearbeiteten Untertyps \\
+quantity & {[}Nicht-negativ{]} & Bearbeitete Menge \\
 time & & Zeitpunkt der Transaktion \\
 op\_type & \texttt{1} oder \texttt{2} & Transaktionsart: \texttt{1} - Ausleihen und Zurückgeben, \texttt{2} - Bestandsänderungen \\
 \bottomrule
@@ -1053,7 +1059,7 @@ Spalte & Einschränkungen & Beschreibung \\
 Spalte & Einschränkungen & Beschreibung \\
 \midrule
 \endhead
-group\_name & Einzigartig & Gruppenname \\
+group\_name & {[}Einzigartig{]} & Gruppenname \\
 removed & \texttt{0} oder \texttt{1} & \texttt{0} - existent, \texttt{1} - gelöscht \\
 \bottomrule
 \end{longtable}
@@ -1071,8 +1077,8 @@ Spalte & Einschränkungen & Beschreibung \\
 Spalte & Einschränkungen & Beschreibung \\
 \midrule
 \endhead
-group\_id & Fremdschlüssel & Identifikationsnummer der Gruppe \\
-type\_id & Fremdschlüssel & Identifikationsnummer des Typs \\
+group\_id & {[}Fremdschlüssel{]} & Identifikationsnummer der Gruppe \\
+type\_id & {[}Fremdschlüssel{]} & Identifikationsnummer des Typs \\
 \bottomrule
 \end{longtable}
 
@@ -1089,9 +1095,9 @@ Spalte & Einschränkungen & Beschreibung \\
 Spalte & Einschränkungen & Beschreibung \\
 \midrule
 \endhead
-type\_id & Fremdschlüssel & Identifikationsnummer des Typs \\
-subtype\_name & Einzigartig innerhalb eines Typs & Untertypenname \\
-quantity & Nicht-negativ & Bestandsmenge \\
+type\_id & {[}Fremdschlüssel{]} & Identifikationsnummer des Typs \\
+subtype\_name & {[}Einzigartig{]} innerhalb eines Typs & Untertypenname \\
+quantity & {[}Nicht-negativ{]} & Bestandsmenge \\
 removed & \texttt{0} oder \texttt{1} & \texttt{0} - existent, \texttt{1} - gelöscht \\
 \bottomrule
 \end{longtable}
@@ -1109,7 +1115,7 @@ Spalte & Einschränkungen & Beschreibung \\
 Spalte & Einschränkungen & Beschreibung \\
 \midrule
 \endhead
-type\_name & Einzigartig & Typname \\
+type\_name & {[}Einzigartig{]} & Typname \\
 removed & \texttt{0} oder \texttt{1} & \texttt{0} - existent, \texttt{1} - gelöscht \\
 \bottomrule
 \end{longtable}
@@ -1128,7 +1134,7 @@ Spalte & Einschränkungen & Beschreibung \\
 \midrule
 \endhead
 hash & & Verhashter Nutzername (notwendig für Cookies) \\
-name & Einzigartig & Nutzername \\
+name & {[}Einzigartig{]} & Nutzername \\
 status & \texttt{admin}, \texttt{mod} oder \texttt{user} & Nutzerrolle \\
 password & & Verhashtes Passwort \\
 added\_from & & Nutzeridentifikationsnummer des Hinzufügenden \\
@@ -1172,21 +1178,21 @@ Beispielhaft wird die Tabelle ``circulation'' betrachtet. Diese Tabelle speicher
 
 \caption{\label{tab:unnamed-chunk-9}Beispielhafter Inhalt der Tabelle `circulation`}
 \centering
-\begin{tabu} to \linewidth {>{\raggedleft}X>{\raggedleft}X>{\raggedleft}X>{\raggedright\arraybackslash}p{5cm}>{\raggedleft}X}
+\begin{tabu} to \linewidth {>{\raggedright}X>{\raggedleft}X>{\raggedleft}X>{\raggedleft\arraybackslash}p{5cm}>{\raggedright}X>{\raggedleft}X}
 \toprule
-user\_id & subtype\_id & quantity & time & op\_type\\
+  & user\_id & subtype\_id & quantity & time & op\_type\\
 \midrule
-1 & 2 & 24 & 2021-02-18 18:38:00 & 2\\
-1 & 3 & 12 & 2021-02-18 18:38:04 & 2\\
-1 & 4 & 5 & 2021-02-18 18:38:07 & 2\\
-1 & 5 & 8 & 2021-02-18 18:38:12 & 2\\
-1 & 6 & 14 & 2021-02-18 18:38:16 & 2\\
+NA & NA & NA & NA & NA & NA\\
+NA.1 & NA & NA & NA & NA & NA\\
+NA.2 & NA & NA & NA & NA & NA\\
+NA.3 & NA & NA & NA & NA & NA\\
+NA.4 & NA & NA & NA & NA & NA\\
 \addlinespace
-1 & 11 & 4 & 2021-02-18 18:40:14 & 2\\
-1 & 12 & 3 & 2021-02-18 18:41:09 & 2\\
-1 & 17 & 112 & 2021-02-18 18:41:40 & 2\\
-1 & 1 & 45 & 2021-02-18 19:38:35 & 2\\
-4 & 7 & 6 & 2021-02-18 19:40:53 & 1\\
+NA.5 & NA & NA & NA & NA & NA\\
+NA.6 & NA & NA & NA & NA & NA\\
+NA.7 & NA & NA & NA & NA & NA\\
+NA.8 & NA & NA & NA & NA & NA\\
+NA.9 & NA & NA & NA & NA & NA\\
 \bottomrule
 \end{tabu}
 \end{table}
@@ -1215,7 +1221,7 @@ Beispielhaft wird die Funktion \texttt{db\_get\_borrowed\_quantity(db,\ subtype\
 \end{Shaded}
 
 \begin{verbatim}
-## [1]  0 13  0  0  2
+## [1] 0 0 0 0 0
 \end{verbatim}
 
 \hypertarget{cookies}{%
@@ -1226,7 +1232,7 @@ Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet
 \hypertarget{dark-mode}{%
 \subsubsection{dark-mode}\label{dark-mode}}
 
-Dieses Cookie kann die Werte \texttt{"true"} oder \texttt{"false"} enthalten. Das Cookie wird gesetzt, wenn der Nutzer die Toggle für den Nachtmodus verwendet. Beim Start der Web-Applikation wird das Cookie verwendet, um den initialen Status für den Nachtmodus zu bestimmen. Falls das Cookie nicht vorhanden ist, wird die Einstellung des Browsers (\texttt{window.matchMedia(\textquotesingle{}(prefers-color-scheme:\ dark)\textquotesingle{})}) ausgelesen und im Cookie gesetzt.
+Dieses Cookie kann die Werte \texttt{"true"} oder \texttt{"false"} enthalten. Das Cookie wird gesetzt, wenn der Nutzer den Schalter für den Nachtmodus verwendet. Beim Start der Web-Applikation wird das Cookie verwendet, um den initialen Status für den Nachtmodus zu bestimmen. Falls das Cookie nicht vorhanden ist, wird die Einstellung des Browsers (\texttt{window.matchMedia(\textquotesingle{}(prefers-color-scheme:\ dark)\textquotesingle{})}) ausgelesen und im Cookie gesetzt.
 
 \hypertarget{user-1}{%
 \subsubsection{user}\label{user-1}}
@@ -1271,7 +1277,7 @@ Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevan
   \midrule
   \endhead
   showcase & \texttt{yes} für Showcasemodus (Passwörter für Standardnutzer werden eingeblendet, Standardnutzer können nicht gelöscht werden), \texttt{no} (voreingestellt) für Betriebsmodus \\
-  url & Base-URL auf die QR-Codes verweisen. Hier sind Anpassungen zwingend notwendig. \\
+  url & Basis-URL auf welche QR-Codes verweisen (hier sind Anpassungen zwingend notwendig) \\
   \bottomrule
   \end{longtable}
 \end{itemize}
@@ -1280,7 +1286,7 @@ Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevan
 \item
   \texttt{/etc/rstudio}
 
-  Dieser Ordner enthält die Datei \texttt{rserver.conf}, mit der der RStudio Server konfiguriert werden kann \autocite{rstudio-server}. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port \texttt{8787} ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers \texttt{pfa} und seines Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.
+  Dieser Ordner enthält die Datei \texttt{rserver.conf}, mit der der RStudio Server konfiguriert werden kann \autocite{rstudio-server}. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port \texttt{8787} ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers \texttt{pfa} und eines zugehörigen Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.
 
   Für weitere Informationen siehe \url{https://docs.rstudio.com/ide/server-pro/}. Es ist zu beachten, dass es sich bei der installierten Version um die Open-Source-Version und \emph{nicht} um die Pro-Version handelt.
 \end{itemize}
@@ -1295,18 +1301,19 @@ Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevan
 \hypertarget{discussion}{%
 \section{Diskussion und Ausblick}\label{discussion}}
 
-Übergeordnetes Ziel des Projektes war es, eine Web-Applikation zu entwickeln, die die Sensorverwaltung des Fachgebietes Fahrzeugantriebe der Technischen Universität Berlin übernimmt. Dazu musste eine Vielzahl von Konzepten erstellt und umgesetzt werden, unter anderem die Abstraktion der Datenstruktur und deren Abbildung auf eine Datenbank. Die an die Web-Applikation erstellten Anforderungen wurden allesamt erfüllt und konnten in Rücksprache mit den Ansprechpartnern am Fachgebiet sogar erweitert werden.
+Das Projekt wird mit einer Diskussion der Ergebnisse abgeschlossen. Dabei wird auch thematisiert, wie diese Ergebnisse erzielt wurden.
+Übergeordnetes Ziel des Projektes war es, eine Web-Applikation zu entwickeln, die die Sensorverwaltung des Fachgebietes Fahrzeugantriebe der Technischen Universität Berlin übernimmt. Dazu musste eine Vielzahl von Konzepten erstellt und umgesetzt werden, unter anderem die Abstraktion der Datenstruktur und deren Abbildung auf eine Datenbank. Die an die Web-Applikation nach Aufgabenstellung gestellten Anforderungen wurden allesamt erfüllt und konnten in Rücksprache mit den Ansprechpartnern am Fachgebiet sogar erweitert werden.
 
-Das Projekt schließt mit einer Diskussion der Ergebnisse und der Weise, auf die diese Ergebnisse erzielt wurden, ab. Rückblickend ist festzuhalten, dass der Umfang des Projektes - insbesondere durch zusätzliche Anforderungen - den verfügbaren zeitlichen Rahmen überstiegen hat. Während der Projektphase sind zusätzliche Anforderungen aufgetreten, die mit einem realistischen Qualitätsanspruch nicht umgesetzt werden konnten. Das Hauptaugenmerk bei der Entwicklung der Web-Applikation lag insbesondere auf der Gewährleistung der Funktionalität über den Rahmen des Projektes hinaus. Diesem Aspekt wurde die Implementierung zusätzlicher Funktionalität geringerer Qualität untergeordnet. Vor allen Dingen wurde das Layout, die Datenbankstruktur und Operationen auf der Datenbank optimiert. Das Layout ist zeitgemäß, konsistent und übersichtlich, sodass der Nutzer sich einfach zurechtfindet. Es überzeugt durch einen hohen Detailgrad. Die Datenbankstruktur ist redundanzfrei und konnte trotz gestiegener Anforderungen über das Projekt zielführend erweitert werden. Eine Vielzahl an Hilfsfunktionen sowie der kohärente Aufbau der Tabellen begünstigt darüber hinaus eine effiziente, zukünftige Erweiterung. Die logische Konsistenz der Daten wird des Weiteren durch den vielfältigen Einsatz von Datenbankbeschränkungen garantiert.
+Rückblickend ist festzuhalten, dass der Umfang des Projektes - insbesondere durch zusätzliche Anforderungen - den verfügbaren zeitlichen Rahmen überstiegen hat. Während der Projektphase sind zusätzliche optionale Anforderungen aufgetreten, die mit einem realistischen Qualitätsanspruch nicht umgesetzt werden konnten. Das Hauptaugenmerk bei der Entwicklung der Web-Applikation lag insbesondere auf der Gewährleistung der Funktionalität über den Rahmen des Projektes hinaus. Diesem Aspekt wurde die Implementierung zusätzlicher Funktionalität geringerer Qualität untergeordnet. Vor allen Dingen wurden das Layout, die Datenbankstruktur und Operationen auf der Datenbank optimiert. Das Layout ist zeitgemäß, konsistent und übersichtlich, sodass der Nutzer sich einfach zurechtfindet. Es überzeugt durch einen hohen Detailgrad. Die Datenbankstruktur ist redundanzfrei und konnte trotz gestiegener Anforderungen über das Projekt zielführend erweitert werden. Eine Vielzahl an Hilfsfunktionen sowie der kohärente Aufbau der Tabellen begünstigt darüber hinaus eine zukünftige Erweiterung auf eine effiziente Weise. Die logische Konsistenz der Daten wird des Weiteren durch den vielfältigen Einsatz von Datenbankbeschränkungen garantiert.
 
-Die Struktur der Web-Applikation begünstigt daher nicht nur ihren zuverlässigen dauerhaften Einsatz sondern auch eine stetige Weiterentwicklung. Darüber hinaus wurde durch die sachgemäße Einrichtung der virtuellen Maschine der Grundstein für Folgeprojekte gelegt. Der Einstieg in das Projekt für mit R und der Entwicklung von Web-Applikationen unerfahrenen Personen ist sicherlich mit Hürden verbunden. Durch den vorliegenden Bericht und die durchdachte Struktur der Web-Applikation soll er jedoch so einfach wie möglich gemacht werden. Folgeprojekte können sich zum Beispiel mit den nachfolgenden Inhalten beschäftigen:
+Die Struktur der Web-Applikation begünstigt daher nicht nur ihren zuverlässigen dauerhaften Einsatz sondern auch eine stetige Weiterentwicklung. Darüber hinaus wurde durch die sachgemäße Einrichtung der virtuellen Maschine der Grundstein für Folgeprojekte gelegt. Der Einstieg in das Projekt für mit R und der Entwicklung von Web-Applikationen unerfahrenen Personen ist sicherlich mit Hürden verbunden. Durch den vorliegenden Bericht und die durchdachte Struktur der Web-Applikation soll er jedoch so einfach wie möglich gemacht werden. Folgeprojekte könnten sich zum Beispiel mit den nachfolgenden Inhalten beschäftigen:
 
 \begin{itemize}
 \tightlist
 \item
   Erweiterung der Datenstruktur um Stücklisten, um komplexere Beziehungen zwischen Elementen abbilden zu können
 \item
-  E-Mail-Integration für Registrierung, Passwort vergessen und Benachrichtigungen
+  E-Mail-Integration für Registrierung, Vergessen des Passworts und Benachrichtigungen
 \item
   Hinterlegen zusätzlicher Informationen für die Ausleihe (vorraussichtliches Rückgabedatum, Verwendungszweck etc.)
 \item

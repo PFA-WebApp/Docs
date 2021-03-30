@@ -176,7 +176,7 @@ Table: (\#tab:user) Datenbank: Tabelle `user`
 
 ```{r, echo=FALSE}
 wd <- getwd()
-knitr::opts_knit$set(root.dir = "./../App")
+knitr::opts_knit$set(root.dir = "./../PFA")
 ```
 
 ```{r}
