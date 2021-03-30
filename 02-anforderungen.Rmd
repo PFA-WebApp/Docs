@@ -35,7 +35,7 @@ Ausgehend von diesen Definitionen sind die folgenden Anforderungen zu erfüllen:
 
 ### Nutzerverwaltung
 
-Wie eingangs beschrieben, ist eine rechtebasierte Verwaltung notwendig. Dazu werden drei Rollen angelegt. Der *Benutzer* kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der *Moderator* kann zusätzlich *Benutzer* anlegen. Der *Administrator* kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Tabelle \@ref(tab:user-rights) entnommen werden.
+Wie eingangs beschrieben, ist eine rechtebasierte Verwaltung notwendig. Dazu werden drei Rollen angelegt. Der *Benutzer* kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der *Moderator* kann zusätzlich *Benutzer* anlegen. Der *Administrator* kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Um ein hohes Maß an Übersichtlichkeit für den Leser zu gewährleisten wurde sich ferner dazu entschieden, Operation, die ausschließlich mit erweiterten Rechten durchführbar sind, mit einem der Rolle entsprechenden Kürzel zu markieren. So sind Operationen, die insbesondere für Administatoren bzw. Moderatoren von Relevanz sind mit `r badge("admin", short = TRUE)` bzw. `r badge("mod", short = TRUE)` gekennzeichnet. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Tabelle \@ref(tab:user-rights) entnommen werden. 
 
 | Operation | `r badge("admin")` | `r badge("mod")` | `r badge("user")` |
 |:------------ | :--: | :--: | :--: |

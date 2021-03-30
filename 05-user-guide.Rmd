@@ -8,23 +8,19 @@ $(function() {
 })
 ```
 
-Die folgenden Abschnitte fassen wesentliche Merkmale der Web-Applikation zusammen und erläutern ihre Bedienung. Die technischen Details können im anschließenden Kapitel nachgeschlagen werden. Die Web-Applikation ist ein Dashboard. Dieses besitzt eine Sidebar, eine Navbar und einen Body, vergleiche Abbildung \@ref(fig:app-overview).
+Die folgenden Abschnitte fassen wesentliche Merkmale der Web-Applikation zusammen und erläutern ihre Bedienung. Die technischen Details können im anschließenden Kapitel nachgeschlagen werden. Die Web-Applikation ist ein sogenanntes Dashboard. Dieses besitzt eine Sidebar, eine Navbar und einen Body, vergleiche Abbildung \@ref(fig:app-overview).
 
 ```{r app-overview, echo=FALSE, fig.cap="Übersicht über das Dashboard"}
 knitr::include_graphics("./img/app_overview.png")
 ```
 
-## Sidebar
-
-In der Sidebar kann über einen Reiter die Funktionalität ausgewählt werden, die im Body dargestellt wird. Die Anzahl an Auswahlmöglichkeiten hängt vom Anmeldestatus und der Benutzerrolle ab.
-
-## Navbar
-
-Die Navbar enthält:
+Die genannten drei Elemente halten halten dabei wesentliche Bedienelemente bereit. Die Navbar stellt die Orientierungshilfe für den Nutzer dar. Sie ist stets visuell präsent, befindet sich oberhalb des Bodys und ermöglicht beispielsweise das Öffnen weiterer Menüs wie der Sidebar. Die Navbar enthält zudem die folgenden Elemente:
 
 * einen Link zum GitHub-Repository, das den Quellcode der Web-Applikation enthält,
 * einen Reload-Button, mit dem eine Aktualisierung der Daten erzwungen werden kann,
-* einen Toggle, mit dem zwischen Tag- und Nachtmodus gewechselt werden kann.
+* einen Schalter, mit dem zwischen Tag- und Nachtmodus gewechselt werden kann.
+
+Ausgehend von der Navbar kann, sofern nicht bereits geöffnet, das Sidebarmenü mithilfe der links befindlichen Schaltfläche geöffnet werden. In der Sidebar kann über einen Reiter die Funktionalität ausgewählt werden, die im Body dargestellt werden soll. Die Anzahl an Auswahlmöglichkeiten hängt vom Anmeldestatus und der Benutzerrolle ab. Im Folgenden gilt es daher die Reiter der Sidebar im einzelnen näher zu betrachten.
 
 ## Anmeldung {#login}
 
@@ -65,7 +61,11 @@ knitr::include_graphics("./img/operate_overview.png")
 
 Zunächst muss ein Typ ausgewählt werden. Wenn die Web-Applikation über einen QR-Code aufgerufen wurde (siehe [QR-Code](#qrcode)), ist der zum QR-Code gehörende Typ bereits ausgewählt. Im nächsten Schritt muss ein zugehöriger Untertyp ausgewählt werden. Die konkrete Operation kann durch Klicken auf einen der verfügbaren Buttons angestoßen werden. Im sich darauf öffnenden Dialog muss die Menge angegeben und die Ausführung der Operation bestätigt werden. Abbildung \@ref(fig:operate-detail-circulate) gibt einen Überblick über den Abschnitt.
 
-`r badge("admin", short = TRUE)` Administratoren können zusätzlich den ausführenden Nutzer auswählen, um Operationen für diesen durchzuführen. Das ist zum Beispiel notwendig, wenn ein Student das Fachgebiet verlassen hat und es versäumt hat, alle ausgeliehenen Sensoren zurückzugeben.
+```{r operate-detail-circulate, echo=FALSE, fig.cap="Abschnitt: Ausleihen & Zurückgeben"}
+knitr::include_graphics("./img/operate_detail_circulate.png")
+```
+
+Die grundlegenden Schaltflächen Ausleihen sowie Zurückgeben, stehen dabei allen Benutzerrollen zur Verfügung. 
 
 <div class="flex">
 `r operate_button("borrow")` Es können bis zur maximal verfügbaren Menge Elemente ausgeliehen werden.
@@ -75,13 +75,13 @@ Zunächst muss ein Typ ausgewählt werden. Wenn die Web-Applikation über einen 
 `r operate_button("return")` Es können bis zur maximal ausgeliehenen Menge Elemente zurückgegeben werden.
 </div>
 
+Adminstatoren haben in Ergänzung dazu noch die folgenden Befugnisse.
+
 <div class="flex">
 `r operate_button("write-off")` `r badge("admin", short = TRUE)` Es können bis zur maximal im Lager verfügbaren Menge Elemente abgeschrieben werden. Dies ist zum Beispiel notwendig, wenn ein Element ausfällt oder verloren geht.
 </div>
 
-```{r operate-detail-circulate, echo=FALSE, fig.cap="Abschnitt: Ausleihen & Zurückgeben"}
-knitr::include_graphics("./img/operate_detail_circulate.png")
-```
+`r badge("admin", short = TRUE)` Administratoren können zusätzlich den ausführenden Nutzer auswählen, um Operationen für diesen durchzuführen. Das könnte zum Beispiel notwendig sein, wenn ein Student das Fachgebiet verlassen hat und es versäumt hat, alle ausgeliehenen Sensoren in der Web-Applikation zurückzugeben.
 
 ### Gruppen des ausgewählten Typs
 
@@ -115,11 +115,11 @@ knitr::include_graphics("./img/reporting_overview.png")
 
 ### Bestandsübersicht
 
-Zunächst muss ein Typ ausgewählt werden. Für diesen Typen werden tabellarisch alle Untertypen dieses Typs aufgelistet. Die Spalte *Verfügbar* enthält die gelagerte Menge, wohingegen die Spalte *Maximal verfügbar* die maximal gelagerte Menge (kein Sensor dieses Untertypen ausgeliehen) enthält. Über die Checkbox *Nur kritische Bestände anzeigen* kann ausgewählt werden, ob nur Untertypen angezeigt werden sollen, für die die verfügbare Menge kleiner als ihr kritischer Bestand ist. Der kritische Bestand eines Untertypen kann von einem `r badge("admin")` im Reiter [Sensortypen](#type) festgelegt werden.
+Zunächst muss ein Typ ausgewählt werden. Für diesen Typen werden tabellarisch alle Untertypen dieses Typs aufgelistet. Die Spalte *Verfügbar* enthält die gelagerte Menge, wohingegen die Spalte *Maximal verfügbar* die maximal gelagerte Menge (kein Sensor dieses Untertypen ausgeliehen) enthält. Über die Checkbox *Nur kritische Bestände anzeigen* kann ausgewählt werden, ob nur Untertypen angezeigt werden sollen, für die die verfügbare Menge kleiner als der definierte kritische Bestand ist. Der kritische Bestand eines Untertypen kann von einem `r badge("admin")` im Reiter [Sensortypen](#type) festgelegt werden.
 
 ### Ausleihübersicht
 
-Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellen in Bezug auf ausgeliehene Sensoren beantworten, vergleiche Tabelle \@ref(tab:reporting-details) und Abbildung \@ref(fig:reporting-details).
+Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellungen in Bezug auf ausgeliehene Sensoren beantworten, vergleiche Tabelle \@ref(tab:reporting-details) und Abbildung \@ref(fig:reporting-details).
 
 | Reiter | Beschreibung |
 | --- | ------ |
@@ -229,7 +229,13 @@ Table: (\#tab:subtype-table) Untertypentabelle
 
 ## Dateiverwaltung `r badge("admin", short = TRUE)` {#file-management}
 
-In der *Dateiverwaltung* können PDF-Dateien als Informationsmaterial in den Reitern *Gruppen*, *Typen* und *Untertypen* hochgeladen werden. Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf *Datei hochladen* kann eine PDF-Datei auf dem lokalen Dateisystem ausgewählt werden. Hochgeladene Dateien werden in einer Tabelle (vergleiche Tabelle \@ref(tab:file-table)) angezeigt.
+In der *Dateiverwaltung* können PDF-Dateien als Informationsmaterial in den Reitern *Gruppen*, *Typen* und *Untertypen* hochgeladen werden, siehe Abbildung \ref(fig:filemanagement_overview).
+
+```{r reporting-details, echo=FALSE, fig.cap="Übersicht: Ausleihübersicht"}
+knitr::include_graphics("./img/reporting_details.png")
+```
+
+Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf *Datei hochladen* kann eine PDF-Datei auf dem lokalen Dateisystem ausgewählt werden. Hochgeladene Dateien werden in einer Tabelle (vergleiche Tabelle \@ref(tab:file-table)) angezeigt.
 
 | Spalte | Beschreibung |
 | --- | ------ |
@@ -241,9 +247,9 @@ Table: (\#tab:file-table) Dateitabelle
 
 ## QR-Code `r badge("admin", short = TRUE)` {#qrcode}
 
-Zur beschleunigten Ausleihe und Rückgabe kann ein QR-Code für Typen erstellt werden, vergleiche Abbildung \@ref(fig:qr-code-overview). Dazu muss zunächst der Typ und die Serverdomäne ausgewählt werden. Der erstellte QR-Code und der Link, auf den der QR-Code verweist, werden eingeblendet. Der QR-Code kann im Anschluss als PDF-, PNG- oder SVG-Datei heruntergeladen werden. Dazu kann zusätzlich die Breite und Höhe der zu erstellenden Datei in Millimeter angegeben werden.
+Zur beschleunigten Ausleihe und Rückgabe kann ein QR-Code für Typen erstellt werden, vergleiche Abbildung \@ref(fig:qr-code-overview). Dazu muss zunächst der Typ und die Serverdomäne ausgewählt werden. Der erstellte QR-Code und der Link, auf den der QR-Code verweist, werden eingeblendet. Der QR-Code kann im Anschluss als PDF-, PNG- oder SVG-Datei heruntergeladen werden. Dazu kann zusätzlich die Breite und Höhe der zu erstellenden Datei in Millimetern angegeben werden.
 
-Der ausgedruckte QR-Code kann im Lager platziert werden. Dort muss er zum Beispiel mit einem auf einem mobilen Endgerät installierten, handelsüblichen QR-Code-Reader eingescannt werden, wodurch die Web-Applikation geöffnet wird. `r badge("user")` und `r badge("mod")` werden - falls bereits angemeldet, siehe [Cookies](#cookies) - sofort, ansonsten nachdem sie sich angemeldet haben, auf den Reiter [Ausleihen & Zurückgeben](#operate) weitergeleitet, wo der eingescannte Typ bereits vorausgewählt ist. Sie müssen dann nur noch den Untertyp auswählen.
+Der ausgedruckte QR-Code kann im Lager platziert werden. Dort muss er zum Beispiel mit einem auf einem mobilen Endgerät installierten, handelsüblichen QR-Code-Reader eingescannt werden, wodurch die Web-Applikation geöffnet wird. `r badge("user")` und `r badge("mod")` werden - falls bereits angemeldet, siehe [Cookies](#cookies) - sofort, ansonsten nachdem sie sich angemeldet haben, auf den Reiter [Ausleihen & Zurückgeben](#operate) weitergeleitet, wo der eingescannte Typ bereits vorausgewählt ist. Es muss dann nur noch der Untertyp ausgewählt werden.
 
 ```{r qr-code-overview, echo=FALSE, fig.cap="Übersicht: QR-Code"}
 knitr::include_graphics("./img/qr_code_overview.png")

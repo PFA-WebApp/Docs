@@ -4,7 +4,7 @@ Die nachfolgenden Abschnitte erweitern die Nutzerhilfe um die Beschreibung der t
 
 ## Struktur der Web-Applikation
 
-Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei `app.R`. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei *app.R* ausführt. In `app.R` werden Initialisierungen durchgeführt und die Funktionen `ui` und `server` definiert. Die Datei endet mit dem Aufruf `shinyApp(ui, server)`, wobei die `ui`-Funktion das visuelle Layout der Web-Applikation beschreibt und die `server`-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer `ui`- und einer `server`-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab. [@shiny-modules]
+Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei `app.R`. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei `app.R` ausführt. In `app.R` werden Initialisierungen durchgeführt und die Funktionen `ui` und `server` definiert. Die Datei endet mit dem Aufruf `shinyApp(ui, server)`, wobei die `ui`-Funktion das visuelle Layout der Web-Applikation beschreibt und die `server`-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer `ui`- und einer `server`-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab. [@shiny-modules]
 
 ### Struktur von `app.R`
 
@@ -19,7 +19,7 @@ library(dplyr)
 library(qrcode)
 ```
 
-* Die Funktion `source_directory()` wird manuell gesourcet und danach dazu verwendet, alle `.R`-Dateien in den Ordnern `modules` und `db/func` zu sourcen.
+* Die Funktion `source_directory()` wird manuell geladen und danach dazu verwendet, alle `.R`-Dateien in den Ordnern `modules` und `db/func` zu einzubinden.
 
 ```{r, eval=FALSE}
 source("init/source_directory.R")
@@ -76,7 +76,7 @@ Diese Environment wird jeder `server`-Funktion übergeben, sodass die Werte in j
   * `func` Funktionssammlung zur Interaktion mit der Datenbank
 * `files` Dateiensammlung für [Dateiverwaltung](#file-management). Enthält drei Unterordner für Gruppen, Typen und Untertypen. Jeder dieser Unterordner enthält für jedes Element der jeweiligen Kategorie einen Ordner mit der Identifikationsnummer des jeweiligen Elementes als Namen
 * `init/source_directory.R` Hilfsfunktion, die beim Start der Web-Applikation alle `.R`-Dateien einliest
-* `modules` Shiny-Module und sonstige Funktionalität
+* `modules` Shiny-Module und sonstige Funktionalitäten
   * `container.R` Definition des Dashboards
   * `dt_options.R` Optionen für `DT::datatable`
   * `object` Generalisierte Module für Gruppen, Typen und Untertypen (z.B. Element hinzufügen, umbenennen etc.)
@@ -234,7 +234,7 @@ Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet
 
 ### dark-mode
 
-Dieses Cookie kann die Werte `"true"` oder `"false"` enthalten. Das Cookie wird gesetzt, wenn der Nutzer die Toggle für den Nachtmodus verwendet. Beim Start der Web-Applikation wird das Cookie verwendet, um den initialen Status für den Nachtmodus zu bestimmen. Falls das Cookie nicht vorhanden ist, wird die Einstellung des Browsers (`window.matchMedia('(prefers-color-scheme: dark)')`) ausgelesen und im Cookie gesetzt.
+Dieses Cookie kann die Werte `"true"` oder `"false"` enthalten. Das Cookie wird gesetzt, wenn der Nutzer den Schalter für den Nachtmodus verwendet. Beim Start der Web-Applikation wird das Cookie verwendet, um den initialen Status für den Nachtmodus zu bestimmen. Falls das Cookie nicht vorhanden ist, wird die Einstellung des Browsers (`window.matchMedia('(prefers-color-scheme: dark)')`) ausgelesen und im Cookie gesetzt.
 
 ### user
 
@@ -263,7 +263,7 @@ Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevan
   | Einstellung | Beschreibung |
 | :--- | :--------- |
 | showcase | `yes` für Showcasemodus (Passwörter für Standardnutzer werden eingeblendet, Standardnutzer können nicht gelöscht werden), `no` (voreingestellt) für Betriebsmodus |
-| url | Base-URL auf die QR-Codes verweisen. Hier sind Anpassungen zwingend notwendig. |
+| url | Basis-URL auf welche QR-Codes verweisen (hier sind Anpassungen zwingend notwendig) |
 
   Table: (\#tab:app-yml) Einstellungen in `app.yml`
 
@@ -271,7 +271,7 @@ Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevan
 
 * `/etc/rstudio`
 
-  Dieser Ordner enthält die Datei `rserver.conf`, mit der der RStudio Server konfiguriert werden kann [@rstudio-server]. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port `8787` ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers `pfa` und seines Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.
+  Dieser Ordner enthält die Datei `rserver.conf`, mit der der RStudio Server konfiguriert werden kann [@rstudio-server]. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port `8787` ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers `pfa` und eines zugehörigen Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.
   
   Für weitere Informationen siehe [https://docs.rstudio.com/ide/server-pro/](https://docs.rstudio.com/ide/server-pro/). Es ist zu beachten, dass es sich bei der installierten Version um die Open-Source-Version und *nicht* um die Pro-Version handelt.
 
