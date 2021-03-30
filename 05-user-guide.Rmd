@@ -229,10 +229,10 @@ Table: (\#tab:subtype-table) Untertypentabelle
 
 ## Dateiverwaltung `r badge("admin", short = TRUE)` {#file-management}
 
-In der *Dateiverwaltung* können PDF-Dateien als Informationsmaterial in den Reitern *Gruppen*, *Typen* und *Untertypen* hochgeladen werden, siehe Abbildung \ref(fig:filemanagement_overview).
+In der *Dateiverwaltung* können PDF-Dateien als Informationsmaterial in den Reitern *Gruppen*, *Typen* und *Untertypen* hochgeladen werden, siehe Abbildung \ref(fig:file_management_overview).
 
-```{r reporting-details, echo=FALSE, fig.cap="Übersicht: Ausleihübersicht"}
-knitr::include_graphics("./img/reporting_details.png")
+```{r file_management_overview, echo=FALSE, fig.cap="Übersicht: Ausleihübersicht"}
+knitr::include_graphics("./img/file_management_overview.png")
 ```
 
 Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibenden Objektes. Durch Klick auf *Datei hochladen* kann eine PDF-Datei auf dem lokalen Dateisystem ausgewählt werden. Hochgeladene Dateien werden in einer Tabelle (vergleiche Tabelle \@ref(tab:file-table)) angezeigt.
