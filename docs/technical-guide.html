@@ -257,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Die nachfolgenden Abschnitte erweitern die Nutzerhilfe um die Beschreibung der technischen Umsetzung ausgewählter Elemente der Web-Applikation. Die ausgewählten Elemente sollen dabei insbesondere eine Vielzahl des verwendeteten Methodenspektrums darlegen, sodass eine nachhaltige Nutzung über die Laufzeit des Projektes hinaus erleichtert wird. Darüber hinaus sollen interessante Ansätze vorgestellt werden.</p>
 <div id="struktur-der-web-applikation" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Struktur der Web-Applikation</h2>
-<p>Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei <code>app.R</code>. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei <code>app.R</code> ausführt. In <code>app.R</code> werden Initialisierungen durchgeführt und die Funktionen <code>ui</code> und <code>server</code> definiert. Die Datei endet mit dem Aufruf <code>shinyApp(ui, server)</code>, wobei die <code>ui</code>-Funktion das visuelle Layout der Web-Applikation beschreibt und die <code>server</code>-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer <code>ui</code>- und einer <code>server</code>-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab. <span class="citation">[<a href="references.html#ref-shiny-modules" role="doc-biblioref">25</a>]</span></p>
+<p>Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei <code>app.R</code>. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei <code>app.R</code> ausführt. In <code>app.R</code> werden Initialisierungen durchgeführt und die Funktionen <code>ui</code> und <code>server</code> definiert. Die Datei endet mit dem Aufruf <code>shinyApp(ui, server)</code>, wobei die <code>ui</code>-Funktion das visuelle Layout der Web-Applikation beschreibt und die <code>server</code>-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer <code>ui</code>- und einer <code>server</code>-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab. <span class="citation">[<a href="references.html#ref-shiny-modules" role="doc-biblioref">35</a>]</span></p>
 <div id="struktur-von-app.r" class="section level3" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Struktur von <code>app.R</code></h3>
 <p>Wie bereits beschrieben, ist die Datei <code>app.R</code> der Einstiegspunkt der Web-Applikation. Da sie Einfluss auf das Verhalten vieler weiterer Module hat, ist ihr Aufbau näher zu betrachten. Zur Übersicht werden die Inhalte verkürzt dargestellt.</p>
@@ -380,10 +380,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="database" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Datenbank</h2>
-<p>Die Datenbank ist eine SQLite-Datenbank. Sie liegt in <code>db/db.sqlite</code>. Der Zugriff erfolgt über das Package {DBI} <span class="citation">[<a href="references.html#ref-R-DBI" role="doc-biblioref">12</a>]</span>.</p>
+<p>Die Datenbank ist eine SQLite-Datenbank. Sie liegt in <code>db/db.sqlite</code>. Der Zugriff erfolgt über das Package {DBI} <span class="citation">[<a href="references.html#ref-R-DBI" role="doc-biblioref">18</a>]</span>.</p>
 <div id="struktur" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Struktur</h3>
-<p>Alle Tabellen enthalten die Spalte <code>rowid</code>, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden. Die Beschränkung <span class="badge unique">Einzigartig</span> bezieht sich immer nur auf die nicht gelöschten Elemente (<code>removed = 0</code>).</p>
+<p>Alle Tabellen enthalten die Spalte <code>rowid</code>, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden. Die Ablage der zu speichernden Werte erfolgt in Ergänzung dazu über weitere Spalten, die in den folgenden Unterkapiteln näher beschrieben werden sollen. Die Beschränkung <span class="badge unique">Einzigartig</span> bezieht sich immer nur auf die nicht gelöschten Elemente (<code>removed = 0</code>).</p>
 <div id="circulation" class="section level4" number="6.2.1.1">
 <h4><span class="header-section-number">6.2.1.1</span> circulation</h4>
 <table>
@@ -607,6 +607,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="zugriff" class="section level3" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> Zugriff</h3>
+<p>Der Zugriff auf die Datenbank erfolgt, wie beschrieben, über das Package {DBI} und soll hier exemplarisch vorgeführt werden. Die Verbindung der Datenbank und R könnte dabei folgendermaßen aussehen:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="technical-guide.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
 <span id="cb4-2"><a href="technical-guide.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
 <span id="cb4-3"><a href="technical-guide.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -867,7 +868,7 @@ NA
 </div>
 <div id="cookies" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Cookies</h2>
-<p>Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet <span class="citation">[<a href="references.html#ref-cookies" role="doc-biblioref">26</a>]</span>. Die Web-Applikation setzt zwei Cookies. Die Cookies sind jeweils für einen Zeitraum von sieben Tagen gültig.</p>
+<p>Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet <span class="citation">[<a href="references.html#ref-cookies" role="doc-biblioref">36</a>]</span>. Die Web-Applikation setzt zwei Cookies. Die Cookies sind jeweils für einen Zeitraum von sieben Tagen gültig.</p>
 <div id="dark-mode" class="section level3" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> dark-mode</h3>
 <p>Dieses Cookie kann die Werte <code>"true"</code> oder <code>"false"</code> enthalten. Das Cookie wird gesetzt, wenn der Nutzer den Schalter für den Nachtmodus verwendet. Beim Start der Web-Applikation wird das Cookie verwendet, um den initialen Status für den Nachtmodus zu bestimmen. Falls das Cookie nicht vorhanden ist, wird die Einstellung des Browsers (<code>window.matchMedia('(prefers-color-scheme: dark)')</code>) ausgelesen und im Cookie gesetzt.</p>
@@ -878,7 +879,7 @@ NA
 </div>
 <div id="implementierung" class="section level3" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> Implementierung</h3>
-<p>Zur Verwaltung der Cookies wird die Bibliothek <a href="https://github.com/js-cookie/js-cookie">js-cookie</a> <span class="citation">[<a href="references.html#ref-js-cookie" role="doc-biblioref">27</a>]</span> verwendet. Die Datei <code>www/js/cookies.js</code> enthält Hilfsfunktionen zum Lesen und Schreiben von Cookies und verbindet diese mit Inputwerten in Shiny. Die Hilfsfunktionen werden in R mithilfe von <code>shinyjs::extendShinyjs()</code> eingebunden.</p>
+<p>Zur Verwaltung der Cookies wird die Bibliothek <a href="https://github.com/js-cookie/js-cookie">js-cookie</a> <span class="citation">[<a href="references.html#ref-js-cookie" role="doc-biblioref">37</a>]</span> verwendet. Die Datei <code>www/js/cookies.js</code> enthält Hilfsfunktionen zum Lesen und Schreiben von Cookies und verbindet diese mit Inputwerten in Shiny. Die Hilfsfunktionen werden in R mithilfe von <code>shinyjs::extendShinyjs()</code> eingebunden.</p>
 </div>
 </div>
 <div id="deployment-1" class="section level2" number="6.4">
@@ -887,7 +888,7 @@ NA
 <p>Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevante Dateien liegen.</p>
 <ul>
 <li><p><code>/etc/shiny-server</code></p>
-<p>Dieser Ordner enthält die Datei <code>shiny-server.conf</code>, mit der der Shiny Server konfiguriert werden kann <span class="citation">[<a href="references.html#ref-shiny-server" role="doc-biblioref">28</a>]</span>. Hier kann der Port eingestellt werden, unter dem die Web-Applikation verfügbar gemacht wird. Der Port <code>3838</code> ist voreingestellt.</p></li>
+<p>Dieser Ordner enthält die Datei <code>shiny-server.conf</code>, mit der der Shiny Server konfiguriert werden kann <span class="citation">[<a href="references.html#ref-shiny-server" role="doc-biblioref">38</a>]</span>. Hier kann der Port eingestellt werden, unter dem die Web-Applikation verfügbar gemacht wird. Der Port <code>3838</code> ist voreingestellt.</p></li>
 </ul>
 <p><br></p>
 <ul>
@@ -920,7 +921,7 @@ NA
 <p><br></p>
 <ul>
 <li><p><code>/etc/rstudio</code></p>
-<p>Dieser Ordner enthält die Datei <code>rserver.conf</code>, mit der der RStudio Server konfiguriert werden kann <span class="citation">[<a href="references.html#ref-rstudio-server" role="doc-biblioref">29</a>]</span>. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port <code>8787</code> ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers <code>pfa</code> und eines zugehörigen Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.</p>
+<p>Dieser Ordner enthält die Datei <code>rserver.conf</code>, mit der der RStudio Server konfiguriert werden kann <span class="citation">[<a href="references.html#ref-rstudio-server" role="doc-biblioref">39</a>]</span>. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port <code>8787</code> ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers <code>pfa</code> und eines zugehörigen Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.</p>
 <p>Für weitere Informationen siehe <a href="https://docs.rstudio.com/ide/server-pro/">https://docs.rstudio.com/ide/server-pro/</a>. Es ist zu beachten, dass es sich bei der installierten Version um die Open-Source-Version und <em>nicht</em> um die Pro-Version handelt.</p></li>
 </ul>
 <p><br></p>

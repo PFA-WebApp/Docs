@@ -227,7 +227,7 @@ Ausgehend von diesen Definitionen sind die folgenden Anforderungen zu erfüllen:
 \hypertarget{nutzerverwaltung}{%
 \subsubsection{Nutzerverwaltung}\label{nutzerverwaltung}}
 
-Wie eingangs beschrieben, ist eine rechtebasierte Verwaltung notwendig. Dazu werden drei Rollen angelegt. Der \emph{Benutzer} kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der \emph{Moderator} kann zusätzlich \emph{Benutzer} anlegen. Der \emph{Administrator} kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Um ein hohes Maß an Übersichtlichkeit für den Leser zu gewährleisten wurde sich ferner dazu entschieden, Operation, die ausschließlich mit erweiterten Rechten durchführbar sind, mit einem der Rolle entsprechenden Kürzel zu markieren. So sind Operationen, die insbesondere für Administatoren bzw. Moderatoren von Relevanz sind mit {[}A{]} bzw. {[}M{]} gekennzeichnet. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Tabelle \ref{tab:user-rights} entnommen werden.
+Wie eingangs beschrieben, ist eine rechtebasierte Verwaltung notwendig. Dazu werden drei Rollen angelegt. Der \emph{Benutzer} kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der \emph{Moderator} kann zusätzlich \emph{Benutzer} anlegen. Der \emph{Administrator} kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Um ein hohes Maß an Übersichtlichkeit für den Leser zu gewährleisten, wurde sich ferner dazu entschieden, Operationen, die ausschließlich mit erweiterten Rechten durchführbar sind, mit einem der Rolle entsprechenden Kürzel zu markieren. So sind Operationen, die insbesondere für Administatoren bzw. Moderatoren von Relevanz sind, mit {[}A{]} bzw. {[}M{]} gekennzeichnet. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Tabelle \ref{tab:user-rights} entnommen werden.
 
 \begin{longtable}[]{@{}lccc@{}}
 \caption{\label{tab:user-rights} Übersicht über die Nutzerrollen}\tabularnewline
@@ -1020,7 +1020,7 @@ Die Datenbank ist eine SQLite-Datenbank. Sie liegt in \texttt{db/db.sqlite}. Der
 \hypertarget{struktur}{%
 \subsubsection{Struktur}\label{struktur}}
 
-Alle Tabellen enthalten die Spalte \texttt{rowid}, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden. Die Beschränkung {[}Einzigartig{]} bezieht sich immer nur auf die nicht gelöschten Elemente (\texttt{removed\ =\ 0}).
+Alle Tabellen enthalten die Spalte \texttt{rowid}, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden. Die Ablage der zu speichernden Werte erfolgt in Ergänzung dazu über weitere Spalten, die in den folgenden Unterkapiteln näher beschrieben werden sollen. Die Beschränkung {[}Einzigartig{]} bezieht sich immer nur auf die nicht gelöschten Elemente (\texttt{removed\ =\ 0}).
 
 \hypertarget{circulation}{%
 \paragraph{circulation}\label{circulation}}
@@ -1148,6 +1148,8 @@ removed & \texttt{0} oder \texttt{1} & \texttt{0} - existent, \texttt{1} - gelö
 
 \hypertarget{zugriff}{%
 \subsubsection{Zugriff}\label{zugriff}}
+
+Der Zugriff auf die Datenbank erfolgt, wie beschrieben, über das Package \{DBI\} und soll hier exemplarisch vorgeführt werden. Die Verbindung der Datenbank und R könnte dabei folgendermaßen aussehen:
 
 \begin{Shaded}
 \begin{Highlighting}[]

@@ -103,7 +103,7 @@ Die Datenbank ist eine SQLite-Datenbank. Sie liegt in `db/db.sqlite`. Der Zugrif
 
 ### Struktur
 
-Alle Tabellen enthalten die Spalte `rowid`, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden. Die Beschränkung `r badge("unique")` bezieht sich immer nur auf die nicht gelöschten Elemente (`removed = 0`).
+Alle Tabellen enthalten die Spalte `rowid`, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden.  Die Ablage der zu speichernden Werte erfolgt in Ergänzung dazu über weitere Spalten, die in den folgenden Unterkapiteln näher beschrieben werden sollen. Die Beschränkung `r badge("unique")` bezieht sich immer nur auf die nicht gelöschten Elemente (`removed = 0`).
 
 #### circulation
 
@@ -174,6 +174,7 @@ Table: (\#tab:user) Datenbank: Tabelle `user`
 
 ### Zugriff
 
+Der Zugriff auf die Datenbank erfolgt, wie beschrieben, über das Package {DBI} und soll hier exemplarisch vorgeführt werden. Die Verbindung der Datenbank und R könnte dabei folgendermaßen aussehen:
 ```{r, echo=FALSE}
 wd <- getwd()
 knitr::opts_knit$set(root.dir = "./../PFA")
