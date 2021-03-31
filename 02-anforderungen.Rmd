@@ -12,7 +12,7 @@ Diese Anforderungen stellen den minimalen Satz an Anforderungen dar. Während de
 
 ## Funktionale Anforderungen an die Web-Applikation
 
-Funktionale Anforderungen spiegeln den Funktionsumfang der Web-Applikation wider. Die Vielzahl funktionaler Anforderungen bedingt ein Aufgliedern in verschiedene Funktionsbereiche, die im Folgenden detailliert beschrieben werden.
+Funktionale Anforderungen spiegeln den Funktionsumfang der Web-Applikation wider [@Fuchs2002, S.42]. Die Vielzahl funktionaler Anforderungen bedingt ein Aufgliedern in verschiedene Funktionsbereiche, die im Folgenden detailliert beschrieben werden.
 
 ### Sensorverwaltung
 
