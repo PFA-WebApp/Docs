@@ -19,7 +19,7 @@ library(dplyr)
 library(qrcode)
 ```
 
-* Die Funktion `source_directory()` wird manuell geladen und danach dazu verwendet, alle `.R`-Dateien in den Ordnern `modules` und `db/func` zu einzubinden.
+* Die Funktion `source_directory()` wird manuell geladen und danach dazu verwendet, alle `.R`-Dateien in den Ordnern `modules` und `db/func` einzubinden.
 
 ```{r, eval=FALSE}
 source("init/source_directory.R")
@@ -62,7 +62,7 @@ source_directory(
 
 Table: (\#tab:values-environment) Die `.values`-Environment
 
-Diese Environment wird jeder `server`-Funktion übergeben, sodass die Werte in jeder `server`-Funktion verfügbar sind.
+  Diese Environment wird jeder `server`-Funktion übergeben, sodass die Werte in jeder `server`-Funktion verfügbar sind.
 
 * In der `server`-Funktion von `app.R` wird die `server`-Funktion `container_server()` aufgerufen.
 
@@ -71,15 +71,15 @@ Diese Environment wird jeder `server`-Funktion übergeben, sodass die Werte in j
 * `.gitignore` Index aller Dateien, die nicht der Versionskontrolle unterliegen
 * `app.R` Einstiegspunkt in die Web-Applikation
 * `app.yml` Konfigurationsdatei
-* `db`
+* `db/`
   * `db.sqlite` Datenbank
   * `func` Funktionssammlung zur Interaktion mit der Datenbank
-* `files` Dateiensammlung für [Dateiverwaltung](#file-management). Enthält drei Unterordner für Gruppen, Typen und Untertypen. Jeder dieser Unterordner enthält für jedes Element der jeweiligen Kategorie einen Ordner mit der Identifikationsnummer des jeweiligen Elementes als Namen
+* `files/` Dateiensammlung für [Dateiverwaltung](#file-management). Enthält drei Unterordner für *Gruppen*, *Typen* und *Untertypen*. Jeder dieser Unterordner enthält für jedes Element der jeweiligen Kategorie einen Ordner mit der Identifikationsnummer des jeweiligen Elementes als Namen
 * `init/source_directory.R` Hilfsfunktion, die beim Start der Web-Applikation alle `.R`-Dateien einliest
-* `modules` Shiny-Module und sonstige Funktionalitäten
+* `modules/` Shiny-Module und sonstige Funktionalitäten
   * `container.R` Definition des Dashboards
   * `dt_options.R` Optionen für `DT::datatable`
-  * `object` Generalisierte Module für Gruppen, Typen und Untertypen (z.B. Element hinzufügen, umbenennen etc.)
+  * `object` Generalisierte Module für *Gruppen*, *Typen* und *Untertypen* (z.B. Element hinzufügen, umbenennen etc.)
   * `sidebar_menu.R` Definition der Sidebar
   * `tab_file_management` [Dateiverwaltung](#file-management)
   * `tab_group` [Gruppen](#groups)
@@ -92,10 +92,10 @@ Diese Environment wird jeder `server`-Funktion übergeben, sodass die Werte in j
   * `tab_user_management` [Nutzerverwaltung](#user-management)
   * `utils.R` Hilfsfunktionen
 * `renv`, `renv.lock` Package-Management
-* `www`
-  * `css` CSS-Dateien
+* `www/`
+  * `css/` CSS-Dateien
   * `favicon.ico` Sensotheka-Icon
-  * `js` JavaScript-Dateien
+  * `js/` JavaScript-Dateien
 
 ## Datenbank {#database}
 
@@ -103,14 +103,14 @@ Die Datenbank ist eine SQLite-Datenbank. Sie liegt in `db/db.sqlite`. Der Zugrif
 
 ### Struktur
 
-Alle Tabellen enthalten die Spalte `rowid`, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden.  Die Ablage der zu speichernden Werte erfolgt in Ergänzung dazu über weitere Spalten, die in den folgenden Unterkapiteln näher beschrieben werden sollen. Die Beschränkung `r badge("unique")` bezieht sich immer nur auf die nicht gelöschten Elemente (`removed = 0`).
+Alle Tabellen enthalten die Spalte `rowid`, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden.  Die Ablage der zu speichernden Werte erfolgt in Ergänzung dazu über weitere Spalten, die in den folgenden Unterkapiteln näher beschrieben werden. Die Beschränkung `r badge("unique")` bezieht sich immer nur auf die nicht gelöschten Elemente (`removed = 0`).
 
 #### circulation
 
 | Spalte | Einschränkungen | Beschreibung |
 |:------ |:------ |:------------ |
 | user_id | `r badge("fk")` | Identifikationsnummer des ausführenden Nutzers |
-| subtype_id | `r badge("fk")` | Identifikationsnummer des bearbeiteten Untertyps |
+| subtype_id | `r badge("fk")` | Identifikationsnummer des bearbeiteten *Untertyps* |
 | quantity | `r badge("nn")` | Bearbeitete Menge |
 | time | | Zeitpunkt der Transaktion |
 | op_type | `1` oder `2` | Transaktionsart: `1` - Ausleihen und Zurückgeben, `2` - Bestandsänderungen |
@@ -130,8 +130,8 @@ Table: (\#tab:groups) Datenbank: Tabelle `groups`
 
 | Spalte | Einschränkungen | Beschreibung |
 |:------ |:------ |:------------ |
-| group_id | `r badge("fk")` | Identifikationsnummer der Gruppe |
-| type_id | `r badge("fk")` | Identifikationsnummer des Typs |
+| group_id | `r badge("fk")` | Identifikationsnummer der *Gruppe* |
+| type_id | `r badge("fk")` | Identifikationsnummer des *Typs* |
 
 Table: (\#tab:group-type) Datenbank: Tabelle `group_type`
 
@@ -139,8 +139,8 @@ Table: (\#tab:group-type) Datenbank: Tabelle `group_type`
 
 | Spalte | Einschränkungen | Beschreibung |
 |:------ |:------ |:------------ |
-| type_id | `r badge("fk")` | Identifikationsnummer des Typs |
-| subtype_name | `r badge("unique")` innerhalb eines Typs | Untertypenname |
+| type_id | `r badge("fk")` | Identifikationsnummer des *Typs* |
+| subtype_name | `r badge("unique")` innerhalb eines *Typs* | Untertypenname |
 | quantity | `r badge("nn")` | Bestandsmenge |
 | removed | `0` oder `1` | `0` - existent, `1` - gelöscht |
 
@@ -174,10 +174,10 @@ Table: (\#tab:user) Datenbank: Tabelle `user`
 
 ### Zugriff
 
-Der Zugriff auf die Datenbank erfolgt, wie beschrieben, über das Package {DBI} und soll hier exemplarisch vorgeführt werden. Die Verbindung der Datenbank und R könnte dabei folgendermaßen aussehen:
+Der Zugriff auf die Datenbank erfolgt, wie beschrieben, über das Package {DBI}[@R-DBI] und soll hier exemplarisch vorgeführt werden. Die Verbindung der Datenbank und R könnte dabei folgendermaßen aussehen:
 ```{r, echo=FALSE}
 wd <- getwd()
-knitr::opts_knit$set(root.dir = "./../PFA")
+knitr::opts_knit$set(root.dir = "./../App")
 ```
 
 ```{r}
@@ -191,7 +191,7 @@ db <- dbConnect(SQLite(), "db/db.sqlite")
 dbListTables(db)
 ```
 
-Beispielhaft wird die Tabelle "circulation" betrachtet. Diese Tabelle speichert alle Transaktionen, die von Nutzern durchgeführt worden sind, also zum Beispiel Ausleihen, Rückgaben und Mengenänderungen.
+Beispielhaft wird die Tabelle `circulation` betrachtet. Diese Tabelle speichert alle Transaktionen, die von Nutzern durchgeführt worden sind, also zum Beispiel Ausleihen, Rückgaben und Mengenänderungen.
 
 ```{r, eval=FALSE}
 dbReadTable(db, "circulation")
@@ -199,12 +199,12 @@ dbReadTable(db, "circulation")
 
 ```{r, echo=FALSE}
 tbl <- dbReadTable(db, "circulation")
-kableExtra::kbl(tbl[1:10,], booktabs = TRUE, caption = "Beispielhafter Inhalt der Tabelle `circulation`") %>%
+kableExtra::kbl(tbl[1:10,], booktabs = TRUE, caption = "Beispielhafter Inhalt der Tabelle circulation") %>%
   kableExtra::kable_styling(full_width = TRUE) %>%
   kableExtra::column_spec(4, "5cm")
 ```
 
-Der Ordner `db/func` enthält eine Sammlung von über 80 Hilfsfunktionen, die zum Erstellen, Abfragen und Modifizieren der Datenbank verwendet werden. Die Interaktion mit der Datenbank erfolgt ausschließlich über diese Hilfsfunktionen. Dadurch werden Redundanzen ausgeschlossen und es ist darüber hinaus einfacher, die korrekte Funktionalität zu gewährleisten.
+Der Ordner `db/func/` enthält eine Sammlung von über 80 Hilfsfunktionen, die zum Erstellen, Abfragen und Modifizieren der Datenbank verwendet werden. Die Interaktion mit der Datenbank erfolgt ausschließlich über diese Hilfsfunktionen. Dadurch werden Redundanzen ausgeschlossen und es ist darüber hinaus einfacher, die korrekte Funktionalität zu gewährleisten.
 
 Beispielhaft wird die Funktion `db_get_borrowed_quantity(db, subtype_id)` betrachtet. Unter Angabe der Datenbank `db` und einer oder mehrerer Untertypenidentifikationsnummern `subtype_id` wird die ausgeliehene Menge dieser Untertypen zurückgegeben. In {DBI} werden Abfragen an die Datenbank mithilfe von `dbGetQuery()` gestellt. Das Resultat der Abfrage wird anschließend weiterverarbeitet. Der Nutzen der Hilfsfunktion wird zusätzlich dadurch verdeutlicht, dass sowohl die abzufragende Tabelle sowie die beteiligten Zeilen und Spalten nicht gesondert angegeben werden müssen. 
 

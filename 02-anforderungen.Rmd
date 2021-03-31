@@ -1,6 +1,6 @@
 # Anforderungen {#requirements}
 
-Aus der vom Fachgebiet bereitgestellten Aufgabenstellung wurden unmittelbar die folgenden Anforderungen abgeleitet: Aufbauend auf einer Literaturrecherche soll ein Konzept zur Erstellung einer Web-Applikation entworfen werden. Die Umsetzung besteht aus der Programmierung der entworfenen Web-Applikation sowie dem Anlegen einer zugehörigen Datenbank auf dem Server des Fachgebiets. Die verwendeten Technologien sind dabei begründet frei zu wählen. Die konkreten Anforderungen an die Web-Applikation sind dabei aus dem in der Aufgabenstellung beschriebenen Funktionstest abgeleitet worden:
+Aus der vom Fachgebiet bereitgestellten Aufgabenstellung wurden unmittelbar die folgenden Anforderungen abgeleitet: Aufbauend auf einer Literaturrecherche soll ein Konzept zur Erstellung einer Web-Applikation entworfen werden. Die Umsetzung besteht aus der Programmierung der entworfenen Web-Applikation sowie dem Anlegen einer zugehörigen Datenbank auf dem Server des Fachgebiets. Die verwendeten Technologien sind dabei begründet frei zu wählen. Die konkreten Anforderungen an die Web-Applikation werden aus dem in der Aufgabenstellung beschriebenen Funktionstest abgeleitet:
 
 * Erstellen von Sensoren
 * Erstellen von Nutzern
@@ -18,7 +18,7 @@ Funktionale Anforderungen spiegeln den Funktionsumfang der Web-Applikation wider
 
 Die Sensoren am Fachgebiet stehen untereinander in Beziehung: Ein Versuchsaufbau kann sich aus verschiedenen Sensoren zusammensetzen. Dabei ist weniger der Sensor als viel mehr seine Art von Interesse. So ist es zum Beispiel unerheblich von welchem Hersteller oder aus welcher Serie ein konkreter Sensor ist, solange die gleiche Funktionalität erbracht wird. Der konkrete Sensor wird als *Untertyp* bezeichnet. Die Funktionalität, die alle *Untertypen* verbindet, spiegelt sich im *Typen* wider. Ein Versuchsaufbau ist schließlich eine *Gruppe*, die verschiedene *Typen* beinhaltet. Zusammenfassend lässt sich festhalten: 
 
-> Jeder Sensor hat einen *Untertypen*. Mehrere nur geringfügig unterschiedliche *Untertypen* werden in einem *Typen* zusammengefasst. Mehrere *Typen* können Teil einer *Gruppe* sein. Ein *Typ* kann Teil mehrerer Gruppen sein.
+> Jeder Sensor hat einen *Untertypen*. Mehrere nur geringfügig unterschiedliche *Untertypen* werden in einem *Typen* zusammengefasst. Mehrere *Typen* können Teil einer *Gruppe* sein. Ein *Typ* kann Teil mehrerer *Gruppen* sein.
 
 Ausgehend von diesen Definitionen sind die folgenden Anforderungen zu erfüllen:
 
@@ -30,12 +30,14 @@ Ausgehend von diesen Definitionen sind die folgenden Anforderungen zu erfüllen:
 
 ### Dateiverwaltung
 
+Mithilfe der Dateiverwaltung können zusätzliche Informationen bereitgestellt werden. Die folgenden Anforderungen sind an die Dateiverwaltung gestellt:
+
 * Hochladen, Umbenennen und Löschen von Datenblättern im PDF-Format für *Gruppen*, *Typen* und *Untertypen*
 * Herunterladen von einzelnen Datenblättern als PDF-Datei oder mehreren Datenblättern komprimiert in einer zip-Datei 
 
 ### Nutzerverwaltung
 
-Wie eingangs beschrieben, ist eine rechtebasierte Verwaltung notwendig. Dazu werden drei Rollen angelegt. Der *Benutzer* kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der *Moderator* kann zusätzlich *Benutzer* anlegen. Der *Administrator* kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Um ein hohes Maß an Übersichtlichkeit für den Leser zu gewährleisten, wurde sich ferner dazu entschieden, Operationen, die ausschließlich mit erweiterten Rechten durchführbar sind, mit einem der Rolle entsprechenden Kürzel zu markieren. So sind Operationen, die insbesondere für Administatoren bzw. Moderatoren von Relevanz sind, mit `r badge("admin", short = TRUE)` bzw. `r badge("mod", short = TRUE)` gekennzeichnet. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Tabelle \@ref(tab:user-rights) entnommen werden. 
+Wie eingangs beschrieben, ist eine rechtebasierte Nutzerverwaltung notwendig. Dazu werden drei Rollen angelegt. Der *Benutzer* kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der *Moderator* kann zusätzlich *Benutzer* anlegen. Der *Administrator* kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Um ein hohes Maß an Übersichtlichkeit für den Leser zu gewährleisten, wurde sich ferner dazu entschieden, Operationen, die ausschließlich mit erweiterten Rechten durchführbar sind, mit einem der Rolle entsprechenden Kürzel zu markieren. So sind Operationen, die insbesondere für Administatoren bzw. Moderatoren von Relevanz sind, mit `r badge("admin", short = TRUE)` bzw. `r badge("mod", short = TRUE)` gekennzeichnet. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Tabelle \@ref(tab:user-rights) entnommen werden. 
 
 | Operation | `r badge("admin")` | `r badge("mod")` | `r badge("user")` |
 |:------------ | :--: | :--: | :--: |
@@ -43,21 +45,25 @@ Wie eingangs beschrieben, ist eine rechtebasierte Verwaltung notwendig. Dazu wer
 | Erweiterte Bestandsinformation | x | x | |
 | Nutzer hinzufügen / löschen | x | x | |
 | Moderator hinzufügen / löschen | x | | |
+| Erweiterte Nutzerverwaltung | x | | |
 | QR-Code generieren | x | | |
 | Sensoren verwalten | x | | |
 | Dateien verwalten | x | | |
+| Als anderer Nutzer operieren | x | | |
 
 Table: (\#tab:user-rights) Übersicht über die Nutzerrollen
 
 ### Ausleihverwaltung
 
-* Ausleihe und Rückgabe von *Untertypen* beliebiger Menge innerhalb eines verfügbaren Rahmens durch Nutzer oder für beliebigen Nutzer durch *Administrator*
-* Abschreiben von *Untertypen* durch *Administratoren*
+An die Ausleihverwaltung werden die folgenden Anforderungen gestellt:
+
+* Ausleihe und Rückgabe von *Untertypen* beliebiger Menge innerhalb eines verfügbaren Rahmens durch Nutzer oder für einen beliebigen Nutzer durch *Administrator*
+* Abschreiben von *Untertypen* durch *Administrator*
 * Anzeige von Datenblättern für *Gruppen*, *Typen* und *Untertypen*
 
 ### Bestandsinformation
 
-Um ohne Betreten des Lagerortes ermitteln zu können, wie viele Elemente eines *Typen* oder *Untertypen* verfügbar sind oder festzustellen, welcher Nutzer einen benötigten *Typen* ausgeliehen hat, ist eine Übersicht über den Bestand und die Ausleihhistorie zu implementieren.
+Um ohne Betreten des Lagerortes ermitteln zu können, wie viele Elemente eines *Typen* oder *Untertypen* verfügbar sind oder um festzustellen, welcher Nutzer einen benötigten *Typen* ausgeliehen hat, ist eine Übersicht über den Bestand und die Ausleihhistorie zu implementieren.
 
 ## Nicht-funktionale Anforderungen an die Web-Applikation
 
@@ -79,7 +85,7 @@ Die Datenbank soll die konsistente Datenverwaltung bewerkstelligen. Sie enthält
 
 ### Deployment
 
-Als Deployment wird die Integration der Web-Applikation und der Datenbank in die bestehende Infrastruktur bezeichnet. Dazu sind folgende Schritte notwendig:
+Als Deployment wird die Integration der Web-Applikation und der Datenbank in die bestehende Infrastruktur bezeichnet [@Pitt2018, S.207ff]. Dazu sind folgende Schritte notwendig:
 
 * Auswahl einer Virtualisierungssoftware
 * Einrichten einer *VM*

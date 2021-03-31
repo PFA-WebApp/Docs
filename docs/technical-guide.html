@@ -257,7 +257,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Die nachfolgenden Abschnitte erweitern die Nutzerhilfe um die Beschreibung der technischen Umsetzung ausgewählter Elemente der Web-Applikation. Die ausgewählten Elemente sollen dabei insbesondere eine Vielzahl des verwendeteten Methodenspektrums darlegen, sodass eine nachhaltige Nutzung über die Laufzeit des Projektes hinaus erleichtert wird. Darüber hinaus sollen interessante Ansätze vorgestellt werden.</p>
 <div id="struktur-der-web-applikation" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Struktur der Web-Applikation</h2>
-<p>Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei <code>app.R</code>. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei <code>app.R</code> ausführt. In <code>app.R</code> werden Initialisierungen durchgeführt und die Funktionen <code>ui</code> und <code>server</code> definiert. Die Datei endet mit dem Aufruf <code>shinyApp(ui, server)</code>, wobei die <code>ui</code>-Funktion das visuelle Layout der Web-Applikation beschreibt und die <code>server</code>-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer <code>ui</code>- und einer <code>server</code>-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab. <span class="citation">[<a href="references.html#ref-shiny-modules" role="doc-biblioref">35</a>]</span></p>
+<p>Strukturell handelt es sich bei der Web-Applikation um eine Sammlung verschiedener Dateien innerhalb eines Ordners. Der Einstiegspunkt in die Web-Applikation ist die Datei <code>app.R</code>. Alle anderen Dateien werden zur Laufzeit der Web-Applikation eingebunden. Die Web-Applikation wird gestartet, indem der Shiny Server die Datei <code>app.R</code> ausführt. In <code>app.R</code> werden Initialisierungen durchgeführt und die Funktionen <code>ui</code> und <code>server</code> definiert. Die Datei endet mit dem Aufruf <code>shinyApp(ui, server)</code>, wobei die <code>ui</code>-Funktion das visuelle Layout der Web-Applikation beschreibt und die <code>server</code>-Funktion Eingaben verarbeitet. Mithilfe von sogenannten Modulen kann der Code strukturiert werden. Jedes Modul setzt sich dabei wiederum aus einer <code>ui</code>- und einer <code>server</code>-Funktion zusammen. Module bilden Teilaspekte, die unter Umständen wiederverwendet werden können, ab. <span class="citation">[<a href="references.html#ref-shiny-modules" role="doc-biblioref">36</a>]</span></p>
 <div id="struktur-von-app.r" class="section level3" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Struktur von <code>app.R</code></h3>
 <p>Wie bereits beschrieben, ist die Datei <code>app.R</code> der Einstiegspunkt der Web-Applikation. Da sie Einfluss auf das Verhalten vieler weiterer Module hat, ist ihr Aufbau näher zu betrachten. Zur Übersicht werden die Inhalte verkürzt dargestellt.</p>
@@ -269,7 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-3"><a href="technical-guide.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb1-4"><a href="technical-guide.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(qrcode)</span></code></pre></div>
 <ul>
-<li>Die Funktion <code>source_directory()</code> wird manuell geladen und danach dazu verwendet, alle <code>.R</code>-Dateien in den Ordnern <code>modules</code> und <code>db/func</code> zu einzubinden.</li>
+<li>Die Funktion <code>source_directory()</code> wird manuell geladen und danach dazu verwendet, alle <code>.R</code>-Dateien in den Ordnern <code>modules</code> und <code>db/func</code> einzubinden.</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="technical-guide.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;init/source_directory.R&quot;</span>)</span>
 <span id="cb2-2"><a href="technical-guide.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -344,18 +344,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>.gitignore</code> Index aller Dateien, die nicht der Versionskontrolle unterliegen</li>
 <li><code>app.R</code> Einstiegspunkt in die Web-Applikation</li>
 <li><code>app.yml</code> Konfigurationsdatei</li>
-<li><code>db</code>
+<li><code>db/</code>
 <ul>
 <li><code>db.sqlite</code> Datenbank</li>
 <li><code>func</code> Funktionssammlung zur Interaktion mit der Datenbank</li>
 </ul></li>
-<li><code>files</code> Dateiensammlung für <a href="user-guide.html#file-management">Dateiverwaltung</a>. Enthält drei Unterordner für Gruppen, Typen und Untertypen. Jeder dieser Unterordner enthält für jedes Element der jeweiligen Kategorie einen Ordner mit der Identifikationsnummer des jeweiligen Elementes als Namen</li>
+<li><code>files/</code> Dateiensammlung für <a href="user-guide.html#file-management">Dateiverwaltung</a>. Enthält drei Unterordner für <em>Gruppen</em>, <em>Typen</em> und <em>Untertypen</em>. Jeder dieser Unterordner enthält für jedes Element der jeweiligen Kategorie einen Ordner mit der Identifikationsnummer des jeweiligen Elementes als Namen</li>
 <li><code>init/source_directory.R</code> Hilfsfunktion, die beim Start der Web-Applikation alle <code>.R</code>-Dateien einliest</li>
-<li><code>modules</code> Shiny-Module und sonstige Funktionalitäten
+<li><code>modules/</code> Shiny-Module und sonstige Funktionalitäten
 <ul>
 <li><code>container.R</code> Definition des Dashboards</li>
 <li><code>dt_options.R</code> Optionen für <code>DT::datatable</code></li>
-<li><code>object</code> Generalisierte Module für Gruppen, Typen und Untertypen (z.B. Element hinzufügen, umbenennen etc.)</li>
+<li><code>object</code> Generalisierte Module für <em>Gruppen</em>, <em>Typen</em> und <em>Untertypen</em> (z.B. Element hinzufügen, umbenennen etc.)</li>
 <li><code>sidebar_menu.R</code> Definition der Sidebar</li>
 <li><code>tab_file_management</code> <a href="user-guide.html#file-management">Dateiverwaltung</a></li>
 <li><code>tab_group</code> <a href="technical-guide.html#groups">Gruppen</a></li>
@@ -369,21 +369,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>utils.R</code> Hilfsfunktionen</li>
 </ul></li>
 <li><code>renv</code>, <code>renv.lock</code> Package-Management</li>
-<li><code>www</code>
+<li><code>www/</code>
 <ul>
-<li><code>css</code> CSS-Dateien</li>
+<li><code>css/</code> CSS-Dateien</li>
 <li><code>favicon.ico</code> Sensotheka-Icon</li>
-<li><code>js</code> JavaScript-Dateien</li>
+<li><code>js/</code> JavaScript-Dateien</li>
 </ul></li>
 </ul>
 </div>
 </div>
 <div id="database" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Datenbank</h2>
-<p>Die Datenbank ist eine SQLite-Datenbank. Sie liegt in <code>db/db.sqlite</code>. Der Zugriff erfolgt über das Package {DBI} <span class="citation">[<a href="references.html#ref-R-DBI" role="doc-biblioref">18</a>]</span>.</p>
+<p>Die Datenbank ist eine SQLite-Datenbank. Sie liegt in <code>db/db.sqlite</code>. Der Zugriff erfolgt über das Package {DBI} <span class="citation">[<a href="references.html#ref-R-DBI" role="doc-biblioref">19</a>]</span>.</p>
 <div id="struktur" class="section level3" number="6.2.1">
 <h3><span class="header-section-number">6.2.1</span> Struktur</h3>
-<p>Alle Tabellen enthalten die Spalte <code>rowid</code>, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden. Die Ablage der zu speichernden Werte erfolgt in Ergänzung dazu über weitere Spalten, die in den folgenden Unterkapiteln näher beschrieben werden sollen. Die Beschränkung <span class="badge unique">Einzigartig</span> bezieht sich immer nur auf die nicht gelöschten Elemente (<code>removed = 0</code>).</p>
+<p>Alle Tabellen enthalten die Spalte <code>rowid</code>, die den Primärschlüssel der jeweiligen Tabelle enthält. Diese kann somit zur eindeutigen Identifikation einer Zeile verwendet werden. Die Ablage der zu speichernden Werte erfolgt in Ergänzung dazu über weitere Spalten, die in den folgenden Unterkapiteln näher beschrieben werden. Die Beschränkung <span class="badge unique">Einzigartig</span> bezieht sich immer nur auf die nicht gelöschten Elemente (<code>removed = 0</code>).</p>
 <div id="circulation" class="section level4" number="6.2.1.1">
 <h4><span class="header-section-number">6.2.1.1</span> circulation</h4>
 <table>
@@ -409,7 +409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="even">
 <td align="left">subtype_id</td>
 <td align="left"><span class="badge fk">Fremdschlüssel</span></td>
-<td align="left">Identifikationsnummer des bearbeiteten Untertyps</td>
+<td align="left">Identifikationsnummer des bearbeiteten <em>Untertyps</em></td>
 </tr>
 <tr class="odd">
 <td align="left">quantity</td>
@@ -469,12 +469,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td align="left">group_id</td>
 <td align="left"><span class="badge fk">Fremdschlüssel</span></td>
-<td align="left">Identifikationsnummer der Gruppe</td>
+<td align="left">Identifikationsnummer der <em>Gruppe</em></td>
 </tr>
 <tr class="even">
 <td align="left">type_id</td>
 <td align="left"><span class="badge fk">Fremdschlüssel</span></td>
-<td align="left">Identifikationsnummer des Typs</td>
+<td align="left">Identifikationsnummer des <em>Typs</em></td>
 </tr>
 </tbody>
 </table>
@@ -494,11 +494,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td align="left">type_id</td>
 <td align="left"><span class="badge fk">Fremdschlüssel</span></td>
-<td align="left">Identifikationsnummer des Typs</td>
+<td align="left">Identifikationsnummer des <em>Typs</em></td>
 </tr>
 <tr class="even">
 <td align="left">subtype_name</td>
-<td align="left"><span class="badge unique">Einzigartig</span> innerhalb eines Typs</td>
+<td align="left"><span class="badge unique">Einzigartig</span> innerhalb eines <em>Typs</em></td>
 <td align="left">Untertypenname</td>
 </tr>
 <tr class="odd">
@@ -607,7 +607,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="zugriff" class="section level3" number="6.2.2">
 <h3><span class="header-section-number">6.2.2</span> Zugriff</h3>
-<p>Der Zugriff auf die Datenbank erfolgt, wie beschrieben, über das Package {DBI} und soll hier exemplarisch vorgeführt werden. Die Verbindung der Datenbank und R könnte dabei folgendermaßen aussehen:</p>
+<p>Der Zugriff auf die Datenbank erfolgt, wie beschrieben, über das Package {DBI}<span class="citation">[<a href="references.html#ref-R-DBI" role="doc-biblioref">19</a>]</span> und soll hier exemplarisch vorgeführt werden. Die Verbindung der Datenbank und R könnte dabei folgendermaßen aussehen:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="technical-guide.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
 <span id="cb4-2"><a href="technical-guide.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
 <span id="cb4-3"><a href="technical-guide.html#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -617,16 +617,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-7"><a href="technical-guide.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabellennamen</span></span>
 <span id="cb4-8"><a href="technical-guide.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(db)</span></code></pre></div>
 <pre><code>## [1] &quot;circulation&quot; &quot;group_type&quot;  &quot;groups&quot;      &quot;subtype&quot;     &quot;type&quot;        &quot;user&quot;</code></pre>
-<p>Beispielhaft wird die Tabelle “circulation” betrachtet. Diese Tabelle speichert alle Transaktionen, die von Nutzern durchgeführt worden sind, also zum Beispiel Ausleihen, Rückgaben und Mengenänderungen.</p>
+<p>Beispielhaft wird die Tabelle <code>circulation</code> betrachtet. Diese Tabelle speichert alle Transaktionen, die von Nutzern durchgeführt worden sind, also zum Beispiel Ausleihen, Rückgaben und Mengenänderungen.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="technical-guide.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(db, <span class="st">&quot;circulation&quot;</span>)</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <caption>
-<span id="tab:unnamed-chunk-9">Tabelle 6.8: </span>Beispielhafter Inhalt der Tabelle <code>circulation</code>
+<span id="tab:unnamed-chunk-9">Tabelle 6.8: </span>Beispielhafter Inhalt der Tabelle circulation
 </caption>
 <thead>
 <tr>
-<th style="text-align:left;">
-</th>
 <th style="text-align:right;">
 user_id
 </th>
@@ -646,208 +644,178 @@ op_type
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left;">
-NA
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-NA
+2
 </td>
 <td style="text-align:right;">
-NA
+24
 </td>
-<td style="text-align:right;width: 5cm; ">
-NA
-</td>
-<td style="text-align:left;">
-NA
+<td style="text-align:left;width: 5cm; ">
+2021-02-18 18:38:00
 </td>
 <td style="text-align:right;">
-NA
+2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-NA.1
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-NA
+3
 </td>
 <td style="text-align:right;">
-NA
+12
 </td>
-<td style="text-align:right;width: 5cm; ">
-NA
-</td>
-<td style="text-align:left;">
-NA
+<td style="text-align:left;width: 5cm; ">
+2021-02-18 18:38:04
 </td>
 <td style="text-align:right;">
-NA
+2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-NA.2
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-NA
+4
 </td>
 <td style="text-align:right;">
-NA
+5
 </td>
-<td style="text-align:right;width: 5cm; ">
-NA
-</td>
-<td style="text-align:left;">
-NA
+<td style="text-align:left;width: 5cm; ">
+2021-02-18 18:38:07
 </td>
 <td style="text-align:right;">
-NA
+2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-NA.3
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-NA
+5
 </td>
 <td style="text-align:right;">
-NA
+8
 </td>
-<td style="text-align:right;width: 5cm; ">
-NA
-</td>
-<td style="text-align:left;">
-NA
+<td style="text-align:left;width: 5cm; ">
+2021-02-18 18:38:12
 </td>
 <td style="text-align:right;">
-NA
+2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-NA.4
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-NA
+6
 </td>
 <td style="text-align:right;">
-NA
+14
 </td>
-<td style="text-align:right;width: 5cm; ">
-NA
-</td>
-<td style="text-align:left;">
-NA
+<td style="text-align:left;width: 5cm; ">
+2021-02-18 18:38:16
 </td>
 <td style="text-align:right;">
-NA
+2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-NA.5
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-NA
+11
 </td>
 <td style="text-align:right;">
-NA
+4
 </td>
-<td style="text-align:right;width: 5cm; ">
-NA
-</td>
-<td style="text-align:left;">
-NA
+<td style="text-align:left;width: 5cm; ">
+2021-02-18 18:40:14
 </td>
 <td style="text-align:right;">
-NA
+2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-NA.6
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-NA
+12
 </td>
 <td style="text-align:right;">
-NA
+3
 </td>
-<td style="text-align:right;width: 5cm; ">
-NA
-</td>
-<td style="text-align:left;">
-NA
+<td style="text-align:left;width: 5cm; ">
+2021-02-18 18:41:09
 </td>
 <td style="text-align:right;">
-NA
+2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-NA.7
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-NA
+17
 </td>
 <td style="text-align:right;">
-NA
+112
 </td>
-<td style="text-align:right;width: 5cm; ">
-NA
-</td>
-<td style="text-align:left;">
-NA
+<td style="text-align:left;width: 5cm; ">
+2021-02-18 18:41:40
 </td>
 <td style="text-align:right;">
-NA
+2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-NA.8
+<td style="text-align:right;">
+1
 </td>
 <td style="text-align:right;">
-NA
+1
 </td>
 <td style="text-align:right;">
-NA
+45
 </td>
-<td style="text-align:right;width: 5cm; ">
-NA
-</td>
-<td style="text-align:left;">
-NA
+<td style="text-align:left;width: 5cm; ">
+2021-02-18 19:38:35
 </td>
 <td style="text-align:right;">
-NA
+2
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-NA.9
+<td style="text-align:right;">
+4
 </td>
 <td style="text-align:right;">
-NA
+7
 </td>
 <td style="text-align:right;">
-NA
+6
 </td>
-<td style="text-align:right;width: 5cm; ">
-NA
-</td>
-<td style="text-align:left;">
-NA
+<td style="text-align:left;width: 5cm; ">
+2021-02-18 19:40:53
 </td>
 <td style="text-align:right;">
-NA
+1
 </td>
 </tr>
 </tbody>
 </table>
-<p>Der Ordner <code>db/func</code> enthält eine Sammlung von über 80 Hilfsfunktionen, die zum Erstellen, Abfragen und Modifizieren der Datenbank verwendet werden. Die Interaktion mit der Datenbank erfolgt ausschließlich über diese Hilfsfunktionen. Dadurch werden Redundanzen ausgeschlossen und es ist darüber hinaus einfacher, die korrekte Funktionalität zu gewährleisten.</p>
+<p>Der Ordner <code>db/func/</code> enthält eine Sammlung von über 80 Hilfsfunktionen, die zum Erstellen, Abfragen und Modifizieren der Datenbank verwendet werden. Die Interaktion mit der Datenbank erfolgt ausschließlich über diese Hilfsfunktionen. Dadurch werden Redundanzen ausgeschlossen und es ist darüber hinaus einfacher, die korrekte Funktionalität zu gewährleisten.</p>
 <p>Beispielhaft wird die Funktion <code>db_get_borrowed_quantity(db, subtype_id)</code> betrachtet. Unter Angabe der Datenbank <code>db</code> und einer oder mehrerer Untertypenidentifikationsnummern <code>subtype_id</code> wird die ausgeliehene Menge dieser Untertypen zurückgegeben. In {DBI} werden Abfragen an die Datenbank mithilfe von <code>dbGetQuery()</code> gestellt. Das Resultat der Abfrage wird anschließend weiterverarbeitet. Der Nutzen der Hilfsfunktion wird zusätzlich dadurch verdeutlicht, dass sowohl die abzufragende Tabelle sowie die beteiligten Zeilen und Spalten nicht gesondert angegeben werden müssen.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="technical-guide.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Funktionsdefinition</span></span>
 <span id="cb7-2"><a href="technical-guide.html#cb7-2" aria-hidden="true" tabindex="-1"></a>db_get_borrowed_quantity <span class="ot">&lt;-</span> <span class="cf">function</span>(db, subtype_id) {</span>
@@ -863,12 +831,12 @@ NA
 <span id="cb7-12"><a href="technical-guide.html#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-13"><a href="technical-guide.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Abfrage der ausgeliehenen Menge für mehrere Untertypen</span></span>
 <span id="cb7-14"><a href="technical-guide.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">db_get_borrowed_quantity</span>(db, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] 0 0 0 0 0</code></pre>
+<pre><code>## [1]  0 13  0  0  2</code></pre>
 </div>
 </div>
 <div id="cookies" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Cookies</h2>
-<p>Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet <span class="citation">[<a href="references.html#ref-cookies" role="doc-biblioref">36</a>]</span>. Die Web-Applikation setzt zwei Cookies. Die Cookies sind jeweils für einen Zeitraum von sieben Tagen gültig.</p>
+<p>Cookies sind Textdaten, die der Client mit jeder Anfrage an den Server mitsendet <span class="citation">[<a href="references.html#ref-cookies" role="doc-biblioref">37</a>]</span>. Die Web-Applikation setzt zwei Cookies. Die Cookies sind jeweils für einen Zeitraum von sieben Tagen gültig.</p>
 <div id="dark-mode" class="section level3" number="6.3.1">
 <h3><span class="header-section-number">6.3.1</span> dark-mode</h3>
 <p>Dieses Cookie kann die Werte <code>"true"</code> oder <code>"false"</code> enthalten. Das Cookie wird gesetzt, wenn der Nutzer den Schalter für den Nachtmodus verwendet. Beim Start der Web-Applikation wird das Cookie verwendet, um den initialen Status für den Nachtmodus zu bestimmen. Falls das Cookie nicht vorhanden ist, wird die Einstellung des Browsers (<code>window.matchMedia('(prefers-color-scheme: dark)')</code>) ausgelesen und im Cookie gesetzt.</p>
@@ -879,7 +847,7 @@ NA
 </div>
 <div id="implementierung" class="section level3" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> Implementierung</h3>
-<p>Zur Verwaltung der Cookies wird die Bibliothek <a href="https://github.com/js-cookie/js-cookie">js-cookie</a> <span class="citation">[<a href="references.html#ref-js-cookie" role="doc-biblioref">37</a>]</span> verwendet. Die Datei <code>www/js/cookies.js</code> enthält Hilfsfunktionen zum Lesen und Schreiben von Cookies und verbindet diese mit Inputwerten in Shiny. Die Hilfsfunktionen werden in R mithilfe von <code>shinyjs::extendShinyjs()</code> eingebunden.</p>
+<p>Zur Verwaltung der Cookies wird die Bibliothek <a href="https://github.com/js-cookie/js-cookie">js-cookie</a> <span class="citation">[<a href="references.html#ref-js-cookie" role="doc-biblioref">38</a>]</span> verwendet. Die Datei <code>www/js/cookies.js</code> enthält Hilfsfunktionen zum Lesen und Schreiben von Cookies und verbindet diese mit Inputwerten in Shiny. Die Hilfsfunktionen werden in R mithilfe von <code>shinyjs::extendShinyjs()</code> eingebunden.</p>
 </div>
 </div>
 <div id="deployment-1" class="section level2" number="6.4">
@@ -888,7 +856,7 @@ NA
 <p>Nachfolgend wird auf Ordner verwiesen, in denen für die Web-Applikation relevante Dateien liegen.</p>
 <ul>
 <li><p><code>/etc/shiny-server</code></p>
-<p>Dieser Ordner enthält die Datei <code>shiny-server.conf</code>, mit der der Shiny Server konfiguriert werden kann <span class="citation">[<a href="references.html#ref-shiny-server" role="doc-biblioref">38</a>]</span>. Hier kann der Port eingestellt werden, unter dem die Web-Applikation verfügbar gemacht wird. Der Port <code>3838</code> ist voreingestellt.</p></li>
+<p>Dieser Ordner enthält die Datei <code>shiny-server.conf</code>, mit der der Shiny Server konfiguriert werden kann <span class="citation">[<a href="references.html#ref-shiny-server" role="doc-biblioref">39</a>]</span>. Hier kann der Port eingestellt werden, unter dem die Web-Applikation verfügbar gemacht wird. Der Port <code>3838</code> ist voreingestellt.</p></li>
 </ul>
 <p><br></p>
 <ul>
@@ -921,7 +889,7 @@ NA
 <p><br></p>
 <ul>
 <li><p><code>/etc/rstudio</code></p>
-<p>Dieser Ordner enthält die Datei <code>rserver.conf</code>, mit der der RStudio Server konfiguriert werden kann <span class="citation">[<a href="references.html#ref-rstudio-server" role="doc-biblioref">39</a>]</span>. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port <code>8787</code> ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers <code>pfa</code> und eines zugehörigen Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.</p>
+<p>Dieser Ordner enthält die Datei <code>rserver.conf</code>, mit der der RStudio Server konfiguriert werden kann <span class="citation">[<a href="references.html#ref-rstudio-server" role="doc-biblioref">40</a>]</span>. Hier kann der Port eingestellt werden, unter dem der RStudio Server verfügbar gemacht wird. Der Port <code>8787</code> ist voreingestellt. Der RStudio Server kann zur nachhaltigen Pflege und Weiterentwicklung der Web-Applikation genutzt werden. Dazu muss der Port aufgerufen werden. In der Login-Maske kann sich mithilfe des Nutzers <code>pfa</code> und eines zugehörigen Passworts eingeloggt werden. Danach öffnet sich die Online-Version der Entwicklungsumgebung RStudio, deren Funktionsumfang mit dem der Desktopversion identisch ist.</p>
 <p>Für weitere Informationen siehe <a href="https://docs.rstudio.com/ide/server-pro/">https://docs.rstudio.com/ide/server-pro/</a>. Es ist zu beachten, dass es sich bei der installierten Version um die Open-Source-Version und <em>nicht</em> um die Pro-Version handelt.</p></li>
 </ul>
 <p><br></p>

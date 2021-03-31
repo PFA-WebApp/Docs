@@ -254,7 +254,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="requirements" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Anforderungen</h1>
-<p>Aus der vom Fachgebiet bereitgestellten Aufgabenstellung wurden unmittelbar die folgenden Anforderungen abgeleitet: Aufbauend auf einer Literaturrecherche soll ein Konzept zur Erstellung einer Web-Applikation entworfen werden. Die Umsetzung besteht aus der Programmierung der entworfenen Web-Applikation sowie dem Anlegen einer zugehörigen Datenbank auf dem Server des Fachgebiets. Die verwendeten Technologien sind dabei begründet frei zu wählen. Die konkreten Anforderungen an die Web-Applikation sind dabei aus dem in der Aufgabenstellung beschriebenen Funktionstest abgeleitet worden:</p>
+<p>Aus der vom Fachgebiet bereitgestellten Aufgabenstellung wurden unmittelbar die folgenden Anforderungen abgeleitet: Aufbauend auf einer Literaturrecherche soll ein Konzept zur Erstellung einer Web-Applikation entworfen werden. Die Umsetzung besteht aus der Programmierung der entworfenen Web-Applikation sowie dem Anlegen einer zugehörigen Datenbank auf dem Server des Fachgebiets. Die verwendeten Technologien sind dabei begründet frei zu wählen. Die konkreten Anforderungen an die Web-Applikation werden aus dem in der Aufgabenstellung beschriebenen Funktionstest abgeleitet:</p>
 <ul>
 <li>Erstellen von Sensoren</li>
 <li>Erstellen von Nutzern</li>
@@ -270,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.1.1</span> Sensorverwaltung</h3>
 <p>Die Sensoren am Fachgebiet stehen untereinander in Beziehung: Ein Versuchsaufbau kann sich aus verschiedenen Sensoren zusammensetzen. Dabei ist weniger der Sensor als viel mehr seine Art von Interesse. So ist es zum Beispiel unerheblich von welchem Hersteller oder aus welcher Serie ein konkreter Sensor ist, solange die gleiche Funktionalität erbracht wird. Der konkrete Sensor wird als <em>Untertyp</em> bezeichnet. Die Funktionalität, die alle <em>Untertypen</em> verbindet, spiegelt sich im <em>Typen</em> wider. Ein Versuchsaufbau ist schließlich eine <em>Gruppe</em>, die verschiedene <em>Typen</em> beinhaltet. Zusammenfassend lässt sich festhalten:</p>
 <blockquote>
-<p>Jeder Sensor hat einen <em>Untertypen</em>. Mehrere nur geringfügig unterschiedliche <em>Untertypen</em> werden in einem <em>Typen</em> zusammengefasst. Mehrere <em>Typen</em> können Teil einer <em>Gruppe</em> sein. Ein <em>Typ</em> kann Teil mehrerer Gruppen sein.</p>
+<p>Jeder Sensor hat einen <em>Untertypen</em>. Mehrere nur geringfügig unterschiedliche <em>Untertypen</em> werden in einem <em>Typen</em> zusammengefasst. Mehrere <em>Typen</em> können Teil einer <em>Gruppe</em> sein. Ein <em>Typ</em> kann Teil mehrerer <em>Gruppen</em> sein.</p>
 </blockquote>
 <p>Ausgehend von diesen Definitionen sind die folgenden Anforderungen zu erfüllen:</p>
 <ul>
@@ -283,6 +283,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="dateiverwaltung" class="section level3" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Dateiverwaltung</h3>
+<p>Mithilfe der Dateiverwaltung können zusätzliche Informationen bereitgestellt werden. Die folgenden Anforderungen sind an die Dateiverwaltung gestellt:</p>
 <ul>
 <li>Hochladen, Umbenennen und Löschen von Datenblättern im PDF-Format für <em>Gruppen</em>, <em>Typen</em> und <em>Untertypen</em></li>
 <li>Herunterladen von einzelnen Datenblättern als PDF-Datei oder mehreren Datenblättern komprimiert in einer zip-Datei</li>
@@ -290,7 +291,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="nutzerverwaltung" class="section level3" number="2.1.3">
 <h3><span class="header-section-number">2.1.3</span> Nutzerverwaltung</h3>
-<p>Wie eingangs beschrieben, ist eine rechtebasierte Verwaltung notwendig. Dazu werden drei Rollen angelegt. Der <em>Benutzer</em> kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der <em>Moderator</em> kann zusätzlich <em>Benutzer</em> anlegen. Der <em>Administrator</em> kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Um ein hohes Maß an Übersichtlichkeit für den Leser zu gewährleisten, wurde sich ferner dazu entschieden, Operationen, die ausschließlich mit erweiterten Rechten durchführbar sind, mit einem der Rolle entsprechenden Kürzel zu markieren. So sind Operationen, die insbesondere für Administatoren bzw. Moderatoren von Relevanz sind, mit <span class="badge admin">A</span> bzw. <span class="badge mod">M</span> gekennzeichnet. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Tabelle <a href="requirements.html#tab:user-rights">2.1</a> entnommen werden.</p>
+<p>Wie eingangs beschrieben, ist eine rechtebasierte Nutzerverwaltung notwendig. Dazu werden drei Rollen angelegt. Der <em>Benutzer</em> kann Sensoren ausleihen und zurückgeben. Er kann seinen Benutzernamen und sein Passwort ändern. Der <em>Moderator</em> kann zusätzlich <em>Benutzer</em> anlegen. Der <em>Administrator</em> kann zusätzlich auf die Sensorverwaltung zugreifen und Nutzer mit einer beliebigen Rolle anlegen. Um ein hohes Maß an Übersichtlichkeit für den Leser zu gewährleisten, wurde sich ferner dazu entschieden, Operationen, die ausschließlich mit erweiterten Rechten durchführbar sind, mit einem der Rolle entsprechenden Kürzel zu markieren. So sind Operationen, die insbesondere für Administatoren bzw. Moderatoren von Relevanz sind, mit <span class="badge admin">A</span> bzw. <span class="badge mod">M</span> gekennzeichnet. Eine genaue Aufschlüsselung der Rechte der drei Rollen - und somit der Anforderungen an die Nutzerverwaltung - kann Tabelle <a href="requirements.html#tab:user-rights">2.1</a> entnommen werden.</p>
 <table>
 <caption><span id="tab:user-rights">Tabelle 2.1: </span> Übersicht über die Nutzerrollen</caption>
 <thead>
@@ -327,19 +328,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="center"></td>
 </tr>
 <tr class="odd">
-<td align="left">QR-Code generieren</td>
+<td align="left">Erweiterte Nutzerverwaltung</td>
 <td align="center">x</td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr class="even">
-<td align="left">Sensoren verwalten</td>
+<td align="left">QR-Code generieren</td>
 <td align="center">x</td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 <tr class="odd">
+<td align="left">Sensoren verwalten</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="even">
 <td align="left">Dateien verwalten</td>
+<td align="center">x</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="left">Als anderer Nutzer operieren</td>
 <td align="center">x</td>
 <td align="center"></td>
 <td align="center"></td>
@@ -349,15 +362,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="ausleihverwaltung" class="section level3" number="2.1.4">
 <h3><span class="header-section-number">2.1.4</span> Ausleihverwaltung</h3>
+<p>An die Ausleihverwaltung werden die folgenden Anforderungen gestellt:</p>
 <ul>
-<li>Ausleihe und Rückgabe von <em>Untertypen</em> beliebiger Menge innerhalb eines verfügbaren Rahmens durch Nutzer oder für beliebigen Nutzer durch <em>Administrator</em></li>
-<li>Abschreiben von <em>Untertypen</em> durch <em>Administratoren</em></li>
+<li>Ausleihe und Rückgabe von <em>Untertypen</em> beliebiger Menge innerhalb eines verfügbaren Rahmens durch Nutzer oder für einen beliebigen Nutzer durch <em>Administrator</em></li>
+<li>Abschreiben von <em>Untertypen</em> durch <em>Administrator</em></li>
 <li>Anzeige von Datenblättern für <em>Gruppen</em>, <em>Typen</em> und <em>Untertypen</em></li>
 </ul>
 </div>
 <div id="bestandsinformation" class="section level3" number="2.1.5">
 <h3><span class="header-section-number">2.1.5</span> Bestandsinformation</h3>
-<p>Um ohne Betreten des Lagerortes ermitteln zu können, wie viele Elemente eines <em>Typen</em> oder <em>Untertypen</em> verfügbar sind oder festzustellen, welcher Nutzer einen benötigten <em>Typen</em> ausgeliehen hat, ist eine Übersicht über den Bestand und die Ausleihhistorie zu implementieren.</p>
+<p>Um ohne Betreten des Lagerortes ermitteln zu können, wie viele Elemente eines <em>Typen</em> oder <em>Untertypen</em> verfügbar sind oder um festzustellen, welcher Nutzer einen benötigten <em>Typen</em> ausgeliehen hat, ist eine Übersicht über den Bestand und die Ausleihhistorie zu implementieren.</p>
 </div>
 </div>
 <div id="nicht-funktionale-anforderungen-an-die-web-applikation" class="section level2" number="2.2">
@@ -379,7 +393,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="deployment" class="section level3" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Deployment</h3>
-<p>Als Deployment wird die Integration der Web-Applikation und der Datenbank in die bestehende Infrastruktur bezeichnet. Dazu sind folgende Schritte notwendig:</p>
+<p>Als Deployment wird die Integration der Web-Applikation und der Datenbank in die bestehende Infrastruktur bezeichnet <span class="citation">[<a href="references.html#ref-Pitt2018" role="doc-biblioref">2</a>]</span>. Dazu sind folgende Schritte notwendig:</p>
 <ul>
 <li>Auswahl einer Virtualisierungssoftware</li>
 <li>Einrichten einer <em>VM</em></li>

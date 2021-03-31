@@ -14,13 +14,13 @@ Die folgenden Abschnitte fassen wesentliche Merkmale der Web-Applikation zusamme
 knitr::include_graphics("./img/app_overview.png", error = FALSE)
 ```
 
-Die genannten drei Elemente halten halten dabei wesentliche Bedienelemente bereit. Die Navbar stellt die Orientierungshilfe für den Nutzer dar. Sie ist stets visuell präsent, befindet sich oberhalb des Bodys und ermöglicht beispielsweise das Öffnen weiterer Menüs wie der Sidebar. Die Navbar enthält zudem die folgenden Elemente:
+Die genannten drei Elemente halten dabei wesentliche Bedienelemente bereit. Die Navbar stellt die Orientierungshilfe für den Nutzer dar. Sie ist stets visuell präsent, befindet sich oberhalb des Bodys und ermöglicht beispielsweise das Öffnen weiterer Menüs wie der Sidebar. Die Navbar enthält zudem die folgenden Elemente:
 
-* einen Link zum GitHub-Repository, das den Quellcode der Web-Applikation enthält,
-* einen Reload-Button, mit dem eine Aktualisierung der Daten erzwungen werden kann,
+* einen Link zum GitHub-*Repository*, das den Quellcode der Web-Applikation enthält,
+* einen Knopf, mit dem eine Aktualisierung der Daten erzwungen werden kann,
 * einen Schalter, mit dem zwischen Tag- und Nachtmodus gewechselt werden kann.
 
-Ausgehend von der Navbar kann, sofern nicht bereits geöffnet, das Sidebarmenü mithilfe der links befindlichen Schaltfläche geöffnet werden. In der Sidebar kann über einen Reiter die Funktionalität ausgewählt werden, die im Body dargestellt werden soll. Die Anzahl an Auswahlmöglichkeiten hängt vom Anmeldestatus und der Benutzerrolle ab. Im Folgenden gilt es daher die Reiter der Sidebar im einzelnen näher zu betrachten.
+Ausgehend von der Navbar kann, sofern nicht bereits geöffnet, das Sidebarmenü mithilfe der links befindlichen Schaltfläche geöffnet werden. In der Sidebar kann über einen Reiter die Funktionalität ausgewählt werden, die im Body dargestellt werden soll. Die Anzahl an Auswahlmöglichkeiten hängt vom Anmeldestatus und der Benutzerrolle ab. Im Folgenden gilt es daher die Reiter der Sidebar im Einzelnen näher zu betrachten.
 
 ## Anmeldung {#login}
 
@@ -59,7 +59,7 @@ knitr::include_graphics("./img/operate_overview.png", error = FALSE)
 
 ### Ausleihen & Zurückgeben
 
-Zunächst muss ein Typ ausgewählt werden. Wenn die Web-Applikation über einen QR-Code aufgerufen wurde (siehe [QR-Code](#qrcode)), ist der zum QR-Code gehörende Typ bereits ausgewählt. Im nächsten Schritt muss ein zugehöriger Untertyp ausgewählt werden. Die konkrete Operation kann durch Klicken auf einen der verfügbaren Buttons angestoßen werden. Im sich darauf öffnenden Dialog muss die Menge angegeben und die Ausführung der Operation bestätigt werden. Abbildung \@ref(fig:operate-detail-circulate) gibt einen Überblick über den Abschnitt.
+Zunächst muss ein *Typ* ausgewählt werden. Wenn die Web-Applikation über einen QR-Code aufgerufen wurde (siehe [QR-Code](#qrcode)), ist der zum QR-Code gehörende *Typ* bereits ausgewählt. Im nächsten Schritt muss ein zugehöriger *Untertyp* ausgewählt werden. Die konkrete Operation kann durch Klicken auf einen der verfügbaren Knöpfe angestoßen werden. Im sich darauf öffnenden Dialog muss die Menge angegeben und die Ausführung der Operation bestätigt werden. Abbildung \@ref(fig:operate-detail-circulate) gibt einen Überblick über den Abschnitt.
 
 ```{r operate-detail-circulate, echo=FALSE, fig.cap="Abschnitt: Ausleihen & Zurückgeben"}
 knitr::include_graphics("./img/operate_detail_circulate.png", error = FALSE)
@@ -87,7 +87,7 @@ Adminstatoren haben in Ergänzung dazu noch die folgenden Befugnisse:
 
 ### Gruppen des ausgewählten Typs
 
-Alle Gruppen des ausgewählten Typs werden aufgelistet. Durch Klicken auf eine Gruppe öffnet sich ein Dialog, in dem alle Typen dieser Gruppe angezeigt werden, vergleiche Abbildung \@ref(fig:operate-detail-groups). Durch Klicken auf einen Typen wird dieser Typ für eine weitere Operation ausgewählt. Somit können alle Elemente einer Gruppe (zum Beispiel ein Versuchsaufbau) komfortabel hintereinander ausgeliehen / zurückgegeben werden.
+Alle *Gruppen* des ausgewählten *Typs* werden aufgelistet. Durch Klicken auf eine *Gruppe* öffnet sich ein Dialog, in dem alle *Typen* dieser *Gruppe* angezeigt werden, vergleiche Abbildung \@ref(fig:operate-detail-groups). Durch Klicken auf einen *Typen* wird dieser für eine weitere Operation ausgewählt. Somit können alle Elemente einer *Gruppe* (zum Beispiel ein Versuchsaufbau) komfortabel hintereinander ausgeliehen / zurückgegeben werden.
 
 ```{r operate-detail-groups, echo=FALSE, fig.cap="Abschnitt: Gruppen des ausgewählten Typs"}
 knitr::include_graphics("./img/operate_detail_groups.png", error = FALSE)
@@ -95,11 +95,11 @@ knitr::include_graphics("./img/operate_detail_groups.png", error = FALSE)
 
 ### Dateien
 
-Hier werden alle dem ausgewählten Typ zugeordneten Dateien angezeigt. Dabei ist die Anzeige - wie Abbildung \@ref(fig:operate-detail-files) entnommen werden kann - in drei Reiter gegliedert:
+Hier werden alle dem ausgewählten *Typ* zugeordneten Dateien angezeigt. Dabei ist die Anzeige - wie Abbildung \@ref(fig:operate-detail-files) entnommen werden kann - in drei Reiter gegliedert:
 
-* *Gruppen*: Alle Dateien, die Informationen zu Gruppen des ausgewählten Typs enthalten
-* *Typ*: Alle Dateien, die Informationen zum ausgewählten Typ enthalten
-* *Untertypen*: Alle Dateien, die Informationen zu Untertypen des ausgewählten Typs enthalten. Es ist zu beachten, dass die Wahl des Untertypen keinen Einfluss auf die angezeigten Dateien hat, da Dateien für alle Untertypen dargestellt werden.
+* *Gruppen*: Alle Dateien, die Informationen zu *Gruppen* des ausgewählten *Typs* enthalten
+* *Typ*: Alle Dateien, die Informationen zum ausgewählten *Typ* enthalten
+* *Untertypen*: Alle Dateien, die Informationen zu *Untertypen* des ausgewählten *Typs* enthalten. Es ist zu beachten, dass die Wahl des *Untertypen* keinen Einfluss auf die angezeigten Dateien hat, da Dateien für alle *Untertypen* dargestellt werden.
 
 Die Ziffer neben dem Reitertitel gibt Auskunft darüber, wie viele Dateien in der jeweiligen Kategorie vorhanden sind. Indem auf einen Dateinamen geklickt wird, öffnet sich das zugehörige PDF in einem separaten Browserfenster oder wird über den PDF-Viewer angezeigt. Alle Dateien einer Kategorie können in einem Archiv (*.zip*) heruntergeladen werden.
 
@@ -109,7 +109,7 @@ knitr::include_graphics("./img/operate_detail_files.png", error = FALSE)
 
 ## Bestandsinformation {#reporting}
 
-Die Bestandsinformation gliedert sich in zwei Abschnitte, vergleiche Abbildung \@ref(fig:reporting-overview). In der Bestandsübersicht werden Informationen zum Lagerbestand von Sensoren dargestellt, wohingegen die Ausleihübersicht Informationen über ausgeliehene Sensoren enthält.
+Die Bestandsinformation gliedert sich in zwei Abschnitte, vergleiche Abbildung \@ref(fig:reporting-overview). In der *Bestandsübersicht* werden Informationen zum Lagerbestand von Sensoren dargestellt, wohingegen die *Ausleihübersicht* Informationen über ausgeliehene Sensoren enthält.
 
 ```{r reporting-overview, echo=FALSE, fig.cap="Übersicht: Bestandsinformation"}
 knitr::include_graphics("./img/reporting_overview.png", error = FALSE)
@@ -117,7 +117,7 @@ knitr::include_graphics("./img/reporting_overview.png", error = FALSE)
 
 ### Bestandsübersicht
 
-Zunächst muss ein Typ ausgewählt werden. Für diesen Typen werden tabellarisch alle Untertypen dieses Typs aufgelistet. Die Spalte *Verfügbar* enthält die gelagerte Menge, wohingegen die Spalte *Maximal verfügbar* die maximal gelagerte Menge (kein Sensor dieses Untertypen ausgeliehen) enthält. Über die Checkbox *Nur kritische Bestände anzeigen* kann ausgewählt werden, ob nur Untertypen angezeigt werden sollen, für die die verfügbare Menge kleiner als der definierte kritische Bestand ist. Der kritische Bestand eines Untertypen kann von einem `r badge("admin")` im Reiter [Sensortypen](#type) festgelegt werden.
+Zunächst muss ein *Typ* ausgewählt werden. Für diesen *Typen* werden tabellarisch alle *Untertypen* aufgelistet. Die Spalte *Verfügbar* enthält die gelagerte Menge, wohingegen die Spalte *Maximal verfügbar* die maximal gelagerte Menge (kein Sensor dieses *Untertypen* ausgeliehen) enthält. Über die Checkbox *Nur kritische Bestände anzeigen* kann ausgewählt werden, ob nur *Untertypen* angezeigt werden sollen, für die die verfügbare Menge kleiner als der definierte kritische Bestand ist. Der kritische Bestand eines *Untertypen* kann von einem `r badge("admin")` im Reiter [Sensortypen](#type) festgelegt werden.
 
 ### Ausleihübersicht
 
@@ -125,9 +125,9 @@ Die Ausleihübersicht besteht aus vier Reitern, die unterschiedliche Fragestellu
 
 | Reiter | Beschreibung |
 | --- | ------ |
-| Gesamt | Übersicht über alle Untertypen mit einer gegenwärtig ausgeliehenen Menge größer Null. |
-| Nach Untertyp | Übersicht über alle Nutzer, die den gewählten Untertypen zurzeit ausgeliehen haben. Hiermit kann herausgefunden werden, wer Ansprechpartner ist, falls alle Elemente eines Untertyps ausgeliehen sind. |
-| Nach Nutzer | Übersicht über alle Untertypen, die der gewählte Nutzer zurzeit ausgeliehen hat. |
+| Gesamt | Übersicht über alle *Untertypen* mit einer gegenwärtig ausgeliehenen Menge größer Null. |
+| Nach Untertyp | Übersicht über alle Nutzer, die den gewählten *Untertypen* zurzeit ausgeliehen haben. Hiermit kann herausgefunden werden, wer Ansprechpartner ist, falls alle Elemente eines *Untertyps* ausgeliehen sind. |
+| Nach Nutzer | Übersicht über alle *Untertypen*, die der gewählte Nutzer zurzeit ausgeliehen hat. |
 | Transaktionen | Übersicht über alle Transaktionen, die jemals im Rahmen der Sensorverwaltung stattgefunden haben. Ein Nutzer sieht ausschließlich seine eigenen Transaktionen. Ein `r badge("admin")` sieht alle Transaktionen. Dazu gehören neben Ausleih- und Rückgabeoperationen auch Abschreibungen und sonstige Mengenänderungen. |
 
 Table: (\#tab:reporting-details) Übersicht über die Ausleihübersicht
@@ -150,19 +150,19 @@ Neue Nutzer können unter Angabe eines Benutzernamens und eines zur Sicherheit z
 
 ### Nutzertabelle
 
-In der Nutzertabelle (vergleiche Tabelle \@ref(tab:user-table)) können Nutzer verwaltet werden. Neben dem Benutzernamen und dem gegenwärtigen Status gibt es drei Spalten, die Buttons enthalten, mit denen Eigenschaften eines Nutzer angepasst werden können.
+In der *Nutzertabelle* (vergleiche Tabelle \@ref(tab:user-table)) können Nutzer verwaltet werden. Neben dem Benutzernamen und dem gegenwärtigen Status gibt es drei Spalten, die Knöpfe enthalten, mit denen Eigenschaften eines Nutzers angepasst werden können.
 
 | Spalte | Beschreibung |
 | --- | ------ |
-| Status ändern `r badge("admin", short = TRUE)` | Dieser Button öffnet einen Dialog, in dem ein neuer Status für den Nutzer ausgewählt werden kann. |
-| Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Nutzer gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Transaktionen, die der ausgewählte Nutzer vorgenommen hat, bleiben jedoch weiterhin erhalten. Es können nur Nutzer gelöscht werden, die zurzeit keine Sensoren ausgeliehen haben. Falls der Nutzer nicht in der Lage ist, die Sensoren eigenständig zurückzugeben, kann der `r badge("admin")` die ausgeliehenen Sensoren im Reiter [Ausleihen & Zurückgeben](#operate) für diesen Nutzer zurückgeben. Ein `r badge("mod")` kann nur `r badge("user")` entfernen, die er selbst hinzugefügt hat. |
-| Passwort zurücksetzen `r badge("admin", short = TRUE)` | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass das Passwort des Nutzers zurückgesetzt werden soll. Das Passwort wird auf das Standardpasswort *1234* zurückgesetzt und sollte vom Nutzer sofort danach im Reiter [Einstellungen](#settings) geändert werden. |
+| Status ändern `r badge("admin", short = TRUE)` | Dieser Knopf öffnet einen Dialog, in dem ein neuer Status für den Nutzer ausgewählt werden kann. |
+| Entfernen | Dieser Knopf öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Nutzer gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Transaktionen, die der ausgewählte Nutzer vorgenommen hat, bleiben jedoch weiterhin erhalten. Es können nur Nutzer gelöscht werden, die zurzeit keine Sensoren ausgeliehen haben. Falls der Nutzer nicht in der Lage ist, die Sensoren eigenständig zurückzugeben, kann der `r badge("admin")` die ausgeliehenen Sensoren im Reiter [Ausleihen & Zurückgeben](#operate) für diesen Nutzer zurückgeben. Ein `r badge("mod")` kann nur `r badge("user")` entfernen, die er selbst hinzugefügt hat. |
+| Passwort zurücksetzen `r badge("admin", short = TRUE)` | Dieser Knopf öffnet einen Dialog, in dem bestätigt werden muss, dass das Passwort des Nutzers zurückgesetzt werden soll. Das Passwort wird auf das Standardpasswort *1234* zurückgesetzt und sollte vom Nutzer sofort danach im Reiter [Einstellungen](#settings) geändert werden. |
 
 Table: (\#tab:user-table) Nutzertabelle
 
 ## Gruppen `r badge("admin", short = TRUE)` {#group}
 
-Der Reiter *Gruppen* erlaubt es, neue Gruppen hinzuzufügen und bestehende Gruppen zu verwalten, vergleiche Abbildung \@ref(fig:group-overview).
+Der Reiter *Gruppen* erlaubt es, neue *Gruppen* hinzuzufügen und bestehende *Gruppen* zu verwalten, vergleiche Abbildung \@ref(fig:group-overview).
 
 ```{r group-overview, echo=FALSE, fig.cap="Übersicht: Gruppen"}
 knitr::include_graphics("./img/group_overview.png", error = FALSE)
@@ -170,27 +170,27 @@ knitr::include_graphics("./img/group_overview.png", error = FALSE)
 
 ### Gruppe hinzufügen
 
-Eine neue Gruppe kann durch Angabe eines Gruppennamens hinzugefügt werden.
+Eine neue *Gruppe* kann durch Angabe eines Gruppennamens hinzugefügt werden.
 
 ### Gruppentabelle
 
-In der *Gruppentabelle* (vergleiche Tabelle \@ref(tab:group-table)) können Gruppen bearbeitet werden.
+In der *Gruppentabelle* (vergleiche Tabelle \@ref(tab:group-table)) können *Gruppen* bearbeitet werden.
 
 | Spalte | Beschreibung |
 | --- | ------ |
 | Gruppenname | Ein Klick auf einen Gruppennamen öffnet einen Dialog, in dem der Gruppenname angepasst werden kann. |
-| Typen bearbeiten | Dieser Button öffnet einen Dialog, in dem die zur ausgewählten Gruppe zugehörigen Typen bearbeitet werden können. |
-| Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte Gruppe gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. |
+| Typen bearbeiten | Dieser Knopf öffnet einen Dialog, in dem die zur ausgewählten *Gruppe* zugehörigen *Typen* bearbeitet werden können. |
+| Entfernen | Dieser Knopf öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte *Gruppe* gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. |
 
 Table: (\#tab:group-table) Gruppentabelle
 
 ### Typen anzeigen
 
-Zunächst muss eine Gruppe ausgewählt werden. In der Tabelle werden alle zur ausgewählten Gruppe zugehörigen Typen dargestellt.
+Zunächst muss eine *Gruppe* ausgewählt werden. In der Tabelle werden alle zur ausgewählten *Gruppe* zugehörigen *Typen* dargestellt.
 
 ## Sensortypen `r badge("admin", short = TRUE)` {#type}
 
-Der Reiter *Sensortypen* erlaubt es, neue Typen und Untertypen hinzuzufügen und bestehende Typen und Untertypen zu verwalten, vergleiche Abbildung \@ref(fig:type-overview).
+Der Reiter *Sensortypen* erlaubt es, neue *Typen* und *Untertypen* hinzuzufügen und bestehende *Typen* und *Untertypen* zu verwalten, vergleiche Abbildung \@ref(fig:type-overview).
 
 ```{r type-overview, echo=FALSE, fig.cap="Übersicht: Sensortypen"}
 knitr::include_graphics("./img/type_overview.png", error = FALSE)
@@ -198,34 +198,34 @@ knitr::include_graphics("./img/type_overview.png", error = FALSE)
 
 ### Typ hinzufügen
 
-Ein neuer Typ kann durch Angabe eines Typnamens hinzugefügt werden.
+Ein neuer *Typ* kann durch Angabe eines Typnamens hinzugefügt werden.
 
 ### Typtabelle
 
-In der *Typtabelle* (vergleiche Tabelle \@ref(tab:type-table)) können Typen bearbeitet werden.
+In der *Typtabelle* (vergleiche Tabelle \@ref(tab:type-table)) können *Typen* bearbeitet werden.
 
 | Spalte | Beschreibung |
 | --- | ------ |
 | Typname | Ein Klick auf einen Typnamen öffnet einen Dialog, in dem der Typname angepasst werden kann. |
-| Gruppen bearbeiten | Dieser Button öffnet einen Dialog, in dem die zum ausgewählten Typ zugehörigen Gruppen bearbeitet werden können. |
-| Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Typ gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein Typ kann nur gelöscht werden, wenn kein Element seiner Untertypen ausgeliehen ist. Transaktionen, die den ausgewählten Typen betreffen, bleiben weiterhin erhalten. Das Entfernen eines Typen schließt das Entfernen aller Untertypen dieses Typen ein. |
+| Gruppen bearbeiten | Dieser Knopf öffnet einen Dialog, in dem die zum ausgewählten *Typ* zugehörigen *Gruppen* bearbeitet werden können. |
+| Entfernen | Dieser Knopf öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte *Typ* gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein *Typ* kann nur gelöscht werden, wenn kein Element seiner *Untertypen* ausgeliehen ist. Transaktionen, die den ausgewählten *Typen* betreffen, bleiben weiterhin erhalten. Das Entfernen eines *Typen* schließt das Entfernen aller *Untertypen* dieses *Typs* ein. |
 
 Table: (\#tab:type-table) Typtabelle
 
 ### Gruppen anzeigen
 
-Zunächst muss ein Typ ausgewählt werden. In der Tabelle werden alle zum ausgewählten Typen zugehörigen Gruppen dargestellt.
+Zunächst muss ein *Typ* ausgewählt werden. In der Tabelle werden alle zum ausgewählten *Typen* zugehörigen *Gruppen* dargestellt.
 
 ### Untertypen bearbeiten
 
-Zunächst muss ein Typ ausgewählt werden. In der *Untertypentabelle* (vergleiche Tabelle \@ref(tab:subtype-table)) können Untertypen des ausgewählten Typen bearbeitet werden.
+Zunächst muss ein *Typ* ausgewählt werden. In der *Untertypentabelle* (vergleiche Tabelle \@ref(tab:subtype-table)) können Untertypen des ausgewählten Typen bearbeitet werden.
 
 | Spalte | Beschreibung |
 | --- | ------ |
 | Untertypname | Ein Klick auf einen Untertypnamen öffnet einen Dialog, in dem der Untertypname angepasst werden kann. |
-| Menge | Ein Klick auf die maximal verfügbare Menge öffnet einen Dialog, in dem die maximal verfügbare Menge des Untertypen angepasst werden kann. Es ist zu beachten, dass die maximal verfügbare Menge nicht auf einen Wert gesetzt werden kann, der kleiner der Anzahl gegenwärtig ausgeliehener Elemente ist. |
-| Kritischer Bestand | Ein Klick auf den kritischen Bestand öffnet einen Dialog, in dem der kritische Bestand des Untertypen angepasst werden kann. Der kritische Bestand kann als Filterkriterium in der *Ausleihübersicht* des Reiters [Bestandsinformation](#reporting) verwendet werden. |
-| Entfernen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte Untertyp gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein Untertyp kann nur gelöscht werden, wenn keine Elemente von diesem ausgeliehen sind. Transaktionen, die den ausgewählten Untertypen betreffen, bleiben weiterhin erhalten. |
+| Menge | Ein Klick auf die maximal verfügbare Menge öffnet einen Dialog, in dem die maximal verfügbare Menge des *Untertypen* angepasst werden kann. Es ist zu beachten, dass die maximal verfügbare Menge nicht auf einen Wert gesetzt werden kann, der kleiner der Anzahl gegenwärtig ausgeliehener Elemente ist. |
+| Kritischer Bestand | Ein Klick auf den kritischen Bestand öffnet einen Dialog, in dem der kritische Bestand des *Untertypen* angepasst werden kann. Der kritische Bestand kann als Filterkriterium in der *Ausleihübersicht* des Reiters [Bestandsinformation](#reporting) verwendet werden. |
+| Entfernen | Dieser Knopf öffnet einen Dialog, in dem bestätigt werden muss, dass der ausgewählte *Untertyp* gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. Ein *Untertyp* kann nur gelöscht werden, wenn keine Elemente von diesem ausgeliehen sind. Transaktionen, die den ausgewählten *Untertypen* betreffen, bleiben weiterhin erhalten. |
 
 Table: (\#tab:subtype-table) Untertypentabelle
 
@@ -242,16 +242,16 @@ Die Reiter unterscheiden sich ausschließlich in der Auswahl des zu beschreibend
 | Spalte | Beschreibung |
 | --- | ------ |
 | Datei | Ein Klick auf einen Dateinamen öffnet einen Dialog, in dem der Dateiname angepasst werden kann. |
-| Herunterladen | Dieser Button lädt die Datei herunter. |
-| Löschen | Dieser Button öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte Datei gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. | 
+| Herunterladen | Dieser Knopf lädt die Datei herunter. |
+| Löschen | Dieser Knopf öffnet einen Dialog, in dem bestätigt werden muss, dass die ausgewählte Datei gelöscht werden soll. Es ist zu beachten, dass diese Operation nicht rückgängig gemacht werden kann. | 
 
 Table: (\#tab:file-table) Dateitabelle
 
 ## QR-Code `r badge("admin", short = TRUE)` {#qrcode}
 
-Zur beschleunigten Ausleihe und Rückgabe kann ein QR-Code für Typen erstellt werden, vergleiche Abbildung \@ref(fig:qr-code-overview). Dazu muss zunächst der Typ und die Serverdomäne ausgewählt werden. Der erstellte QR-Code und der Link, auf den der QR-Code verweist, werden eingeblendet. Der QR-Code kann im Anschluss als PDF-, PNG- oder SVG-Datei heruntergeladen werden. Dazu kann zusätzlich die Breite und Höhe der zu erstellenden Datei in Millimetern angegeben werden.
+Zur beschleunigten Ausleihe und Rückgabe kann ein QR-Code für *Typen* erstellt werden, vergleiche Abbildung \@ref(fig:qr-code-overview). Dazu muss zunächst der *Typ* und die Serverdomäne ausgewählt werden. Der erstellte QR-Code und der Link, auf den der QR-Code verweist, werden eingeblendet. Der QR-Code kann im Anschluss als PDF-, PNG- oder SVG-Datei heruntergeladen werden. Dazu kann zusätzlich die Breite und Höhe der zu erstellenden Datei in Millimetern angegeben werden.
 
-Der ausgedruckte QR-Code kann im Lager platziert werden. Dort muss er zum Beispiel mit einem auf einem mobilen Endgerät installierten, handelsüblichen QR-Code-Reader eingescannt werden, wodurch die Web-Applikation geöffnet wird. `r badge("user")` und `r badge("mod")` werden - falls bereits angemeldet, siehe [Cookies](#cookies) - sofort, ansonsten nachdem sie sich angemeldet haben, auf den Reiter [Ausleihen & Zurückgeben](#operate) weitergeleitet, wo der eingescannte Typ bereits vorausgewählt ist. Es muss dann nur noch der Untertyp ausgewählt werden.
+Der ausgedruckte QR-Code kann im Lager platziert werden. Dort muss er zum Beispiel mit einem auf einem mobilen Endgerät installierten, handelsüblichen QR-Code-Reader eingescannt werden, wodurch die Web-Applikation geöffnet wird. `r badge("user")` und `r badge("mod")` werden - falls bereits angemeldet, siehe [Cookies](#cookies) - sofort, ansonsten nachdem sie sich angemeldet haben, auf den Reiter [Ausleihen & Zurückgeben](#operate) weitergeleitet, wo der eingescannte *Typ* bereits vorausgewählt ist. Es muss dann nur noch der *Untertyp* ausgewählt werden.
 
 ```{r qr-code-overview, echo=FALSE, fig.cap="Übersicht: QR-Code"}
 knitr::include_graphics("./img/qr_code_overview.png", error = FALSE)

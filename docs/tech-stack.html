@@ -254,12 +254,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="tech-stack" class="section level1" number="3">
 <h1><span class="header-section-number">3</span> Tech Stack</h1>
-<p>Als Tech Stack wird die Summe der verwendeten Technologien bezeichnet. Dazu gehören zum Beispiel die Programmiersprache, das Framework für die Web-Applikation, die Datenbanksoftware, aber auch die Entwicklungsumgebung und weitere Software, die im Entwicklungsprozess verwendet wird. <span class="citation">[<a href="references.html#ref-Küllenberg2020" role="doc-biblioref">2</a>]</span></p>
+<p>Als Tech Stack wird die Summe der verwendeten Technologien bezeichnet. Dazu gehören zum Beispiel die Programmiersprache, das Framework für die Web-Applikation, die Datenbanksoftware, aber auch die Entwicklungsumgebung und weitere Software, die im Entwicklungsprozess verwendet wird. <span class="citation">[<a href="references.html#ref-Küllenberg2020" role="doc-biblioref">3</a>]</span></p>
 <div id="framework" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Framework</h2>
-<p>Zuallererst muss das Framework zur Erstellung der Web-Applikation gewählt werden. Dieses legt die zu verwendende Programmiersprache fest und setzt möglicherweise Restriktionen in Bezug auf weitere Software. Eine Web-Applikation zeichnet sich dadurch aus, dass sie im Webbrowser ausführbar ist <span class="citation">[<a href="references.html#ref-webappdef" role="doc-biblioref">3</a>]</span>. Der Webbrowser ist in der Lage, Dateien im HTML-Format (HTML: Hyper Text Markup Language <span class="citation">[<a href="references.html#ref-Baumgarten2002" role="doc-biblioref">4</a>]</span>) darzustellen. Das HTML-Format spezifiziert dabei ausschließlich die Struktur der Webseite <span class="citation">[<a href="references.html#ref-Baumgarten2002" role="doc-biblioref">4</a>]</span>. Um die visuelle Erscheinung der Webseite zu beeinflussen, können Regeln in CSS-Dateien (CSS: Cascading Style Sheet) hinterlegt werden <span class="citation">[<a href="references.html#ref-Baumgarten2002" role="doc-biblioref">4</a>]</span>. Für interaktives Verhalten existiert die Sprache JavaScript, die es ermöglicht, das HTML-Dokument dynamisch anzupassen <span class="citation">[<a href="references.html#ref-Baumgarten2002" role="doc-biblioref">4</a>]</span>.</p>
-<p>Ein Framework zur Erstellung von Web-Applikationen bietet ein Grundgerüst für Layout sowie Funktionalität und stellt einen Server bereit. Für das Layout werden beispielsweise makroskopische Komponenten, wie Dashboards und Landing Pages, oder mikroskopische Komponenten, wie Inputs, Tabellen und Plots, bereitgestellt. Die Funktionalität wird abstrahiert und der Zustand der Web-Applikation modelliert. Der Server bearbeitet Anfragen von Clients, also Nutzern der Web-Applikation. Frameworks können in beliebigen Programmiersprachen implementiert werden, solange eine Schnittstelle zwischen der vom Framework verwendeten Sprache und einer dem Browser verständlichen Sprache existiert. Frameworks können hinsichtlich verschiedener Kriterien unterschieden werden. Backend-Frameworks integrieren neben einem Server meist auch noch Datenbanken, wohingegen Frontend-Frameworks ihren Fokus mehr auf den visuellen Part legen. Multipage-Frameworks enthalten mehrere Seiten, wohingegen Singlepage-Frameworks nur eine einzige Seite darstellen. <span class="citation">[<a href="references.html#ref-framework" role="doc-biblioref">5</a>]</span></p>
-<p>Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in der Programmiersprache R implementiert ist. Hierbei handelt es sich um ein Singlepage-Framework, das als Backend den sogenannten Shiny Server enthält <span class="citation">[<a href="references.html#ref-Allen2020" role="doc-biblioref">6</a>]</span>. Maßgeblich für die Entscheidung war, dass die beiden Autoren über Erfahrung im Umgang mit R und im Speziellen mit Shiny verfügen. Darüber hinaus zeichnet sich Shiny durch folgende Eigenschaften und Vorzüge aus <span class="citation">[<a href="references.html#ref-Allen2020" role="doc-biblioref">6</a>]</span>:</p>
+<p>Zuallererst muss das Framework zur Erstellung der Web-Applikation gewählt werden. Dieses legt die zu verwendende Programmiersprache fest und setzt möglicherweise Restriktionen in Bezug auf weitere Software. Eine Web-Applikation zeichnet sich dadurch aus, dass sie im Webbrowser ausführbar ist <span class="citation">[<a href="references.html#ref-webappdef" role="doc-biblioref">4</a>]</span>. Der Webbrowser ist in der Lage, Dateien im HTML-Format (HTML: Hyper Text Markup Language <span class="citation">[<a href="references.html#ref-Baumgarten2002" role="doc-biblioref">5</a>]</span>) darzustellen. Das HTML-Format spezifiziert dabei ausschließlich die Struktur der Webseite <span class="citation">[<a href="references.html#ref-Baumgarten2002" role="doc-biblioref">5</a>]</span>. Um die visuelle Erscheinung der Webseite zu beeinflussen, können Regeln in CSS-Dateien (CSS: Cascading Style Sheet) hinterlegt werden <span class="citation">[<a href="references.html#ref-Baumgarten2002" role="doc-biblioref">5</a>]</span>. Für interaktives Verhalten existiert die Sprache JavaScript, die es ermöglicht, das HTML-Dokument dynamisch anzupassen <span class="citation">[<a href="references.html#ref-Baumgarten2002" role="doc-biblioref">5</a>]</span>.</p>
+<p>Ein Framework zur Erstellung von Web-Applikationen bietet ein Grundgerüst für Layout sowie Funktionalität und stellt einen Server bereit. Für das Layout werden beispielsweise makroskopische Komponenten, wie Dashboards und Landing Pages, oder mikroskopische Komponenten, wie Inputs, Tabellen und Plots, bereitgestellt. Die Funktionalität wird abstrahiert und der Zustand der Web-Applikation modelliert. Der Server bearbeitet Anfragen von Clients, also Nutzern der Web-Applikation. Frameworks können in beliebigen Programmiersprachen implementiert werden, solange eine Schnittstelle zwischen der vom Framework verwendeten Sprache und einer dem Browser verständlichen Sprache existiert. Frameworks können hinsichtlich verschiedener Kriterien unterschieden werden. Backend-Frameworks integrieren neben einem Server meist auch noch Datenbanken, wohingegen Frontend-Frameworks ihren Fokus mehr auf den visuellen Part legen. Multipage-Frameworks enthalten mehrere Seiten, wohingegen Singlepage-Frameworks nur eine einzige Seite darstellen. <span class="citation">[<a href="references.html#ref-framework" role="doc-biblioref">6</a>]</span></p>
+<p>Für die Bearbeitung dieses Projektes wurde das Framework Shiny gewählt, das in der Programmiersprache R implementiert ist. Hierbei handelt es sich um ein Singlepage-Framework, das als Backend den sogenannten Shiny Server enthält <span class="citation">[<a href="references.html#ref-Allen2020" role="doc-biblioref">7</a>]</span>. Maßgeblich für die Entscheidung war, dass die beiden Autoren über Erfahrung im Umgang mit R und im Speziellen mit Shiny verfügen. Darüber hinaus zeichnet sich Shiny durch folgende Eigenschaften und Vorzüge aus <span class="citation">[<a href="references.html#ref-Allen2020" role="doc-biblioref">7</a>]</span>:</p>
 <ul>
 <li>Moderne Templates</li>
 <li>Fokus auf Funktionalität (Erleichterter Programmierprozess)</li>
@@ -271,7 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="programmiersprache" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Programmiersprache</h2>
-<p><a href="https://www.r-project.org/">R</a> ist eine Multiparadigmen-Programmiersprache <span class="citation">[<a href="references.html#ref-Chambers2014" role="doc-biblioref">7</a>]</span>. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden <span class="citation">[<a href="references.html#ref-Chambers2014" role="doc-biblioref">7</a>]</span>. R verfügt über einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden <span class="citation">[<a href="references.html#ref-r_manual" role="doc-biblioref">8</a>]</span>. Das Comprehensive R Archive Network (<a href="https://cran.r-project.org/">CRAN</a>) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung wie zum Beispiel {<a href="https://shiny.rstudio.com/">shiny</a>}, das die Funktionalitäten des Frameworks beinhaltet <span class="citation">[<a href="references.html#ref-cran_faq" role="doc-biblioref">9</a>]</span>. Die folgenden Tabellen <a href="tech-stack.html#tab:pkg-shiny">3.1</a> und <a href="tech-stack.html#tab:pkg-programming">3.2</a> geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.</p>
+<p><a href="https://www.r-project.org/">R</a> ist eine Multiparadigmen-Programmiersprache <span class="citation">[<a href="references.html#ref-Chambers2014" role="doc-biblioref">8</a>]</span>. Je nach Anwendungsfall kann somit zum Beispiel objektorientiert oder funktional programmiert werden <span class="citation">[<a href="references.html#ref-Chambers2014" role="doc-biblioref">8</a>]</span>. R verfügt über einen Pool an Standardbibliotheken und kann einfach durch selbstgeschriebene und frei verfügbare Packages erweitert werden <span class="citation">[<a href="references.html#ref-r_manual" role="doc-biblioref">9</a>]</span>. Das Comprehensive R Archive Network (<a href="https://cran.r-project.org/">CRAN</a>) stellt eine Vielzahl von quelloffenen Bibliotheken zur Verfügung wie zum Beispiel {<a href="https://shiny.rstudio.com/">shiny</a>}, das die Funktionalitäten des Frameworks beinhaltet <span class="citation">[<a href="references.html#ref-cran_faq" role="doc-biblioref">10</a>]</span>. Die folgenden Tabellen <a href="tech-stack.html#tab:pkg-shiny">3.1</a> und <a href="tech-stack.html#tab:pkg-programming">3.2</a> geben Aufschluss über die im Projekt verwendeten Packages und ihren Zweck. Packages können von anderen Packages abhängen. Es wird daher darauf verzichtet auf untergeordnete Bibliotheken einzugehen.</p>
 <table>
 <caption><span id="tab:pkg-shiny">Tabelle 3.1: </span> Packages für {shiny}</caption>
 <thead>
@@ -282,31 +282,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </thead>
 <tbody>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/bs4Dash/index.html">bs4Dash</a>} <span class="citation">[<a href="references.html#ref-R-bs4Dash" role="doc-biblioref">10</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/bs4Dash/index.html">bs4Dash</a>} <span class="citation">[<a href="references.html#ref-R-bs4Dash" role="doc-biblioref">11</a>]</span></td>
 <td>AdminLTE-Template</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/DT/index.html">DT</a>} <span class="citation">[<a href="references.html#ref-R-DT" role="doc-biblioref">11</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/DT/index.html">DT</a>} <span class="citation">[<a href="references.html#ref-R-DT" role="doc-biblioref">12</a>]</span></td>
 <td>DataTables für {shiny}</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/htmltools/index.html">htmltools</a>} <span class="citation">[<a href="references.html#ref-R-htmltools" role="doc-biblioref">12</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/htmltools/index.html">htmltools</a>} <span class="citation">[<a href="references.html#ref-R-htmltools" role="doc-biblioref">13</a>]</span></td>
 <td>HTML-Repräsentation in R</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/rclipboard/index.html">rclipboard</a>} <span class="citation">[<a href="references.html#ref-R-rclipboard" role="doc-biblioref">13</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/rclipboard/index.html">rclipboard</a>} <span class="citation">[<a href="references.html#ref-R-rclipboard" role="doc-biblioref">14</a>]</span></td>
 <td>Zwischenablage</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/shinydisconnect/index.html">shinydisconnect</a>} <span class="citation">[<a href="references.html#ref-R-shinydisconnect" role="doc-biblioref">14</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/shinydisconnect/index.html">shinydisconnect</a>} <span class="citation">[<a href="references.html#ref-R-shinydisconnect" role="doc-biblioref">15</a>]</span></td>
 <td>Verbindungsverlustbildschirm</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/shinyjs/index.html">shinyjs</a>} <span class="citation">[<a href="references.html#ref-R-shinyjs" role="doc-biblioref">15</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/shinyjs/index.html">shinyjs</a>} <span class="citation">[<a href="references.html#ref-R-shinyjs" role="doc-biblioref">16</a>]</span></td>
 <td>Integration von Custom-JavaScript</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/waiter/index.html">waiter</a>} <span class="citation">[<a href="references.html#ref-R-waiter" role="doc-biblioref">16</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/waiter/index.html">waiter</a>} <span class="citation">[<a href="references.html#ref-R-waiter" role="doc-biblioref">17</a>]</span></td>
 <td>Ladebildschirm</td>
 </tr>
 </tbody>
@@ -321,51 +321,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </thead>
 <tbody>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/Cairo/index.html">Cairo</a>} <span class="citation">[<a href="references.html#ref-R-Cairo" role="doc-biblioref">17</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/Cairo/index.html">Cairo</a>} <span class="citation">[<a href="references.html#ref-R-Cairo" role="doc-biblioref">18</a>]</span></td>
 <td>PDF-/PNG-/SVG-Erstellung</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/DBI/index.html">DBI</a>} <span class="citation">[<a href="references.html#ref-R-DBI" role="doc-biblioref">18</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/DBI/index.html">DBI</a>} <span class="citation">[<a href="references.html#ref-R-DBI" role="doc-biblioref">19</a>]</span></td>
 <td>Datenbankinterface</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/dplyr/index.html">dplyr</a>} <span class="citation">[<a href="references.html#ref-R-dplyr" role="doc-biblioref">19</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/dplyr/index.html">dplyr</a>} <span class="citation">[<a href="references.html#ref-R-dplyr" role="doc-biblioref">20</a>]</span></td>
 <td>Datentransformationen</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/glue/index.html">glue</a>} <span class="citation">[<a href="references.html#ref-R-glue" role="doc-biblioref">20</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/glue/index.html">glue</a>} <span class="citation">[<a href="references.html#ref-R-glue" role="doc-biblioref">21</a>]</span></td>
 <td>String-Erzeugung</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/lubridate/index.html">lubridate</a>} <span class="citation">[<a href="references.html#ref-R-lubridate" role="doc-biblioref">21</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/lubridate/index.html">lubridate</a>} <span class="citation">[<a href="references.html#ref-R-lubridate" role="doc-biblioref">22</a>]</span></td>
 <td>Datumsformat</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/RSQLite/index.html">RSQLite</a>} <span class="citation">[<a href="references.html#ref-R-RSQLite" role="doc-biblioref">22</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/RSQLite/index.html">RSQLite</a>} <span class="citation">[<a href="references.html#ref-R-RSQLite" role="doc-biblioref">23</a>]</span></td>
 <td>SQLite-Datenbank</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/stringr/index.html">stringr</a>} <span class="citation">[<a href="references.html#ref-R-stringr" role="doc-biblioref">23</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/stringr/index.html">stringr</a>} <span class="citation">[<a href="references.html#ref-R-stringr" role="doc-biblioref">24</a>]</span></td>
 <td>String-Manipulation</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/tibble/index.html">tibble</a>} <span class="citation">[<a href="references.html#ref-R-tibble" role="doc-biblioref">24</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/tibble/index.html">tibble</a>} <span class="citation">[<a href="references.html#ref-R-tibble" role="doc-biblioref">25</a>]</span></td>
 <td>Tabellenformat</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/purrr/index.html">purrr</a>} <span class="citation">[<a href="references.html#ref-R-purrr" role="doc-biblioref">25</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/purrr/index.html">purrr</a>} <span class="citation">[<a href="references.html#ref-R-purrr" role="doc-biblioref">26</a>]</span></td>
 <td>Funktionale Programmierung</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/qrcode/index.html">qrcode</a>} <span class="citation">[<a href="references.html#ref-R-qrcode" role="doc-biblioref">26</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/qrcode/index.html">qrcode</a>} <span class="citation">[<a href="references.html#ref-R-qrcode" role="doc-biblioref">27</a>]</span></td>
 <td>Erstellung von QR-Codes</td>
 </tr>
 <tr class="odd">
-<td>{<a href="https://cran.r-project.org/web/packages/renv/index.html">renv</a>} <span class="citation">[<a href="references.html#ref-R-renv" role="doc-biblioref">27</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/renv/index.html">renv</a>} <span class="citation">[<a href="references.html#ref-R-renv" role="doc-biblioref">28</a>]</span></td>
 <td>Packagemanagement</td>
 </tr>
 <tr class="even">
-<td>{<a href="https://cran.r-project.org/web/packages/yaml/index.html">yaml</a>} <span class="citation">[<a href="references.html#ref-R-yaml" role="doc-biblioref">28</a>]</span></td>
+<td>{<a href="https://cran.r-project.org/web/packages/yaml/index.html">yaml</a>} <span class="citation">[<a href="references.html#ref-R-yaml" role="doc-biblioref">29</a>]</span></td>
 <td>YAML-Dateiformat</td>
 </tr>
 </tbody>
@@ -373,8 +373,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="datenbank-1" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Datenbank</h2>
-<p>Zur konsistenten Datenverwaltung wird eine Datenbank benötigt. Datenbanken sind in der Lage, Anfragen von verschiedenen Clients zu bearbeiten und dabei zu gewährleisten, dass bestimmte Regeln hinsichtlich der Datenstruktur und Ausprägung der Daten eingehalten werden <span class="citation">[<a href="references.html#ref-Bühler2018" role="doc-biblioref">29</a>]</span>. Es existieren verschiedene Datenbankmodelle, unter anderem das Netzwerkdatenbankmodell, das objektorientierte, das hierachische oder das relationale Datenbankmodell <span class="citation">[<a href="references.html#ref-laudon2015" role="doc-biblioref">30</a>]</span>. Diese unterscheiden sich hinsichtlich der Verknüpfung der beteiligten Daten. Aufgrund der hohen Flexibilität und der weiten Verbreitung wurde das relationale Datenbankmodell ausgewählt. Dieses speichert die Daten in miteinander verknüpften Tabellen <span class="citation">[<a href="references.html#ref-Bühler2018" role="doc-biblioref">29</a>]</span>. Die Tabellenzeilen enthalten Beobachtungen, die Tabellenspalten stellen die beobachtbaren Merkmale dar. Zur eindeutigen Identifikation erhält jede Zeile eine Identifikationsnummer. Die Spalte der Identifikationsnummern wird als Primärschlüssel (<em>Primary Key</em>) bezeichnet <span class="citation">[<a href="references.html#ref-Bühler2018" role="doc-biblioref">29</a>]</span>. Um verschiedene Tabellen miteinander zu verknüpfen, werden Identifikationsnummern referenziert. Eine Spalte, die auf einen Primärschlüssel einer anderen Tabelle verweist, wird als Fremdschlüssel (<em>Foreign Key</em>) bezeichnet <span class="citation">[<a href="references.html#ref-Bühler2018" role="doc-biblioref">29</a>]</span>.</p>
-<p>Es gibt eine Vielzahl verschiedener relationaler Datenbankmanagementsysteme, die sich hinsichtlich ihrer Anwendungsbereiche und Skalierbarkeit unterscheiden. Für Projekte kleinen und mittleren Umfanges (unter 100.000 Aufrufe / Tag <span class="citation">[<a href="references.html#ref-whysqlite" role="doc-biblioref">31</a>]</span>) eignet sich <a href="https://www.sqlite.org/index.html">SQLite</a>. Hierbei werden alle Tabellen in einer einzigen Datei mit dem Suffix <em>.sqlite</em> gespeichert. Der Zugriff auf die Datenbank erfolgt grundsätzlich über die <em>Structured Query Language</em> (SQL). Für die Programmiersprache R gibt es die Packages {DBI} und {RSQLite}, die eine direkte Schnittstelle zur Datenbank bereitstellen.</p>
+<p>Zur konsistenten Datenverwaltung wird eine Datenbank benötigt. Datenbanken sind in der Lage, Anfragen von verschiedenen Clients zu bearbeiten und dabei zu gewährleisten, dass bestimmte Regeln hinsichtlich der Datenstruktur und Ausprägung der Daten eingehalten werden <span class="citation">[<a href="references.html#ref-Bühler2018" role="doc-biblioref">30</a>]</span>. Es existieren verschiedene Datenbankmodelle, unter anderem das Netzwerkdatenbankmodell, das objektorientierte, das hierachische oder das relationale Datenbankmodell <span class="citation">[<a href="references.html#ref-laudon2015" role="doc-biblioref">31</a>]</span>. Diese unterscheiden sich hinsichtlich der Verknüpfung der beteiligten Daten. Aufgrund der hohen Flexibilität und der weiten Verbreitung wurde das relationale Datenbankmodell ausgewählt. Dieses speichert die Daten in miteinander verknüpften Tabellen <span class="citation">[<a href="references.html#ref-Bühler2018" role="doc-biblioref">30</a>]</span>. Die Tabellenzeilen enthalten Beobachtungen, die Tabellenspalten stellen die beobachtbaren Merkmale dar. Zur eindeutigen Identifikation erhält jede Zeile eine Identifikationsnummer. Die Spalte der Identifikationsnummern wird als Primärschlüssel (<em>Primary Key</em>) bezeichnet <span class="citation">[<a href="references.html#ref-Bühler2018" role="doc-biblioref">30</a>]</span>. Um verschiedene Tabellen miteinander zu verknüpfen, werden Identifikationsnummern referenziert. Eine Spalte, die auf einen Primärschlüssel einer anderen Tabelle verweist, wird als Fremdschlüssel (<em>Foreign Key</em>) bezeichnet <span class="citation">[<a href="references.html#ref-Bühler2018" role="doc-biblioref">30</a>]</span>.</p>
+<p>Es gibt eine Vielzahl verschiedener relationaler Datenbankmanagementsysteme, die sich hinsichtlich ihrer Anwendungsbereiche und Skalierbarkeit unterscheiden. Für Projekte kleinen und mittleren Umfanges (unter 100.000 Aufrufe / Tag <span class="citation">[<a href="references.html#ref-whysqlite" role="doc-biblioref">32</a>]</span>) eignet sich <a href="https://www.sqlite.org/index.html">SQLite</a>. Hierbei werden alle Tabellen in einer einzigen Datei mit dem Suffix <em>.sqlite</em> gespeichert. Der Zugriff auf die Datenbank erfolgt grundsätzlich über die <em>Structured Query Language</em> (SQL). Für die Programmiersprache R gibt es die Packages {DBI} und {RSQLite}, die eine direkte Schnittstelle zur Datenbank bereitstellen.</p>
 
 </div>
 </div>
